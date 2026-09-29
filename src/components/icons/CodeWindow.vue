@@ -1,0 +1,13 @@
+<!-- Browser window with code and gear, from wp-raykan meow.svg (software development) -->
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="15.83 20.58 32.34 32.34" fill="none">
+    <path d="M44.3886 35.2742V23.8709C44.3886 22.8288 43.4768 21.917 42.4347 21.917H18.9881C17.946 21.917 17.0342 22.8288 17.0342 23.8709V45.3636C17.0342 46.4056 17.946 47.3175 18.9881 47.3175H30.684" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M17.0342 27.7807H44.3886" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M40.9671 45.0072C40.8105 45.0072 40.6836 44.8804 40.6836 44.7238C40.6836 44.5671 40.8105 44.4402 40.9671 44.4402" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M40.9678 45.0072C41.1244 45.0072 41.2513 44.8804 41.2513 44.7238C41.2513 44.5671 41.1244 44.4402 40.9678 44.4402" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M42.213 38.8336L42.6122 40.3304C42.8117 40.8294 43.3107 41.1288 43.8097 41.029L45.3065 40.7296C46.6039 40.4303 47.502 42.0269 46.6039 42.925L45.6059 44.0227C45.2068 44.4218 45.2068 45.0207 45.6059 45.4198L46.6039 46.5175C47.502 47.5154 46.6039 49.0122 45.3065 48.7128L43.8097 48.4135C43.3107 48.3137 42.8117 48.6131 42.6122 49.1121L42.213 50.6089C41.8139 51.9063 40.0176 51.9063 39.7183 50.6089L39.3192 49.1121C39.1195 48.6131 38.6206 48.3137 38.1216 48.4135L36.6247 48.7128C35.3275 49.0122 34.4293 47.4156 35.3275 46.5175L36.3254 45.4198C36.7245 45.0207 36.7245 44.4218 36.3254 44.0227L35.3275 42.925C34.4293 41.9271 35.3275 40.4303 36.6247 40.7296L38.1216 41.029C38.6206 41.1288 39.1195 40.8294 39.3192 40.3304L39.7183 38.8336C40.0176 37.5363 41.8139 37.5363 42.213 38.8336Z" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M32.3213 32.4496L34.9648 35.839L32.3213 39.2264" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M23.414 39.2345L20.7705 35.8451L23.414 32.4576" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M26.457 39.8584L29.2773 31.8179" stroke="currentColor" stroke-width="2.0286" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</template>

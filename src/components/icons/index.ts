@@ -1,22 +1,36 @@
 import { kebabize } from "@/utils"
 import type { TKebabKeys } from "../types"
 import ArrowRight from "./ArrowRight.vue"
+import Blocks from "./Blocks.vue"
+import ChartGrowth from "./ChartGrowth.vue"
 import Check from "./Check.vue"
 import ChevronDown from "./ChevronDown.vue"
+import CodeWindow from "./CodeWindow.vue"
 import Facebook from "./Facebook.vue"
+import Hexagon from "./Hexagon.vue"
 import Instagram from "./Instagram.vue"
 import Linkedin from "./Linkedin.vue"
+import Megaphone from "./Megaphone.vue"
 import Menu from "./Menu.vue"
+import Modules from "./Modules.vue"
+import ServerShield from "./ServerShield.vue"
 import XIcon from "./XIcon.vue"
 
 const iconComponents = {
   ArrowRight,
+  Blocks,
+  ChartGrowth,
   Check,
   ChevronDown,
+  CodeWindow,
   Facebook,
+  Hexagon,
   Instagram,
   Linkedin,
+  Megaphone,
   Menu,
+  Modules,
+  ServerShield,
   XIcon,
 }
 

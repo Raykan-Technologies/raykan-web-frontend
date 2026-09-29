@@ -1,4 +1,5 @@
 export { default as RButton } from './RButton.vue'
+export { default as RCard } from './RCard.vue'
 export { default as RCarousel } from './RCarousel.vue'
 export { default as RIcon } from './RIcon.vue'
 export { default as RSection } from './RSection.vue'
