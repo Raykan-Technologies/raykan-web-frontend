@@ -34,6 +34,8 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
   </component>
 </template>
 <style lang="scss">
+@use '@/assets/css/breakpoints' as *;
+
 // Elementor button widget: accent background, Inter 16/16, 12px 24px, 5px radius
 .r-button {
   display: inline-flex;
@@ -47,7 +49,25 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+
+  // touch-friendly on phones: 44px tap target, long labels wrap instead of overflowing
+  @include mobile {
+    min-height: 44px;
+    max-width: 100%;
+    padding-inline: 16px;
+    white-space: normal;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    opacity: 0.85;
+  }
 
   &.r-button--solid {
     background-color: var(--color-accent);
@@ -64,8 +84,11 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
     background-color: transparent;
     color: var(--color-white);
 
-    &:hover {
-      color: var(--color-accent);
+    // only on devices that can hover, so the color doesn't stick after a tap
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
     }
   }
 

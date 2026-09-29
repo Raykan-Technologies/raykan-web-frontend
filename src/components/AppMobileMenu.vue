@@ -87,7 +87,9 @@ onUnmounted(() => {
                 </router-link>
               </li>
               <li class="app-mobile-menu__item">
-                <r-button :to="{ name: 'careers' }">{{ t('buttons.joinOurTeam') }}</r-button>
+                <r-button :to="{ name: 'careers' }" class="app-mobile-menu__cta">
+                  {{ t('buttons.joinOurTeam') }}
+                </r-button>
               </li>
             </ul>
           </nav>
@@ -211,6 +213,11 @@ onUnmounted(() => {
     }
   }
 
+
+  // line the button up with the menu labels (links have 20px inline padding)
+  .app-mobile-menu__cta {
+    margin-left: 20px;
+  }
 
   .app-mobile-menu__socials {
     justify-content: center;

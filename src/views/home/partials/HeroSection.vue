@@ -2,7 +2,6 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RButton, RCarousel, RSection, type ICarouselImage } from '@/components/elements'
-import heroBackground from '@/assets/images/home/hero-background.webp'
 import heroGrid from '@/assets/images/home/hero-grid.svg'
 import bond from '@/assets/images/clients/bond.svg'
 import eliteAnywhere from '@/assets/images/clients/elite-anywhere.svg'
@@ -22,9 +21,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
 ])
 </script>
 <template>
-  <r-section class="hero-section" theme="primary" width="full" gutter="lg" vertical-align="top"
-    :min-height="{ desktop: '100vh', mobile: 'auto' }" :image="heroBackground"
-    overlay="var(--color-overlay-hero)" :overlay-opacity="0.8">
+  <r-section class="hero-section" theme="primary" width="full" gutter="lg" vertical-align="middle"
+    min-height="100vh">
     <template #background>
       <img class="hero-section__grid" :src="heroGrid" alt="" width="1271" height="999">
     </template>
@@ -62,19 +60,12 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
 // wp-raykan home hero (sections 21e2f83 desktop/tablet, 1c19732 mobile)
 .hero-section {
-  padding-top: 20px;
+  // content is centered in the space below the fixed header
+  padding-top: var(--header-height);
+  padding-bottom: 40px;
   overflow: hidden;
 
-  // wp-raykan tablet column padding: 40px all around
-  @include tablet {
-    padding-top: 60px;
-    padding-bottom: 40px;
-  }
-
   @include mobile {
-    padding-top: 0;
-    padding-bottom: 100px;
-
     > .r-section__container {
       align-items: center;
       text-align: center;
@@ -96,15 +87,13 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
   .hero-section__tagline {
     display: block;
-    margin-top: 70px;
     color: var(--color-accent);
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
     font-style: italic;
-    line-height: 1px;
+    line-height: 1;
 
     @include mobile {
-      margin-top: 100px;
       font-size: var(--font-size-xs);
     }
   }
@@ -160,16 +149,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
     @include mobile {
       align-items: center;
-      width: 93%;
-      max-width: none;
-    }
-  }
-
-  .hero-section__start {
-    @include mobile {
       width: 100%;
-      border: 2px solid var(--color-accent);
-      border-radius: var(--radius-sm);
+      max-width: none;
     }
   }
 
@@ -188,21 +169,15 @@ const clients = computed<Array<ICarouselImage>>(() => [
   }
 
   .hero-section__carousel {
-    // wp-raykan renders an empty testimonial footer (100px margin + name line) under each logo
-    padding-bottom: 168px;
-
     @include tablet {
       max-width: 555px;
       margin-inline: auto;
     }
-
-    @include mobile {
-      padding-bottom: 0;
-    }
   }
 
+  // at least one logo row tall; taller logos (Desert Moving) set the row height
   .hero-section__carousel .r-carousel__slide {
-    height: 50px;
+    min-height: 50px;
   }
 }
 </style>
