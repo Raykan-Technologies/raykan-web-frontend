@@ -1,9 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay } from 'swiper/modules'
-import 'swiper/css'
-import { RButton, RSection } from '@/components/elements'
+import { RButton, RCarousel, RSection, type ICarouselImage } from '@/components/elements'
 import heroBackground from '@/assets/images/home/hero-background.webp'
 import heroGrid from '@/assets/images/home/hero-grid.svg'
 import bond from '@/assets/images/clients/bond.svg'
@@ -14,20 +12,14 @@ import bni from '@/assets/images/clients/bni.webp'
 
 const { t } = useI18n()
 
-// wp-raykan testimonial-carousel slides (logo + rendered size)
-const clients = [
-  { name: 'BOND', logo: bond, width: 150, height: 50 },
-  { name: 'Elite Anywhere', logo: eliteAnywhere, width: 150, height: 50 },
-  { name: 'K&C Fence Company', logo: kcFence, width: 130, height: 40 },
-  { name: 'Desert Moving Co.', logo: dmc, width: 150, height: 50 },
-  { name: 'BNI', logo: bni, width: 100, height: 40 },
-]
-
-// wp-raykan carousel settings: 4 per view (1 on mobile), 2s slide, 5s autoplay, loop
-const swiperBreakpoints = {
-  768: { slidesPerView: 4, spaceBetween: 8 },
-  1025: { slidesPerView: 4, spaceBetween: 10 },
-}
+// client logos (wp-raykan testimonial-carousel slides, rendered sizes)
+const clients = computed<Array<ICarouselImage>>(() => [
+  { src: bond, alt: t('clients.bond'), width: 150, height: 50 },
+  { src: eliteAnywhere, alt: t('clients.eliteAnywhere'), width: 150, height: 50 },
+  { src: kcFence, alt: t('clients.kcFence'), width: 130, height: 40 },
+  { src: dmc, alt: t('clients.desertMoving'), width: 150, height: 50 },
+  { src: bni, alt: t('clients.bni'), width: 100, height: 40 },
+])
 </script>
 <template>
   <r-section class="hero-section" theme="primary" width="full" gutter="lg" vertical-align="top"
@@ -60,14 +52,8 @@ const swiperBreakpoints = {
     </div>
 
     <r-section class="hero-section__clients" inner gutter="sm" min-height="150px"
-      :aria-label="t('home.hero.clients')">
-      <swiper class="hero-section__carousel" :modules="[Autoplay]" :slides-per-view="1"
-        :space-between="10" :breakpoints="swiperBreakpoints" :speed="2000" loop
-        :autoplay="{ delay: 5000, disableOnInteraction: false }">
-        <swiper-slide v-for="client in clients" :key="client.name" class="hero-section__client">
-          <img :src="client.logo" :alt="client.name" :width="client.width" :height="client.height">
-        </swiper-slide>
-      </swiper>
+      :aria-label="t('home.hero.clientsLabel')">
+      <r-carousel class="hero-section__carousel" :images="clients" />
     </r-section>
   </r-section>
 </template>
@@ -202,7 +188,6 @@ const swiperBreakpoints = {
   }
 
   .hero-section__carousel {
-    width: 100%;
     // wp-raykan renders an empty testimonial footer (100px margin + name line) under each logo
     padding-bottom: 168px;
 
@@ -216,16 +201,8 @@ const swiperBreakpoints = {
     }
   }
 
-  .hero-section__client {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .hero-section__carousel .r-carousel__slide {
     height: 50px;
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
   }
 }
 </style>

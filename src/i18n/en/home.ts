@@ -8,6 +8,6 @@ export default {
     leadHighlight: 'empowers',
     startBuilding: 'Start Building your Dreams!',
     meetTheTeam: 'Meet the team',
-    clients: 'Our clients',
+    clientsLabel: 'Our clients',
   },
 }

@@ -52,7 +52,7 @@ onUnmounted(() => {
           </button>
 
           <router-link :to="{ name: 'home' }" class="app-mobile-menu__logo"
-            aria-label="Raykan Technologies">
+            :aria-label="t('common.companyName')">
             <AppLogo :width="160" :height="40" />
           </router-link>
 

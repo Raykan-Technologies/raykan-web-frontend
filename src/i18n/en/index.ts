@@ -2,6 +2,8 @@ import about from './about'
 import blog from './blog'
 import buttons from './buttons'
 import careers from './careers'
+import clients from './clients'
+import common from './common'
 import contact from './contact'
 import errorPages from './error-pages'
 import faq from './faq'
@@ -15,6 +17,8 @@ export default {
   blog,
   buttons,
   careers,
+  clients,
+  common,
   contact,
   errorPages,
   faq,

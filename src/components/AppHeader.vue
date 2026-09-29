@@ -39,7 +39,7 @@ onUnmounted(() => {
   <header class="app-header"
     :class="{ 'app-header--transparent': transparent, 'app-header--scrolled': scrolled }">
     <div class="app-header__container">
-      <router-link :to="{ name: 'home' }" class="app-header__logo" aria-label="Raykan Technologies">
+      <router-link :to="{ name: 'home' }" class="app-header__logo" :aria-label="t('common.companyName')">
         <AppLogo />
       </router-link>
 

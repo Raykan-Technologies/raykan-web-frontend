@@ -48,3 +48,16 @@ export type TSectionGap = 'no' | 'narrow' | 'default' | 'extended' | 'wide' | 'w
  * Button styles: `solid` (accent background) or `outline` (border in the current text color)
  */
 export type TButtonVariant = 'solid' | 'outline'
+
+/**
+ * An image slide for RCarousel
+ */
+export interface ICarouselImage {
+    src: string;
+    alt: string;
+    /**
+     * Rendered size in px (also reserves space before the image loads)
+     */
+    width?: number;
+    height?: number;
+}
