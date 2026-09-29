@@ -1,1 +1,17 @@
 // Vue <Transition> classes (*-enter-active, *-leave-active, ...)
+:root {
+  // sticky header (wp-raykan header custom css)
+  --transition-header-bg: background-color 0.5s ease;
+  --transition-header-height: min-height 0.8s ease;
+  --transition-logo: all 0.5s ease;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

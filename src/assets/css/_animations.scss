@@ -1,1 +1,12 @@
 // @keyframes and animation utility classes
+
+// Elementor "pulse" hover animation (social icons)
+@keyframes pulse {
+  25% { transform: scale(1.1); }
+  75% { transform: scale(0.9); }
+}
+
+.animate-pulse:hover,
+.animate-pulse:focus-visible {
+  animation: pulse 1s linear infinite;
+}

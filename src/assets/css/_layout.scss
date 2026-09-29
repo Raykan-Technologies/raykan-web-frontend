@@ -1,1 +1,84 @@
 // spacing scale and generated utility classes (gap, padding, margin)
+@use 'sass:map';
+
+// breakpoints (Elementor: tablet <= 1024px, mobile <= 767px)
+$breakpoints: (
+  tablet: 1024px,
+  mobile: 767px,
+);
+
+@mixin tablet {
+  @media (max-width: map.get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: map.get($breakpoints, mobile)) {
+    @content;
+  }
+}
+
+// spacing scale (px values used across the wp-raykan landing page)
+$spacing: (
+  0: 0,
+  5: 5px,
+  10: 10px,
+  20: 20px,
+  24: 24px,
+  40: 40px,
+  50: 50px,
+  60: 60px,
+  70: 70px,
+  80: 80px,
+  100: 100px,
+  124: 124px,
+);
+
+:root {
+  // containers
+  --container-width: 1140px;
+  --container-width-header: 1388px;
+  --container-width-hero: 1600px;
+  --container-width-about: 1200px;
+
+  // widgets
+  --widget-spacing: 20px;
+
+  // header
+  --header-height: 90px;
+  --header-height-sticky: 70px;
+
+  // radius
+  --radius-sm: 4px;
+  --radius: 5px;
+  --radius-lg: 12px;
+
+  // shadows
+  --shadow-card: 0 5px 21px -10px rgba(0, 0, 0, 0.5);
+
+  @include tablet {
+    --container-width: 1024px;
+  }
+
+  @include mobile {
+    --container-width: 767px;
+    --header-height: 70px;
+  }
+}
+
+@each $key, $value in $spacing {
+  .gap-#{$key} { gap: $value; }
+
+  .p-#{$key} { padding: $value; }
+  .px-#{$key} { padding-inline: $value; }
+  .py-#{$key} { padding-block: $value; }
+  .pt-#{$key} { padding-top: $value; }
+  .pb-#{$key} { padding-bottom: $value; }
+
+  .m-#{$key} { margin: $value; }
+  .mx-#{$key} { margin-inline: $value; }
+  .my-#{$key} { margin-block: $value; }
+  .mt-#{$key} { margin-top: $value; }
+  .mb-#{$key} { margin-bottom: $value; }
+}

@@ -1,3 +1,96 @@
 // font-size / line-height variables and base font settings
+@use 'sass:map';
+@use './layout' as *;
+
+$latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+$latin-ext: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+
+// variable fonts (self-hosted by Elementor on wp-raykan)
+$fonts: (
+  'Figtree': (dir: 'figtree', weight: 300 900),
+  'Inter': (dir: 'inter', weight: 100 900),
+);
+
+@each $family, $font in $fonts {
+  $dir: map.get($font, dir);
+
+  @each $style, $suffix in (normal: '', italic: '-italic') {
+    @each $subset, $range in (latin-ext: $latin-ext, latin: $latin) {
+      @font-face {
+        font-family: $family;
+        font-style: $style;
+        font-weight: map.get($font, weight);
+        font-display: swap;
+        src: url('../fonts/#{$dir}/#{$dir}#{$suffix}-#{$subset}.woff2') format('woff2');
+        unicode-range: $range;
+      }
+    }
+  }
+}
+
 :root {
+  // families
+  --font-primary: 'Figtree', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  // Elementor kit typography (primary / secondary / text / accent)
+  --font-kit-primary: 400 16px/16px var(--font-primary);
+  --font-kit-secondary: 400 12px/12px var(--font-secondary);
+  --font-kit-text: 400 16px/16px var(--font-secondary);
+  --font-kit-accent: 400 16px/16px var(--font-secondary);
+
+  // font sizes
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-md: 17px;
+  --font-size-lg: 20px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 25px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 47px;
+  --font-size-6xl: 83px;
+  --font-size-hero: 7.5rem;
+
+  // line heights
+  --line-height-2xs: 12px;
+  --line-height-xs: 16px;
+  --line-height-sm: 24px;
+  --line-height-base: 26px;
+  --line-height-md: 27px;
+  --line-height-lg: 34px;
+  --line-height-xl: 35px;
+  --line-height-2xl: 45px;
+  --line-height-3xl: 69px;
+  --line-height-hero: 7.5rem;
+
+  // weights
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  // letter spacing
+  --letter-spacing-hero: -5px;
+
+  // hero lead
+  --font-size-hero-lead: var(--font-size-xl);
+  --line-height-hero-lead: var(--line-height-base);
+
+  @include tablet {
+    --font-size-hero: 4.9rem;
+    --line-height-hero: 1;
+    --font-size-hero-lead: 20px;
+    --line-height-hero-lead: 28px;
+  }
+
+  @include mobile {
+    --font-size-hero: 41px;
+    --font-size-hero-lead: 16px;
+    --line-height-hero-lead: 1.3;
+  }
 }

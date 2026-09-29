@@ -1,3 +1,46 @@
 // semantic color tokens (background, border, text) mapped to raw palette variables
 :root {
+  // palette (Elementor kit globals + page colors from wp-raykan)
+  --color-brand-500: #084387;
+  --color-brand-400: #326095;
+  --color-blue-500: #0F6FFF;
+  --color-teal-500: #0CBB97;
+  --color-teal-100: #C6FBF1;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-grey-100: #F0F3F5;
+  --color-grey-300: #C9CCCE;
+  --color-grey-350: #C4C4C4;
+  --color-grey-600: #64686A;
+  --color-grey-700: #565C67;
+
+  // aliases used by RIcon
+  --color-cyan-500: var(--color-teal-500);
+  --color-grey-500: var(--color-grey-600);
+
+  // semantic
+  --color-primary: var(--color-brand-500);
+  --color-secondary: var(--color-brand-400);
+  --color-accent: var(--color-teal-500);
+
+  --color-text: var(--color-white);
+  --color-text-muted: var(--color-grey-700);
+  --color-text-subtle: var(--color-grey-300);
+  --color-heading: var(--color-primary);
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-accent);
+
+  // overlays / surfaces
+  --color-overlay-hero: rgba(8, 67, 135, 0.8);
+  --color-overlay-about: rgba(8, 67, 135, 0.7);
+  --color-header-sticky: rgba(8, 67, 135, 0.5);
+  --color-card-hover: #E2F3FF70;
+  --color-testimonial-card: #123A67A1;
+  --color-metrics-bg: var(--color-teal-100);
+
+  // dropdown menu
+  --color-dropdown-bg: var(--color-white);
+  --color-dropdown-text: var(--color-black);
+  --color-dropdown-bg-hover: var(--color-primary);
+  --color-dropdown-text-hover: var(--color-white);
 }

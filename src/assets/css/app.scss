@@ -6,5 +6,45 @@
 // @use './components/example';
 
 // global resets / base element styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: var(--font-kit-text);
+}
+
+a {
+  color: var(--color-link);
+
+  &:hover {
+    color: var(--color-link-hover);
+  }
+}
+
+h1,
+h2 {
+  color: var(--color-heading);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font: var(--font-kit-text);
+  cursor: pointer;
+}
 
 // third-party overrides
