@@ -2,6 +2,8 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RButton, RCarousel, RSection, type ICarouselImage } from '@/components/elements'
+// still frame (2s) of wp-raykan's softwaredev background video
+import heroBackground from '@/assets/images/home/hero-background.webp'
 import heroGrid from '@/assets/images/home/hero-grid.svg'
 import bond from '@/assets/images/clients/bond.svg'
 import eliteAnywhere from '@/assets/images/clients/elite-anywhere.svg'
@@ -22,7 +24,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
 </script>
 <template>
   <r-section class="hero-section" theme="primary" width="full" gutter="lg" vertical-align="middle"
-    min-height="100vh">
+    min-height="100vh" :image="heroBackground" overlay="var(--color-overlay-hero)"
+    :overlay-opacity="0.8">
     <template #background>
       <img class="hero-section__grid" :src="heroGrid" alt="" width="1271" height="999">
     </template>
