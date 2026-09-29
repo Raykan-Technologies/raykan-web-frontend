@@ -20,6 +20,6 @@ export default defineConfig({
     port: 3000,
   },
   build: {
-    target: ['chrome107', 'edge107', 'firefox104', 'safari15.4'],
+    target: 'baseline-widely-available',
   },
 })
