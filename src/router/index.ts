@@ -23,7 +23,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/HomeView.vue'),
+      component: () => import('@/views/home/HomeView.vue'),
       meta: {
         layout: 'DefaultLayout',
         headerTransparent: true,
