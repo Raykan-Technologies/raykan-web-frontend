@@ -3,17 +3,15 @@ import { RouterView, type RouteRecordRaw } from 'vue-router';
 
 export default [
     {
-        path: '/about',
-        // wp-raykan's menu links to /about-section
-        alias: '/about-section',
+        path: '/faq',
         component: defineComponent({
             render: () => h(RouterView)
         }),
         children: [
             {
                 path: '',
-                name: 'about',
-                component: () => import('@/views/AboutView.vue'),
+                name: 'faq',
+                component: () => import('@/views/faq/FaqView.vue'),
                 meta: {
                     layout: 'DefaultLayout',
                 },

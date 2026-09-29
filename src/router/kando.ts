@@ -3,17 +3,15 @@ import { RouterView, type RouteRecordRaw } from 'vue-router';
 
 export default [
     {
-        path: '/about',
-        // wp-raykan's menu links to /about-section
-        alias: '/about-section',
+        path: '/kando',
         component: defineComponent({
             render: () => h(RouterView)
         }),
         children: [
             {
                 path: '',
-                name: 'about',
-                component: () => import('@/views/AboutView.vue'),
+                name: 'kando',
+                component: () => import('@/views/kando/KandoView.vue'),
                 meta: {
                     layout: 'DefaultLayout',
                 },

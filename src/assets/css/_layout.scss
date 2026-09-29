@@ -1,23 +1,5 @@
 // spacing scale and generated utility classes (gap, padding, margin)
-@use 'sass:map';
-
-// breakpoints (Elementor: tablet <= 1024px, mobile <= 767px)
-$breakpoints: (
-  tablet: 1024px,
-  mobile: 767px,
-);
-
-@mixin tablet {
-  @media (max-width: map.get($breakpoints, tablet)) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: map.get($breakpoints, mobile)) {
-    @content;
-  }
-}
+@use './breakpoints' as *;
 
 // spacing scale (px values used across the wp-raykan landing page)
 $spacing: (
