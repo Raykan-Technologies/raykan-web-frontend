@@ -22,5 +22,11 @@ export default defineConfigWithVueTs(
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
+  {
+    name: 'app/icon-components',
+    files: ['src/components/icons/**/*.vue', 'src/components/file-icons/**/*.vue'],
+    rules: { 'vue/multi-word-component-names': 'off' },
+  },
+
   skipFormatting,
 )
