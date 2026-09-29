@@ -47,5 +47,10 @@
   },
   "engines": {
     "node": "^22.18.0 || >=24.12.0"
+  },
+  "overrides": {
+    "vue-page-title": {
+      "vue-router": "$vue-router"
+    }
   }
 }
