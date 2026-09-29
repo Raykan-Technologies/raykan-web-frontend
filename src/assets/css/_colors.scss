@@ -31,7 +31,8 @@
   --color-link-hover: var(--color-accent);
 
   // overlays / surfaces
-  --color-overlay-hero: rgba(8, 67, 135, 0.8);
+  // drawn at 0.8 opacity over the hero image
+  --color-overlay-hero: #084387CC;
   --color-overlay-about: rgba(8, 67, 135, 0.7);
   --color-header-sticky: rgba(8, 67, 135, 0.5);
   --color-header-sticky-mobile: rgba(8, 67, 135, 0.9);

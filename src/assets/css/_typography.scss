@@ -52,7 +52,8 @@ $fonts: (
   --font-size-4xl: 36px;
   --font-size-5xl: 47px;
   --font-size-6xl: 83px;
-  --font-size-hero: 7.5rem;
+  // wp-raykan: 7.5rem on Astra's 15px root (html { font-size: 93.75% })
+  --font-size-hero: 112.5px;
 
   // line heights
   --line-height-2xs: 12px;
@@ -64,7 +65,7 @@ $fonts: (
   --line-height-xl: 35px;
   --line-height-2xl: 45px;
   --line-height-3xl: 69px;
-  --line-height-hero: 7.5rem;
+  --line-height-hero: 112.5px;
 
   // weights
   --font-weight-light: 300;
@@ -82,14 +83,18 @@ $fonts: (
   --line-height-hero-lead: var(--line-height-base);
 
   @include tablet {
-    --font-size-hero: 4.9rem;
+    // 4.9rem on the 15px root
+    --font-size-hero: 73.5px;
     --line-height-hero: 1;
     --font-size-hero-lead: 20px;
     --line-height-hero-lead: 28px;
   }
 
+  // wp-raykan mobile hero heading: 42px / 50px, no letter spacing
   @include mobile {
-    --font-size-hero: 41px;
+    --font-size-hero: 42px;
+    --line-height-hero: 50px;
+    --letter-spacing-hero: normal;
     --font-size-hero-lead: 16px;
     --line-height-hero-lead: 1.3;
   }

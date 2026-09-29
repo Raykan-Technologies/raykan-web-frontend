@@ -3,7 +3,7 @@ import { onUnmounted, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AppLogo from '@/assets/AppLogo.vue'
-import { RIcon } from '@/components/elements'
+import { RButton, RIcon } from '@/components/elements'
 import AppSocialLinks from './AppSocialLinks.vue'
 import { useAppMenu } from './menu'
 
@@ -87,9 +87,7 @@ onUnmounted(() => {
                 </router-link>
               </li>
               <li class="app-mobile-menu__item">
-                <router-link :to="{ name: 'careers' }" class="app-mobile-menu__cta">
-                  {{ t('buttons.joinOurTeam') }}
-                </router-link>
+                <r-button :to="{ name: 'careers' }">{{ t('buttons.joinOurTeam') }}</r-button>
               </li>
             </ul>
           </nav>
@@ -213,19 +211,6 @@ onUnmounted(() => {
     }
   }
 
-  .app-mobile-menu__cta {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: var(--radius);
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    font: var(--font-kit-accent);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--color-white);
-    }
-  }
 
   .app-mobile-menu__socials {
     justify-content: center;

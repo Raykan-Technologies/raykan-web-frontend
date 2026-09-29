@@ -43,3 +43,8 @@ export type TSectionColumns = number | Array<number>
  * Space between columns (Elementor column gap presets): 0, 10, 20, 30, 40, 60px
  */
 export type TSectionGap = 'no' | 'narrow' | 'default' | 'extended' | 'wide' | 'wider'
+
+/**
+ * Button styles: `solid` (accent background) or `outline` (border in the current text color)
+ */
+export type TButtonVariant = 'solid' | 'outline'

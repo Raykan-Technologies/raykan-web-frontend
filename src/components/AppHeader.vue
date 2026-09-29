@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AppLogo from '@/assets/AppLogo.vue'
-import { RIcon } from '@/components/elements'
+import { RButton, RIcon } from '@/components/elements'
 import AppMobileMenu from './AppMobileMenu.vue'
 import { useAppMenu } from './menu'
 
@@ -64,9 +64,7 @@ onUnmounted(() => {
       </nav>
 
       <div class="app-header__actions">
-        <router-link :to="{ name: 'careers' }" class="app-header__cta">
-          {{ t('buttons.joinOurTeam') }}
-        </router-link>
+        <r-button :to="{ name: 'careers' }">{{ t('buttons.joinOurTeam') }}</r-button>
       </div>
 
       <button type="button" class="app-header__toggle" :aria-label="t('buttons.openMenu')"
@@ -263,20 +261,6 @@ onUnmounted(() => {
     }
   }
 
-  .app-header__cta {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: var(--radius);
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    font: var(--font-kit-accent);
-    text-decoration: none;
-    white-space: nowrap;
-
-    &:hover {
-      color: var(--color-white);
-    }
-  }
 
   .app-header__toggle {
     display: none;
