@@ -93,10 +93,6 @@ onUnmounted(() => {
 
   &.app-header--scrolled {
     background-color: var(--color-header-sticky);
-
-    @include tablet {
-      background-color: var(--color-header-sticky-mobile);
-    }
   }
 
   .app-header__container {
