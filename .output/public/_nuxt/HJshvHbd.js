@@ -1,0 +1,1 @@
+import{n as e}from"./oHYTpome.js";import{d as t,jt as n,m as r,pt as i,x as a,z as o}from"./CMzENqJN.js";import{t as s}from"#entry";var c=a({__name:`SolutionView`,props:{solution:{}},setup(a){let c=a,{t:l}=s();return e({title:()=>l(`solutions.items.${c.solution}`)}),(e,s)=>(o(),r(`main`,null,[t(`h1`,null,n(i(l)(`solutions.items.${a.solution}`)),1)]))}});export{c as default};

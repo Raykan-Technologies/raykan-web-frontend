@@ -1,0 +1,9 @@
+//#region src/components/elements/RCarousel.vue?vue&type=style&index=0&inline&used&lang.scss
+var RCarousel_vue_vue_type_style_index_0_inline_used_lang_default = ".r-carousel{--r-carousel-fade:12%;width:100%}.r-carousel.r-carousel--fade{-webkit-mask-image:linear-gradient(to right,transparent,#000 var(--r-carousel-fade),#000 calc(100% - var(--r-carousel-fade)),transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 var(--r-carousel-fade),#000 calc(100% - var(--r-carousel-fade)),transparent);mask-image:linear-gradient(to right,transparent,#000 var(--r-carousel-fade),#000 calc(100% - var(--r-carousel-fade)),transparent)}.r-carousel.r-carousel--pagination{--r-carousel-dot:color-mix(in srgb, currentColor 35%, transparent);--r-carousel-dot-active:var(--color-accent);padding-bottom:36px}.r-carousel.r-carousel--pagination .swiper-pagination{justify-content:center;align-items:center;gap:8px;line-height:0;display:flex;bottom:0}.r-carousel.r-carousel--pagination .swiper-pagination-bullet{background-color:var(--r-carousel-dot);opacity:1;border-radius:4px;width:8px;height:8px;transition:width .3s;position:relative;overflow:hidden;margin:0!important}.r-carousel.r-carousel--pagination .swiper-pagination-bullet:focus-visible{outline:2px solid var(--r-carousel-dot-active);outline-offset:2px}.r-carousel.r-carousel--pagination .swiper-pagination-bullet-active{width:32px}.r-carousel.r-carousel--pagination .swiper-pagination-bullet-active:after{content:\"\";background-color:var(--r-carousel-dot-active);transform:scaleX(var(--r-carousel-progress,1));transform-origin:0;position:absolute;inset:0}.r-carousel .r-carousel__slide{justify-content:center;align-items:center;display:flex}.r-carousel .r-carousel__slide img{max-width:100%;height:auto}";
+
+const RCarouselStyles_D8PNdYDF = [
+  RCarousel_vue_vue_type_style_index_0_inline_used_lang_default
+];
+
+export { RCarouselStyles_D8PNdYDF as default };
+//# sourceMappingURL=RCarousel-styles.D8PNdYDF.mjs.map
