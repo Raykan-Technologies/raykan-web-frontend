@@ -177,8 +177,6 @@ const clients = computed<Array<ICarouselImage>>(() => [
   }
 
   .hero-section__team {
-    padding: 10px;
-
     @include mobile {
       display: none;
     }

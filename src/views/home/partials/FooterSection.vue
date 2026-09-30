@@ -19,7 +19,7 @@ const { t } = useI18n()
 
     <div class="footer-section__actions">
       <r-button href="mailto:info@raykan.co">{{ t('home.about.startBuilding') }}</r-button>
-      <r-button :to="{ name: 'careers' }" variant="outline" class="footer-section__join">
+      <r-button :to="{ name: 'careers' }" variant="outline">
         {{ t('home.about.joinTeam') }}
       </r-button>
     </div>
@@ -92,12 +92,6 @@ const { t } = useI18n()
     @include mobile {
       gap: 16px;
     }
-  }
-
-  // wp-raykan: 1px accent outline with accent text
-  .footer-section__join {
-    border-width: 1px;
-    color: var(--color-accent);
   }
 
   .footer-section__footer {

@@ -36,13 +36,14 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
 <style lang="scss">
 @use '@/assets/css/breakpoints' as *;
 
-// Elementor button widget: accent background, Inter 16/16, 12px 24px, 5px radius
+// Elementor button widget: Inter 16/16, 5px radius, 40px tall
+// (2px border + 10px/22px padding on both variants, so hovering never changes the size)
 .r-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
-  border: none;
+  padding: 10px 22px;
+  border: 2px solid transparent;
   border-radius: var(--radius);
   font: var(--font-kit-accent);
   text-align: center;
@@ -56,7 +57,7 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
   @include mobile {
     min-height: 44px;
     max-width: 100%;
-    padding-inline: 16px;
+    padding-inline: 14px;
     white-space: normal;
   }
 
@@ -69,24 +70,32 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
     opacity: 0.85;
   }
 
+  // hover effects only on devices that can hover, so colors don't stick after a tap
+
+  // cyan with white text; on hover the colors swap (the cyan border keeps it visible on light
+  // backgrounds once it turns white)
   &.r-button--solid {
+    border-color: var(--color-accent);
     background-color: var(--color-accent);
     color: var(--color-white);
 
-    &:hover {
-      color: var(--color-white);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-white);
+        color: var(--color-accent);
+      }
     }
   }
 
-  // border and text follow `color`, so set it on the button to recolor both
+  // white outline and text; on hover it fills solid white with cyan text
   &.r-button--outline {
-    border: 2px solid currentColor;
+    border-color: var(--color-white);
     background-color: transparent;
     color: var(--color-white);
 
-    // only on devices that can hover, so the color doesn't stick after a tap
     @media (hover: hover) {
       &:hover {
+        background-color: var(--color-white);
         color: var(--color-accent);
       }
     }
