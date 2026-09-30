@@ -64,21 +64,21 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
 // wp-raykan home hero (sections 21e2f83 desktop/tablet, 1c19732 mobile)
 .hero-section {
-  // hero only: the same side padding as the header, so the hero text lines up with the header
-  // logo on desktop (125px at 1440px and up); content hugs the left, leaving space on the right
-  --section-padding-x: clamp(40px, 8.7vw, 125px);
+  // hero only: wider than the header padding and growing with the screen (180px at 1440px,
+  // 240px at 1920px, 320px max); content hugs the left, leaving space on the right
+  --section-padding-x: clamp(56px, 12.5vw, 320px);
 
   // the shared section padding, plus room for the fixed header on top
   padding-top: calc(var(--header-height) + var(--section-padding-y));
   overflow: hidden;
 
-  // tablets and phones: the site-wide margins
+  // tablets and phones: a bit wider than the site-wide margins (40px / 24px)
   @include tablet {
-    --section-padding-x: 40px;
+    --section-padding-x: 64px;
   }
 
   @include mobile {
-    --section-padding-x: 24px;
+    --section-padding-x: 40px;
   }
 
   // lets the title size itself to the content width (cqw units). Desktop: left-aligned with
@@ -177,15 +177,16 @@ const clients = computed<Array<ICarouselImage>>(() => [
     }
   }
 
-  // wp-raykan stacks the two buttons (the first widget is full width)
+  // desktop: the two buttons side by side on one line; tablets and phones stack them
   .hero-section__actions {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: var(--widget-spacing);
     max-width: 568px;
 
     @include tablet {
+      flex-direction: column;
       align-items: center;
       width: 100%;
       margin-inline: auto;
