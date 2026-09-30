@@ -18,19 +18,20 @@ const { t } = useI18n()
 const route = useRoute()
 const footer = useTemplateRef<{ $el: HTMLElement }>('footer')
 
-// publishes the footer's rendered height as --app-footer-height, so a page's last section can
-// leave room for it when the footer is laid over it
-const footerObserver = new ResizeObserver(([entry]) => {
-  const height = entry?.borderBoxSize[0]?.blockSize ?? 0
-  document.documentElement.style.setProperty('--app-footer-height', `${Math.round(height)}px`)
-})
+let footerObserver: ResizeObserver | undefined
 
 onMounted(() => {
+  // publishes the footer's rendered height as --app-footer-height, so a page's last section can
+  // leave room for it when the footer is laid over it
+  footerObserver = new ResizeObserver(([entry]) => {
+    const height = entry?.borderBoxSize[0]?.blockSize ?? 0
+    document.documentElement.style.setProperty('--app-footer-height', `${Math.round(height)}px`)
+  })
   if (footer.value?.$el) footerObserver.observe(footer.value.$el)
 })
 
 onBeforeUnmount(() => {
-  footerObserver.disconnect()
+  footerObserver?.disconnect()
 })
 
 // current year from the visitor's clock

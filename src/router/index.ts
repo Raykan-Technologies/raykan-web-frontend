@@ -1,6 +1,4 @@
-import { createRouter, createWebHistory, isNavigationFailure } from 'vue-router'
-import type { TLayouts } from '@/layouts'
-import nProgress from 'nprogress'
+import type { RouteRecordRaw } from 'vue-router'
 import about from './about'
 import blog from './blog'
 import careers from './careers'
@@ -9,57 +7,40 @@ import faq from './faq'
 import kando from './kando'
 import solutions from './solutions'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior: (to, from, savedPosition) => savedPosition ?? { top: 0 },
-  routes: [
-    ...about,
-    ...solutions,
-    ...blog,
-    ...faq,
-    ...contact,
-    ...careers,
-    ...kando,
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/views/home/HomeView.vue'),
-      meta: {
-        layout: 'DefaultLayout',
-        headerTransparent: true,
-        footerTransparent: true,
-      },
+/**
+ * Every route of the site, handed to Nuxt by src/router.options.ts.
+ * `meta.layout` names a file in src/layouts; routes without one use `default`.
+ */
+export default [
+  ...about,
+  ...solutions,
+  ...blog,
+  ...faq,
+  ...contact,
+  ...careers,
+  ...kando,
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/home/HomeView.vue'),
+    meta: {
+      headerTransparent: true,
+      footerTransparent: true,
     },
-    {
-      path: '/:pathMatch(.*)*',
-      name: 'http-error',
-      meta: { layout: 'GuestLayout' },
-      props: ({ query }) => ({
-        code: query.code,
-      }),
-      component: () => import('@/views/errors/HttpError.vue')
-    },
-  ],
-})
-
-router.beforeEach((to, from, next) => {
-  if (to.name) nProgress.start()
-
-  next()
-})
-
-router.afterEach((to, from, failure) => {
-  nProgress.done()
-
-  if (isNavigationFailure(failure)) return
-})
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'http-error',
+    meta: { layout: 'guest' },
+    props: ({ query }) => ({
+      code: query.code,
+    }),
+    component: () => import('@/views/errors/HttpError.vue')
+  },
+] as Array<RouteRecordRaw>
 
 declare module 'vue-router' {
   interface RouteMeta {
-    /**
-     * Route base layout
-     */
-    layout?: TLayouts;
     /**
      * Header overlays the page and stays transparent until scrolled (pages with a hero)
      */
@@ -70,5 +51,3 @@ declare module 'vue-router' {
     footerTransparent?: boolean;
   }
 }
-
-export default router

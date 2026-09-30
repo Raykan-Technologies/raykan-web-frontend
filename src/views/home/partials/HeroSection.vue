@@ -23,7 +23,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
 ])
 </script>
 <template>
-  <r-section class="hero-section" theme="primary" vertical-align="middle"
+  <!-- full width and anchored to the left edge, leaving open space on the right for the photo -->
+  <r-section class="hero-section" theme="primary" width="full" vertical-align="middle"
     min-height="var(--app-height, 100svh)" :image="heroBackground" overlay="var(--color-overlay-hero)"
     :overlay-opacity="0.8">
     <template #background>
@@ -63,18 +64,30 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
 // wp-raykan home hero (sections 21e2f83 desktop/tablet, 1c19732 mobile)
 .hero-section {
+  // hero only: the same side padding as the header, so the hero text lines up with the header
+  // logo on desktop (125px at 1440px and up); content hugs the left, leaving space on the right
+  --section-padding-x: clamp(40px, 8.7vw, 125px);
+
   // the shared section padding, plus room for the fixed header on top
   padding-top: calc(var(--header-height) + var(--section-padding-y));
   overflow: hidden;
 
-  // lets the title size itself to the content width (cqw units)
-  > .r-section__container {
-    container-type: inline-size;
+  // tablets and phones: the site-wide margins
+  @include tablet {
+    --section-padding-x: 40px;
   }
 
   @include mobile {
-    > .r-section__container {
-      align-items: center;
+    --section-padding-x: 24px;
+  }
+
+  // lets the title size itself to the content width (cqw units). Desktop: left-aligned with
+  // open space on the right; tablets and phones: everything centered
+  > .r-section__container {
+    container-type: inline-size;
+
+    // each item centers itself below (margin-inline: auto) on tablets and phones
+    @include tablet {
       text-align: center;
     }
   }
@@ -127,13 +140,15 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
     @include tablet {
       --hero-title-width: 82cqw;
+
+      margin-inline: auto;
     }
 
     @include mobile {
       --hero-title-width: 100cqw;
 
       margin-bottom: 0;
-      font-size: min(var(--font-size-hero), calc(var(--hero-title-width) / 10.2));
+      font-size: min(var(--font-size-hero), calc(var(--hero-title-width) / 11.5));
     }
   }
 
@@ -157,6 +172,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
     margin-bottom: 20px;
 
     @include tablet {
+      margin-inline: auto;
       margin-bottom: 0;
     }
   }
@@ -169,9 +185,13 @@ const clients = computed<Array<ICarouselImage>>(() => [
     gap: var(--widget-spacing);
     max-width: 568px;
 
-    @include mobile {
+    @include tablet {
       align-items: center;
       width: 100%;
+      margin-inline: auto;
+    }
+
+    @include mobile {
       max-width: none;
     }
   }
@@ -187,11 +207,10 @@ const clients = computed<Array<ICarouselImage>>(() => [
     padding-top: 90px;
   }
 
+  // spans the full content width on every screen (wp-raykan capped it at 555px on tablets,
+  // which crammed the four logos together)
   .hero-section__carousel {
-    @include tablet {
-      max-width: 555px;
-      margin-inline: auto;
-    }
+    width: 100%;
   }
 
   // at least one logo row tall; taller logos (Desert Moving) set the row height

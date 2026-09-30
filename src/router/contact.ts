@@ -12,9 +12,6 @@ export default [
                 path: '',
                 name: 'contact',
                 component: () => import('@/views/contact/ContactView.vue'),
-                meta: {
-                    layout: 'DefaultLayout',
-                },
             },
         ],
     },

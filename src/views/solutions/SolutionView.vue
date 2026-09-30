@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTitle } from 'vue-page-title'
+import { useHead } from '#imports'
 import type { TSolution } from '@/router/solutions'
 
 const props = defineProps<{
@@ -9,7 +9,7 @@ const props = defineProps<{
 const { t } = useI18n()
 
 // all solution routes share this view, so the title must follow the prop
-useTitle(() => t(`solutions.items.${props.solution}`))
+useHead({ title: () => t(`solutions.items.${props.solution}`) })
 </script>
 <template>
   <main>

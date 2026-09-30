@@ -23,12 +23,7 @@ const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
 const header = useTemplateRef<HTMLElement>('header')
 
-// publishes the header's current rendered height as --app-header-height, so sections can keep
-// their content clear of it on any device (it shrinks when scrolled and differs per breakpoint)
-const headerObserver = new ResizeObserver(([entry]) => {
-  const height = entry?.borderBoxSize[0]?.blockSize ?? header.value?.offsetHeight ?? 0
-  document.documentElement.style.setProperty('--app-header-height', `${Math.round(height)}px`)
-})
+let headerObserver: ResizeObserver | undefined
 
 const onScroll = () => {
   scrolled.value = window.scrollY > STICKY_OFFSET
@@ -37,12 +32,19 @@ const onScroll = () => {
 onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
+
+  // publishes the header's current rendered height as --app-header-height, so sections can keep
+  // their content clear of it on any device (it shrinks when scrolled and differs per breakpoint)
+  headerObserver = new ResizeObserver(([entry]) => {
+    const height = entry?.borderBoxSize[0]?.blockSize ?? header.value?.offsetHeight ?? 0
+    document.documentElement.style.setProperty('--app-header-height', `${Math.round(height)}px`)
+  })
   if (header.value) headerObserver.observe(header.value)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
-  headerObserver.disconnect()
+  headerObserver?.disconnect()
 })
 </script>
 <template>
