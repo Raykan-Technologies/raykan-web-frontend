@@ -25,10 +25,8 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
 })))
 </script>
 <template>
-  <r-section class="services-section" tag="article" align="center" min-height="400px">
-    <span class="services-section__label">{{ t('home.services.label') }}</span>
-    <h2 class="services-section__title">{{ t('home.services.title') }}</h2>
-
+  <r-section class="services-section" tag="article" align="center" min-height="400px"
+    :label="t('home.services.label')" :title="t('home.services.title')">
     <r-section class="services-section__cards" inner :columns="3" gap="no">
       <r-card v-for="card in cards" :key="card.solution" :icon="card.icon" :title="card.title"
         :to="{ name: card.solution }">
@@ -38,45 +36,8 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
   </r-section>
 </template>
 <style lang="scss">
-@use '@/assets/css/breakpoints' as *;
-
 // wp-raykan home services (sections 5594714 desktop/tablet, b658762 mobile)
 .services-section {
-  // shown on the wp-raykan mobile layout only
-  .services-section__label {
-    display: none;
-    color: var(--color-primary);
-    font-family: var(--font-primary);
-    font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
-
-    @include mobile {
-      display: block;
-    }
-  }
-
-  .services-section__title {
-    width: 100%;
-    // wp-raykan: 27.432% of the 1360px column, wraps to three lines
-    max-width: 373px;
-    margin: 0;
-    // 60px below, minus the 20px container gap
-    padding-bottom: 40px;
-    font-family: var(--font-primary);
-    font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--line-height-2xl);
-
-    @include tablet {
-      max-width: 595px;
-      padding-bottom: 0;
-    }
-
-    @include mobile {
-      max-width: none;
-    }
-  }
-
   .services-section__cards {
     // the cards sit edge to edge (wp-raykan column gap "no"), rows touch too
     > .r-section__container {

@@ -75,14 +75,22 @@ $fonts: (
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
-  // letter spacing
-  --letter-spacing-hero: -5px;
+  // letter spacing (wp-raykan -5px at 112.5px, kept proportional so smaller sizes stay readable)
+  --letter-spacing-hero: -0.044em;
+
+  // section titles (RSection `title`), always 2 lines at most
+  --font-size-section-title: var(--font-size-4xl);
+  --line-height-section-title: 1.25;
+  --section-title-spacing: 40px;
 
   // hero lead
   --font-size-hero-lead: var(--font-size-xl);
   --line-height-hero-lead: var(--line-height-base);
 
   @include tablet {
+    --font-size-section-title: 30px;
+    --section-title-spacing: 0px;
+
     // 4.9rem on the 15px root
     --font-size-hero: 73.5px;
     --line-height-hero: 1;
@@ -90,10 +98,13 @@ $fonts: (
     --line-height-hero-lead: 28px;
   }
 
-  // wp-raykan mobile hero heading: 42px / 50px, no letter spacing
+  // wp-raykan mobile hero heading: 42px / 50px (1.2), no letter spacing
   @include mobile {
+    // 24px on a 390px screen, down to ~21px at 320px so long titles still fit 2 lines
+    --font-size-section-title: clamp(20px, 6.6vw, 24px);
+
     --font-size-hero: 42px;
-    --line-height-hero: 50px;
+    --line-height-hero: 1.2;
     --letter-spacing-hero: normal;
     --font-size-hero-lead: 16px;
     --line-height-hero-lead: 1.3;

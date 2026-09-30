@@ -13,7 +13,9 @@ import Linkedin from "./Linkedin.vue"
 import Megaphone from "./Megaphone.vue"
 import Menu from "./Menu.vue"
 import Modules from "./Modules.vue"
+import Quote from "./Quote.vue"
 import ServerShield from "./ServerShield.vue"
+import Star from "./Star.vue"
 import XIcon from "./XIcon.vue"
 
 const iconComponents = {
@@ -30,7 +32,9 @@ const iconComponents = {
   Megaphone,
   Menu,
   Modules,
+  Quote,
   ServerShield,
+  Star,
   XIcon,
 }
 

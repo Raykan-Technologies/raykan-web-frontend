@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { useTitle } from 'vue-page-title'
 import HeroSection from './partials/HeroSection.vue'
 import ServicesSection from './partials/ServicesSection.vue'
+import TestimonialsSection from './partials/TestimonialsSection.vue'
 
 const { t } = useI18n()
 
@@ -12,5 +13,6 @@ useTitle(t('home.title'))
   <main>
     <HeroSection />
     <ServicesSection />
+    <TestimonialsSection />
   </main>
 </template>

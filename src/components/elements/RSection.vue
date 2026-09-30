@@ -16,6 +16,18 @@ interface IProps {
    */
   tag?: 'section' | 'article' | 'header' | 'footer' | 'div';
   /**
+   * Section heading, shared style, never more than 2 lines
+   */
+  title?: string;
+  /**
+   * Heading level of `title`
+   */
+  titleTag?: 'h1' | 'h2' | 'h3';
+  /**
+   * Small label above the title (shown on mobile only, like wp-raykan)
+   */
+  label?: string;
+  /**
    * Row nested inside another section's column (Elementor inner section):
    * no background, width limit, gutter or vertical padding unless given
    */
@@ -60,6 +72,7 @@ interface IProps {
 
 const props = withDefaults(defineProps<IProps>(), {
   tag: 'section',
+  titleTag: 'h2',
   gap: 'default',
   columnsAlign: 'stretch',
   align: 'start',
@@ -129,6 +142,10 @@ const sectionClasses = computed(() => [
     <!-- extra decorative layers (grids, shapes, video) behind the content -->
     <slot name="background"></slot>
     <div class="r-section__container">
+      <div v-if="title || label" class="r-section__header">
+        <span v-if="label" class="r-section__label">{{ label }}</span>
+        <component :is="titleTag" v-if="title" class="r-section__title">{{ title }}</component>
+      </div>
       <slot></slot>
     </div>
   </component>
@@ -188,6 +205,45 @@ const sectionClasses = computed(() => [
     max-width: none;
   }
 
+  // title block: spans every column when the section is a grid
+  .r-section__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    grid-column: 1 / -1;
+    margin-bottom: var(--section-title-spacing);
+  }
+
+  .r-section__label {
+    display: none;
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  // strictly 2 lines: balanced breaks, anything longer is clamped with an ellipsis
+  .r-section__title {
+    display: -webkit-box;
+    max-width: 16em;
+    margin: 0;
+    overflow: hidden;
+    color: var(--color-heading);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-section-title);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-section-title);
+    text-wrap: balance;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
   // inner rows always span their column, even inside a centered section
   &.r-section--inner {
     align-self: stretch;
@@ -233,8 +289,13 @@ const sectionClasses = computed(() => [
     color: var(--color-text);
 
     h1,
-    h2 {
+    h2,
+    .r-section__title {
       color: var(--color-text);
+    }
+
+    .r-section__label {
+      color: var(--color-accent);
     }
   }
 
@@ -254,6 +315,10 @@ const sectionClasses = computed(() => [
   // alignment
   &.r-section--align-center > .r-section__container {
     text-align: center;
+
+    > .r-section__header {
+      align-items: center;
+    }
   }
 
   &.r-section--align-center:not(.r-section--grid) > .r-section__container {

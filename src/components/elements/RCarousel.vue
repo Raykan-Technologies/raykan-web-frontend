@@ -1,12 +1,17 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends object = ICarouselImage">
 import { computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay } from 'swiper/modules'
+import { Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
+import 'swiper/css/effect-fade'
 import type { ICarouselImage, TResponsive } from './types'
 
 interface IProps {
-  images: Array<ICarouselImage>;
+  /**
+   * One slide per item. Images (`ICarouselImage`) render on their own; anything else is drawn
+   * by the default slot: `<template #default="{ item }">`
+   */
+  items: Array<T>;
   slidesPerView?: TResponsive<number>;
   /**
    * Space between slides in px
@@ -25,6 +30,10 @@ interface IProps {
    * Fade slides in and out at the left and right edges instead of clipping them
    */
   fadeEdges?: boolean;
+  /**
+   * `slide` moves slides sideways, `fade` cross-fades one slide into the next (one per view)
+   */
+  effect?: 'slide' | 'fade';
 }
 
 // defaults: wp-raykan testimonial-carousel settings
@@ -35,7 +44,16 @@ const props = withDefaults(defineProps<IProps>(), {
   autoplay: 5000,
   loop: true,
   fadeEdges: true,
+  effect: 'slide',
 })
+
+defineSlots<{
+  default?(props: { item: T; index: number }): unknown;
+}>()
+
+const isImage = (item: object): item is ICarouselImage => 'src' in item && 'alt' in item
+
+const modules = props.effect === 'fade' ? [Autoplay, EffectFade] : [Autoplay]
 
 const toBreakpoints = (value: TResponsive<number>) => {
   const { desktop, tablet, mobile } = typeof value === 'number' ? { desktop: value } : value
@@ -67,11 +85,15 @@ const autoplayOptions = computed(() => props.autoplay > 0
   : false)
 </script>
 <template>
-  <swiper class="r-carousel" :class="{ 'r-carousel--fade': fadeEdges }" :modules="[Autoplay]"
+  <swiper class="r-carousel" :class="{ 'r-carousel--fade': fadeEdges }" :modules="modules"
     :slides-per-view="swiperOptions.slidesPerView" :space-between="swiperOptions.spaceBetween"
-    :breakpoints="swiperOptions.breakpoints" :speed="speed" :loop="loop" :autoplay="autoplayOptions">
-    <swiper-slide v-for="image in images" :key="image.src" class="r-carousel__slide">
-      <img :src="image.src" :alt="image.alt" :width="image.width" :height="image.height">
+    :breakpoints="swiperOptions.breakpoints" :speed="speed" :loop="loop" :autoplay="autoplayOptions"
+    :effect="effect" :fade-effect="{ crossFade: true }">
+    <swiper-slide v-for="(item, index) in items" :key="index" class="r-carousel__slide">
+      <slot :item="item" :index="index">
+        <img v-if="isImage(item)" :src="item.src" :alt="item.alt" :width="item.width"
+          :height="item.height">
+      </slot>
     </swiper-slide>
   </swiper>
 </template>

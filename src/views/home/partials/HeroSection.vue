@@ -33,8 +33,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
     <span class="hero-section__tagline">{{ t('home.hero.tagline') }}</span>
 
     <h1 class="hero-section__title">
-      {{ t('home.hero.titleLine1') }}<br>
-      {{ t('home.hero.titleLine2') }}
+      <span>{{ t('home.hero.titleLine1') }}</span>
+      <span>{{ t('home.hero.titleLine2') }}</span>
     </h1>
 
     <i18n-t keypath="home.hero.lead" tag="p" class="hero-section__lead" scope="global">
@@ -54,7 +54,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
     <r-section class="hero-section__clients" inner min-height="150px"
       :aria-label="t('home.hero.clientsLabel')">
-      <r-carousel class="hero-section__carousel" :images="clients" />
+      <r-carousel class="hero-section__carousel" :items="clients" />
     </r-section>
   </r-section>
 </template>
@@ -66,6 +66,11 @@ const clients = computed<Array<ICarouselImage>>(() => [
   // the shared section padding, plus room for the fixed header on top
   padding-top: calc(var(--header-height) + var(--section-padding-y));
   overflow: hidden;
+
+  // lets the title size itself to the content width (cqw units)
+  > .r-section__container {
+    container-type: inline-size;
+  }
 
   @include mobile {
     > .r-section__container {
@@ -100,23 +105,35 @@ const clients = computed<Array<ICarouselImage>>(() => [
     }
   }
 
+  // strictly 2 lines: one unwrapped line per span, and the font shrinks so the longer line
+  // always fits ("Creating technologies" is ~9em wide with the hero letter spacing, ~9.9em without).
+  // No line clamp here: its overflow clipping would cut the descenders at line-height 1
   .hero-section__title {
-    width: 100%;
+    --hero-title-width: 100cqw;
+
+    width: var(--hero-title-width);
     margin: 0 0 20px;
     color: var(--color-white);
     font-family: var(--font-primary);
-    font-size: var(--font-size-hero);
+    font-size: min(var(--font-size-hero), calc(var(--hero-title-width) / 9.2));
     font-weight: var(--font-weight-regular);
     line-height: var(--line-height-hero);
     letter-spacing: var(--letter-spacing-hero);
 
+    span {
+      display: block;
+      white-space: nowrap;
+    }
+
     @include tablet {
-      width: 82%;
+      --hero-title-width: 82cqw;
     }
 
     @include mobile {
-      width: 100%;
+      --hero-title-width: 100cqw;
+
       margin-bottom: 0;
+      font-size: min(var(--font-size-hero), calc(var(--hero-title-width) / 10.2));
     }
   }
 

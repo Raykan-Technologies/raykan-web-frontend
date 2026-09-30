@@ -22,4 +22,22 @@ export default {
       'blockchain': 'Our Blockchain as a Service (BaaS) delivers safe, immutable, and traceable data storage fit for your needs',
     },
   },
+  testimonials: {
+    label: 'Testimonial',
+    title: 'Success Story with Raykan',
+    text: 'Through our tailored solutions and dedicated support, we’ve empowered businesses to build stronger teams and efficient operations.',
+    // client quotes, verbatim from wp-raykan
+    items: {
+      edenPilarye: {
+        name: 'Eden Pilarye',
+        role: 'Branch Manager at Elite Anywhere',
+        quote: '"Raykan Techonologies has been an exceptional partner in transforming our business operations. Their innovative solutions and expert team have significantly improved our efficiency and productivity. The level of professionalism and dedication they bring to every project is truly recommendable. We couldn\'t be happier with the results and highly recommend Raykan Technologies to any business looking to leverage top-notch technological services"',
+      },
+      jayVieSobiono: {
+        name: 'Jay Vie Sobiono',
+        role: 'Accounting Manager',
+        quote: '"With the help of BOND, our processes we\'re streamlined, allowing us to accomplish task more quickly and effectively. It has facilitated collaboration among team members, enhancing teamwork and productivity. With enhanced collaboration and efficiency, we have been able to reduce errors and ensure the accuracy of our data and operations"',
+      },
+    },
+  },
 }
