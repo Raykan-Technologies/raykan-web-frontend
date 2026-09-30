@@ -21,6 +21,10 @@ interface IProps {
    */
   autoplay?: number;
   loop?: boolean;
+  /**
+   * Fade slides in and out at the left and right edges instead of clipping them
+   */
+  fadeEdges?: boolean;
 }
 
 // defaults: wp-raykan testimonial-carousel settings
@@ -30,6 +34,7 @@ const props = withDefaults(defineProps<IProps>(), {
   speed: 2000,
   autoplay: 5000,
   loop: true,
+  fadeEdges: true,
 })
 
 const toBreakpoints = (value: TResponsive<number>) => {
@@ -62,9 +67,9 @@ const autoplayOptions = computed(() => props.autoplay > 0
   : false)
 </script>
 <template>
-  <swiper class="r-carousel" :modules="[Autoplay]" :slides-per-view="swiperOptions.slidesPerView"
-    :space-between="swiperOptions.spaceBetween" :breakpoints="swiperOptions.breakpoints" :speed="speed"
-    :loop="loop" :autoplay="autoplayOptions">
+  <swiper class="r-carousel" :class="{ 'r-carousel--fade': fadeEdges }" :modules="[Autoplay]"
+    :slides-per-view="swiperOptions.slidesPerView" :space-between="swiperOptions.spaceBetween"
+    :breakpoints="swiperOptions.breakpoints" :speed="speed" :loop="loop" :autoplay="autoplayOptions">
     <swiper-slide v-for="image in images" :key="image.src" class="r-carousel__slide">
       <img :src="image.src" :alt="image.alt" :width="image.width" :height="image.height">
     </swiper-slide>
@@ -72,7 +77,18 @@ const autoplayOptions = computed(() => props.autoplay > 0
 </template>
 <style lang="scss">
 .r-carousel {
+  // width of the faded strip on each side
+  --r-carousel-fade: 12%;
+
   width: 100%;
+
+  &.r-carousel--fade {
+    $mask: linear-gradient(to right, transparent, #000 var(--r-carousel-fade),
+      #000 calc(100% - var(--r-carousel-fade)), transparent);
+
+    -webkit-mask-image: $mask;
+    mask-image: $mask;
+  }
 
   .r-carousel__slide {
     display: flex;
