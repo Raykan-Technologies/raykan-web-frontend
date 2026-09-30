@@ -1,9 +1,12 @@
 <script setup lang="ts" generic="T extends object = ICarouselImage">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay, EffectFade } from 'swiper/modules'
+import { A11y, Autoplay, EffectFade, Pagination } from 'swiper/modules'
+import type { Swiper as TSwiper } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
 import type { ICarouselImage, TResponsive } from './types'
 
 interface IProps {
@@ -22,7 +25,7 @@ interface IProps {
    */
   speed?: number;
   /**
-   * Delay between slides in ms, `0` to disable autoplay
+   * Moves to the next slide every n ms, `0` to disable autoplay
    */
   autoplay?: number;
   loop?: boolean;
@@ -34,6 +37,10 @@ interface IProps {
    * `slide` moves slides sideways, `fade` cross-fades one slide into the next (one per view)
    */
   effect?: 'slide' | 'fade';
+  /**
+   * Clickable dots below the slides; the active dot fills up until the next autoplay move
+   */
+  pagination?: boolean;
 }
 
 // defaults: wp-raykan testimonial-carousel settings
@@ -45,7 +52,10 @@ const props = withDefaults(defineProps<IProps>(), {
   loop: true,
   fadeEdges: true,
   effect: 'slide',
+  pagination: false,
 })
+
+const { t } = useI18n()
 
 defineSlots<{
   default?(props: { item: T; index: number }): unknown;
@@ -53,7 +63,23 @@ defineSlots<{
 
 const isImage = (item: object): item is ICarouselImage => 'src' in item && 'alt' in item
 
-const modules = props.effect === 'fade' ? [Autoplay, EffectFade] : [Autoplay]
+const modules = [
+  Autoplay,
+  ...(props.effect === 'fade' ? [EffectFade] : []),
+  ...(props.pagination ? [Pagination, A11y] : []),
+]
+
+// Swiper fills `{{index}}` / `{{slidesLength}}` itself, so pass them through untranslated
+const paginationOptions = computed(() => props.pagination ? { clickable: true } : false)
+const a11yOptions = computed(() => ({
+  paginationBulletMessage: t('common.carousel.goToSlide', { index: '{{index}}' }),
+  slideLabelMessage: t('common.carousel.slideLabel', { index: '{{index}}', total: '{{slidesLength}}' }),
+}))
+
+// drives the fill of the active dot from Swiper's own autoplay timer
+const onAutoplayTimeLeft = (swiper: TSwiper, _time: number, timeLeft: number) => {
+  swiper.el.style.setProperty('--r-carousel-progress', String(1 - timeLeft))
+}
 
 const toBreakpoints = (value: TResponsive<number>) => {
   const { desktop, tablet, mobile } = typeof value === 'number' ? { desktop: value } : value
@@ -85,10 +111,13 @@ const autoplayOptions = computed(() => props.autoplay > 0
   : false)
 </script>
 <template>
-  <swiper class="r-carousel" :class="{ 'r-carousel--fade': fadeEdges }" :modules="modules"
-    :slides-per-view="swiperOptions.slidesPerView" :space-between="swiperOptions.spaceBetween"
-    :breakpoints="swiperOptions.breakpoints" :speed="speed" :loop="loop" :autoplay="autoplayOptions"
-    :effect="effect" :fade-effect="{ crossFade: true }">
+  <swiper class="r-carousel"
+    :class="{ 'r-carousel--fade': fadeEdges, 'r-carousel--pagination': pagination }"
+    :modules="modules" :slides-per-view="swiperOptions.slidesPerView"
+    :space-between="swiperOptions.spaceBetween" :breakpoints="swiperOptions.breakpoints"
+    :speed="speed" :loop="loop" :autoplay="autoplayOptions" :effect="effect"
+    :fade-effect="{ crossFade: true }" :pagination="paginationOptions" :a11y="a11yOptions"
+    @autoplay-time-left="onAutoplayTimeLeft">
     <swiper-slide v-for="(item, index) in items" :key="index" class="r-carousel__slide">
       <slot :item="item" :index="index">
         <img v-if="isImage(item)" :src="item.src" :alt="item.alt" :width="item.width"
@@ -110,6 +139,53 @@ const autoplayOptions = computed(() => props.autoplay > 0
 
     -webkit-mask-image: $mask;
     mask-image: $mask;
+  }
+
+  // dots: inactive ones follow the text color, the active one is a pill that fills with accent
+  &.r-carousel--pagination {
+    --r-carousel-dot: color-mix(in srgb, currentColor 35%, transparent);
+    --r-carousel-dot-active: var(--color-accent);
+
+    padding-bottom: 36px;
+
+    .swiper-pagination {
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      line-height: 0;
+    }
+
+    .swiper-pagination-bullet {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      margin: 0 !important;
+      overflow: hidden;
+      border-radius: 4px;
+      background-color: var(--r-carousel-dot);
+      opacity: 1;
+      transition: width 0.3s ease;
+
+      &:focus-visible {
+        outline: 2px solid var(--r-carousel-dot-active);
+        outline-offset: 2px;
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      width: 32px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--r-carousel-dot-active);
+        transform: scaleX(var(--r-carousel-progress, 1));
+        transform-origin: left;
+      }
+    }
   }
 
   .r-carousel__slide {

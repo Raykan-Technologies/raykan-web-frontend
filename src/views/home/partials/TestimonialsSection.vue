@@ -30,8 +30,10 @@ const testimonials = computed(() => clients.map(({ key, photo }) => ({
         <p class="testimonials-section__text">{{ t('home.testimonials.text') }}</p>
       </r-section>
 
+      <!-- one testimonial at a time, next one every 6 seconds -->
       <r-carousel class="testimonials-section__carousel" :items="testimonials" effect="fade"
-        :slides-per-view="1" :space-between="30" :speed="800" :fade-edges="false">
+        :slides-per-view="1" :space-between="30" :speed="800" :autoplay="6000"
+        :fade-edges="false" pagination>
         <template #default="{ item }">
           <r-testimonial-card :quote="item.quote" :name="item.name" :role="item.role"
             :photo="item.photo" />
