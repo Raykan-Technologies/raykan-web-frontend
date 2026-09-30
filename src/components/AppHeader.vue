@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AppLogo from '@/assets/AppLogo.vue'
@@ -21,6 +21,14 @@ const { t } = useI18n()
 const { menus, isActive } = useAppMenu()
 const scrolled = ref(false)
 const mobileMenuOpen = ref(false)
+const header = useTemplateRef<HTMLElement>('header')
+
+// publishes the header's current rendered height as --app-header-height, so sections can keep
+// their content clear of it on any device (it shrinks when scrolled and differs per breakpoint)
+const headerObserver = new ResizeObserver(([entry]) => {
+  const height = entry?.borderBoxSize[0]?.blockSize ?? header.value?.offsetHeight ?? 0
+  document.documentElement.style.setProperty('--app-header-height', `${Math.round(height)}px`)
+})
 
 const onScroll = () => {
   scrolled.value = window.scrollY > STICKY_OFFSET
@@ -29,14 +37,16 @@ const onScroll = () => {
 onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
+  if (header.value) headerObserver.observe(header.value)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
+  headerObserver.disconnect()
 })
 </script>
 <template>
-  <header class="app-header"
+  <header ref="header" class="app-header"
     :class="{ 'app-header--transparent': transparent, 'app-header--scrolled': scrolled }">
     <div class="app-header__container">
       <router-link :to="{ name: 'home' }" class="app-header__logo" :aria-label="t('common.companyName')">

@@ -24,7 +24,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
 </script>
 <template>
   <r-section class="hero-section" theme="primary" vertical-align="middle"
-    min-height="100vh" :image="heroBackground" overlay="var(--color-overlay-hero)"
+    min-height="var(--app-height, 100svh)" :image="heroBackground" overlay="var(--color-overlay-hero)"
     :overlay-opacity="0.8">
     <template #background>
       <img class="hero-section__grid" :src="heroGrid" alt="" width="1271" height="999">

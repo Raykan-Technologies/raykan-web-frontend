@@ -52,4 +52,11 @@ export default {
       clientSatisfaction: 'With a 97% client satisfaction rate for issue resolution, our support team\'s dedication speaks for itself. We are committed to assisting our clients swiftly and effectively.',
     },
   },
+  about: {
+    title: 'We are Raykan Technologies',
+    statement: 'We are a value-driven team determined to tailor specific solutions that match your needs and priorities. We deliver innovative solutions through extensive experience and technical expertise in the IT ecosystem. We guarantee addressing all your challenges with technical sophistication and satisfactory resolution. We produce exceptional outcomes in a collaborative environment.',
+    closing: 'We are Raykan.',
+    startBuilding: 'Start Building Now!',
+    joinTeam: 'Join our team',
+  },
 }

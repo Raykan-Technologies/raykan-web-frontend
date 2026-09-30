@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useTitle } from 'vue-page-title'
+import FooterSection from './partials/FooterSection.vue'
 import HeroSection from './partials/HeroSection.vue'
 import MetricsSection from './partials/MetricsSection.vue'
 import ServicesSection from './partials/ServicesSection.vue'
@@ -16,5 +17,6 @@ useTitle(t('home.title'))
     <ServicesSection />
     <TestimonialsSection />
     <MetricsSection />
+    <FooterSection />
   </main>
 </template>
