@@ -26,7 +26,8 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
 </script>
 <template>
   <r-section class="services-section" tag="article" align="center" min-height="400px"
-    :label="t('home.services.label')" :title="t('home.services.title')">
+    :label="t('home.services.label')" :title="t('home.services.title')"
+    :description="t('home.services.text')">
     <r-section class="services-section__cards" inner :columns="3" gap="no">
       <r-card v-for="card in cards" :key="card.solution" :icon="card.icon" :title="card.title"
         :to="{ name: card.solution }">

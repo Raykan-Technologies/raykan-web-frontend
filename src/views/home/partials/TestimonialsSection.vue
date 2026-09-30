@@ -24,7 +24,8 @@ const testimonials = computed(() => clients.map(({ key, photo }) => ({
 <template>
   <r-section class="testimonials-section" theme="primary"
     :min-height="{ desktop: '55vh', tablet: '60vh', mobile: 'auto' }">
-    <r-section inner :columns="2" gap="narrow" columns-align="center">
+    <!-- stacked on tablet too, so the intro has room for its 2 lines -->
+    <r-section inner :columns="{ desktop: 2, tablet: 1 }" gap="narrow" columns-align="center">
       <r-section class="testimonials-section__intro" inner :label="t('home.testimonials.label')"
         :title="t('home.testimonials.title')" :description="t('home.testimonials.text')" />
 
@@ -51,7 +52,7 @@ const testimonials = computed(() => clients.map(({ key, photo }) => ({
       margin-bottom: 0;
     }
 
-    @include mobile {
+    @include tablet {
       text-align: center;
 
       .r-section__header {
@@ -60,14 +61,6 @@ const testimonials = computed(() => clients.map(({ key, photo }) => ({
     }
   }
 
-  // wp-raykan: 85.153% of the column
-  .testimonials-section__intro .r-section__description {
-    max-width: 85%;
-
-    @include mobile {
-      max-width: none;
-    }
-  }
 
   // every slide as tall as the tallest testimonial
   .testimonials-section__carousel .r-carousel__slide {

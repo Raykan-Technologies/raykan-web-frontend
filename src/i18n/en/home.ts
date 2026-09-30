@@ -13,6 +13,8 @@ export default {
   services: {
     label: 'Services',
     title: 'Unlock Your Company’s Potential with Our Solutions',
+    // wp-raykan mobile copy for this heading
+    text: 'Our tailored services enhance efficiency, drive innovation, and fuel growth, empowering your business to thrive.',
     items: {
       'software-development': 'We develop customized web and mobile apps designed to optimize your business operations.',
       'data-science': 'We provide insights that allows you to make an informed, data-driven business decisions.',

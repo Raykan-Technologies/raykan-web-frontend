@@ -249,13 +249,22 @@ const sectionClasses = computed(() => [
     line-clamp: 2;
   }
 
+  // strictly 2 lines, like the title: sized so typical intros wrap into two balanced lines,
+  // anything longer is clamped with an ellipsis
   .r-section__description {
+    display: -webkit-box;
+    max-width: 36em;
     // 20px under the title (4px header gap + 16px)
     margin: 16px 0 0;
+    overflow: hidden;
     color: var(--color-text-muted);
     font-family: var(--font-primary);
     font-size: var(--font-size-md);
     line-height: var(--line-height-md);
+    text-wrap: balance;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 
   // inner rows always span their column, even inside a centered section

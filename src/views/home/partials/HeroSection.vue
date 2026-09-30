@@ -94,7 +94,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
   .hero-section__tagline {
     display: block;
-    color: var(--color-accent);
+    color: var(--color-white);
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
     font-style: italic;
@@ -137,24 +137,27 @@ const clients = computed<Array<ICarouselImage>>(() => [
     }
   }
 
+  // strictly 2 lines, like section descriptions: wide enough for the copy to wrap into two
+  // balanced lines, anything longer is clamped with an ellipsis
   .hero-section__lead {
-    width: 41.431%;
+    display: -webkit-box;
+    max-width: 27em;
     margin: 0;
-    // wp-raykan: 40px below, minus the 20px container gap
-    padding-bottom: 20px;
-    color: var(--color-grey-350);
+    overflow: hidden;
+    color: var(--color-white);
     font-family: var(--font-secondary);
     font-size: var(--font-size-hero-lead);
     line-height: var(--line-height-hero-lead);
+    text-wrap: balance;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    // wp-raykan: 40px below, minus the 20px container gap (margin: the clamp hides padding)
+    margin-bottom: 20px;
 
     @include tablet {
-      width: 60%;
-      padding-bottom: 0;
-    }
-
-    @include mobile {
-      width: 100%;
-      padding: 4px 0;
+      margin-bottom: 0;
     }
   }
 
