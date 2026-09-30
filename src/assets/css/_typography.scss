@@ -52,8 +52,9 @@ $fonts: (
   --font-size-4xl: 36px;
   --font-size-5xl: 47px;
   --font-size-6xl: 83px;
-  // wp-raykan: 7.5rem on Astra's 15px root (html { font-size: 93.75% })
-  --font-size-hero: 112.5px;
+  // hero heading cap on desktop (wp-raykan used 112.5px; the heading scales with the hero's
+  // width up to this, see HeroSection)
+  --font-size-hero: 120px;
 
   // line heights
   --line-height-2xs: 12px;
@@ -65,7 +66,7 @@ $fonts: (
   --line-height-xl: 35px;
   --line-height-2xl: 45px;
   --line-height-3xl: 69px;
-  --line-height-hero: 112.5px;
+  --line-height-hero: 1;
 
   // weights
   --font-weight-light: 300;
@@ -92,7 +93,7 @@ $fonts: (
     --section-title-spacing: 0px;
 
     // 4.9rem on the 15px root
-    --font-size-hero: 73.5px;
+    --font-size-hero: 66px;
     --line-height-hero: 1;
     --font-size-hero-lead: 20px;
     --line-height-hero-lead: 28px;
