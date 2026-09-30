@@ -28,6 +28,10 @@ interface IProps {
    */
   label?: string;
   /**
+   * Intro text under the title
+   */
+  description?: string;
+  /**
    * Row nested inside another section's column (Elementor inner section):
    * no background, width limit, gutter or vertical padding unless given
    */
@@ -142,9 +146,10 @@ const sectionClasses = computed(() => [
     <!-- extra decorative layers (grids, shapes, video) behind the content -->
     <slot name="background"></slot>
     <div class="r-section__container">
-      <div v-if="title || label" class="r-section__header">
+      <div v-if="title || label || description" class="r-section__header">
         <span v-if="label" class="r-section__label">{{ label }}</span>
         <component :is="titleTag" v-if="title" class="r-section__title">{{ title }}</component>
+        <p v-if="description" class="r-section__description">{{ description }}</p>
       </div>
       <slot></slot>
     </div>
@@ -244,6 +249,15 @@ const sectionClasses = computed(() => [
     line-clamp: 2;
   }
 
+  .r-section__description {
+    // 20px under the title (4px header gap + 16px)
+    margin: 16px 0 0;
+    color: var(--color-text-muted);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
+  }
+
   // inner rows always span their column, even inside a centered section
   &.r-section--inner {
     align-self: stretch;
@@ -297,11 +311,20 @@ const sectionClasses = computed(() => [
     .r-section__label {
       color: var(--color-accent);
     }
+
+    .r-section__description {
+      color: var(--color-text-subtle);
+    }
   }
 
   &.r-section--accent-soft {
     background-color: var(--color-metrics-bg);
     color: var(--color-secondary);
+
+    .r-section__label,
+    .r-section__description {
+      color: var(--color-secondary);
+    }
   }
 
   &.r-section--transparent {

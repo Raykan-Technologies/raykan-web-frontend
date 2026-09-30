@@ -26,9 +26,7 @@ const testimonials = computed(() => clients.map(({ key, photo }) => ({
     :min-height="{ desktop: '55vh', tablet: '60vh', mobile: 'auto' }">
     <r-section inner :columns="2" gap="narrow" columns-align="center">
       <r-section class="testimonials-section__intro" inner :label="t('home.testimonials.label')"
-        :title="t('home.testimonials.title')">
-        <p class="testimonials-section__text">{{ t('home.testimonials.text') }}</p>
-      </r-section>
+        :title="t('home.testimonials.title')" :description="t('home.testimonials.text')" />
 
       <!-- one testimonial at a time, next one every 6 seconds -->
       <r-carousel class="testimonials-section__carousel" :items="testimonials" effect="fade"
@@ -62,14 +60,9 @@ const testimonials = computed(() => clients.map(({ key, photo }) => ({
     }
   }
 
-  .testimonials-section__text {
-    // wp-raykan: 85.153% of the column
+  // wp-raykan: 85.153% of the column
+  .testimonials-section__intro .r-section__description {
     max-width: 85%;
-    margin: 0;
-    color: var(--color-text-subtle);
-    font-family: var(--font-primary);
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-md);
 
     @include mobile {
       max-width: none;

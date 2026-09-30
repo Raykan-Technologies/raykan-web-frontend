@@ -40,4 +40,14 @@ export default {
       },
     },
   },
+  metrics: {
+    label: 'Metrics',
+    title: 'Raykan Results: Metrics that Matter',
+    text: 'At Raykan Technologies, we pride ourselves on delivering exceptional results. Our commitment to excellence is reflected in our impressive metrics.',
+    items: {
+      ticketResolution: 'With a 100% ticket resolution rate last quarter, our support team\'s commitment to solving issues is clear. We prioritize addressing every client concern promptly, efficiently, and with care.',
+      clientRetention: 'Since 2019, we’ve proudly maintained a 100% client retention rate. Our focus on delivering personalized solutions and ongoing support has ensured that every client continues to trust and grow with us.',
+      clientSatisfaction: 'With a 97% client satisfaction rate for issue resolution, our support team\'s dedication speaks for itself. We are committed to assisting our clients swiftly and effectively.',
+    },
+  },
 }
