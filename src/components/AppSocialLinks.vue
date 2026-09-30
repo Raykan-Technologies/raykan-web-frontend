@@ -9,9 +9,14 @@ withDefaults(defineProps<{
    * Hover effect: `pulse` scales the icon, `highlight` turns it white
    */
   effect?: 'pulse' | 'highlight';
+  /**
+   * Icon color: `accent` is cyan (turns white with `highlight`), `light` is white (turns cyan)
+   */
+  tone?: 'accent' | 'light';
 }>(), {
   size: 35,
   effect: 'pulse',
+  tone: 'accent',
 })
 
 const { t } = useI18n()
@@ -24,7 +29,7 @@ const links: Array<{ icon: Extract<TIcons, 'facebook' | 'linkedin' | 'instagram'
 ]
 </script>
 <template>
-  <ul class="app-social-links" :class="`app-social-links--${effect}`">
+  <ul class="app-social-links" :class="[`app-social-links--${effect}`, `app-social-links--${tone}`]">
     <li v-for="link in links" :key="link.icon">
       <a class="app-social-links__link" :class="{ 'animate-pulse': effect === 'pulse' }"
         :href="link.url" target="_blank" rel="noopener"
@@ -43,20 +48,29 @@ const links: Array<{ icon: Extract<TIcons, 'facebook' | 'linkedin' | 'instagram'
   padding: 0;
   list-style: none;
 
+  // the icon color, and the one `highlight` switches to
+  --social-color: var(--color-accent);
+  --social-color-highlight: var(--color-white);
+
+  &.app-social-links--light {
+    --social-color: var(--color-white);
+    --social-color-highlight: var(--color-accent);
+  }
+
   .app-social-links__link {
     display: flex;
-    color: var(--color-accent);
+    color: var(--social-color);
     transition: color 0.3s ease;
 
     &:hover {
-      color: var(--color-accent);
+      color: var(--social-color);
     }
   }
 
   &.app-social-links--highlight .app-social-links__link {
     &:hover,
     &:focus-visible {
-      color: var(--color-white);
+      color: var(--social-color-highlight);
     }
   }
 }

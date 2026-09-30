@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { AppFooter } from '@/components'
 import { RButton, RSection } from '@/components/elements'
 import team from '@/assets/images/home/team.webp'
 
@@ -8,7 +7,7 @@ const { t } = useI18n()
 </script>
 <template>
   <!-- fills the device's screen: --app-height is measured live (useViewport), 100svh until then -->
-  <r-section class="footer-section" tag="footer" theme="primary" width="1200px" align="center"
+  <r-section class="footer-section" theme="primary" width="1200px" align="center"
     min-height="var(--app-height, 100svh)" :image="team" overlay="var(--color-overlay-about)">
     <h2 class="footer-section__title">{{ t('home.about.title') }}</h2>
 
@@ -23,18 +22,21 @@ const { t } = useI18n()
         {{ t('home.about.joinTeam') }}
       </r-button>
     </div>
-
-    <AppFooter class="footer-section__footer" />
   </r-section>
 </template>
 <style lang="scss">
 @use '@/assets/css/breakpoints' as *;
 
-// wp-raykan home "We are Raykan" block with the footer rows (section 32dbc0c, mobile 9f4f15d)
+// wp-raykan home "We are Raykan" block (section 32dbc0c, mobile 9f4f15d); the footer rows that
+// sat under it are now the site-wide AppFooter
 .footer-section {
   // soft dark-blue glow behind the white text over the photo
   --footer-title-shadow: 0 0 18px rgba(9, 4, 77, 0.77);
   --footer-text-shadow: 0 0 68px rgba(44, 23, 151, 0.67);
+
+  // the transparent site footer sits over the bottom of this section (route meta
+  // footerTransparent), so leave room for its measured height
+  padding-bottom: calc(var(--section-padding-y) + var(--app-footer-height, 0px));
 
   // the shared section padding, plus room for the fixed header so the content centers below it.
   // --app-header-height is the header's measured height (AppHeader), already shrunk by the time
@@ -92,10 +94,6 @@ const { t } = useI18n()
     @include mobile {
       gap: 16px;
     }
-  }
-
-  .footer-section__footer {
-    margin-top: 30px;
   }
 }
 </style>

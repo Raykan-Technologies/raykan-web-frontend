@@ -27,6 +27,7 @@ const router = createRouter({
       meta: {
         layout: 'DefaultLayout',
         headerTransparent: true,
+        footerTransparent: true,
       },
     },
     {
@@ -63,6 +64,10 @@ declare module 'vue-router' {
      * Header overlays the page and stays transparent until scrolled (pages with a hero)
      */
     headerTransparent?: boolean;
+    /**
+     * Footer has no background and sits over the page's last section (it must leave room for it)
+     */
+    footerTransparent?: boolean;
   }
 }
 

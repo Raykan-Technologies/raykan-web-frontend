@@ -1,13 +1,37 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AppLogo from '@/assets/AppLogo.vue'
+import { RSection } from '@/components/elements'
 import { SOLUTIONS } from '@/router/solutions'
 import AppSocialLinks from './AppSocialLinks.vue'
 
+defineProps<{
+  /**
+   * No background, so the footer sits over the page's last section (route meta `footerTransparent`)
+   */
+  transparent?: boolean;
+}>()
+
 const { t } = useI18n()
 const route = useRoute()
+const footer = useTemplateRef<{ $el: HTMLElement }>('footer')
+
+// publishes the footer's rendered height as --app-footer-height, so a page's last section can
+// leave room for it when the footer is laid over it
+const footerObserver = new ResizeObserver(([entry]) => {
+  const height = entry?.borderBoxSize[0]?.blockSize ?? 0
+  document.documentElement.style.setProperty('--app-footer-height', `${Math.round(height)}px`)
+})
+
+onMounted(() => {
+  if (footer.value?.$el) footerObserver.observe(footer.value.$el)
+})
+
+onBeforeUnmount(() => {
+  footerObserver.disconnect()
+})
 
 // current year from the visitor's clock
 const year = new Date().getFullYear()
@@ -27,12 +51,16 @@ const isActive = (name: string) => route.name === name
   || (name === 'solutions' && SOLUTIONS.some((solution) => solution === route.name))
 </script>
 <template>
-  <div class="app-footer">
+  <!-- site-wide footer, rendered once by DefaultLayout under every page -->
+  <r-section ref="footer" class="app-footer" :class="{ 'app-footer--transparent': transparent }"
+    tag="footer" :theme="transparent ? 'transparent' : 'primary'">
     <div class="app-footer__row">
       <router-link :to="{ name: 'home' }" class="app-footer__logo" :aria-label="t('common.companyName')">
         <AppLogo />
       </router-link>
-      <AppSocialLinks :size="35" effect="highlight" class="app-footer__socials" />
+      <!-- white icons over the home page photo, cyan on the solid footer -->
+      <AppSocialLinks :size="28" effect="highlight" :tone="transparent ? 'light' : 'accent'"
+        class="app-footer__socials" />
     </div>
 
     <div class="app-footer__row">
@@ -48,22 +76,27 @@ const isActive = (name: string) => route.name === name
       </nav>
       <p class="app-footer__copyright">{{ t('common.copyright', { year }) }}</p>
     </div>
-  </div>
+  </r-section>
 </template>
 <style lang="scss">
 @use '@/assets/css/breakpoints' as *;
 
 // wp-raykan footer rows: logo + socials, then footer menu + copyright
 .app-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  // wp-raykan: the rows sit ~82px in from each side of the 1180px column
-  max-width: 1016px;
-  margin-inline: auto;
+  // a small section: 30% of the usual top/bottom padding
+  padding-block: calc(var(--section-padding-y) * 0.3);
   color: var(--color-white);
   text-align: left;
+
+  > .r-section__container {
+    gap: 6px;
+  }
+
+  // laid over the bottom of the page's last section, which reserves --app-footer-height for it
+  &.app-footer--transparent {
+    position: relative;
+    z-index: 1;
+  }
 
   .app-footer__row {
     display: flex;
@@ -82,18 +115,14 @@ const isActive = (name: string) => route.name === name
     color: var(--color-white);
 
     svg {
-      width: 200px;
+      width: 140px;
       height: auto;
     }
   }
 
-  // wp-raykan icons sit in 70px boxes, 20px apart
   .app-footer__socials {
-    gap: 55px;
+    gap: 28px;
 
-    @include mobile {
-      gap: 35px;
-    }
   }
 
   .app-footer__menu {
@@ -122,12 +151,13 @@ const isActive = (name: string) => route.name === name
     }
   }
 
+  // same size as the footer links
   .app-footer__copyright {
     margin: 0;
     font-family: var(--font-secondary);
-    font-size: var(--font-size-2xs);
+    font-size: var(--font-size-sm);
     font-weight: var(--font-weight-light);
-    line-height: var(--line-height-2xs);
+    line-height: var(--line-height-xs);
   }
 }
 </style>
