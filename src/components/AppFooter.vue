@@ -9,6 +9,9 @@ import AppSocialLinks from './AppSocialLinks.vue'
 const { t } = useI18n()
 const route = useRoute()
 
+// current year from the visitor's clock
+const year = new Date().getFullYear()
+
 // wp-raykan "footer-menu"
 const menus = computed(() => [
   { menu: t('menus.home'), route: 'home' },
@@ -29,7 +32,7 @@ const isActive = (name: string) => route.name === name
       <router-link :to="{ name: 'home' }" class="app-footer__logo" :aria-label="t('common.companyName')">
         <AppLogo />
       </router-link>
-      <AppSocialLinks :size="35" class="app-footer__socials" />
+      <AppSocialLinks :size="35" effect="highlight" class="app-footer__socials" />
     </div>
 
     <div class="app-footer__row">
@@ -43,7 +46,7 @@ const isActive = (name: string) => route.name === name
           </li>
         </ul>
       </nav>
-      <p class="app-footer__copyright">{{ t('common.copyright') }}</p>
+      <p class="app-footer__copyright">{{ t('common.copyright', { year }) }}</p>
     </div>
   </div>
 </template>

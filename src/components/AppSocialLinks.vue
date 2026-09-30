@@ -5,8 +5,13 @@ import type { TIcons } from '@/components/icons'
 
 withDefaults(defineProps<{
   size?: number;
+  /**
+   * Hover effect: `pulse` scales the icon, `highlight` turns it white
+   */
+  effect?: 'pulse' | 'highlight';
 }>(), {
   size: 35,
+  effect: 'pulse',
 })
 
 const { t } = useI18n()
@@ -19,9 +24,10 @@ const links: Array<{ icon: Extract<TIcons, 'facebook' | 'linkedin' | 'instagram'
 ]
 </script>
 <template>
-  <ul class="app-social-links">
+  <ul class="app-social-links" :class="`app-social-links--${effect}`">
     <li v-for="link in links" :key="link.icon">
-      <a class="app-social-links__link animate-pulse" :href="link.url" target="_blank" rel="noopener"
+      <a class="app-social-links__link" :class="{ 'animate-pulse': effect === 'pulse' }"
+        :href="link.url" target="_blank" rel="noopener"
         :aria-label="t(`common.socials.${link.icon}`)">
         <r-icon :name="link.icon" :size="size" />
       </a>
@@ -40,9 +46,17 @@ const links: Array<{ icon: Extract<TIcons, 'facebook' | 'linkedin' | 'instagram'
   .app-social-links__link {
     display: flex;
     color: var(--color-accent);
+    transition: color 0.3s ease;
 
     &:hover {
       color: var(--color-accent);
+    }
+  }
+
+  &.app-social-links--highlight .app-social-links__link {
+    &:hover,
+    &:focus-visible {
+      color: var(--color-white);
     }
   }
 }

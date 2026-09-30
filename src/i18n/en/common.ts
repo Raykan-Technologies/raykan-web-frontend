@@ -1,6 +1,6 @@
 export default {
   companyName: 'Raykan Technologies',
-  copyright: 'Ⓒ 2022 Raykan Technologies. All Rights Reserved.',
+  copyright: 'Ⓒ {year} Raykan Technologies. All Rights Reserved.',
   footerMenu: 'Footer',
   rating: 'Rated {rating} out of 5',
   carousel: {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink, type RouteLocationRaw } from 'vue-router'
 import type { TButtonVariant } from './types'
 
@@ -25,16 +25,43 @@ const props = withDefaults(defineProps<IProps>(), {
 
 const tag = computed(() => props.to ? RouterLink : props.href ? 'a' : 'button')
 const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href))
+
+// touch screens can't hover, so pressing and holding shows the hover colors instead.
+// Driven by pointer events rather than :active, which mobile browsers apply inconsistently;
+// the press is dropped on release, and on cancel (e.g. when the finger starts scrolling)
+const pressed = ref(false)
+let pointerType = ''
+
+const onPointerDown = (e: PointerEvent) => {
+  pointerType = e.pointerType
+  if (e.pointerType === 'touch') pressed.value = true
+}
+const release = () => {
+  pressed.value = false
+}
+// a long press would otherwise open the browser's link menu
+const onContextMenu = (e: MouseEvent) => {
+  if (pointerType === 'touch') e.preventDefault()
+}
 </script>
 <template>
-  <component :is="tag" class="r-button" :class="[`r-button--${variant}`, { 'r-button--block': block }]"
+  <component :is="tag" class="r-button"
+    :class="[`r-button--${variant}`, { 'r-button--block': block, 'r-button--pressed': pressed }]"
     :to="to" :href="href" :target="isExternal ? '_blank' : undefined"
-    :rel="isExternal ? 'noopener' : undefined" :type="tag === 'button' ? 'button' : undefined">
+    :rel="isExternal ? 'noopener' : undefined" :type="tag === 'button' ? 'button' : undefined"
+    @pointerdown="onPointerDown" @pointerup="release" @pointercancel="release"
+    @pointerleave="release" @contextmenu="onContextMenu">
     <slot></slot>
   </component>
 </template>
 <style lang="scss">
 @use '@/assets/css/breakpoints' as *;
+
+// hover colors: both variants turn white with cyan text
+@mixin highlighted {
+  background-color: var(--color-white);
+  color: var(--color-accent);
+}
 
 // Elementor button widget: Inter 16/16, 5px radius, 40px tall
 // (2px border + 10px/22px padding on both variants, so hovering never changes the size)
@@ -52,6 +79,9 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s, opacity 0.2s;
   -webkit-tap-highlight-color: transparent;
+  // long press: no link preview / text selection, so the pressed colors show
+  -webkit-touch-callout: none;
+  user-select: none;
 
   // touch-friendly on phones: 44px tap target, long labels wrap instead of overflowing
   @include mobile {
@@ -66,11 +96,15 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
     outline-offset: 2px;
   }
 
-  &:active {
-    opacity: 0.85;
+  // mouse: slight dim while clicking
+  @media (hover: hover) {
+    &:active {
+      opacity: 0.85;
+    }
   }
 
-  // hover effects only on devices that can hover, so colors don't stick after a tap
+  // hover effects only on devices that can hover, so colors don't stick after a tap;
+  // touch screens get the same colors while the button is pressed and held (--pressed)
 
   // cyan with white text; on hover the colors swap (the cyan border keeps it visible on light
   // backgrounds once it turns white)
@@ -81,9 +115,12 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--color-white);
-        color: var(--color-accent);
+        @include highlighted;
       }
+    }
+
+    &.r-button--pressed {
+      @include highlighted;
     }
   }
 
@@ -95,9 +132,12 @@ const isExternal = computed(() => !!props.href && /^https?:\/\//.test(props.href
 
     @media (hover: hover) {
       &:hover {
-        background-color: var(--color-white);
-        color: var(--color-accent);
+        @include highlighted;
       }
+    }
+
+    &.r-button--pressed {
+      @include highlighted;
     }
   }
 
