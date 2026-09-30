@@ -12,9 +12,6 @@ export default [
                 path: '',
                 name: 'kando',
                 component: () => import('@/views/kando/KandoView.vue'),
-                meta: {
-                    layout: 'DefaultLayout',
-                },
             },
         ],
     },

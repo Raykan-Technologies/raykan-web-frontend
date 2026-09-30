@@ -12,9 +12,6 @@ export default [
                 path: '',
                 name: 'faq',
                 component: () => import('@/views/faq/FaqView.vue'),
-                meta: {
-                    layout: 'DefaultLayout',
-                },
             },
         ],
     },

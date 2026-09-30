@@ -12,9 +12,6 @@ export default [
                 path: '',
                 name: 'blog',
                 component: () => import('@/views/blog/BlogView.vue'),
-                meta: {
-                    layout: 'DefaultLayout',
-                },
             },
         ],
     },

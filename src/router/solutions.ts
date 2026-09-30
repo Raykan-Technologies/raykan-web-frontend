@@ -27,9 +27,6 @@ export default [
                 path: '',
                 name: 'solutions',
                 component: () => import('@/views/solutions/SolutionsView.vue'),
-                meta: {
-                    layout: 'DefaultLayout',
-                },
             },
         ],
     },
@@ -38,8 +35,5 @@ export default [
         name: solution,
         component: () => import('@/views/solutions/SolutionView.vue'),
         props: { solution },
-        meta: {
-            layout: 'DefaultLayout',
-        },
     })),
 ] as Array<RouteRecordRaw>

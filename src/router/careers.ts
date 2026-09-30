@@ -13,9 +13,6 @@ export default [
                 path: '',
                 name: 'careers',
                 component: () => import('@/views/careers/CareersView.vue'),
-                meta: {
-                    layout: 'DefaultLayout',
-                },
             },
         ],
     },

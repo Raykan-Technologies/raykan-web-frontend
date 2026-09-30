@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTitle } from 'vue-page-title'
+import { useHead } from '#imports'
 
 const { t } = useI18n()
 
-useTitle(t('solutions.title'))
+useHead({ title: () => t('solutions.title') })
 </script>
 <template>
   <main>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTitle } from 'vue-page-title'
+import { useHead } from '#imports'
 import FooterSection from './partials/FooterSection.vue'
 import HeroSection from './partials/HeroSection.vue'
 import MetricsSection from './partials/MetricsSection.vue'
@@ -9,7 +9,7 @@ import TestimonialsSection from './partials/TestimonialsSection.vue'
 
 const { t } = useI18n()
 
-useTitle(t('home.title'))
+useHead({ title: () => t('home.title') })
 </script>
 <template>
   <main>

@@ -15,7 +15,7 @@ export default defineConfigWithVueTs(
     files: ['**/*.{vue,ts,mts,tsx}'],
   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/.nuxt/**', '**/.output/**']),
 
   ...pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
@@ -25,6 +25,13 @@ export default defineConfigWithVueTs(
   {
     name: 'app/icon-components',
     files: ['src/components/icons/**/*.vue', 'src/components/file-icons/**/*.vue'],
+    rules: { 'vue/multi-word-component-names': 'off' },
+  },
+
+  // Nuxt names layouts after their file (`default`, `guest`) and requires app.vue / error.vue
+  {
+    name: 'app/nuxt-files',
+    files: ['src/layouts/*.vue', 'src/app.vue', 'src/error.vue'],
     rules: { 'vue/multi-word-component-names': 'off' },
   },
 

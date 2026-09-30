@@ -1,6 +1,8 @@
 # raykan-web-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Raykan website, built with [Nuxt 4](https://nuxt.com) (Vue 3, server-side rendered).
+
+Sources live in `src/` (`srcDir`). Routes are declared in `src/router/` and handed to Nuxt by `src/router.options.ts`, layouts are `src/layouts/*.vue` (picked with route `meta.layout`), and translations are in `src/i18n/`.
 
 ## Recommended IDE Setup
 
@@ -21,7 +23,7 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 ## Customize configuration
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+See `nuxt.config.ts` and the [Nuxt Configuration Reference](https://nuxt.com/docs/api/nuxt-config).
 
 ## Project Setup
 
@@ -35,10 +37,17 @@ npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Build for Production
 
 ```sh
-npm run build
+npm run build      # Node server in .output/ (run with `node .output/server/index.mjs`)
+npm run generate   # or: pre-rendered static site in .output/public
+```
+
+### Type-Check
+
+```sh
+npm run type-check
 ```
 
 ### Lint with [ESLint](https://eslint.org/)

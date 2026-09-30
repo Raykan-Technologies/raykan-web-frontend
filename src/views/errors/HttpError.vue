@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useTitle } from 'vue-page-title'
+import { setResponseStatus, useHead, useRequestEvent } from '#imports'
 
 const props = withDefaults(defineProps<{
   code?: string;
@@ -9,7 +9,11 @@ const props = withDefaults(defineProps<{
 })
 const { t } = useI18n()
 
-useTitle(t(`errorPages.${props.code}.title`))
+// server-rendered error pages answer with their own status instead of 200
+const event = useRequestEvent()
+if (event) setResponseStatus(event, Number(props.code))
+
+useHead({ title: () => t(`errorPages.${props.code}.title`) })
 </script>
 <template>
   <main>

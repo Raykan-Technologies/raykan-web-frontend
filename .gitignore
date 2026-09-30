@@ -11,6 +11,13 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+
+# Nuxt
+.nuxt
+.output
+.data
+.nitro
+.cache
 coverage
 *.local
 .env
@@ -39,5 +46,3 @@ coverage
 # Vitest
 __screenshots__/
 
-# Vite
-*.timestamp-*-*.mjs
