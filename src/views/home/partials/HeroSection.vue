@@ -23,7 +23,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
 ])
 </script>
 <template>
-  <r-section class="hero-section" theme="primary" width="full" gutter="lg" vertical-align="middle"
+  <r-section class="hero-section" theme="primary" vertical-align="middle"
     min-height="100vh" :image="heroBackground" overlay="var(--color-overlay-hero)"
     :overlay-opacity="0.8">
     <template #background>
@@ -52,7 +52,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
       </r-button>
     </div>
 
-    <r-section class="hero-section__clients" inner gutter="sm" min-height="150px"
+    <r-section class="hero-section__clients" inner min-height="150px"
       :aria-label="t('home.hero.clientsLabel')">
       <r-carousel class="hero-section__carousel" :images="clients" />
     </r-section>
@@ -63,9 +63,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
 
 // wp-raykan home hero (sections 21e2f83 desktop/tablet, 1c19732 mobile)
 .hero-section {
-  // content is centered in the space below the fixed header
-  padding-top: var(--header-height);
-  padding-bottom: 40px;
+  // the shared section padding, plus room for the fixed header on top
+  padding-top: calc(var(--header-height) + var(--section-padding-y));
   overflow: hidden;
 
   @include mobile {
@@ -168,7 +167,6 @@ const clients = computed<Array<ICarouselImage>>(() => [
   // wp-raykan: 100px top padding + 10px column padding, minus the 20px container gap
   .hero-section__clients {
     padding-top: 90px;
-    padding-bottom: 10px;
   }
 
   .hero-section__carousel {

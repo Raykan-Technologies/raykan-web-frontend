@@ -17,7 +17,7 @@ interface IProps {
   tag?: 'section' | 'article' | 'header' | 'footer' | 'div';
   /**
    * Row nested inside another section's column (Elementor inner section):
-   * no background, width limit or gutter unless given
+   * no background, width limit, gutter or vertical padding unless given
    */
   inner?: boolean;
   theme?: TSectionTheme;
@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 const theme = computed(() => props.theme ?? (props.inner ? 'transparent' : 'light'))
 const width = computed(() => props.width ?? (props.inner ? 'full' : 'boxed'))
-const gutter = computed(() => props.gutter ?? (props.inner ? 'none' : 'sm'))
+const gutter = computed(() => props.gutter ?? (props.inner ? 'none' : 'default'))
 
 const toBreakpoints = <T,>(value?: TResponsive<T>): { desktop?: T; tablet?: T; mobile?: T } =>
   value !== null && typeof value === 'object' && !Array.isArray(value)
@@ -136,6 +136,12 @@ const sectionClasses = computed(() => [
 <style lang="scss">
 @use '@/assets/css/breakpoints' as *;
 
+// site-wide section spacing (tokens in css/_layout); :where() keeps specificity at 0
+// so a page section can still override it with a single class
+:where(.r-section:not(.r-section--inner)) {
+  padding-block: var(--section-padding-y);
+}
+
 .r-section {
   // stop nested sections from inheriting the parent's values; props set them inline
   --section-min-height: initial;
@@ -172,7 +178,8 @@ const sectionClasses = computed(() => [
     flex-direction: column;
     gap: var(--widget-spacing);
     width: 100%;
-    max-width: var(--section-width, var(--container-width));
+    // the gutter sits outside the content width, so boxed content stays 1140px wide
+    max-width: calc(var(--section-width, var(--container-width)) + 2 * var(--section-gutter));
     margin-inline: auto;
     padding-inline: var(--section-gutter);
   }
@@ -241,28 +248,8 @@ const sectionClasses = computed(() => [
   }
 
   // gutters
-  &.r-section--gutter-none { --section-gutter: 0; }
-  &.r-section--gutter-sm { --section-gutter: 10px; }
-
-  &.r-section--gutter-md {
-    --section-gutter: 20px;
-
-    @include mobile {
-      --section-gutter: 24px;
-    }
-  }
-
-  &.r-section--gutter-lg {
-    --section-gutter: 124px;
-
-    @include tablet {
-      --section-gutter: 40px;
-    }
-
-    @include mobile {
-      --section-gutter: 24px;
-    }
-  }
+  &.r-section--gutter-default { --section-gutter: var(--section-padding-x); }
+  &.r-section--gutter-none { --section-gutter: 0px; }
 
   // alignment
   &.r-section--align-center > .r-section__container {

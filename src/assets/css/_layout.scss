@@ -24,6 +24,10 @@ $spacing: (
   --container-width-hero: 1600px;
   --container-width-about: 1200px;
 
+  // sections: padding above/below and beside every page section (RSection)
+  --section-padding-y: 80px;
+  --section-padding-x: 40px;
+
   // widgets
   --widget-spacing: 20px;
 
@@ -41,11 +45,14 @@ $spacing: (
 
   @include tablet {
     --container-width: 1024px;
+    --section-padding-y: 64px;
   }
 
   @include mobile {
     --container-width: 767px;
     --header-height: 70px;
+    --section-padding-y: 48px;
+    --section-padding-x: 24px;
   }
 }
 

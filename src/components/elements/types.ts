@@ -15,13 +15,11 @@ export type TSectionTheme = 'light' | 'primary' | 'accent-soft' | 'transparent'
 export type TSectionWidth = 'boxed' | 'full' | (string & {})
 
 /**
- * Horizontal padding inside the content container
- * - none: 0
- * - sm: 10px (Elementor column default)
- * - md: 20px desktop / 20px tablet / 24px mobile
- * - lg: 124px desktop / 40px tablet / 24px mobile (hero)
+ * Horizontal padding beside the content
+ * - default: the site-wide section padding (`--section-padding-x`, 40px / 24px on mobile)
+ * - none: 0 (inner rows)
  */
-export type TSectionGutter = 'none' | 'sm' | 'md' | 'lg'
+export type TSectionGutter = 'default' | 'none'
 
 /**
  * A value, or one per breakpoint (missing breakpoints inherit the larger one)

@@ -25,8 +25,7 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
 })))
 </script>
 <template>
-  <r-section class="services-section" tag="article" width="full" gutter="none" align="center"
-    min-height="400px">
+  <r-section class="services-section" tag="article" align="center" min-height="400px">
     <span class="services-section__label">{{ t('home.services.label') }}</span>
     <h2 class="services-section__title">{{ t('home.services.title') }}</h2>
 
@@ -43,12 +42,6 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
 
 // wp-raykan home services (sections 5594714 desktop/tablet, b658762 mobile)
 .services-section {
-  padding: 40px;
-
-  @include mobile {
-    padding: 20px 24px 40px;
-  }
-
   // shown on the wp-raykan mobile layout only
   .services-section__label {
     display: none;
@@ -85,8 +78,6 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
   }
 
   .services-section__cards {
-    max-width: var(--container-width);
-    margin-inline: auto;
     // the cards sit edge to edge (wp-raykan column gap "no"), rows touch too
     > .r-section__container {
       row-gap: 0;
