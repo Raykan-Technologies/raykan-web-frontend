@@ -4,15 +4,18 @@ import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AppLogo from '@/assets/AppLogo.vue'
 import { RSection } from '@/components/elements'
+import type { TFooterVariant } from './types'
 import { SOLUTIONS } from '@/router/solutions'
 import AppSocialLinks from './AppSocialLinks.vue'
 
-defineProps<{
+withDefaults(defineProps<{
   /**
-   * No background, so the footer sits over the page's last section (route meta `footerTransparent`)
+   * Set per page by route meta `footer`
    */
-  transparent?: boolean;
-}>()
+  variant?: TFooterVariant;
+}>(), {
+  variant: 'solid',
+})
 
 const { t } = useI18n()
 const route = useRoute()
@@ -53,13 +56,12 @@ const isActive = (name: string) => route.name === name
 </script>
 <template>
   <!-- site-wide footer, rendered once by DefaultLayout under every page -->
-  <r-section ref="footer" class="app-footer" :class="{ 'app-footer--transparent': transparent }"
-    tag="footer" :theme="transparent ? 'transparent' : 'primary'">
+  <r-section ref="footer" class="app-footer" :class="`app-footer--${variant}`" tag="footer"
+    :theme="variant === 'solid' ? 'primary' : 'transparent'">
     <div class="app-footer__row">
       <router-link :to="{ name: 'home' }" class="app-footer__logo" :aria-label="t('common.companyName')">
         <AppLogo />
       </router-link>
-      <!-- white on every page, turning cyan on hover -->
       <AppSocialLinks :size="28" effect="highlight" tone="light" class="app-footer__socials" />
     </div>
 
@@ -96,6 +98,44 @@ const isActive = (name: string) => route.name === name
   &.app-footer--transparent {
     position: relative;
     z-index: 1;
+  }
+
+  // wp-raykan solution page footer: white fading into primary blue
+  &.app-footer--gradient {
+    justify-content: center;
+    min-height: 210px;
+    padding-block: calc(var(--section-padding-y) * 0.6) calc(var(--section-padding-y) * 0.3);
+    background-image: var(--color-footer-gradient);
+
+    @include tablet {
+      min-height: 150px;
+    }
+
+    // rows stack on phones; extra top space keeps the white links on the darker blue
+    @include mobile {
+      padding-top: calc(var(--section-padding-y) * 1.5);
+    }
+
+    // everything white; hover and the active link turn grey (wp-raykan footer hover)
+    .app-footer__logo {
+      transition: color 0.3s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--color-footer-gradient-hover);
+      }
+    }
+
+    .app-social-links {
+      --social-color-highlight: var(--color-footer-gradient-hover);
+    }
+
+    .app-footer__link {
+      &:hover,
+      &.app-footer__link--active {
+        color: var(--color-footer-gradient-hover);
+      }
+    }
   }
 
   .app-footer__row {

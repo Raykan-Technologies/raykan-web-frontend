@@ -7,6 +7,14 @@ export interface IAppMenu {
     child?: Array<IAppMenu>;
 }
 
+/**
+ * Site footer look (route meta `footer`)
+ * - solid: primary blue (default)
+ * - transparent: no background, laid over the page's last section (home)
+ * - gradient: white fading into primary blue (solution pages, like wp-raykan)
+ */
+export type TFooterVariant = 'solid' | 'transparent' | 'gradient'
+
 export type TKebab<T extends string, A extends string = ""> =
     T extends `${infer F}${infer R}`
     ? TKebab<R, `${A}${F extends Lowercase<F> ? "" : "-"}${Lowercase<F>}`>

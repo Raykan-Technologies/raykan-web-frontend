@@ -2363,7 +2363,7 @@ const menus = {
 const solutions = {
   title: "Solutions",
   items: {
-    "software-development": "Custom Software Development",
+    "software-development": "Software Development",
     "data-science": "Data Science",
     "digital-marketing": "Digital Marketing",
     "blockchain": "Blockchain",
@@ -3276,16 +3276,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"258c0-sSa7baWOAMqGnLmDiLcjdlsbVRg\"",
-    "mtime": "2026-10-01T07:16:23.931Z",
-    "size": 153792,
+    "etag": "\"258c7-fIUA28l7KizXy3mnBfxXDrfgxUw\"",
+    "mtime": "2026-10-01T07:24:46.338Z",
+    "size": 153799,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"97fa7-W1V2rcOatdm/vECONHkJmMS5NIU\"",
-    "mtime": "2026-10-01T07:16:23.933Z",
-    "size": 622503,
+    "etag": "\"97fca-oIXmtN3JvbHL5/diiBQUWryt7kY\"",
+    "mtime": "2026-10-01T07:24:46.338Z",
+    "size": 622538,
     "path": "index.mjs.map"
   }
 };

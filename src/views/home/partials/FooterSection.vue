@@ -35,7 +35,7 @@ const { t } = useI18n()
   --footer-text-shadow: 0 0 68px rgba(44, 23, 151, 0.67);
 
   // the transparent site footer sits over the bottom of this section (route meta
-  // footerTransparent), so leave room for its measured height
+  // footer: 'transparent'), so leave room for its measured height
   padding-bottom: calc(var(--section-padding-y) + var(--app-footer-height, 0px));
 
   // the shared section padding, plus room for the fixed header so the content centers below it.

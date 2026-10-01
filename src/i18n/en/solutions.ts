@@ -1,7 +1,7 @@
 export default {
   title: 'Solutions',
   items: {
-    'software-development': 'Custom Software Development',
+    'software-development': 'Software Development',
     'data-science': 'Data Science',
     'digital-marketing': 'Digital Marketing',
     'blockchain': 'Blockchain',

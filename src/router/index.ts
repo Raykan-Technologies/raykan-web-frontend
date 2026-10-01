@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import type { TFooterVariant } from '@/components/types'
 import about from './about'
 import blog from './blog'
 import careers from './careers'
@@ -25,7 +26,7 @@ export default [
     component: () => import('@/views/home/HomeView.vue'),
     meta: {
       headerTransparent: true,
-      footerTransparent: true,
+      footer: 'transparent',
     },
   },
   {
@@ -46,8 +47,8 @@ declare module 'vue-router' {
      */
     headerTransparent?: boolean;
     /**
-     * Footer has no background and sits over the page's last section (it must leave room for it)
+     * Footer look; `transparent` sits over the page's last section, which must leave room for it
      */
-    footerTransparent?: boolean;
+    footer?: TFooterVariant;
   }
 }
