@@ -6,9 +6,11 @@ import ChartGrowth from "./ChartGrowth.vue"
 import Check from "./Check.vue"
 import ChevronDown from "./ChevronDown.vue"
 import CodeWindow from "./CodeWindow.vue"
+import Database from "./Database.vue"
 import Facebook from "./Facebook.vue"
 import Gamepad from "./Gamepad.vue"
 import Globe from "./Globe.vue"
+import HeadThinking from "./HeadThinking.vue"
 import Hexagon from "./Hexagon.vue"
 import Instagram from "./Instagram.vue"
 import LaptopCode from "./LaptopCode.vue"
@@ -29,9 +31,11 @@ const iconComponents = {
   Check,
   ChevronDown,
   CodeWindow,
+  Database,
   Facebook,
   Gamepad,
   Globe,
+  HeadThinking,
   Hexagon,
   Instagram,
   LaptopCode,

@@ -12,13 +12,16 @@ const { t } = useI18n()
 
 const prefix = computed(() => `solutions.pages.${props.solution}.offerings`)
 const items = computed(() => SOLUTION_OFFERINGS[props.solution] ?? [])
+// one row of 3 (data science) or a 2x2 grid (software development), as in wp-raykan;
+// 3 icon boxes don't fit side by side on tablet, so they stack there
+const columns = computed(() => items.value.length % 3 === 0 ? { desktop: 3, tablet: 1 } : 2)
 </script>
 <template>
   <!-- wp-raykan solution page section 3d14f47: intro + 2x2 icon boxes, at least 80% of the screen tall -->
   <r-section class="offerings-section" width="1040px" align="center" vertical-align="middle"
     min-height="calc(var(--app-height, 100svh) * 0.8)" :title="t(`${prefix}.title`)"
     :description="t(`${prefix}.description`)">
-    <r-section class="offerings-section__grid" inner :columns="2" gap="wider">
+    <r-section class="offerings-section__grid" inner :columns="columns" gap="wider">
       <r-icon-box v-for="item in items" :key="item.key" :icon="item.icon"
         :title="t(`${prefix}.items.${item.key}.title`)">
         <p>{{ t(`${prefix}.items.${item.key}.text`) }}</p>

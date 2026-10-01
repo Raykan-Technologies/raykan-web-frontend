@@ -2601,6 +2601,35 @@ const solutions = {
           }
         }
       }
+    },
+    "data-science": {
+      seo: {
+        title: "Data Science and Analytics Services",
+        description: "Raykan turns complex data into actionable insights through data mining, business intelligence and data engineering that drive growth and efficiency.",
+        imageAlt: "Data engineer with a laptop in front of server racks in a data center"
+      },
+      hero: {
+        description: "Gathering, storing and analyzing data to create effective solutions for your business."
+      },
+      offerings: {
+        title: "Advanced Data Science Solutions",
+        description: "We specialize in data science, leveraging advanced analytics to transform complex data into valuable insights and support informed decision-making. Our approach helps businesses unlock the full potential of their data to drive growth and efficiency.",
+        items: {
+          mining: {
+            title: "Data Mining and Statistical Analysis",
+            text: "Mining algorithms to create statistical and practical approaches."
+          },
+          intelligence: {
+            title: "Business Intelligence and Strategy Making",
+            text: "Studying business models and creating effective solutions."
+          },
+          // wp-raykan says "Date Warehousing", a typo
+          engineering: {
+            title: "Data Engineering and Data Warehousing",
+            text: "Formulating processes to gather and store information."
+          }
+        }
+      }
     }
   }
 };
@@ -3574,22 +3603,7 @@ dev_server_logs_default,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"29096-fOeTGAOI1CWtYskrEvM522/gQkA\"",
-    "mtime": "2026-10-01T07:57:52.229Z",
-    "size": 168086,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"a66c2-Y8mPpsz/LKPPGJ+Q9Le+oHZHZNU\"",
-    "mtime": "2026-10-01T07:57:52.229Z",
-    "size": 681666,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

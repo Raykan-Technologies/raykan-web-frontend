@@ -13,7 +13,7 @@ const props = defineProps<{
 const { t, te } = useI18n()
 
 // share images under public/og/, the rest fall back to the default one
-const SOLUTION_OG_IMAGES: ReadonlyArray<TSolution> = ['software-development']
+const SOLUTION_OG_IMAGES: ReadonlyArray<TSolution> = ['software-development', 'data-science']
 
 // all solution routes share this view, so every value must follow the prop;
 // pages without `seo` copy yet fall back to the solution name

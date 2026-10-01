@@ -12,4 +12,9 @@ export const SOLUTION_OFFERINGS: Partial<Record<TSolution, Array<{ key: string; 
         { key: 'desktop', icon: 'laptop-code' },
         { key: 'game', icon: 'gamepad' },
     ],
+    'data-science': [
+        { key: 'mining', icon: 'chart-growth' },
+        { key: 'intelligence', icon: 'head-thinking' },
+        { key: 'engineering', icon: 'database' },
+    ],
 }

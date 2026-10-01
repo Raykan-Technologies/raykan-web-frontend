@@ -43,5 +43,34 @@ export default {
         },
       },
     },
+    'data-science': {
+      seo: {
+        title: 'Data Science and Analytics Services',
+        description: 'Raykan turns complex data into actionable insights through data mining, business intelligence and data engineering that drive growth and efficiency.',
+        imageAlt: 'Data engineer with a laptop in front of server racks in a data center',
+      },
+      hero: {
+        description: 'Gathering, storing and analyzing data to create effective solutions for your business.',
+      },
+      offerings: {
+        title: 'Advanced Data Science Solutions',
+        description: 'We specialize in data science, leveraging advanced analytics to transform complex data into valuable insights and support informed decision-making. Our approach helps businesses unlock the full potential of their data to drive growth and efficiency.',
+        items: {
+          mining: {
+            title: 'Data Mining and Statistical Analysis',
+            text: 'Mining algorithms to create statistical and practical approaches.',
+          },
+          intelligence: {
+            title: 'Business Intelligence and Strategy Making',
+            text: 'Studying business models and creating effective solutions.',
+          },
+          // wp-raykan says "Date Warehousing", a typo
+          engineering: {
+            title: 'Data Engineering and Data Warehousing',
+            text: 'Formulating processes to gather and store information.',
+          },
+        },
+      },
+    },
   },
 }
