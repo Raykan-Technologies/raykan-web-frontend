@@ -7,14 +7,18 @@ import Check from "./Check.vue"
 import ChevronDown from "./ChevronDown.vue"
 import CodeWindow from "./CodeWindow.vue"
 import Facebook from "./Facebook.vue"
+import Gamepad from "./Gamepad.vue"
+import Globe from "./Globe.vue"
 import Hexagon from "./Hexagon.vue"
 import Instagram from "./Instagram.vue"
+import LaptopCode from "./LaptopCode.vue"
 import Linkedin from "./Linkedin.vue"
 import Megaphone from "./Megaphone.vue"
 import Menu from "./Menu.vue"
 import Modules from "./Modules.vue"
 import Quote from "./Quote.vue"
 import ServerShield from "./ServerShield.vue"
+import Smartphone from "./Smartphone.vue"
 import Star from "./Star.vue"
 import XIcon from "./XIcon.vue"
 
@@ -26,14 +30,18 @@ const iconComponents = {
   ChevronDown,
   CodeWindow,
   Facebook,
+  Gamepad,
+  Globe,
   Hexagon,
   Instagram,
+  LaptopCode,
   Linkedin,
   Megaphone,
   Menu,
   Modules,
   Quote,
   ServerShield,
+  Smartphone,
   Star,
   XIcon,
 }

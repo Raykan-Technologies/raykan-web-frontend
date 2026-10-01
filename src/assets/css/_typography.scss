@@ -83,14 +83,34 @@ $fonts: (
   --font-size-section-title: var(--font-size-4xl);
   --line-height-section-title: 1.25;
   --section-title-spacing: 40px;
+  // large section heading (solution offerings): wp-raykan 50px title, 20px intro
+  --font-size-section-title-lg: 50px;
+  --line-height-section-title-lg: 1.25;
+  --font-size-section-description-lg: 20px;
+  --line-height-section-description-lg: 30px;
 
   // hero lead
   --font-size-hero-lead: var(--font-size-xl);
   --line-height-hero-lead: var(--line-height-base);
 
+  // inner-page hero (RPageHero): wp-raykan 7rem / 6rem, -4px
+  --font-size-page-hero: 105px;
+  --line-height-page-hero: 0.86;
+  --letter-spacing-page-hero: -0.038em;
+  --font-size-page-hero-lead: var(--font-size-xl);
+  --line-height-page-hero-lead: 31px;
+
+  // icon box (RIconBox)
+  --font-size-icon-box-title: 28px;
+  --font-size-icon-box-text: 18px;
+  --line-height-icon-box-text: 26px;
+
   @include tablet {
     --font-size-section-title: 30px;
     --section-title-spacing: 0px;
+    --font-size-section-title-lg: 44px;
+    --font-size-section-description-lg: var(--font-size-md);
+    --line-height-section-description-lg: var(--line-height-md);
 
     // 4.9rem on the 15px root
     --font-size-hero: 66px;
@@ -103,11 +123,26 @@ $fonts: (
   @include mobile {
     // 24px on a 390px screen, down to ~21px at 320px so long titles still fit 2 lines
     --font-size-section-title: clamp(20px, 6.6vw, 24px);
+    // phones keep the standard section sizes
+    --font-size-section-title-lg: var(--font-size-section-title);
+    --line-height-section-title-lg: var(--line-height-section-title);
+    --font-size-section-description-lg: var(--font-size-md);
+    --line-height-section-description-lg: var(--line-height-md);
 
     --font-size-hero: 42px;
     --line-height-hero: 1.2;
     --letter-spacing-hero: normal;
     --font-size-hero-lead: 16px;
     --line-height-hero-lead: 1.3;
+
+    // 4.5rem on the 13.7px mobile root
+    --font-size-icon-box-title: 24px;
+    --font-size-icon-box-text: 16px;
+    --line-height-icon-box-text: 22px;
+
+    --font-size-page-hero: 61px;
+    --line-height-page-hero: 1;
+    --font-size-page-hero-lead: 18px;
+    --line-height-page-hero-lead: 1.4;
   }
 }

@@ -34,6 +34,8 @@
   // overlays / surfaces
   // wp-raykan hero video overlay, drawn at 0.8 opacity
   --color-overlay-hero: color-mix(in srgb, var(--color-primary) 80%, transparent);
+  // inner-page hero (RPageHero), drawn at 0.8 opacity
+  --color-overlay-page-hero: linear-gradient(136deg, var(--color-primary) 40%, var(--color-white) 100%);
   --color-overlay-about: color-mix(in srgb, var(--color-primary) 70%, transparent);
   --color-header-sticky: var(--color-primary);
   --color-mobile-menu-bg: var(--color-grey-100);

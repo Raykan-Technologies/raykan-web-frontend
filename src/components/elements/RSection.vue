@@ -32,6 +32,11 @@ interface IProps {
    */
   description?: string;
   /**
+   * Page hero: full width with the hero side padding (`--hero-padding-x`) and room for the
+   * fixed header on top, the same on every page
+   */
+  hero?: boolean;
+  /**
    * Row nested inside another section's column (Elementor inner section):
    * no background, width limit, gutter or vertical padding unless given
    */
@@ -68,7 +73,7 @@ interface IProps {
   imagePosition?: string;
   imageSize?: string;
   /**
-   * Overlay color drawn over the background image
+   * Overlay drawn over the background image: a color or a gradient
    */
   overlay?: string;
   overlayOpacity?: number;
@@ -87,7 +92,7 @@ const props = withDefaults(defineProps<IProps>(), {
 })
 
 const theme = computed(() => props.theme ?? (props.inner ? 'transparent' : 'light'))
-const width = computed(() => props.width ?? (props.inner ? 'full' : 'boxed'))
+const width = computed(() => props.width ?? (props.inner || props.hero ? 'full' : 'boxed'))
 const gutter = computed(() => props.gutter ?? (props.inner ? 'none' : 'default'))
 
 const toBreakpoints = <T,>(value?: TResponsive<T>): { desktop?: T; tablet?: T; mobile?: T } =>
@@ -122,7 +127,7 @@ const sectionStyles = computed(() => {
 })
 
 const overlayStyles = computed(() => ({
-  backgroundColor: props.overlay,
+  background: props.overlay,
   opacity: props.overlayOpacity,
 }))
 
@@ -135,6 +140,7 @@ const sectionClasses = computed(() => [
   `r-section--columns-${props.columnsAlign}`,
   {
     'r-section--inner': props.inner,
+    'r-section--hero': props.hero,
     'r-section--full': width.value === 'full',
     'r-section--grid': hasColumns.value,
   },
@@ -265,6 +271,19 @@ const sectionClasses = computed(() => [
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
+  }
+
+  // page heroes: same side padding and header offset on every page
+  &.r-section--hero {
+    --section-padding-x: var(--hero-padding-x);
+
+    padding-top: calc(var(--header-height) + var(--section-padding-y));
+    overflow: hidden;
+
+    // lets hero titles size themselves to the content width (cqw)
+    > .r-section__container {
+      container-type: inline-size;
+    }
   }
 
   // inner rows always span their column, even inside a centered section

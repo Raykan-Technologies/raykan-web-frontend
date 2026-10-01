@@ -1,0 +1,24 @@
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { RButton, RPageHero } from '@/components/elements'
+import type { TSolutionHero } from '@/router/solutions'
+import softwareDevelopment from '@/assets/images/solutions/software-development.webp'
+
+defineProps<{
+  solution: TSolutionHero;
+}>()
+const { t } = useI18n()
+
+// wp-raykan hero photo per solution (pexels)
+const images: Record<TSolutionHero, string> = {
+  'software-development': softwareDevelopment,
+}
+</script>
+<template>
+  <r-page-hero :title="t(`solutions.items.${solution}`)"
+    :description="t(`solutions.pages.${solution}.hero.description`)" :image="images[solution]">
+    <template #actions>
+      <r-button :to="{ name: 'contact' }">{{ t('buttons.talkWithUs') }}</r-button>
+    </template>
+  </r-page-hero>
+</template>

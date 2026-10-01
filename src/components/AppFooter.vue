@@ -59,9 +59,8 @@ const isActive = (name: string) => route.name === name
       <router-link :to="{ name: 'home' }" class="app-footer__logo" :aria-label="t('common.companyName')">
         <AppLogo />
       </router-link>
-      <!-- white icons over the home page photo, cyan on the solid footer -->
-      <AppSocialLinks :size="28" effect="highlight" :tone="transparent ? 'light' : 'accent'"
-        class="app-footer__socials" />
+      <!-- white on every page, turning cyan on hover -->
+      <AppSocialLinks :size="28" effect="highlight" tone="light" class="app-footer__socials" />
     </div>
 
     <div class="app-footer__row">

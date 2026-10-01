@@ -27,6 +27,8 @@ $spacing: (
   // sections: padding above/below and beside every page section (RSection)
   --section-padding-y: 80px;
   --section-padding-x: 40px;
+  // page heroes (RSection `hero`): wider side padding that grows with the screen
+  --hero-padding-x: clamp(56px, 12.5vw, 320px);
 
   // widgets
   --widget-spacing: 20px;
@@ -46,6 +48,7 @@ $spacing: (
   @include tablet {
     --container-width: 1024px;
     --section-padding-y: 64px;
+    --hero-padding-x: 64px;
   }
 
   @include mobile {
@@ -53,6 +56,7 @@ $spacing: (
     --header-height: 70px;
     --section-padding-y: 48px;
     --section-padding-x: 24px;
+    --hero-padding-x: 40px;
   }
 }
 

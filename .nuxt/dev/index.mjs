@@ -2226,6 +2226,7 @@ const blog = {
 
 const buttons = {
   joinOurTeam: "Join our team!",
+  talkWithUs: "Talk With Us",
   openMenu: "Open menu",
   closeMenu: "Close menu"
 };
@@ -2362,12 +2363,42 @@ const menus = {
 const solutions = {
   title: "Solutions",
   items: {
-    "software-development": "Software Development",
+    "software-development": "Custom Software Development",
     "data-science": "Data Science",
     "digital-marketing": "Digital Marketing",
     "blockchain": "Blockchain",
     "enterprise-resource-planning": "Enterprise Resource Planning",
     "it-managed-service": "IT Managed Service"
+  },
+  // copy per solution page, one key per section
+  pages: {
+    "software-development": {
+      hero: {
+        description: "Build your dream custom software that empowers your business growth with Raykan Technologies."
+      },
+      offerings: {
+        title: "Custom Web and Mobile Application Development Solutions",
+        description: "We develop custom web and mobile applications, delivering scalable, high-quality solutions. Our expertise ensures seamless, responsive, and user-focused experiences across all platforms.",
+        items: {
+          web: {
+            title: "Web Application",
+            text: "Create software solutions to help your business stand out from the vast world of the internet."
+          },
+          mobile: {
+            title: "Mobile Application",
+            text: "Formulate a convenient and efficient programs easily accessible through mobile devices."
+          },
+          desktop: {
+            title: "Desktop Application",
+            text: "Develops, installs, and maintains desktop software tailored to enhance user productivity and streamline workflows, ensuring smooth operation and high performance."
+          },
+          game: {
+            title: "Game Application",
+            text: "Designs, develops, and optimizes engaging, interactive games across platforms to provide seamless entertainment and immersive user experiences."
+          }
+        }
+      }
+    }
   }
 };
 
@@ -3242,7 +3273,22 @@ dev_server_logs_default,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"258c0-sSa7baWOAMqGnLmDiLcjdlsbVRg\"",
+    "mtime": "2026-10-01T07:16:23.931Z",
+    "size": 153792,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"97fa7-W1V2rcOatdm/vECONHkJmMS5NIU\"",
+    "mtime": "2026-10-01T07:16:23.933Z",
+    "size": 622503,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
