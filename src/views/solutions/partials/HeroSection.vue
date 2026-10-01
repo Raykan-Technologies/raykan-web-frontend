@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { RButton, RPageHero } from '@/components/elements'
 import type { TSolutionHero } from '@/router/solutions'
+import blockchain from '@/assets/images/solutions/blockchain.webp'
 import dataScience from '@/assets/images/solutions/data-science.webp'
 import digitalMarketing from '@/assets/images/solutions/digital-marketing.webp'
 import softwareDevelopment from '@/assets/images/solutions/software-development.webp'
@@ -16,6 +17,7 @@ const images: Record<TSolutionHero, string> = {
   'software-development': softwareDevelopment,
   'data-science': dataScience,
   'digital-marketing': digitalMarketing,
+  'blockchain': blockchain,
 }
 </script>
 <template>

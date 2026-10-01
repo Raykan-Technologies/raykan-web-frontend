@@ -13,14 +13,18 @@ const { t, te } = useI18n()
 const prefix = computed(() => `solutions.pages.${props.solution}.offerings`)
 const items = computed(() => SOLUTION_OFFERINGS[props.solution] ?? [])
 
-// 4 described cards = 2x2, 3 = one row (stacked on tablet), more = 4 across (2 on tablet);
-// mobile always stacks
+const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${prefix.value}.items.${key}.text`) : undefined
+const hasText = computed(() => items.value.some((item) => text(item.key)))
+
+// 3 cards = one row (stacked on tablet), described cards = 2 across, title-only = 4 across
+// (2 on tablet); mobile always stacks
 const columns = computed(() => {
-  if (items.value.length === 4) return 2
-  return items.value.length === 3 ? { desktop: 3, tablet: 1 } : { desktop: 4, tablet: 2 }
+  if (items.value.length === 3) return { desktop: 3, tablet: 1 }
+  return hasText.value ? 2 : { desktop: 4, tablet: 2 }
 })
 
-const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${prefix.value}.items.${key}.text`) : undefined
+// a lone last card in 2 columns is centred, like wp-raykan's last row (blockchain)
+const centerLast = computed(() => hasText.value && items.value.length !== 3 && items.value.length % 2 === 1)
 </script>
 <template>
   <!-- wp-raykan solution page section 3d14f47: intro + offering cards, at least 80% of the screen tall -->
@@ -28,7 +32,8 @@ const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${pre
     min-height="calc(var(--app-height, 100svh) * 0.8)" :title="t(`${prefix}.title`)"
     :description="t(`${prefix}.description`)">
     <r-section class="offerings-section__grid" inner :columns="columns" gap="default">
-      <r-card v-for="item in items" :key="item.key" :icon="item.icon" icon-position="left"
+      <r-card v-for="(item, index) in items" :key="item.key" :icon="item.icon" icon-position="left"
+        :class="{ 'offerings-section__card--centered': centerLast && index === items.length - 1 }"
         :title="t(`${prefix}.items.${item.key}.title`)">
         <p v-if="text(item.key)">{{ text(item.key) }}</p>
       </r-card>
@@ -60,6 +65,17 @@ const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${pre
 
     @include mobile {
       row-gap: var(--section-gap);
+    }
+  }
+
+  // spans the row at one column's width (mobile stacks anyway)
+  .offerings-section__card--centered {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--section-gap)) / 2);
+
+    @include mobile {
+      width: 100%;
     }
   }
 }

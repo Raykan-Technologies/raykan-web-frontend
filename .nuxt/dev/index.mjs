@@ -2655,6 +2655,43 @@ const solutions = {
           affiliate: { title: "Affiliate Analysis" }
         }
       }
+    },
+    "blockchain": {
+      seo: {
+        title: "Blockchain Development Services",
+        description: "Secure blockchain solutions from Raykan Technologies: cryptocurrency development, DApps, smart contracts, decentralized storage and supply chain tracking.",
+        imageAlt: "Blockchain developers writing code at their workstations"
+      },
+      hero: {
+        description: "Create a database that effectively stores information digitally and connects them to a chain for effective data dissemination."
+      },
+      // wp-raykan copy, with its typos and grammar fixed
+      offerings: {
+        title: "Secure Blockchain Solutions",
+        description: "We provide blockchain solutions that enable secure, transparent, and decentralized transactions. Our services include blockchain development, and smart contract implementation to strengthen your online presence and achieve impactful results.",
+        items: {
+          cryptocurrency: {
+            title: "Cryptocurrency Development",
+            text: "Cryptocurrency development services to successfully implement your custom-made altcoin."
+          },
+          dapps: {
+            title: "DApps",
+            text: "Building Decentralized Applications (DApps) running on decentralized peer-to-peer (P2P) networks."
+          },
+          contracts: {
+            title: "Smart Contracts",
+            text: "Automated contracts that execute when certain conditions are met, without the need for a mediator."
+          },
+          storage: {
+            title: "Decentralized Storage",
+            text: "Create a reliable decentralized storage that has better security than traditional centralized storage."
+          },
+          supplyChain: {
+            title: "Supply Chain Management",
+            text: "Effectively track products on the supply chain from raw materials to finished product, with improved transparency and accountability."
+          }
+        }
+      }
     }
   }
 };
@@ -3628,7 +3665,22 @@ dev_server_logs_default,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"2a361-5gkUkSZVsJaQnQBiA79Co5NtEOA\"",
+    "mtime": "2026-10-01T08:46:28.939Z",
+    "size": 172897,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"abacf-PowFmUEn7xAb0P3IK9bD33WJcFM\"",
+    "mtime": "2026-10-01T08:46:28.940Z",
+    "size": 703183,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

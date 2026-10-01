@@ -1,14 +1,18 @@
 import { kebabize } from "@/utils"
 import type { TKebabKeys } from "../types"
+import AppNetwork from "./AppNetwork.vue"
 import ArrowRight from "./ArrowRight.vue"
 import Blocks from "./Blocks.vue"
 import ChartGrowth from "./ChartGrowth.vue"
 import ChartPie from "./ChartPie.vue"
 import Check from "./Check.vue"
 import ChevronDown from "./ChevronDown.vue"
+import CloudUpload from "./CloudUpload.vue"
 import CodeWindow from "./CodeWindow.vue"
+import Coins from "./Coins.vue"
 import CursorClick from "./CursorClick.vue"
 import Database from "./Database.vue"
+import DocumentSigned from "./DocumentSigned.vue"
 import Envelope from "./Envelope.vue"
 import Facebook from "./Facebook.vue"
 import Gamepad from "./Gamepad.vue"
@@ -29,18 +33,23 @@ import ServerShield from "./ServerShield.vue"
 import ShareNodes from "./ShareNodes.vue"
 import Smartphone from "./Smartphone.vue"
 import Star from "./Star.vue"
+import Truck from "./Truck.vue"
 import XIcon from "./XIcon.vue"
 
 const iconComponents = {
+  AppNetwork,
   ArrowRight,
   Blocks,
   ChartGrowth,
   ChartPie,
   Check,
   ChevronDown,
+  CloudUpload,
   CodeWindow,
+  Coins,
   CursorClick,
   Database,
+  DocumentSigned,
   Envelope,
   Facebook,
   Gamepad,
@@ -61,6 +70,7 @@ const iconComponents = {
   ShareNodes,
   Smartphone,
   Star,
+  Truck,
   XIcon,
 }
 

@@ -27,4 +27,11 @@ export const SOLUTION_OFFERINGS: Partial<Record<TSolution, Array<{ key: string; 
         { key: 'analysis', icon: 'chart-pie' },
         { key: 'affiliate', icon: 'link' },
     ],
+    'blockchain': [
+        { key: 'cryptocurrency', icon: 'coins' },
+        { key: 'dapps', icon: 'app-network' },
+        { key: 'contracts', icon: 'document-signed' },
+        { key: 'storage', icon: 'cloud-upload' },
+        { key: 'supplyChain', icon: 'truck' },
+    ],
 }
