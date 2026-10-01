@@ -81,7 +81,7 @@ export default {
       hero: {
         description: 'Software solutions to better reach your target audience through the use of the internet and various forms of digital media.',
       },
-      // wp-raykan icon boxes are titles only, without text
+      // wp-raykan offerings are titles only, without text
       offerings: {
         title: 'Cutting-Edge Digital Marketing Services',
         description: 'We offer digital marketing services, including SEO, social media management, content marketing, PPC, and email campaigns, to enhance your online presence and drive results.',

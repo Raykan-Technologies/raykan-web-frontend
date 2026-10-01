@@ -14,21 +14,29 @@ interface IProps {
    * Makes the whole card a router link
    */
   to?: RouteLocationRaw;
+  /**
+   * Icon above the centred text (home services) or left of left-aligned text
+   */
+  iconPosition?: 'top' | 'left';
 }
 
-const props = defineProps<IProps>()
+const props = withDefaults(defineProps<IProps>(), {
+  iconPosition: 'top',
+})
 
 const tag = computed(() => props.to ? RouterLink : 'div')
 </script>
 <template>
-  <component :is="tag" class="r-card" :class="{ 'r-card--link': to }" :to="to">
+  <component :is="tag" class="r-card" :class="[`r-card--icon-${iconPosition}`, { 'r-card--link': to }]" :to="to">
     <div v-if="icon" class="r-card__icon">
       <r-icon name="hexagon" :size="74" class="r-card__icon-badge" />
       <r-icon :name="icon" :size="32" class="r-card__icon-glyph" />
     </div>
-    <h3 v-if="title" class="r-card__title">{{ title }}</h3>
-    <div v-if="$slots.default" class="r-card__body">
-      <slot></slot>
+    <div class="r-card__content">
+      <h3 v-if="title" class="r-card__title">{{ title }}</h3>
+      <div v-if="$slots.default" class="r-card__body">
+        <slot></slot>
+      </div>
     </div>
   </component>
 </template>
@@ -56,6 +64,32 @@ const tag = computed(() => props.to ? RouterLink : 'div')
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
     background-color: var(--color-card-hover);
+  }
+
+  // stacked: title and body are laid out as direct items of the card
+  .r-card__content {
+    display: contents;
+  }
+
+  &.r-card--icon-left {
+    flex-direction: row;
+    gap: 20px;
+    padding: 24px 20px;
+    text-align: left;
+
+    .r-card__icon {
+      flex-shrink: 0;
+    }
+
+    .r-card__content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .r-card__body {
+      width: auto;
+    }
   }
 
   // hexagon badge with the icon centered on it

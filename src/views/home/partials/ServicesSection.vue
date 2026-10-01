@@ -28,7 +28,7 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
   <r-section class="services-section" tag="article" align="center" min-height="400px"
     :label="t('home.services.label')" :title="t('home.services.title')"
     :description="t('home.services.text')">
-    <r-section class="services-section__cards" inner :columns="3" gap="no">
+    <r-section class="services-section__cards" inner :columns="3" gap="default">
       <r-card v-for="card in cards" :key="card.solution" :icon="card.icon" :title="card.title"
         :to="{ name: card.solution }">
         <p>{{ card.description }}</p>
@@ -37,12 +37,18 @@ const cards = computed(() => services.map(({ solution, icon }) => ({
   </r-section>
 </template>
 <style lang="scss">
+@use '@/assets/css/breakpoints' as *;
+
 // wp-raykan home services (sections 5594714 desktop/tablet, b658762 mobile)
 .services-section {
   .services-section__cards {
-    // the cards sit edge to edge (wp-raykan column gap "no"), rows touch too
+    // same gap between rows as between columns, like the solution offering cards
     > .r-section__container {
-      row-gap: 0;
+      row-gap: var(--section-gap);
+
+      @include mobile {
+        row-gap: var(--section-gap);
+      }
     }
   }
 }

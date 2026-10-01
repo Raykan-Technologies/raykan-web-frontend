@@ -52,11 +52,6 @@ withDefaults(defineProps<IProps>(), {
     font-size: var(--font-size-icon-box-title);
     font-weight: var(--font-weight-semibold);
     line-height: 1.2;
-
-    // title-only boxes stay centred on the icon
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 
   .r-icon-box__text {
