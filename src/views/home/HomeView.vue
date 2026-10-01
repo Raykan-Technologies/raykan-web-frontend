@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useHead } from '#imports'
+import { usePageSeo } from '@/composables/seo'
 import FooterSection from './partials/FooterSection.vue'
 import HeroSection from './partials/HeroSection.vue'
 import MetricsSection from './partials/MetricsSection.vue'
@@ -9,7 +9,11 @@ import TestimonialsSection from './partials/TestimonialsSection.vue'
 
 const { t } = useI18n()
 
-useHead({ title: () => t('home.title') })
+usePageSeo({
+  title: () => t('home.seo.title'),
+  description: () => t('home.seo.description'),
+  absoluteTitle: true,
+})
 </script>
 <template>
   <main>

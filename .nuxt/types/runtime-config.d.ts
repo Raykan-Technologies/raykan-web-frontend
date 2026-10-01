@@ -9,10 +9,34 @@ import { RuntimeConfig as UserRuntimeConfig, PublicRuntimeConfig as UserPublicRu
 
       cdnURL: string,
    },
+
+   "nuxt-schema-org": {
+      reactive: boolean,
+
+      minify: boolean,
+
+      scriptAttributes: {
+         "data-nuxt-schema-org": boolean,
+      },
+
+      identity: any,
+
+      version: string,
+   },
+
+   "nuxt-site-config": {
+      stack: Array<{
+
+      }>,
+
+      version: string,
+
+      debug: boolean,
+
+      multiTenancy: Array<any>,
+   },
   }
   interface SharedPublicRuntimeConfig {
-   appName: string,
-
    piniaPluginPersistedstate: {
       storage: string,
    },

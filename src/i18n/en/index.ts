@@ -10,6 +10,7 @@ import faq from './faq'
 import home from './home'
 import kando from './kando'
 import menus from './menus'
+import siteConfig from './site-config'
 import solutions from './solutions'
 
 export default {
@@ -25,5 +26,6 @@ export default {
   home,
   kando,
   menus,
+  nuxtSiteConfig: siteConfig,
   solutions,
 }

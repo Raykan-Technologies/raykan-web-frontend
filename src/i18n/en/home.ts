@@ -1,5 +1,10 @@
 export default {
-  title: 'Home',
+  // search and share copy, title is used as is (no company suffix)
+  // {'|'} escapes vue-i18n's plural separator
+  seo: {
+    title: "Raykan Technologies {'|'} Custom Software & IT Solutions",
+    description: 'Raykan Technologies delivers tailored IT solutions with expertise and innovation, ensuring technology meets your business needs.',
+  },
   hero: {
     tagline: 'Driving Innovation, Empowering People',
     titleLine1: 'Creating technologies',

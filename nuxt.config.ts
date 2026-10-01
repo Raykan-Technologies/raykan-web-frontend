@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/i18n',
+    'nuxt-schema-org',
   ],
 
   css: ['@/assets/css/app.scss'],
@@ -25,14 +26,15 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
+      meta: [{ name: 'theme-color', content: '#0CBB97' }],
     },
   },
 
-  runtimeConfig: {
-    public: {
-      // appended to every page title, overridable with NUXT_PUBLIC_APP_NAME
-      appName: 'Raykan',
-    },
+  // base for canonical, og:url and JSON-LD urls, overridable with NUXT_SITE_URL
+  // name and description come from i18n (nuxtSiteConfig.*)
+  site: {
+    url: 'https://raykan.co',
+    defaultLocale: 'en',
   },
 
   i18n: {

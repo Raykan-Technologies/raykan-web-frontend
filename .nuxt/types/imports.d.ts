@@ -2,6 +2,7 @@
 export {}
 declare global {
   const $fetch: typeof import('../fetch.mjs').$fetch
+  const OG_IMAGE_SIZE: typeof import('../../src/composables/seo').OG_IMAGE_SIZE
   const abortNavigation: typeof import('../../node_modules/nuxt/dist/app/composables/router').abortNavigation
   const acceptHMRUpdate: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').acceptHMRUpdate
   const addRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router').addRouteMiddleware
@@ -12,30 +13,84 @@ declare global {
   const clearNuxtState: typeof import('../../node_modules/nuxt/dist/app/composables/state').clearNuxtState
   const computed: typeof import('vue').computed
   const createError: typeof import('../../node_modules/nuxt/dist/app/composables/error').createError
+  const createSitePathResolver: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils').createSitePathResolver
   const createUseAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').createUseAsyncData
   const createUseFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch').createUseFetch
   const customRef: typeof import('vue').customRef
+  const defineAddress: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineAddress
+  const defineAggregateOffer: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineAggregateOffer
+  const defineAggregateRating: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineAggregateRating
   const defineAppConfig: typeof import('../../node_modules/nuxt/dist/app/nuxt').defineAppConfig
+  const defineArticle: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineArticle
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
+  const defineBook: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineBook
+  const defineBookEdition: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineBookEdition
+  const defineBreadcrumb: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineBreadcrumb
+  const defineComment: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineComment
   const defineComponent: typeof import('vue').defineComponent
+  const defineCourse: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineCourse
+  const defineDataset: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineDataset
+  const defineDiscussionForumPosting: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineDiscussionForumPosting
+  const defineEmployerAggregateRating: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineEmployerAggregateRating
+  const defineEvent: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineEvent
+  const defineFoodEstablishment: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineFoodEstablishment
+  const defineHowTo: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineHowTo
+  const defineHowToStep: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineHowToStep
   const defineI18nConfig: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').defineI18nConfig
   const defineI18nLocale: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').defineI18nLocale
   const defineI18nRoute: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').defineI18nRoute
+  const defineImage: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineImage
+  const defineItemList: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineItemList
+  const defineJobPosting: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineJobPosting
   const defineLazyHydrationComponent: typeof import('../../node_modules/nuxt/dist/app/composables/lazy-hydration').defineLazyHydrationComponent
+  const defineListItem: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineListItem
+  const defineLocalBusiness: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineLocalBusiness
+  const defineMathSolver: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineMathSolver
+  const defineMovie: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineMovie
+  const defineMusicAlbum: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineMusicAlbum
+  const defineMusicGroup: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineMusicGroup
+  const defineMusicPlaylist: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineMusicPlaylist
+  const defineMusicRecording: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineMusicRecording
   const defineNuxtComponent: typeof import('../../node_modules/nuxt/dist/app/composables/component').defineNuxtComponent
   const defineNuxtLink: typeof import('../../node_modules/nuxt/dist/app/components/nuxt-link').defineNuxtLink
   const defineNuxtPlugin: typeof import('../../node_modules/nuxt/dist/app/nuxt').defineNuxtPlugin
   const defineNuxtRouteMiddleware: typeof import('../../node_modules/nuxt/dist/app/composables/router').defineNuxtRouteMiddleware
+  const defineOffer: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineOffer
+  const defineOpeningHours: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineOpeningHours
+  const defineOrganization: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineOrganization
   const definePageMeta: typeof import('../../node_modules/nuxt/dist/app/composables/pages').definePageMeta
   const definePayloadPlugin: typeof import('../../node_modules/nuxt/dist/app/nuxt').definePayloadPlugin
   const definePayloadReducer: typeof import('../../node_modules/nuxt/dist/app/composables/payload').definePayloadReducer
   const definePayloadReviver: typeof import('../../node_modules/nuxt/dist/app/composables/payload').definePayloadReviver
+  const definePerson: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').definePerson
+  const definePlace: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').definePlace
+  const definePodcastEpisode: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').definePodcastEpisode
+  const definePodcastSeason: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').definePodcastSeason
+  const definePodcastSeries: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').definePodcastSeries
+  const defineProduct: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineProduct
+  const defineQuestion: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineQuestion
+  const defineQuiz: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineQuiz
+  const defineReadAction: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineReadAction
+  const defineRecipe: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineRecipe
+  const defineReview: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineReview
+  const defineSearchAction: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineSearchAction
+  const defineService: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineService
+  const defineSoftwareApp: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineSoftwareApp
   const defineStore: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').defineStore
+  const defineTVEpisode: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineTVEpisode
+  const defineTVSeason: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineTVSeason
+  const defineTVSeries: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineTVSeries
+  const defineVacationRental: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineVacationRental
+  const defineVideo: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineVideo
+  const defineVirtualLocation: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineVirtualLocation
+  const defineWebPage: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineWebPage
+  const defineWebSite: typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue').defineWebSite
   const effect: typeof import('vue').effect
   const effectScope: typeof import('vue').effectScope
   const getAppManifest: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getAppManifest
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
+  const getNitroOrigin: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/getNitroOrigin').getNitroOrigin
   const getRouteRules: typeof import('../../node_modules/nuxt/dist/app/composables/manifest').getRouteRules
   const h: typeof import('vue').h
   const hasInjectionContext: typeof import('vue').hasInjectionContext
@@ -104,6 +159,7 @@ declare global {
   const tryUseNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt').tryUseNuxtApp
   const unref: typeof import('vue').unref
   const updateAppConfig: typeof import('../../node_modules/nuxt/dist/app/config').updateAppConfig
+  const updateSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/updateSiteConfig').updateSiteConfig
   const useAnnouncer: typeof import('../../node_modules/nuxt/dist/app/composables/announcer').useAnnouncer
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config').useAppConfig
   const useAppStore: typeof import('../../src/stores/app').useAppStore
@@ -131,9 +187,10 @@ declare global {
   const useLocalePath: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useLocalePath
   const useLocaleRoute: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useLocaleRoute
   const useModel: typeof import('vue').useModel
+  const useNitroOrigin: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useNitroOrigin').useNitroOrigin
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt').useNuxtApp
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData').useNuxtData
-  const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools').useNuxtDevTools
+  const usePageSeo: typeof import('../../src/composables/seo').usePageSeo
   const usePinia: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables').usePinia
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview').usePreviewMode
   const useRequestEvent: typeof import('../../node_modules/nuxt/dist/app/composables/ssr').useRequestEvent
@@ -148,6 +205,7 @@ declare global {
   const useRouter: typeof import('../../node_modules/nuxt/dist/app/composables/router').useRouter
   const useRuntimeConfig: typeof import('../../node_modules/nuxt/dist/app/nuxt').useRuntimeConfig
   const useRuntimeHook: typeof import('../../node_modules/nuxt/dist/app/composables/runtime-hook').useRuntimeHook
+  const useSchemaOrg: typeof import('../../node_modules/nuxt-schema-org/dist/runtime/app/composables/useSchemaOrg').useSchemaOrg
   const useScript: typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs').useScript
   const useScriptAhrefsAnalytics: typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs').useScriptAhrefsAnalytics
   const useScriptBingUet: typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs').useScriptBingUet
@@ -197,10 +255,12 @@ declare global {
   const useServerSeoMeta: typeof import('../../node_modules/nuxt/dist/app/composables/head').useServerSeoMeta
   const useSetI18nParams: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useSetI18nParams
   const useShadowRoot: typeof import('vue').useShadowRoot
+  const useSiteConfig: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useSiteConfig').useSiteConfig
   const useSlots: typeof import('vue').useSlots
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state').useState
   const useSwitchLocalePath: typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index').useSwitchLocalePath
   const useTemplateRef: typeof import('vue').useTemplateRef
+  const useTitleFormatter: typeof import('../../src/composables/seo').useTitleFormatter
   const useTransitionState: typeof import('vue').useTransitionState
   const useViewport: typeof import('../../src/composables/viewport').useViewport
   const watch: typeof import('vue').watch
@@ -213,6 +273,8 @@ declare global {
   const withMemo: typeof import('vue').withMemo
   const withModifiers: typeof import('vue').withModifiers
   const withScopeId: typeof import('vue').withScopeId
+  const withSiteTrailingSlash: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils').withSiteTrailingSlash
+  const withSiteUrl: typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils').withSiteUrl
 }
 // for type re-export
 declare global {
@@ -222,12 +284,16 @@ declare global {
   // @ts-ignore
   export type { PageMeta } from '../../node_modules/nuxt/dist/app/composables/pages'
   import('../../node_modules/nuxt/dist/app/composables/pages')
+  // @ts-ignore
+  export type { IPageSeo } from '../../src/composables/seo'
+  import('../../src/composables/seo')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly $fetch: UnwrapRef<typeof import('../fetch.mjs')['$fetch']>
+    readonly OG_IMAGE_SIZE: UnwrapRef<typeof import('../../src/composables/seo')['OG_IMAGE_SIZE']>
     readonly abortNavigation: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['abortNavigation']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['acceptHMRUpdate']>
     readonly addRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['addRouteMiddleware']>
@@ -238,30 +304,84 @@ declare module 'vue' {
     readonly clearNuxtState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['clearNuxtState']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['createError']>
+    readonly createSitePathResolver: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils')['createSitePathResolver']>
     readonly createUseAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['createUseAsyncData']>
     readonly createUseFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['createUseFetch']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
+    readonly defineAddress: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineAddress']>
+    readonly defineAggregateOffer: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineAggregateOffer']>
+    readonly defineAggregateRating: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineAggregateRating']>
     readonly defineAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineAppConfig']>
+    readonly defineArticle: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineArticle']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
+    readonly defineBook: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineBook']>
+    readonly defineBookEdition: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineBookEdition']>
+    readonly defineBreadcrumb: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineBreadcrumb']>
+    readonly defineComment: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineComment']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
+    readonly defineCourse: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineCourse']>
+    readonly defineDataset: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineDataset']>
+    readonly defineDiscussionForumPosting: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineDiscussionForumPosting']>
+    readonly defineEmployerAggregateRating: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineEmployerAggregateRating']>
+    readonly defineEvent: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineEvent']>
+    readonly defineFoodEstablishment: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineFoodEstablishment']>
+    readonly defineHowTo: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineHowTo']>
+    readonly defineHowToStep: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineHowToStep']>
     readonly defineI18nConfig: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['defineI18nConfig']>
     readonly defineI18nLocale: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['defineI18nLocale']>
     readonly defineI18nRoute: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['defineI18nRoute']>
+    readonly defineImage: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineImage']>
+    readonly defineItemList: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineItemList']>
+    readonly defineJobPosting: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineJobPosting']>
     readonly defineLazyHydrationComponent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/lazy-hydration')['defineLazyHydrationComponent']>
+    readonly defineListItem: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineListItem']>
+    readonly defineLocalBusiness: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineLocalBusiness']>
+    readonly defineMathSolver: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineMathSolver']>
+    readonly defineMovie: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineMovie']>
+    readonly defineMusicAlbum: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineMusicAlbum']>
+    readonly defineMusicGroup: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineMusicGroup']>
+    readonly defineMusicPlaylist: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineMusicPlaylist']>
+    readonly defineMusicRecording: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineMusicRecording']>
     readonly defineNuxtComponent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/component')['defineNuxtComponent']>
     readonly defineNuxtLink: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/components/nuxt-link')['defineNuxtLink']>
     readonly defineNuxtPlugin: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineNuxtPlugin']>
     readonly defineNuxtRouteMiddleware: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['defineNuxtRouteMiddleware']>
+    readonly defineOffer: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineOffer']>
+    readonly defineOpeningHours: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineOpeningHours']>
+    readonly defineOrganization: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineOrganization']>
     readonly definePageMeta: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/pages')['definePageMeta']>
     readonly definePayloadPlugin: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['definePayloadPlugin']>
     readonly definePayloadReducer: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['definePayloadReducer']>
     readonly definePayloadReviver: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/payload')['definePayloadReviver']>
+    readonly definePerson: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['definePerson']>
+    readonly definePlace: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['definePlace']>
+    readonly definePodcastEpisode: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['definePodcastEpisode']>
+    readonly definePodcastSeason: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['definePodcastSeason']>
+    readonly definePodcastSeries: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['definePodcastSeries']>
+    readonly defineProduct: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineProduct']>
+    readonly defineQuestion: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineQuestion']>
+    readonly defineQuiz: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineQuiz']>
+    readonly defineReadAction: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineReadAction']>
+    readonly defineRecipe: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineRecipe']>
+    readonly defineReview: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineReview']>
+    readonly defineSearchAction: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineSearchAction']>
+    readonly defineService: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineService']>
+    readonly defineSoftwareApp: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineSoftwareApp']>
     readonly defineStore: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['defineStore']>
+    readonly defineTVEpisode: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineTVEpisode']>
+    readonly defineTVSeason: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineTVSeason']>
+    readonly defineTVSeries: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineTVSeries']>
+    readonly defineVacationRental: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineVacationRental']>
+    readonly defineVideo: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineVideo']>
+    readonly defineVirtualLocation: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineVirtualLocation']>
+    readonly defineWebPage: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineWebPage']>
+    readonly defineWebSite: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue')['defineWebSite']>
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly getAppManifest: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getAppManifest']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getNitroOrigin: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/getNitroOrigin')['getNitroOrigin']>
     readonly getRouteRules: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/manifest')['getRouteRules']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly hasInjectionContext: UnwrapRef<typeof import('vue')['hasInjectionContext']>
@@ -330,6 +450,7 @@ declare module 'vue' {
     readonly tryUseNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['tryUseNuxtApp']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly updateAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['updateAppConfig']>
+    readonly updateSiteConfig: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/updateSiteConfig')['updateSiteConfig']>
     readonly useAnnouncer: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/announcer')['useAnnouncer']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAppStore: UnwrapRef<typeof import('../../src/stores/app')['useAppStore']>
@@ -357,9 +478,10 @@ declare module 'vue' {
     readonly useLocalePath: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useLocalePath']>
     readonly useLocaleRoute: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useLocaleRoute']>
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
+    readonly useNitroOrigin: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useNitroOrigin')['useNitroOrigin']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
-    readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly usePageSeo: UnwrapRef<typeof import('../../src/composables/seo')['usePageSeo']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
@@ -374,6 +496,7 @@ declare module 'vue' {
     readonly useRouter: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/router')['useRouter']>
     readonly useRuntimeConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useRuntimeConfig']>
     readonly useRuntimeHook: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/runtime-hook')['useRuntimeHook']>
+    readonly useSchemaOrg: UnwrapRef<typeof import('../../node_modules/nuxt-schema-org/dist/runtime/app/composables/useSchemaOrg')['useSchemaOrg']>
     readonly useScript: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useScript']>
     readonly useScriptAhrefsAnalytics: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptAhrefsAnalytics']>
     readonly useScriptBingUet: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptBingUet']>
@@ -423,10 +546,12 @@ declare module 'vue' {
     readonly useServerSeoMeta: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/head')['useServerSeoMeta']>
     readonly useSetI18nParams: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useSetI18nParams']>
     readonly useShadowRoot: UnwrapRef<typeof import('vue')['useShadowRoot']>
+    readonly useSiteConfig: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/useSiteConfig')['useSiteConfig']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useSwitchLocalePath: UnwrapRef<typeof import('../../node_modules/@nuxtjs/i18n/dist/runtime/composables/index')['useSwitchLocalePath']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
+    readonly useTitleFormatter: UnwrapRef<typeof import('../../src/composables/seo')['useTitleFormatter']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
     readonly useViewport: UnwrapRef<typeof import('../../src/composables/viewport')['useViewport']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
@@ -439,5 +564,7 @@ declare module 'vue' {
     readonly withMemo: UnwrapRef<typeof import('vue')['withMemo']>
     readonly withModifiers: UnwrapRef<typeof import('vue')['withModifiers']>
     readonly withScopeId: UnwrapRef<typeof import('vue')['withScopeId']>
+    readonly withSiteTrailingSlash: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils')['withSiteTrailingSlash']>
+    readonly withSiteUrl: UnwrapRef<typeof import('../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils')['withSiteUrl']>
   }
 }

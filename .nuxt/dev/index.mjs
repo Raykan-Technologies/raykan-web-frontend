@@ -1,5 +1,5 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, createError, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, getCookie, setCookie, sanitizeStatusCode, removeResponseHeader, getRouterParam, getQuery as getQuery$1, getRequestWebStream, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, readBody, getResponseStatusText } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, createError, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, getRequestProtocol, getRequestHost as getRequestHost$1, getCookie, setCookie, sanitizeStatusCode, removeResponseHeader, setHeader, getRouterParam, getQuery as getQuery$1, getRequestWebStream, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, readBody, getResponseStatusText } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
@@ -7,7 +7,7 @@ import { parentPort, threadId } from 'node:worker_threads';
 import { escapeHtml } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/@vue/shared/dist/shared.cjs.js';
 import viteNodeEntry_mjs from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/@nuxt/vite-builder/dist/vite-node-entry.mjs';
 import { viteNodeFetch } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/@nuxt/vite-builder/dist/vite-node.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, joinRelativeURL, withTrailingSlash, withoutTrailingSlash, parsePath, withLeadingSlash, decodePath, encodePath } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/ufo/dist/index.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, hasProtocol, withHttps, joinRelativeURL, withTrailingSlash, withoutTrailingSlash, parsePath, withLeadingSlash, decodePath, encodePath } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/ufo/dist/index.mjs';
 import destr, { destr as destr$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/destr/dist/index.mjs';
 import { createHooks } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/hookable/dist/index.mjs';
 import { createFetch, Headers as Headers$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/ofetch/dist/node.mjs';
@@ -16,15 +16,16 @@ import { createStorage, prefixStorage } from 'file:///home/nulltest/Documents/wo
 import unstorage_47drivers_47fs from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/unstorage/drivers/fs.mjs';
 import { digest, hash as hash$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/ohash/dist/index.mjs';
 import { klona } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/klona/dist/index.mjs';
-import defu, { defuFn, createDefu } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/defu/dist/defu.mjs';
+import defu, { defuFn, defu as defu$1, createDefu } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/defu/dist/defu.mjs';
 import { snakeCase } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/scule/dist/index.mjs';
 import { getContext } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/nitropack/node_modules/unctx/dist/index.mjs';
 import { toRouteMatcher, createRouter } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/consola/dist/index.mjs';
+import consola, { createConsola, consola as consola$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/consola/dist/index.mjs';
 import { ErrorParser } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/youch-core/build/index.js';
 import { Youch } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/youch/build/index.js';
 import { SourceMapConsumer } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/nitropack/node_modules/source-map/source-map.js';
+import devalue from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/@nuxt/devalue/dist/devalue.mjs';
 import { createRouterMatcher } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/vue-router/vue-router.node.mjs';
 import { defineDiagnostics, createConsoleReporter } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/nostics/dist/index.mjs';
 import { ansiFormatter } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/nostics/dist/formatters/ansi.mjs';
@@ -32,7 +33,7 @@ import { AsyncLocalStorage } from 'node:async_hooks';
 import { stringify, uneval } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/devalue/index.js';
 import { getContext as getContext$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/unctx/dist/index.mjs';
 import { captureRawStackTrace, parseRawStackTrace } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/errx/dist/index.mjs';
-import { isVNode, isRef, toValue } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/vue/index.mjs';
+import { isVNode, isRef, toValue as toValue$1 } from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/vue/index.mjs';
 import _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw from 'file:///home/nulltest/Documents/work/raykan/raykan-website/raykan-web-frontend/node_modules/@nuxt/vite-builder/dist/fix-stacktrace.mjs';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -654,9 +655,17 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "appName": "Raykan",
     "piniaPluginPersistedstate": {
       "storage": "localStorage"
+    },
+    "nuxt-schema-org": {
+      "reactive": true,
+      "minify": false,
+      "scriptAttributes": {
+        "data-nuxt-schema-org": true
+      },
+      "identity": "",
+      "version": "6.4.3"
     },
     "i18n": {
       "baseUrl": "",
@@ -695,6 +704,37 @@ const _inlineRuntimeConfig = {
         }
       }
     }
+  },
+  "nuxt-schema-org": {
+    "reactive": true,
+    "minify": false,
+    "scriptAttributes": {
+      "data-nuxt-schema-org": true
+    },
+    "identity": "",
+    "version": "6.4.3"
+  },
+  "nuxt-site-config": {
+    "stack": [
+      {
+        "_context": "system",
+        "_priority": -15,
+        "env": "development"
+      },
+      {
+        "_priority": -3,
+        "_context": "nuxt-site-config:config",
+        "url": "https://raykan.co",
+        "defaultLocale": "en"
+      },
+      {
+        "_context": "@nuxtjs/i18n",
+        "defaultLocale": "en"
+      }
+    ],
+    "version": "4.2.3",
+    "debug": false,
+    "multiTenancy": []
   }
 };
 const envOptions = {
@@ -2077,6 +2117,149 @@ const _kjk6Dw9tqiq6X0IMUdv_nq0dgU81fykhmbBYXRIhAk = (function(nitro) {
   });
 });
 
+const SiteConfigPriority = {
+  nitro: -4,
+  runtime: 0
+};
+
+function toValue(source) {
+  if (typeof source === "function")
+    return source();
+  if (source && source.__v_isRef === true)
+    return source.value;
+  return source;
+}
+const NUXT_SITE_PREFIX = "NUXT_SITE_";
+const NUXT_PUBLIC_SITE_PREFIX = "NUXT_PUBLIC_SITE_";
+function envSiteConfig(env = {}) {
+  const config = {};
+  for (const key of Object.keys(env)) {
+    const prefixLength = key.startsWith(NUXT_SITE_PREFIX) ? NUXT_SITE_PREFIX.length : key.startsWith(NUXT_PUBLIC_SITE_PREFIX) ? NUXT_PUBLIC_SITE_PREFIX.length : 0;
+    if (!prefixLength)
+      continue;
+    const segments = key.slice(prefixLength).split("_");
+    let configKey = segments[0].toLowerCase();
+    for (let i = 1; i < segments.length; i++) {
+      const segment = segments[i];
+      configKey += segment[0]?.toUpperCase() + segment.slice(1).toLowerCase();
+    }
+    config[configKey] = env[key];
+  }
+  return config;
+}
+
+function normalizeSiteConfig(config) {
+  if (typeof config.indexable !== "undefined")
+    config.indexable = String(config.indexable) !== "false";
+  if (typeof config.trailingSlash !== "undefined" && !config.trailingSlash)
+    config.trailingSlash = String(config.trailingSlash) !== "false";
+  if (config.url && !hasProtocol(String(config.url), { acceptRelative: true, strict: false }))
+    config.url = withHttps(String(config.url));
+  const keys = Object.keys(config).sort((a, b) => a.localeCompare(b));
+  const newConfig = {};
+  for (const k of keys)
+    newConfig[k] = config[k];
+  return newConfig;
+}
+function createSiteConfigStack(options) {
+  const debug = options?.debug || false;
+  const stack = [];
+  function push(input) {
+    if (!input || typeof input !== "object" || Object.keys(input).length === 0) {
+      return () => {
+      };
+    }
+    if (!input._context && debug) {
+      let lastFunctionName = new Error("tmp").stack?.split("\n")[2]?.split(" ")[5];
+      if (lastFunctionName?.includes("/"))
+        lastFunctionName = "anonymous";
+      input._context = lastFunctionName;
+    }
+    const entry = {};
+    for (const k in input) {
+      const val = input[k];
+      if (typeof val !== "undefined" && val !== "")
+        entry[k] = val;
+    }
+    if (!Object.keys(entry).some((k) => !k.startsWith("_"))) {
+      return () => {
+      };
+    }
+    stack.push(entry);
+    return () => {
+      const idx = stack.indexOf(entry);
+      if (idx !== -1)
+        stack.splice(idx, 1);
+    };
+  }
+  function get(options2) {
+    const siteConfig = {};
+    if (options2?.debug)
+      siteConfig._context = {};
+    siteConfig._priority = {};
+    for (const o in stack.sort((a, b) => (a._priority || 0) - (b._priority || 0))) {
+      for (const k in stack[o]) {
+        const key = k;
+        const val = options2?.resolveRefs ? toValue(stack[o][k]) : stack[o][k];
+        if (!k.startsWith("_") && typeof val !== "undefined" && val !== "") {
+          siteConfig[k] = val;
+          if (typeof stack[o]._priority !== "undefined" && stack[o]._priority !== -1) {
+            siteConfig._priority[key] = stack[o]._priority;
+          }
+          if (options2?.debug)
+            siteConfig._context[key] = stack[o]._context?.[key] || stack[o]._context || "anonymous";
+        }
+      }
+    }
+    return options2?.skipNormalize ? siteConfig : normalizeSiteConfig(siteConfig);
+  }
+  return {
+    stack,
+    push,
+    get
+  };
+}
+
+function getSiteRouteRules(event) {
+  const nitroRouteRules = getRouteRules(event);
+  const routeRules = nitroRouteRules;
+  return {
+    site: routeRules.site,
+    // Nitro 3 removes matched false rules, while Nuxt treats a missing ssr rule as no-SSR.
+    ssr: routeRules.ssr ?? false
+  };
+}
+
+const logger = /* @__PURE__ */ createConsola({
+  defaults: {
+    tag: "nuxt-site-config"
+  }
+});
+
+function getSiteConfig(e, _options) {
+  if (!e.context._initedSiteConfig) {
+    logger.warn("Site config has not been initialized yet. If you're trying to access site config in a server middleware then this not yet supported. See https://github.com/harlan-zw/nuxt-seo/issues/397");
+  }
+  e.context.siteConfig = e.context.siteConfig || createSiteConfigStack();
+  const options = defu$1(_options, useRuntimeConfig(e)["nuxt-site-config"], { debug: false });
+  return e.context.siteConfig.get(options);
+}
+
+const _oQJ2k38Z4ilqmLwwuF4pfBRcxWE1r07GmWncoDbNA = defineNitroPlugin(async (nitroApp) => {
+  nitroApp.hooks.hook("render:html", async (ctx, { event }) => {
+    const routeOptions = getSiteRouteRules(event);
+    const isIsland = process.env.NUXT_COMPONENT_ISLANDS && event.path.startsWith("/__nuxt_island");
+    event.path;
+    const noSSR = !!process.env.NUXT_NO_SSR || event.context.nuxt?.noSSR || routeOptions.ssr === false && !isIsland || (false);
+    if (noSSR) {
+      const siteConfig = Object.fromEntries(
+        Object.entries(getSiteConfig(event)).map(([k, v]) => [k, toValue(v)])
+      );
+      ctx.body.push(`<script>window.__NUXT_SITE_CONFIG__=${devalue(siteConfig)}<\/script>`);
+    }
+  });
+});
+
 /*!
   * shared v11.4.12
   * (c) 2026 kazuya kawaguchi
@@ -2247,6 +2430,10 @@ const common = {
   companyName: "Raykan Technologies",
   copyright: "\u24B8 {year} Raykan Technologies. All Rights Reserved.",
   footerMenu: "Footer",
+  // default share image (public/og/default.jpg)
+  seo: {
+    imageAlt: "Developer writing code on a laptop at Raykan Technologies"
+  },
   rating: "Rated {rating} out of 5",
   carousel: {
     goToSlide: "Go to slide {index}",
@@ -2283,7 +2470,12 @@ const faq = {
 };
 
 const home = {
-  title: "Home",
+  // search and share copy, title is used as is (no company suffix)
+  // {'|'} escapes vue-i18n's plural separator
+  seo: {
+    title: "Raykan Technologies {'|'} Custom Software & IT Solutions",
+    description: "Raykan Technologies delivers tailored IT solutions with expertise and innovation, ensuring technology meets your business needs."
+  },
   hero: {
     tagline: "Driving Innovation, Empowering People",
     titleLine1: "Creating technologies",
@@ -2360,6 +2552,11 @@ const menus = {
   kando: "Kando"
 };
 
+const siteConfig = {
+  name: "@:common.companyName",
+  description: "Breaking through conventions, realizing optimal results."
+};
+
 const solutions = {
   title: "Solutions",
   items: {
@@ -2373,6 +2570,12 @@ const solutions = {
   // copy per solution page, one key per section
   pages: {
     "software-development": {
+      // search and share copy, title gets the company suffix
+      seo: {
+        title: "Custom Software Development Services",
+        description: "Raykan builds custom web, mobile, desktop and game applications that solve complex problems, improve efficiency and help your business grow.",
+        imageAlt: "Software developer writing code across a monitor, laptop and tablet"
+      },
       hero: {
         description: "Build your dream custom software that empowers your business growth with Raykan Technologies."
       },
@@ -2415,6 +2618,7 @@ const en = {
   home,
   kando,
   menus,
+  nuxtSiteConfig: siteConfig,
   solutions
 };
 
@@ -2502,6 +2706,8 @@ function defineRenderHandler(render) {
   });
 }
 
+const E=globalThis.process?.env||Object.create(null),I=globalThis.process||{env:E},O=void 0!==I&&I.env&&I.env.NODE_ENV||void 0;I.platform||"";!!I.stdout?.isTTY;!!E.DEBUG;"test"===O||!!E.TEST;"production"===O||"production"===E.MODE;const c="dev"===O||"development"===O||"development"===E.MODE,d=(I.versions?.node||"").replace(/^v/,"")||null;Number(d?.split(".")[0])||null;const f=!!I?.versions?.node;!!I?.versions?.nub;const g="Bun"in globalThis,Y="Deno"in globalThis,p="fastly"in globalThis,b="Netlify"in globalThis,m="EdgeRuntime"in globalThis,v="Cloudflare-Workers"===globalThis.navigator?.userAgent,V=[[b,"netlify"],[m,"edge-light"],[v,"workerd"],[p,"fastly"],[Y,"deno"],[g,"bun"],[f,"node"]];const H=function(){const E=V.find(E=>E[0]);if(E)return {name:E[1]}}();H?.name||"";
+
 const scheduledTasks = false;
 
 const tasks = {
@@ -2566,6 +2772,100 @@ function createPathIndexLanguageParser(index = 0) {
     }
     return parts.length > index ? parts[index] || "" : "";
   };
+}
+
+const PROTOCOL_RE = /^https?:\/\//;
+const TRAILING_SLASH_RE = /\/$/;
+function isLocalhostHost(host) {
+  if (!host || host.startsWith("localhost") || host.startsWith("127.") || host.startsWith("0.0.0.0"))
+    return true;
+  const hostname = host.startsWith("[") ? host.slice(0, host.indexOf("]") + 1) : host;
+  return hostname === "[::1]" || hostname === "::1" || hostname === "[::]" || hostname === "::";
+}
+function extractHostname(host) {
+  if (host.startsWith("[")) {
+    const close = host.indexOf("]");
+    return close !== -1 ? host.slice(0, close + 1) : host;
+  }
+  const colonCount = host.split(":").length - 1;
+  return colonCount === 1 ? host.slice(0, host.indexOf(":")) : host;
+}
+function splitHostPort(host) {
+  if (host.startsWith("[")) {
+    const close = host.indexOf("]");
+    const hostname = close !== -1 ? host.slice(0, close + 1) : host;
+    const port = close !== -1 && host[close + 1] === ":" ? host.slice(close + 2) : "";
+    const normalized = hostname === "[::1]" || hostname === "[::]" ? "localhost" : hostname;
+    return { host: normalized, port };
+  }
+  if (host === "0.0.0.0" || host.startsWith("0.0.0.0:")) {
+    const i = host.indexOf(":");
+    return { host: "localhost", port: i !== -1 ? host.slice(i + 1) : "" };
+  }
+  const colonCount = host.split(":").length - 1;
+  if (colonCount === 1) {
+    const i = host.indexOf(":");
+    return { host: host.slice(0, i), port: host.slice(i + 1) };
+  }
+  if (colonCount > 1) {
+    const normalized = host === "::1" || host === "::" ? "localhost" : `[${host}]`;
+    return { host: normalized, port: "" };
+  }
+  return { host, port: "" };
+}
+function getNitroOrigin$1(ctx = {}) {
+  const isDev = ctx.isDev ?? c;
+  const isPrerender = ctx.isPrerender ?? false;
+  let host = "";
+  let port = "";
+  let protocol = process.env.NITRO_SSL_CERT && process.env.NITRO_SSL_KEY ? "https" : "http";
+  if (isDev || isPrerender) {
+    const devEnv = process.env.__NUXT_DEV__ || process.env.NUXT_VITE_NODE_OPTIONS;
+    if (devEnv) {
+      const parsed = JSON.parse(devEnv);
+      const origin = parsed.proxy?.url || parsed.baseURL?.replace("/__nuxt_vite_node__", "");
+      host = origin.replace(PROTOCOL_RE, "").replace(TRAILING_SLASH_RE, "");
+      protocol = origin.startsWith("https") ? "https" : "http";
+    }
+  }
+  if (isDev && isLocalhostHost(host) && ctx.requestHost) {
+    const reqHost = extractHostname(ctx.requestHost);
+    if (reqHost && !isLocalhostHost(reqHost)) {
+      host = ctx.requestHost;
+      protocol = ctx.requestProtocol || protocol;
+    }
+  }
+  if (!host && ctx.requestHost) {
+    host = ctx.requestHost;
+    protocol = ctx.requestProtocol || protocol;
+  }
+  if (!host) {
+    host = process.env.NITRO_HOST || process.env.HOST || "";
+    if (isDev)
+      port = process.env.NITRO_PORT || process.env.PORT || "3000";
+  }
+  const split = splitHostPort(host);
+  host = split.host;
+  if (split.port)
+    port = split.port;
+  host = process.env.NUXT_SITE_HOST_OVERRIDE || host;
+  port = process.env.NUXT_SITE_PORT_OVERRIDE || port;
+  if (host.startsWith("http://") || host.startsWith("https://")) {
+    protocol = host.startsWith("https://") ? "https" : "http";
+    host = host.replace(PROTOCOL_RE, "");
+  } else if (!isDev && (!host || !isLocalhostHost(host))) {
+    protocol = "https";
+  }
+  return `${protocol}://${host}${port ? `:${port}` : ""}/`;
+}
+
+function getNitroOrigin(e) {
+  return getNitroOrigin$1({
+    isDev: true,
+    isPrerender: false,
+    requestHost: e ? getRequestHost$1(e, { xForwardedHost: true }) : void 0,
+    requestProtocol: e ? getRequestProtocol(e, { xForwardedProto: true }) : void 0
+  });
 }
 
 function useRuntimeI18n(nuxtApp, event) {
@@ -2810,7 +3110,7 @@ function createI18nContext() {
   };
 }
 
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[{"rel":"icon","href":"/favicon.ico","sizes":"any"},{"rel":"apple-touch-icon","href":"/apple-touch-icon.png"}],"style":[],"script":[],"noscript":[]};
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"},{"name":"theme-color","content":"#0CBB97"}],"link":[{"rel":"icon","href":"/favicon.ico","sizes":"any"},{"rel":"apple-touch-icon","href":"/apple-touch-icon.png"}],"style":[],"script":[],"noscript":[]};
 
 const appRootTag = "div";
 
@@ -3268,6 +3568,7 @@ function onConsoleLog(callback) {
 
 const plugins = [
   _kjk6Dw9tqiq6X0IMUdv_nq0dgU81fykhmbBYXRIhAk,
+_oQJ2k38Z4ilqmLwwuF4pfBRcxWE1r07GmWncoDbNA,
 _cW81nn5Iobpdm0KjmhGxx2K_UhUpaPnlxnKlcPPngA,
 dev_server_logs_default,
 _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
@@ -3276,16 +3577,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"258c7-fIUA28l7KizXy3mnBfxXDrfgxUw\"",
-    "mtime": "2026-10-01T07:24:46.338Z",
-    "size": 153799,
+    "etag": "\"29096-fOeTGAOI1CWtYskrEvM522/gQkA\"",
+    "mtime": "2026-10-01T07:57:52.229Z",
+    "size": 168086,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"97fca-oIXmtN3JvbHL5/diiBQUWryt7kY\"",
-    "mtime": "2026-10-01T07:24:46.338Z",
-    "size": 622538,
+    "etag": "\"a66c2-Y8mPpsz/LKPPGJ+Q9Le+oHZHZNU\"",
+    "mtime": "2026-10-01T07:57:52.229Z",
+    "size": 681666,
     "path": "index.mjs.map"
   }
 };
@@ -3375,6 +3676,92 @@ const _aq4BVW = eventHandler((event) => {
     setResponseHeader(event, "Content-Length", asset.size);
   }
   return readAsset(id);
+});
+
+const PORT_SUFFIX_RE = /:\d+$/;
+const serverEnvSiteConfig = envSiteConfig(globalThis._importMeta_.env || {});
+const _c0dKlW = eventHandler(async (e) => {
+  if (e.context._initedSiteConfig)
+    return;
+  const runtimeConfig = useRuntimeConfig(e);
+  const config = runtimeConfig["nuxt-site-config"];
+  const nitroApp = useNitroApp();
+  const siteConfig = e.context.siteConfig || createSiteConfigStack({
+    debug: config.debug
+  });
+  const nitroOrigin = getNitroOrigin(e);
+  e.context.siteConfigNitroOrigin = nitroOrigin;
+  {
+    siteConfig.push({
+      _context: "nitro:init",
+      _priority: SiteConfigPriority.nitro,
+      url: nitroOrigin
+    });
+  }
+  siteConfig.push({
+    _context: "runtimeEnv",
+    _priority: SiteConfigPriority.runtime,
+    ...runtimeConfig.site || {},
+    ...runtimeConfig.public.site || {},
+    ...serverEnvSiteConfig
+  });
+  const buildStack = config.stack || [];
+  buildStack.forEach((c) => siteConfig.push(c));
+  const routeRules = getSiteRouteRules(e);
+  if (routeRules.site) {
+    siteConfig.push({
+      _context: "route-rules",
+      ...routeRules.site
+    });
+  }
+  if (config.multiTenancy) {
+    const host = parseURL(nitroOrigin).host?.replace(PORT_SUFFIX_RE, "") || "";
+    const tenant = config.multiTenancy?.find((t) => t.hosts.includes(host));
+    if (tenant) {
+      siteConfig.push({
+        _context: `multi-tenancy:${host}`,
+        _priority: SiteConfigPriority.runtime,
+        ...tenant.config
+      });
+    }
+  }
+  const ctx = { siteConfig, event: e };
+  await nitroApp.hooks.callHook("site-config:init", ctx);
+  e.context.siteConfig = ctx.siteConfig;
+  e.context._initedSiteConfig = true;
+});
+
+const _EVmcJi = eventHandler(async (e) => {
+  const siteConfig = getSiteConfig(e);
+  const nitroOrigin = getNitroOrigin(e);
+  const runtimeConfig = useRuntimeConfig(e);
+  const stack = e.context.siteConfig.stack;
+  setHeader(e, "Content-Type", "application/json");
+  return {
+    config: siteConfig,
+    stack,
+    nitroOrigin,
+    version: runtimeConfig["nuxt-site-config"].version
+  };
+});
+
+function useSchemaOrgConfig(e) {
+  const runtimeConfig = useRuntimeConfig(e);
+  return defu$1(runtimeConfig["nuxt-schema-org"], {
+    scriptAttributes: {}
+  });
+}
+
+const _tCnIvw = defineEventHandler(async (e) => {
+  const nitroOrigin = getNitroOrigin(e);
+  const siteConfig = getSiteConfig(e);
+  return {
+    nitroOrigin,
+    runtimeConfig: useSchemaOrgConfig(e),
+    siteConfig: {
+      url: siteConfig.url
+    }
+  };
 });
 
 const _messagesHandler = defineEventHandler(async (event) => {
@@ -3515,7 +3902,7 @@ function vueInstall(head) {
 }
 
 const VueResolver = /* @__PURE__ */ Object.assign(
-  (_, value) => isRef(value) ? toValue(value) : value,
+  (_, value) => isRef(value) ? toValue$1(value) : value,
   // identity for plain non-reactive values, so the SSR default init entry
   // keeps its precomputed fast path (see unhead/server createHead)
   { _static: true }
@@ -3922,6 +4309,9 @@ const _lazy_xokAwy = () => Promise.resolve().then(function () { return renderer;
 const handlers = [
   { route: '', handler: _aq4BVW, lazy: false, middleware: true, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_xokAwy, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _c0dKlW, lazy: false, middleware: true, method: undefined },
+  { route: '/__site-config__/debug.json', handler: _EVmcJi, lazy: false, middleware: false, method: undefined },
+  { route: '/__schema-org__/debug.json', handler: _tCnIvw, lazy: false, middleware: false, method: undefined },
   { route: '/_i18n/:hash/:locale/messages.json', handler: _yPrzjY, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_xokAwy, lazy: true, middleware: false, method: undefined }

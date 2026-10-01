@@ -90,6 +90,8 @@
     "../node_modules/@pinia/nuxt/node_modules",
     "../node_modules/pinia-plugin-persistedstate/node_modules",
     "../node_modules/@nuxtjs/i18n/node_modules",
+    "../node_modules/nuxt-site-config/node_modules",
+    "../node_modules/nuxt-schema-org/node_modules",
     "../node_modules/@nuxt/devtools/node_modules",
     "../node_modules/@nuxt/telemetry/node_modules",
     "../dist",
@@ -104,6 +106,8 @@
     "../layers/*/server/**/*",
     "../layers/*/modules/*/runtime/server/**/*",
     "../node_modules/runtime",
-    "../node_modules/dist/runtime"
+    "../node_modules/dist/runtime",
+    "../node_modules/nuxt-site-config/dist/runtime",
+    "../node_modules/nuxt-site-config/dist/dist/runtime"
   ]
 }

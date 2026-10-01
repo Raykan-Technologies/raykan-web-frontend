@@ -121,6 +121,24 @@
       "#internal-i18n-types": [
         "../node_modules/@nuxtjs/i18n/dist/types.d.mts"
       ],
+      "@unhead/schema-org/vue": [
+        "../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/vue"
+      ],
+      "@unhead/schema-org": [
+        "../node_modules/nuxt-schema-org/dist/vendor/schema-org-v3/index"
+      ],
+      "#site-config": [
+        "../node_modules/nuxt-site-config/dist/runtime"
+      ],
+      "#site-config/*": [
+        "../node_modules/nuxt-site-config/dist/runtime/*"
+      ],
+      "#schema-org": [
+        "../node_modules/nuxt-schema-org/dist/runtime"
+      ],
+      "#schema-org/*": [
+        "../node_modules/nuxt-schema-org/dist/runtime/*"
+      ],
       "#vue-router": [
         "../node_modules/vue-router"
       ],
@@ -131,7 +149,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/dev.json"
+        "./manifest/meta/66a127e9-9926-4b21-918c-17bae16ebbad.json"
       ],
       "#components": [
         "./components"
@@ -195,6 +213,8 @@
     "../node_modules/@pinia/nuxt/node_modules",
     "../node_modules/pinia-plugin-persistedstate/node_modules",
     "../node_modules/@nuxtjs/i18n/node_modules",
+    "../node_modules/nuxt-site-config/node_modules",
+    "../node_modules/nuxt-schema-org/node_modules",
     "../node_modules/@nuxt/devtools/node_modules",
     "../node_modules/@nuxt/telemetry/node_modules",
     "../dist",
@@ -213,7 +233,11 @@
     "../node_modules/dist/runtime/server",
     "../node_modules/*.*",
     "../node_modules/dist/*.*",
-    "dev",
+    "../node_modules/nuxt-site-config/dist/runtime/server",
+    "../node_modules/nuxt-site-config/dist/dist/runtime/server",
+    "../node_modules/nuxt-site-config/dist/*.*",
+    "../node_modules/nuxt-site-config/dist/dist/*.*",
+    "../.output",
     "../server"
   ],
   "vueCompilerOptions": {

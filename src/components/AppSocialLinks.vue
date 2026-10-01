@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { RIcon } from '@/components/elements'
-import type { TIcons } from '@/components/icons'
+import { SOCIAL_LINKS, type TSocial } from '@/constants'
 
 withDefaults(defineProps<{
   size?: number;
@@ -22,11 +22,7 @@ withDefaults(defineProps<{
 const { t } = useI18n()
 
 // icon names double as the i18n keys under common.socials
-const links: Array<{ icon: Extract<TIcons, 'facebook' | 'linkedin' | 'instagram'>; url: string }> = [
-  { icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61553746709358' },
-  { icon: 'linkedin', url: 'https://www.linkedin.com/company/raykan-technologies/' },
-  { icon: 'instagram', url: 'https://www.instagram.com/raykantech/' },
-]
+const links = (Object.keys(SOCIAL_LINKS) as TSocial[]).map((icon) => ({ icon, url: SOCIAL_LINKS[icon] }))
 </script>
 <template>
   <ul class="app-social-links" :class="[`app-social-links--${effect}`, `app-social-links--${tone}`]">

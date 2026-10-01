@@ -19,6 +19,7 @@
     "@nuxtjs/i18n": "^10.6.0",
     "@pinia/nuxt": "^1.0.2",
     "nuxt": "^4.5.2",
+    "nuxt-schema-org": "^6.4.3",
     "pinia": "^4.0.3",
     "pinia-plugin-persistedstate": "^4.7.1",
     "swiper": "^14.3.0",

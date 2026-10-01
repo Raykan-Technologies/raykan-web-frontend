@@ -11,6 +11,12 @@ export default {
   // copy per solution page, one key per section
   pages: {
     'software-development': {
+      // search and share copy, title gets the company suffix
+      seo: {
+        title: 'Custom Software Development Services',
+        description: 'Raykan builds custom web, mobile, desktop and game applications that solve complex problems, improve efficiency and help your business grow.',
+        imageAlt: 'Software developer writing code across a monitor, laptop and tablet',
+      },
       hero: {
         description: 'Build your dream custom software that empowers your business growth with Raykan Technologies.',
       },
