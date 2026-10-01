@@ -162,5 +162,38 @@ export default {
         },
       },
     },
+    'it-managed-service': {
+      seo: {
+        title: 'Managed IT Services and Support',
+        description: 'Keep your infrastructure running smoothly with managed IT services from Raykan: system administration, networking, security and helpdesk support.',
+        imageAlt: 'IT helpdesk team with headsets supporting users at their computers',
+      },
+      hero: {
+        description: 'Creating effective programs to ensure that digital and technological data run effectively.',
+      },
+      // wp-raykan copy, the helpdesk text reworded for grammar
+      offerings: {
+        title: 'Seamless Technical Operations',
+        description: 'We provide IT managed services, offering proactive monitoring, network management, cybersecurity, and support to ensure your technology infrastructure runs smoothly.',
+        items: {
+          administration: {
+            title: 'System Administration',
+            text: 'Manage hardware and software resources to support business operations and prevent any downtime.',
+          },
+          networking: {
+            title: 'Networking',
+            text: 'Installs, configures and maintains various network devices and services such as routers, switches, firewalls, load balancers, VPN and QoS.',
+          },
+          security: {
+            title: 'Security',
+            text: 'Ensures confidentiality, integrity and availability of the network and systems.',
+          },
+          helpdesk: {
+            title: 'IT Helpdesk',
+            text: 'Provide end users with technical support and assistance for software and hardware issues on their devices.',
+          },
+        },
+      },
+    },
   },
 }

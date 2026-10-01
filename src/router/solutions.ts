@@ -26,6 +26,7 @@ export const SOLUTION_HEROES = [
     'digital-marketing',
     'blockchain',
     'enterprise-resource-planning',
+    'it-managed-service',
 ] as const satisfies ReadonlyArray<TSolution>
 
 export type TSolutionHero = typeof SOLUTION_HEROES[number]

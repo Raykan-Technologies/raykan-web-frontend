@@ -47,4 +47,10 @@ export const SOLUTION_OFFERINGS: Partial<Record<TSolution, Array<{ key: string; 
         { key: 'commerce', icon: 'credit-card' },
         { key: 'security', icon: 'shield-check' },
     ],
+    'it-managed-service': [
+        { key: 'administration', icon: 'user-shield' },
+        { key: 'networking', icon: 'network' },
+        { key: 'security', icon: 'shield-check' },
+        { key: 'helpdesk', icon: 'headset' },
+    ],
 }

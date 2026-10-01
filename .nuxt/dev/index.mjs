@@ -2720,6 +2720,39 @@ const solutions = {
           security: { title: "System Security Architect" }
         }
       }
+    },
+    "it-managed-service": {
+      seo: {
+        title: "Managed IT Services and Support",
+        description: "Keep your infrastructure running smoothly with managed IT services from Raykan: system administration, networking, security and helpdesk support.",
+        imageAlt: "IT helpdesk team with headsets supporting users at their computers"
+      },
+      hero: {
+        description: "Creating effective programs to ensure that digital and technological data run effectively."
+      },
+      // wp-raykan copy, the helpdesk text reworded for grammar
+      offerings: {
+        title: "Seamless Technical Operations",
+        description: "We provide IT managed services, offering proactive monitoring, network management, cybersecurity, and support to ensure your technology infrastructure runs smoothly.",
+        items: {
+          administration: {
+            title: "System Administration",
+            text: "Manage hardware and software resources to support business operations and prevent any downtime."
+          },
+          networking: {
+            title: "Networking",
+            text: "Installs, configures and maintains various network devices and services such as routers, switches, firewalls, load balancers, VPN and QoS."
+          },
+          security: {
+            title: "Security",
+            text: "Ensures confidentiality, integrity and availability of the network and systems."
+          },
+          helpdesk: {
+            title: "IT Helpdesk",
+            text: "Provide end users with technical support and assistance for software and hardware issues on their devices."
+          }
+        }
+      }
     }
   }
 };
@@ -3696,16 +3729,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"2a33c-bzunjqDAK/tFAcNhdkmFp+Fdocs\"",
-    "mtime": "2026-10-01T08:46:35.978Z",
-    "size": 172860,
+    "etag": "\"2a973-+FZqzOQc8BBLjUJEGW8Axw1CCmA\"",
+    "mtime": "2026-10-01T08:51:41.332Z",
+    "size": 174451,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"aba16-w+tHQtK7a+MraU2guMqR74mnZmw\"",
-    "mtime": "2026-10-01T08:46:35.978Z",
-    "size": 702998,
+    "etag": "\"ad0d4-8UP7ZQ3Kbo3SN3TsOOqhTDix6nE\"",
+    "mtime": "2026-10-01T08:51:41.333Z",
+    "size": 708820,
     "path": "index.mjs.map"
   }
 };

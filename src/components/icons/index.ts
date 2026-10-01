@@ -22,6 +22,7 @@ import Factory from "./Factory.vue"
 import Gamepad from "./Gamepad.vue"
 import Globe from "./Globe.vue"
 import HeadThinking from "./HeadThinking.vue"
+import Headset from "./Headset.vue"
 import Hexagon from "./Hexagon.vue"
 import Instagram from "./Instagram.vue"
 import Kanban from "./Kanban.vue"
@@ -31,6 +32,7 @@ import Linkedin from "./Linkedin.vue"
 import Megaphone from "./Megaphone.vue"
 import Menu from "./Menu.vue"
 import Modules from "./Modules.vue"
+import Network from "./Network.vue"
 import PenLine from "./PenLine.vue"
 import Quote from "./Quote.vue"
 import Receipt from "./Receipt.vue"
@@ -42,6 +44,7 @@ import ShoppingCart from "./ShoppingCart.vue"
 import Smartphone from "./Smartphone.vue"
 import Star from "./Star.vue"
 import Truck from "./Truck.vue"
+import UserShield from "./UserShield.vue"
 import XIcon from "./XIcon.vue"
 
 const iconComponents = {
@@ -67,6 +70,7 @@ const iconComponents = {
   Gamepad,
   Globe,
   HeadThinking,
+  Headset,
   Hexagon,
   Instagram,
   Kanban,
@@ -76,6 +80,7 @@ const iconComponents = {
   Megaphone,
   Menu,
   Modules,
+  Network,
   PenLine,
   Quote,
   Receipt,
@@ -87,6 +92,7 @@ const iconComponents = {
   Smartphone,
   Star,
   Truck,
+  UserShield,
   XIcon,
 }
 
