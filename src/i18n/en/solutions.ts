@@ -72,5 +72,30 @@ export default {
         },
       },
     },
+    'digital-marketing': {
+      seo: {
+        title: 'Digital Marketing and SEO Services',
+        description: 'Grow your online presence with SEO, pay-per-click, social media, content, email and mobile marketing campaigns built by Raykan Technologies.',
+        imageAlt: 'Marketing team reviewing campaign charts on paper and a laptop',
+      },
+      hero: {
+        description: 'Software solutions to better reach your target audience through the use of the internet and various forms of digital media.',
+      },
+      // wp-raykan icon boxes are titles only, without text
+      offerings: {
+        title: 'Cutting-Edge Digital Marketing Services',
+        description: 'We offer digital marketing services, including SEO, social media management, content marketing, PPC, and email campaigns, to enhance your online presence and drive results.',
+        items: {
+          seo: { title: 'Search Engine Optimization' },
+          ppc: { title: 'Pay-per-click' },
+          social: { title: 'Social Media Marketing' },
+          content: { title: 'Content Marketing' },
+          email: { title: 'Email Marketing' },
+          mobile: { title: 'Mobile Marketing' },
+          analysis: { title: 'Marketing Analysis' },
+          affiliate: { title: 'Affiliate Analysis' },
+        },
+      },
+    },
   },
 }

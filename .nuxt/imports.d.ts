@@ -47,3 +47,4 @@ export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../node_mod
 export { storages as piniaPluginPersistedstate } from '../node_modules/pinia-plugin-persistedstate/dist/nuxt/runtime/storages';
 export { useI18n } from 'vue-i18n';
 export { useSchemaOrg } from '../node_modules/nuxt-schema-org/dist/runtime/app/composables/useSchemaOrg';
+export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

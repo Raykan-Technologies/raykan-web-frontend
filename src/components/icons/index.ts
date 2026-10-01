@@ -3,10 +3,13 @@ import type { TKebabKeys } from "../types"
 import ArrowRight from "./ArrowRight.vue"
 import Blocks from "./Blocks.vue"
 import ChartGrowth from "./ChartGrowth.vue"
+import ChartPie from "./ChartPie.vue"
 import Check from "./Check.vue"
 import ChevronDown from "./ChevronDown.vue"
 import CodeWindow from "./CodeWindow.vue"
+import CursorClick from "./CursorClick.vue"
 import Database from "./Database.vue"
+import Envelope from "./Envelope.vue"
 import Facebook from "./Facebook.vue"
 import Gamepad from "./Gamepad.vue"
 import Globe from "./Globe.vue"
@@ -14,12 +17,16 @@ import HeadThinking from "./HeadThinking.vue"
 import Hexagon from "./Hexagon.vue"
 import Instagram from "./Instagram.vue"
 import LaptopCode from "./LaptopCode.vue"
+import Link from "./Link.vue"
 import Linkedin from "./Linkedin.vue"
 import Megaphone from "./Megaphone.vue"
 import Menu from "./Menu.vue"
 import Modules from "./Modules.vue"
+import PenLine from "./PenLine.vue"
 import Quote from "./Quote.vue"
+import SearchChart from "./SearchChart.vue"
 import ServerShield from "./ServerShield.vue"
+import ShareNodes from "./ShareNodes.vue"
 import Smartphone from "./Smartphone.vue"
 import Star from "./Star.vue"
 import XIcon from "./XIcon.vue"
@@ -28,10 +35,13 @@ const iconComponents = {
   ArrowRight,
   Blocks,
   ChartGrowth,
+  ChartPie,
   Check,
   ChevronDown,
   CodeWindow,
+  CursorClick,
   Database,
+  Envelope,
   Facebook,
   Gamepad,
   Globe,
@@ -39,12 +49,16 @@ const iconComponents = {
   Hexagon,
   Instagram,
   LaptopCode,
+  Link,
   Linkedin,
   Megaphone,
   Menu,
   Modules,
+  PenLine,
   Quote,
+  SearchChart,
   ServerShield,
+  ShareNodes,
   Smartphone,
   Star,
   XIcon,

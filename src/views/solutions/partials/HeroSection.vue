@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { RButton, RPageHero } from '@/components/elements'
 import type { TSolutionHero } from '@/router/solutions'
 import dataScience from '@/assets/images/solutions/data-science.webp'
+import digitalMarketing from '@/assets/images/solutions/digital-marketing.webp'
 import softwareDevelopment from '@/assets/images/solutions/software-development.webp'
 
 defineProps<{
@@ -14,6 +15,7 @@ const { t } = useI18n()
 const images: Record<TSolutionHero, string> = {
   'software-development': softwareDevelopment,
   'data-science': dataScience,
+  'digital-marketing': digitalMarketing,
 }
 </script>
 <template>

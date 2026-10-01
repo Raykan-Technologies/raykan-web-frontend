@@ -8,23 +8,32 @@ import { SOLUTION_OFFERINGS } from '../offerings'
 const props = defineProps<{
   solution: TSolution;
 }>()
-const { t } = useI18n()
+const { t, te } = useI18n()
 
 const prefix = computed(() => `solutions.pages.${props.solution}.offerings`)
 const items = computed(() => SOLUTION_OFFERINGS[props.solution] ?? [])
-// one row of 3 (data science) or a 2x2 grid (software development), as in wp-raykan;
-// 3 icon boxes don't fit side by side on tablet, so they stack there
-const columns = computed(() => items.value.length % 3 === 0 ? { desktop: 3, tablet: 1 } : 2)
+
+// wp-raykan rows: 4 items = 2x2, anything else = rows of 3 on a 6-track grid,
+// where a shorter last row shares the width evenly (digital marketing: 3 + 3 + 2)
+const isGrid2x2 = computed(() => items.value.length === 4)
+// tablet: 3 described boxes don't fit side by side, title-only rows go 2 across
+const columns = computed(() => isGrid2x2.value ? 2 : { desktop: 6, tablet: items.value.length > 3 ? 2 : 1 })
+
+const span = (index: number) => {
+  if (isGrid2x2.value) return undefined
+  const lastRow = items.value.length % 3
+  return index >= items.value.length - lastRow ? 6 / lastRow : 2
+}
 </script>
 <template>
-  <!-- wp-raykan solution page section 3d14f47: intro + 2x2 icon boxes, at least 80% of the screen tall -->
+  <!-- wp-raykan solution page section 3d14f47: intro + icon boxes, at least 80% of the screen tall -->
   <r-section class="offerings-section" width="1040px" align="center" vertical-align="middle"
     min-height="calc(var(--app-height, 100svh) * 0.8)" :title="t(`${prefix}.title`)"
     :description="t(`${prefix}.description`)">
     <r-section class="offerings-section__grid" inner :columns="columns" gap="wider">
-      <r-icon-box v-for="item in items" :key="item.key" :icon="item.icon"
-        :title="t(`${prefix}.items.${item.key}.title`)">
-        <p>{{ t(`${prefix}.items.${item.key}.text`) }}</p>
+      <r-icon-box v-for="(item, index) in items" :key="item.key" :icon="item.icon"
+        :title="t(`${prefix}.items.${item.key}.title`)" :style="{ '--offering-span': span(index) }">
+        <p v-if="te(`${prefix}.items.${item.key}.text`)">{{ t(`${prefix}.items.${item.key}.text`) }}</p>
       </r-icon-box>
     </r-section>
   </r-section>
@@ -50,6 +59,13 @@ const columns = computed(() => items.value.length % 3 === 0 ? { desktop: 3, tabl
 
   .offerings-section__grid > .r-section__container {
     row-gap: 64px;
+
+    // the 6-track desktop grid; tablet and mobile use plain columns
+    @include desktop {
+      > .r-icon-box {
+        grid-column: span var(--offering-span, 1);
+      }
+    }
 
     @include mobile {
       row-gap: 40px;
