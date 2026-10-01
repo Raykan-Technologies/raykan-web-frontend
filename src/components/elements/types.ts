@@ -1,6 +1,11 @@
 export type TIconTypes = 'default' | 'two-tone' | 'active' | 'error' | 'soft' | 'warning' | 'success' | 'none'
 
 /**
+ * Shape behind an RCard icon (see CARD_BADGES in badges.ts)
+ */
+export type TCardBadge = 'hexagon' | 'badge-circle' | 'badge-squircle' | 'badge-diamond' | 'badge-octagon' | 'badge-pentagon' | 'badge-blob'
+
+/**
  * Section background/text presets (wp-raykan landing page)
  * - light: white (services)
  * - primary: brand blue, white text (hero, testimonials, about)

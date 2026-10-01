@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { RCard, RSection } from '@/components/elements'
+import { pickCardBadges, RCard, RSection } from '@/components/elements'
 import type { TSolution } from '@/router/solutions'
 import { SOLUTION_OFFERINGS } from '../offerings'
 
@@ -12,6 +12,9 @@ const { t, te } = useI18n()
 
 const prefix = computed(() => `solutions.pages.${props.solution}.offerings`)
 const items = computed(() => SOLUTION_OFFERINGS[props.solution] ?? [])
+
+// a random-looking badge shape per card, seeded by the page so it's stable across loads
+const badges = computed(() => pickCardBadges(props.solution, items.value.length))
 
 const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${prefix.value}.items.${key}.text`) : undefined
 const hasText = computed(() => items.value.some((item) => text(item.key)))
@@ -32,7 +35,7 @@ const columns = computed(() => {
     :description="t(`${prefix}.description`)">
     <r-section class="offerings-section__grid" inner gap="default"
       :style="{ '--offering-columns': columns.desktop, '--offering-columns-tablet': columns.tablet }">
-      <r-card v-for="item in items" :key="item.key" :icon="item.icon" icon-position="left"
+      <r-card v-for="(item, index) in items" :key="item.key" :icon="item.icon" :badge="badges[index]" icon-position="left"
         :title="t(`${prefix}.items.${item.key}.title`)">
         <p v-if="text(item.key)">{{ text(item.key) }}</p>
       </r-card>

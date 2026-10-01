@@ -2,6 +2,12 @@ import { kebabize } from "@/utils"
 import type { TKebabKeys } from "../types"
 import AppNetwork from "./AppNetwork.vue"
 import ArrowRight from "./ArrowRight.vue"
+import BadgeBlob from "./BadgeBlob.vue"
+import BadgeCircle from "./BadgeCircle.vue"
+import BadgeDiamond from "./BadgeDiamond.vue"
+import BadgeOctagon from "./BadgeOctagon.vue"
+import BadgePentagon from "./BadgePentagon.vue"
+import BadgeSquircle from "./BadgeSquircle.vue"
 import Banknote from "./Banknote.vue"
 import Blocks from "./Blocks.vue"
 import Calculator from "./Calculator.vue"
@@ -50,6 +56,12 @@ import XIcon from "./XIcon.vue"
 const iconComponents = {
   AppNetwork,
   ArrowRight,
+  BadgeBlob,
+  BadgeCircle,
+  BadgeDiamond,
+  BadgeOctagon,
+  BadgePentagon,
+  BadgeSquircle,
   Banknote,
   Blocks,
   Calculator,

@@ -2,11 +2,12 @@
 import { computed } from 'vue'
 import { RouterLink, type RouteLocationRaw } from 'vue-router'
 import type { TIcons } from '../icons'
+import type { TCardBadge } from './types'
 import RIcon from './RIcon.vue'
 
 interface IProps {
   /**
-   * Icon shown on a hexagon badge above the title
+   * Icon shown on a badge shape, above or left of the title
    */
   icon?: TIcons;
   title?: string;
@@ -18,10 +19,15 @@ interface IProps {
    * Icon above the centred text (home services) or left of left-aligned text
    */
   iconPosition?: 'top' | 'left';
+  /**
+   * Shape behind the icon; grids pass `pickCardBadges()` for a random-looking mix
+   */
+  badge?: TCardBadge;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   iconPosition: 'top',
+  badge: 'hexagon',
 })
 
 const tag = computed(() => props.to ? RouterLink : 'div')
@@ -29,7 +35,7 @@ const tag = computed(() => props.to ? RouterLink : 'div')
 <template>
   <component :is="tag" class="r-card" :class="[`r-card--icon-${iconPosition}`, { 'r-card--link': to }]" :to="to">
     <div v-if="icon" class="r-card__icon">
-      <r-icon name="hexagon" :size="74" class="r-card__icon-badge" />
+      <r-icon :name="badge" :size="74" class="r-card__icon-badge" />
       <r-icon :name="icon" :size="32" class="r-card__icon-glyph" />
     </div>
     <div class="r-card__content">
@@ -92,7 +98,7 @@ const tag = computed(() => props.to ? RouterLink : 'div')
     }
   }
 
-  // hexagon badge with the icon centered on it
+  // badge shape with the icon centered on it
   .r-card__icon {
     display: grid;
     place-items: center;
