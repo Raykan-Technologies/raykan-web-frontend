@@ -17,23 +17,22 @@ const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${pre
 const hasText = computed(() => items.value.some((item) => text(item.key)))
 
 // 3 cards = one row (stacked on tablet), described cards = 2 across, title-only = 4 across
-// (2 on tablet); mobile always stacks
+// (3 when 4 leaves a short row, like wp-raykan's ERP), 2 on tablet; mobile always stacks
 const columns = computed(() => {
-  if (items.value.length === 3) return { desktop: 3, tablet: 1 }
-  return hasText.value ? 2 : { desktop: 4, tablet: 2 }
+  const count = items.value.length
+  if (count === 3) return { desktop: 3, tablet: 1 }
+  if (hasText.value) return { desktop: 2, tablet: 2 }
+  return { desktop: count % 4 === 0 ? 4 : 3, tablet: 2 }
 })
-
-// a lone last card in 2 columns is centred, like wp-raykan's last row (blockchain)
-const centerLast = computed(() => hasText.value && items.value.length !== 3 && items.value.length % 2 === 1)
 </script>
 <template>
   <!-- wp-raykan solution page section 3d14f47: intro + offering cards, at least 80% of the screen tall -->
   <r-section class="offerings-section" align="center" vertical-align="middle"
     min-height="calc(var(--app-height, 100svh) * 0.8)" :title="t(`${prefix}.title`)"
     :description="t(`${prefix}.description`)">
-    <r-section class="offerings-section__grid" inner :columns="columns" gap="default">
-      <r-card v-for="(item, index) in items" :key="item.key" :icon="item.icon" icon-position="left"
-        :class="{ 'offerings-section__card--centered': centerLast && index === items.length - 1 }"
+    <r-section class="offerings-section__grid" inner gap="default"
+      :style="{ '--offering-columns': columns.desktop, '--offering-columns-tablet': columns.tablet }">
+      <r-card v-for="item in items" :key="item.key" :icon="item.icon" icon-position="left"
         :title="t(`${prefix}.items.${item.key}.title`)">
         <p v-if="text(item.key)">{{ text(item.key) }}</p>
       </r-card>
@@ -59,23 +58,25 @@ const centerLast = computed(() => hasText.value && items.value.length !== 3 && i
     line-height: var(--line-height-section-description-lg);
   }
 
-  // same gap between rows as between columns
+  // rows of cards that wrap; a short last row is centred (blockchain 2+2+1, ERP 3+3+3+2)
   .offerings-section__grid > .r-section__container {
-    row-gap: var(--section-gap);
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--section-gap);
 
-    @include mobile {
-      row-gap: var(--section-gap);
-    }
-  }
+    > .r-card {
+      --columns: var(--offering-columns);
 
-  // spans the row at one column's width (mobile stacks anyway)
-  .offerings-section__card--centered {
-    grid-column: 1 / -1;
-    justify-self: center;
-    width: calc((100% - var(--section-gap)) / 2);
+      flex: 0 0 calc((100% - (var(--columns) - 1) * var(--section-gap)) / var(--columns));
 
-    @include mobile {
-      width: 100%;
+      @include tablet {
+        --columns: var(--offering-columns-tablet);
+      }
+
+      @include mobile {
+        --columns: 1;
+      }
     }
   }
 }

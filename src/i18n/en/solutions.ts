@@ -134,5 +134,33 @@ export default {
         },
       },
     },
+    'enterprise-resource-planning': {
+      seo: {
+        title: 'SAP ERP Implementation Services',
+        description: 'Raykan implements SAP ERP across finance, supply chain, sales, manufacturing and analytics, integrating and automating your business processes.',
+        imageAlt: 'Business team planning together around laptops in an office',
+      },
+      hero: {
+        description: 'Maintain important business information like policies and standards with SAP implementation.',
+      },
+      // wp-raykan offerings are titles only, without text
+      offerings: {
+        title: 'SAP Business Modules',
+        description: 'We offer SAP ERP solutions across key business modules, including finance, supply chain, human resources, and analytics. Our expertise ensures seamless integration and automation, driving efficiency and strategic growth for your organization.',
+        items: {
+          projectManagement: { title: 'Project Management' },
+          spendAnalysis: { title: 'Spend Analysis' },
+          businessPlanning: { title: 'Integrated Business Planning' },
+          dataManagement: { title: 'Modeling and Data Management' },
+          managementAccounting: { title: 'Management Accounting' },
+          financialAccounting: { title: 'Financial Accounting' },
+          finance: { title: 'Finance Implementation' },
+          manufacturing: { title: 'Manufacturing Implementation' },
+          sales: { title: 'Sales Implementation' },
+          commerce: { title: 'Commerce' },
+          security: { title: 'System Security Architect' },
+        },
+      },
+    },
   },
 }

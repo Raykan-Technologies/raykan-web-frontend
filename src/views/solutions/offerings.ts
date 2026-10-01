@@ -34,4 +34,17 @@ export const SOLUTION_OFFERINGS: Partial<Record<TSolution, Array<{ key: string; 
         { key: 'storage', icon: 'cloud-upload' },
         { key: 'supplyChain', icon: 'truck' },
     ],
+    'enterprise-resource-planning': [
+        { key: 'projectManagement', icon: 'kanban' },
+        { key: 'spendAnalysis', icon: 'receipt' },
+        { key: 'businessPlanning', icon: 'head-thinking' },
+        { key: 'dataManagement', icon: 'database' },
+        { key: 'managementAccounting', icon: 'chart-growth' },
+        { key: 'financialAccounting', icon: 'calculator' },
+        { key: 'finance', icon: 'banknote' },
+        { key: 'manufacturing', icon: 'factory' },
+        { key: 'sales', icon: 'shopping-cart' },
+        { key: 'commerce', icon: 'credit-card' },
+        { key: 'security', icon: 'shield-check' },
+    ],
 }

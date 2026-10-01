@@ -5,6 +5,7 @@ import type { TSolutionHero } from '@/router/solutions'
 import blockchain from '@/assets/images/solutions/blockchain.webp'
 import dataScience from '@/assets/images/solutions/data-science.webp'
 import digitalMarketing from '@/assets/images/solutions/digital-marketing.webp'
+import enterpriseResourcePlanning from '@/assets/images/solutions/enterprise-resource-planning.webp'
 import softwareDevelopment from '@/assets/images/solutions/software-development.webp'
 
 defineProps<{
@@ -18,6 +19,7 @@ const images: Record<TSolutionHero, string> = {
   'data-science': dataScience,
   'digital-marketing': digitalMarketing,
   'blockchain': blockchain,
+  'enterprise-resource-planning': enterpriseResourcePlanning,
 }
 </script>
 <template>
