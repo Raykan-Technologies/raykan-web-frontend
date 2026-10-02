@@ -2449,6 +2449,40 @@ const about = {
         text: "People, who thrive in collaboration to achieve objectives bigger than individual ambitions, are the heart of keeping our craft at its best."
       }
     }
+  },
+  coreTeam: {
+    label: "AMAZING PEOPLE AT RAYKAN",
+    title: "Our Core Team",
+    members: {
+      raymund: {
+        name: "Raymund Sesican",
+        role: "DIRECTOR",
+        bio: [
+          "Raymund has more than a decade of experience helping companies implement SAP ERP systems in their day-to-day operations. He has managed many development teams in various technology companies with his zest for finding solutions to complex problems paired with his creativity.",
+          "With a treasure trove of insights and learnings from dozens of developmental and leadership training, Raymund brings a strong foot forward to create an effective and efficient system in place for your business."
+        ]
+      },
+      eric: {
+        name: "Eric Magto",
+        role: "PROJECT MANAGER",
+        bio: [
+          "As a seasoned data science researcher, Eric has handled many research projects at the University of San Jose-Recoletos (USJ-R) in Cebu City. He was also assigned as a Research Coordinator at the same school.",
+          "His wide exposure to many research practices has helped him supervise various data science projects and their corresponding patents.",
+          "This wealth of experience and knowledge has made Eric the go-to R&D and production department manager, guiding team members in various data science-related activities."
+        ]
+      }
+    }
+  },
+  team: {
+    label: "AMAZING PEOPLE AT RAYKAN",
+    title: "Our Raykan Team",
+    // wp-raykan wrote "Dionlee uy" / "Dennis uy"; names are capitalised here
+    members: {
+      enrique: { name: "Enrique III Pacudan", role: "Full-stack Developer" },
+      jc: { name: "JC Pogosa", role: "Full-stack Developer" },
+      dionlee: { name: "Dionlee Uy", role: "Full-stack Developer" },
+      dennis: { name: "Dennis Uy", role: "Full-stack Developer" }
+    }
   }
 };
 
@@ -3778,16 +3812,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"2b465-Toj/bhCb0us8OefTkBjXTZ37izY\"",
-    "mtime": "2026-10-02T08:37:08.374Z",
-    "size": 177253,
+    "etag": "\"2c030-zqR9tdkUpgaak6Wqw+qFH2bMYtM\"",
+    "mtime": "2026-10-02T09:35:39.488Z",
+    "size": 180272,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"b0398-SFhMoAblhIdLGztT8ygiQOCZ1o8\"",
-    "mtime": "2026-10-02T08:37:08.374Z",
-    "size": 721816,
+    "etag": "\"b3a24-3fUzzrMm3dvr9HMFdgjCvZALMX8\"",
+    "mtime": "2026-10-02T09:35:39.488Z",
+    "size": 735780,
     "path": "index.mjs.map"
   }
 };

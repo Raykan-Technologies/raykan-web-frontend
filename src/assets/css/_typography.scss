@@ -110,6 +110,14 @@ $fonts: (
   --font-size-about-title: 46px;
   --line-height-about-title: 1.2;
   --font-size-about-mission-description: 18px;
+  // core team member (wp-raykan 34px / 40px name, 16px / 22px bio)
+  --font-size-about-member-name: 34px;
+  --line-height-about-member-name: 40px;
+  --font-size-about-member-bio: var(--font-size-base);
+  --line-height-about-member-bio: 22px;
+  // team member card (Essential Addons defaults: 20px name, 14px role)
+  --font-size-about-team-name: var(--font-size-lg);
+  --font-size-about-team-role: var(--font-size-sm);
 
   // icon box (RIconBox)
   --font-size-icon-box-title: 28px;
@@ -168,5 +176,7 @@ $fonts: (
     --font-size-about-title: var(--font-size-section-title);
     --line-height-about-title: var(--line-height-section-title);
     --font-size-about-mission-description: var(--font-size-base);
+    --font-size-about-member-bio: var(--font-size-sm);
+    --line-height-about-member-bio: 18px;
   }
 }

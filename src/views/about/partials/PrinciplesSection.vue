@@ -29,7 +29,7 @@ const cards = computed(() => principles.map(({ key, icon }, index) => ({
 <template>
   <!-- wp-raykan about "The Ideas we live by" (20b5d14): slides up over the pinned hero,
     so it's at least a screen tall to cover it -->
-  <r-section class="principles-section" align="center" min-height="var(--app-height, 100svh)"
+  <r-section class="principles-section" theme="muted" align="center" min-height="var(--app-height, 100svh)"
     :label="t('about.principles.label')" :title="t('about.principles.title')">
     <r-section class="principles-section__cards" inner gap="default">
       <r-card v-for="card in cards" :key="card.key" :icon="card.icon" :badge="card.badge" :title="card.title">

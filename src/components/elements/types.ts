@@ -12,7 +12,7 @@ export type TCardBadge = 'hexagon' | 'badge-circle' | 'badge-squircle' | 'badge-
  * - accent-soft: light teal (metrics)
  * - transparent: no background
  */
-export type TSectionTheme = 'light' | 'primary' | 'accent-soft' | 'transparent'
+export type TSectionTheme = 'light' | 'muted' | 'primary' | 'accent-soft' | 'transparent'
 
 /**
  * Content width: `boxed` = 1140px, `full` = edge to edge, or any CSS length (e.g. `1600px`)

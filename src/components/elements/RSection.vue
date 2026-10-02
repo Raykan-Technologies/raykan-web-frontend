@@ -326,6 +326,12 @@ const sectionClasses = computed(() => [
     color: var(--color-text-muted);
   }
 
+  // light grey, to set a section apart from the white ones around it
+  &.r-section--muted {
+    background-color: var(--color-section-muted);
+    color: var(--color-text-muted);
+  }
+
   &.r-section--primary {
     background-color: var(--color-primary);
     color: var(--color-text);
