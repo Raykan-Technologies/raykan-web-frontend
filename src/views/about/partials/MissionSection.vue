@@ -19,7 +19,7 @@ const { t } = useI18n()
   // shown on every screen here, not only on phones
   .r-section__label {
     display: block;
-    color: var(--color-accent);
+    color: var(--color-white);
     font-weight: var(--font-weight-bold);
   }
 
@@ -33,7 +33,7 @@ const { t } = useI18n()
 
   .r-section__description {
     max-width: 50em;
-    color: var(--color-text-subtle);
+    color: var(--color-white);
     font-size: var(--font-size-about-mission-description);
     font-weight: var(--font-weight-medium);
     line-height: 22px;
