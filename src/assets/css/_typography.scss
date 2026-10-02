@@ -100,6 +100,16 @@ $fonts: (
   --font-size-page-hero-lead: var(--font-size-xl);
   --line-height-page-hero-lead: 31px;
 
+  // about page hero (wp-raykan 5.5rem bold; tablet/mobile add a 3rem italic "We are" line)
+  --font-size-about-hero: 83px;
+  --font-size-about-hero-lead: 45px;
+  --font-size-about-statement: var(--font-size-lg);
+  --line-height-about-statement: 30px;
+  // about mission panel: wp-raykan 46px title (its 45px line height clips descenders), 18px intro
+  --font-size-about-mission-title: 46px;
+  --line-height-about-mission-title: 1.2;
+  --font-size-about-mission-description: 18px;
+
   // icon box (RIconBox)
   --font-size-icon-box-title: 28px;
   --font-size-icon-box-text: 18px;
@@ -117,6 +127,9 @@ $fonts: (
     --line-height-hero: 1;
     --font-size-hero-lead: 20px;
     --line-height-hero-lead: 28px;
+
+    // 5.2rem
+    --font-size-about-hero: 78px;
   }
 
   // wp-raykan mobile hero heading: 42px / 50px (1.2), no letter spacing
@@ -144,5 +157,15 @@ $fonts: (
     --line-height-page-hero: 1;
     --font-size-page-hero-lead: 18px;
     --line-height-page-hero-lead: 1.4;
+
+    // 3.5rem / 3rem on the 13.7px mobile root
+    --font-size-about-hero: 48px;
+    --font-size-about-hero-lead: 41px;
+    --font-size-about-statement: var(--font-size-base);
+    --line-height-about-statement: 22px;
+    // phones keep the standard section title
+    --font-size-about-mission-title: var(--font-size-section-title);
+    --line-height-about-mission-title: var(--line-height-section-title);
+    --font-size-about-mission-description: var(--font-size-base);
   }
 }

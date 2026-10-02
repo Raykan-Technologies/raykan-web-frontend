@@ -14,6 +14,9 @@ export default [
                 path: '',
                 name: 'about',
                 component: () => import('@/views/about/AboutView.vue'),
+                meta: {
+                    headerTransparent: true,
+                },
             },
         ],
     },

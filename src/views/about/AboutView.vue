@@ -1,13 +1,32 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useHead } from '#imports'
+import { defineBreadcrumb, useSchemaOrg } from '#imports'
+import { usePageSeo } from '@/composables/seo'
+import HeroSection from './partials/HeroSection.vue'
+import MissionSection from './partials/MissionSection.vue'
 
 const { t } = useI18n()
 
-useHead({ title: () => t('about.title') })
+usePageSeo({
+  title: () => t('about.seo.title'),
+  description: () => t('about.seo.description'),
+  image: '/og/about.jpg',
+  imageAlt: () => t('about.seo.imageAlt'),
+})
+
+useSchemaOrg([
+  defineBreadcrumb({
+    itemListElement: [
+      { name: () => t('menus.home'), item: '/' },
+      { name: () => t('menus.about') },
+    ],
+  }),
+])
 </script>
 <template>
   <main>
-    <h1>{{ t('about.title') }}</h1>
+    <HeroSection>
+      <MissionSection />
+    </HeroSection>
   </main>
 </template>

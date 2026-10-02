@@ -36,6 +36,8 @@
   --color-overlay-hero: color-mix(in srgb, var(--color-primary) 80%, transparent);
   // inner-page hero (RPageHero), drawn at 0.8 opacity
   --color-overlay-page-hero: linear-gradient(136deg, var(--color-primary) 40%, var(--color-white) 100%);
+  // about page hero photo (wp-raykan), drawn at 0.5 opacity
+  --color-overlay-about-hero: linear-gradient(180deg, var(--color-primary) 54%, var(--color-accent) 100%);
   --color-overlay-about: color-mix(in srgb, var(--color-primary) 70%, transparent);
   // solution page footer (wp-raykan): white fading into primary
   --color-footer-gradient: linear-gradient(180deg, var(--color-white) 0%, var(--color-primary) 100%);

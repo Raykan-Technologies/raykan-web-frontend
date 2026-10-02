@@ -2400,7 +2400,30 @@ async function getLocaleMessagesMerged(locale, loaders = []) {
 }
 
 const about = {
-  title: "About"
+  title: "About",
+  // search and share copy, title gets the company suffix
+  seo: {
+    title: "About Us",
+    description: "Meet Raykan Technologies, a value-driven team delivering innovative IT solutions tailored to your needs, built on technical expertise and collaboration.",
+    imageAlt: "The Raykan Technologies team in blue company shirts, seated together in the office"
+  },
+  hero: {
+    titleLead: "We are",
+    titleName: "Raykan Technologies",
+    // one line each, like wp-raykan
+    statement: [
+      "We are a value-driven team determined to tailor specific solutions that match your needs and priorities.",
+      "We deliver innovative solutions through extensive experience and technical expertise in the IT ecosystem.",
+      "We guarantee addressing all your challenges with technical sophistication and satisfactory resolution.",
+      "We produce exceptional outcomes in a collaborative environment.",
+      "We are Raykan."
+    ]
+  },
+  mission: {
+    label: "OUR MISSION",
+    title: "Driving Innovation, Empowering People",
+    description: "To enable people and businesses\u2019 full potential through transformative ideas and solutions."
+  }
 };
 
 const blog = {
@@ -3729,16 +3752,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"2a973-+FZqzOQc8BBLjUJEGW8Axw1CCmA\"",
-    "mtime": "2026-10-01T08:51:41.332Z",
-    "size": 174451,
+    "etag": "\"2b391-5+ZOkgpnwiTj9WQWRrd9RkoUr3U\"",
+    "mtime": "2026-10-02T07:54:35.955Z",
+    "size": 177041,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"ad0d4-8UP7ZQ3Kbo3SN3TsOOqhTDix6nE\"",
-    "mtime": "2026-10-01T08:51:41.333Z",
-    "size": 708820,
+    "etag": "\"affe6-+ytYTGaVjZK8KDg9juvBBIS+TGc\"",
+    "mtime": "2026-10-02T07:54:35.956Z",
+    "size": 720870,
     "path": "index.mjs.map"
   }
 };
