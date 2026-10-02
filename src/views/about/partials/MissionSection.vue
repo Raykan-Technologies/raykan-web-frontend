@@ -27,8 +27,8 @@ const { t } = useI18n()
   .r-section__title {
     max-width: 24em;
     color: var(--color-white);
-    font-size: var(--font-size-about-mission-title);
-    line-height: var(--line-height-about-mission-title);
+    font-size: var(--font-size-about-title);
+    line-height: var(--line-height-about-title);
   }
 
   .r-section__description {

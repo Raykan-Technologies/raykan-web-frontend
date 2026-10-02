@@ -105,9 +105,10 @@ $fonts: (
   --font-size-about-hero-lead: 45px;
   --font-size-about-statement: var(--font-size-lg);
   --line-height-about-statement: 30px;
-  // about mission panel: wp-raykan 46px title (its 45px line height clips descenders), 18px intro
-  --font-size-about-mission-title: 46px;
-  --line-height-about-mission-title: 1.2;
+  // about page section titles: wp-raykan 46px (its 45px line height clips descenders);
+  // mission intro 18px
+  --font-size-about-title: 46px;
+  --line-height-about-title: 1.2;
   --font-size-about-mission-description: 18px;
 
   // icon box (RIconBox)
@@ -164,8 +165,8 @@ $fonts: (
     --font-size-about-statement: var(--font-size-base);
     --line-height-about-statement: 22px;
     // phones keep the standard section title
-    --font-size-about-mission-title: var(--font-size-section-title);
-    --line-height-about-mission-title: var(--line-height-section-title);
+    --font-size-about-title: var(--font-size-section-title);
+    --line-height-about-title: var(--line-height-section-title);
     --font-size-about-mission-description: var(--font-size-base);
   }
 }

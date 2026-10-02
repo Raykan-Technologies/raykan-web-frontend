@@ -43,7 +43,11 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
   // how long each part stays on screen before the next one comes in
   --about-hero-hold: var(--app-height, 100svh);
 
+  // the next section slides over the last screen (see the last stage) while the hero stays
+  // pinned; z-index 0 keeps the sticky panels under that section
   position: relative;
+  z-index: 0;
+  margin-bottom: calc(-1 * var(--about-hero-hold));
 
   // in the flow for its first screen, then pinned behind the panels until the hero ends
   .about-hero__backdrop {
@@ -77,6 +81,11 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
       display: block;
       height: var(--about-hero-hold);
       content: '';
+    }
+
+    // its hold plus the screen the next section covers it in
+    &:last-child::after {
+      height: calc(2 * var(--about-hero-hold));
     }
 
     > .r-section {

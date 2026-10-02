@@ -2,6 +2,7 @@ import { kebabize } from "@/utils"
 import type { TKebabKeys } from "../types"
 import AppNetwork from "./AppNetwork.vue"
 import ArrowRight from "./ArrowRight.vue"
+import ArrowsCycle from "./ArrowsCycle.vue"
 import BadgeBlob from "./BadgeBlob.vue"
 import BadgeCircle from "./BadgeCircle.vue"
 import BadgeDiamond from "./BadgeDiamond.vue"
@@ -26,6 +27,7 @@ import Envelope from "./Envelope.vue"
 import Facebook from "./Facebook.vue"
 import Factory from "./Factory.vue"
 import Gamepad from "./Gamepad.vue"
+import Gem from "./Gem.vue"
 import Globe from "./Globe.vue"
 import HeadThinking from "./HeadThinking.vue"
 import Headset from "./Headset.vue"
@@ -48,14 +50,17 @@ import ShareNodes from "./ShareNodes.vue"
 import ShieldCheck from "./ShieldCheck.vue"
 import ShoppingCart from "./ShoppingCart.vue"
 import Smartphone from "./Smartphone.vue"
+import Sprout from "./Sprout.vue"
 import Star from "./Star.vue"
 import Truck from "./Truck.vue"
+import Users from "./Users.vue"
 import UserShield from "./UserShield.vue"
 import XIcon from "./XIcon.vue"
 
 const iconComponents = {
   AppNetwork,
   ArrowRight,
+  ArrowsCycle,
   BadgeBlob,
   BadgeCircle,
   BadgeDiamond,
@@ -80,6 +85,7 @@ const iconComponents = {
   Facebook,
   Factory,
   Gamepad,
+  Gem,
   Globe,
   HeadThinking,
   Headset,
@@ -102,8 +108,10 @@ const iconComponents = {
   ShieldCheck,
   ShoppingCart,
   Smartphone,
+  Sprout,
   Star,
   Truck,
+  Users,
   UserShield,
   XIcon,
 }

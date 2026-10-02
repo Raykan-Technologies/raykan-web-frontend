@@ -23,4 +23,30 @@ export default {
     title: 'Driving Innovation, Empowering People',
     description: 'To enable people and businesses’ full potential through transformative ideas and solutions.',
   },
+  principles: {
+    label: 'THE IDEAS WE LIVE BY',
+    title: 'Our Guiding Principles',
+    items: {
+      integrity: {
+        title: 'Unrelenting Integrity',
+        text: 'Our word is our bond; we remain steadfastly committed to fulfilling our solemn pledge of creating value for our teammates and clients.',
+      },
+      growth: {
+        title: 'Growth Mindset',
+        text: 'Every aspect of what we do hinges on continuously applying and exploring innovative ways to effect sustained progress.',
+      },
+      collaboration: {
+        title: 'Collaborative Environment',
+        text: 'We are committed to understanding our clients’ needs and immersing ourselves in their context to craft a future-proof solution to success.',
+      },
+      improvement: {
+        title: 'Continuous Improvement',
+        text: 'Our ability and expertise are honed from a dedicated learning process; seeing challenges as an opportunity to grow.',
+      },
+      value: {
+        title: 'Value Centricity',
+        text: 'People, who thrive in collaboration to achieve objectives bigger than individual ambitions, are the heart of keeping our craft at its best.',
+      },
+    },
+  },
 }

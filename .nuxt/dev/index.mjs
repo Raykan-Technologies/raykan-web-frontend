@@ -2423,6 +2423,32 @@ const about = {
     label: "OUR MISSION",
     title: "Driving Innovation, Empowering People",
     description: "To enable people and businesses\u2019 full potential through transformative ideas and solutions."
+  },
+  principles: {
+    label: "THE IDEAS WE LIVE BY",
+    title: "Our Guiding Principles",
+    items: {
+      integrity: {
+        title: "Unrelenting Integrity",
+        text: "Our word is our bond; we remain steadfastly committed to fulfilling our solemn pledge of creating value for our teammates and clients."
+      },
+      growth: {
+        title: "Growth Mindset",
+        text: "Every aspect of what we do hinges on continuously applying and exploring innovative ways to effect sustained progress."
+      },
+      collaboration: {
+        title: "Collaborative Environment",
+        text: "We are committed to understanding our clients\u2019 needs and immersing ourselves in their context to craft a future-proof solution to success."
+      },
+      improvement: {
+        title: "Continuous Improvement",
+        text: "Our ability and expertise are honed from a dedicated learning process; seeing challenges as an opportunity to grow."
+      },
+      value: {
+        title: "Value Centricity",
+        text: "People, who thrive in collaboration to achieve objectives bigger than individual ambitions, are the heart of keeping our craft at its best."
+      }
+    }
   }
 };
 
@@ -3752,16 +3778,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"2b391-5+ZOkgpnwiTj9WQWRrd9RkoUr3U\"",
-    "mtime": "2026-10-02T07:54:35.955Z",
-    "size": 177041,
+    "etag": "\"2b465-Toj/bhCb0us8OefTkBjXTZ37izY\"",
+    "mtime": "2026-10-02T08:37:08.374Z",
+    "size": 177253,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"affe6-+ytYTGaVjZK8KDg9juvBBIS+TGc\"",
-    "mtime": "2026-10-02T07:54:35.956Z",
-    "size": 720870,
+    "etag": "\"b0398-SFhMoAblhIdLGztT8ygiQOCZ1o8\"",
+    "mtime": "2026-10-02T08:37:08.374Z",
+    "size": 721816,
     "path": "index.mjs.map"
   }
 };
