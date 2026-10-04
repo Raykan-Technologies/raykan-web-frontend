@@ -24,10 +24,28 @@ const round = (value: number) => Math.round(value * 100) / 100
 const root = useTemplateRef<SVGGElement>('root')
 const time = shallowRef(0)
 
-const points = computed(() => props.nodes.map(({ x, y, sway = 0, period = 6, phase = 0 }) => ({
-  x: round(x + sway * Math.sin((2 * Math.PI * time.value) / period + phase)),
-  y,
-})))
+// each ring's place in its side-to-side swing. Every few seconds a ring randomly switches between
+// its normal speed and a slow drift, easing into the new speed
+const SLOW = 0.3
+const motion = props.nodes.map(({ phase = 0 }) => ({ angle: phase, speed: 1, target: 1, next: 0 }))
+
+const move = (seconds: number, delta: number) => motion.forEach((ring, index) => {
+  if (seconds >= ring.next) {
+    ring.target = Math.random() < 0.5 ? SLOW : 1
+    ring.next = seconds + 2 + Math.random() * 3
+  }
+  ring.speed += (ring.target - ring.speed) * Math.min(delta * 1.5, 1)
+  ring.angle += ((2 * Math.PI) / (props.nodes[index]!.period ?? 6)) * ring.speed * delta
+})
+
+const points = computed(() => {
+  // time is the reactive input; the angles are moved on each tick
+  void time.value
+  return props.nodes.map(({ x, y, sway = 0 }, index) => ({
+    x: round(x + sway * Math.sin(motion[index]!.angle)),
+    y,
+  }))
+})
 
 // where a line starts and ends: at its nodes' rings, so it stretches and shrinks as they slide
 const segment = (from: number, to: number) => {
@@ -133,6 +151,8 @@ let observer: IntersectionObserver | undefined
 const tick = (now: number) => {
   const seconds = now / 1000
   if (seconds >= nextSignal) startSignal(seconds)
+  // capped so a paused tab or a return to the screen doesn't jump the rings
+  move(seconds, Math.min(Math.max(seconds - time.value, 0), 0.1))
   time.value = seconds
   frame = requestAnimationFrame(tick)
 }
