@@ -49,17 +49,25 @@ onBeforeUnmount(() => {
 .mission-section {
   --mission-progress: 0;
 
-  // 71% of circle()'s reference length reaches the corners
+  // the circle can grow past the screen's corners
+  overflow: hidden;
+
+  // 150vmax is wider than any screen's diagonal, so at full scale it covers the section
   .mission-section__circle {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    border-radius: 50%;
     background: var(--color-primary);
-    clip-path: circle(calc(var(--mission-progress) * 71%) at 50% 50%);
+    box-shadow: 0 20px 60px rgb(0 0 0 / 35%);
+    transform: translate(-50%, -50%) scale(var(--mission-progress));
   }
 
-  // comes in over the second half of the growth
+  // comes in from 30% to 70% of the growth
   > .r-section__container {
-    opacity: clamp(0, var(--mission-progress) * 2 - 1, 1);
+    opacity: clamp(0, var(--mission-progress) * 2.5 - 0.75, 1);
     transform: translateY(calc((1 - var(--mission-progress)) * 40px));
   }
 

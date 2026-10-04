@@ -10,7 +10,7 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
 </script>
 <template>
   <!-- wp-raykan about page (sections 5a6814c + e8eded0): the photo stays pinned while each panel
-    holds for one screen. The welcome shows on load without a hold; every panel in the slot gets its own stage too -->
+    holds for one screen. The welcome comes in after the photo, without a hold -->
   <div class="about-hero" :style="{ '--about-hero-photo': `url(${heroPhoto})` }">
     <div class="about-hero__backdrop" aria-hidden="true"></div>
 
@@ -67,16 +67,14 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
     }
   }
 
-  // the welcome sits over the first screen of the photo and doesn't hold,
+  // the welcome scrolls in after one screen of just the photo and doesn't hold,
   // so scrolling goes straight into the next panel
   .about-hero__backdrop + .about-hero__stage {
-    margin-top: calc(-1 * var(--app-height, 100svh));
-
     &::after {
       display: none;
     }
 
-    // the next panel is pinned from the start too, so its scroll effect runs while the welcome leaves
+    // the next panel pins with the welcome, so its scroll effect runs while the welcome leaves
     + .about-hero__stage {
       margin-top: calc(-1 * var(--app-height, 100svh));
     }
