@@ -60,7 +60,10 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
 
     &::after {
       position: absolute;
-      inset: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       background: var(--color-overlay-about-hero);
       opacity: 0.5;
       content: '';
@@ -105,18 +108,26 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
   }
 
   // one line on desktop; "We are" gets its own small italic line on tablets and phones.
-  // Each line is nowrap and capped by cqw so it always fits the hero
+  // Each line is nowrap and capped by cqw so it always fits the hero (vw on browsers without cqw)
   .about-hero__title {
     margin: 0;
     color: var(--color-white);
     font-family: var(--font-primary);
-    font-size: min(var(--font-size-about-hero), 7.4cqw);
+    font-size: min(var(--font-size-about-hero), 6.5vw);
     font-weight: var(--font-weight-bold);
     line-height: 1;
     white-space: nowrap;
 
+    @supports (width: 1cqw) {
+      font-size: min(var(--font-size-about-hero), 7.4cqw);
+    }
+
     @include tablet {
-      font-size: min(var(--font-size-about-hero), 10.2cqw);
+      font-size: min(var(--font-size-about-hero), 9vw);
+
+      @supports (width: 1cqw) {
+        font-size: min(var(--font-size-about-hero), 10.2cqw);
+      }
     }
   }
 

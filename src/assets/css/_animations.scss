@@ -13,11 +13,17 @@
 
 // slow up-and-down drift for decorative shapes
 @keyframes float {
-  50% { transform: translateY(var(--float-distance, -16px)); }
+  50% { transform: translateY(-16px); }
 }
 
-// slow back-and-forth tilt; uses `rotate` so it stacks with float's transform
+// slow back-and-forth tilt; put it on a child of the floating element so the transforms don't clash
 @keyframes sway {
-  from { rotate: calc(-1 * var(--sway-angle, 10deg)); }
-  to { rotate: var(--sway-angle, 10deg); }
+  from { transform: rotate(-10deg); }
+  to { transform: rotate(10deg); }
+}
+
+// slow side-to-side drift, like sway but sliding instead of tilting
+@keyframes drift {
+  from { transform: translateX(-14px); }
+  to { transform: translateX(14px); }
 }

@@ -18,6 +18,13 @@ $spacing: (
 );
 
 :root {
+  // screen height until useViewport measures it; svh where supported, vh on older browsers
+  --app-height: 100vh;
+
+  @supports (height: 100svh) {
+    --app-height: 100svh;
+  }
+
   // containers
   --container-width: 1140px;
   --container-width-header: 1388px;
