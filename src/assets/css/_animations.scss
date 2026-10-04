@@ -21,9 +21,3 @@
   from { transform: rotate(-10deg); }
   to { transform: rotate(10deg); }
 }
-
-// slow side-to-side drift, like sway but sliding instead of tilting
-@keyframes drift {
-  from { transform: translateX(-14px); }
-  to { transform: translateX(14px); }
-}

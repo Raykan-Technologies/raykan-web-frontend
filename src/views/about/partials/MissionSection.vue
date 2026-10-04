@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
+import { onBeforeUnmount, onMounted, shallowRef, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RSection } from '@/components/elements'
+import MissionTrace, { type TTraceNode } from './MissionTrace.vue'
 
 const { t } = useI18n()
 // outline shapes in the lower-left and upper-right corners, each big one overlapped by a solid
@@ -11,20 +12,9 @@ type TShape = {
   solid?: boolean;
   size: number;
   position: Record<string, string>;
-  // trace only: the connected nodes, in the 100×100 viewBox
-  nodes?: Array<[number, number]>;
+  // trace only: its rings and the lines joining them (see MissionTrace)
+  trace?: { nodes: TTraceNode[]; links: Array<[number, number]> };
 }
-
-const NODE_RADIUS = 7
-
-// the lines between a trace's nodes, stopping at each node's ring
-const traceLines = (nodes: Array<[number, number]>) => nodes.slice(1).map(([x2, y2], index) => {
-  const [x1, y1] = nodes[index]!
-  const length = Math.hypot(x2 - x1, y2 - y1)
-  const dx = ((x2 - x1) / length) * NODE_RADIUS
-  const dy = ((y2 - y1) / length) * NODE_RADIUS
-  return `M${x1 + dx} ${y1 + dy} L${x2 - dx} ${y2 - dy}`
-})
 
 const shapes: TShape[] = [
   { kind: 'hexagon', size: 220, position: { bottom: '12%', left: '10%' } },
@@ -33,7 +23,17 @@ const shapes: TShape[] = [
     position: { bottom: 'calc(12% + 120px * var(--shape-scale))', left: 'calc(10% + 120px * var(--shape-scale))' },
   },
   {
-    kind: 'trace', size: 150, nodes: [[8, 88], [34, 62], [64, 62], [92, 34]],
+    // a Y: the centre ring stays put, the three ends slide on their own
+    kind: 'trace', size: 150,
+    trace: {
+      nodes: [
+        { x: 50, y: 56 },
+        { x: 22, y: 20, sway: 9, period: 5.2 },
+        { x: 78, y: 20, sway: 9, period: 6.4, phase: 1 },
+        { x: 50, y: 92, sway: 10, period: 7.1, phase: 2 },
+      ],
+      links: [[0, 1], [0, 2], [0, 3]],
+    },
     position: { bottom: 'calc(12% + 230px * var(--shape-scale))', left: '10%' },
   },
   { kind: 'square', size: 100, position: { bottom: '6%', left: 'calc(10% + 260px * var(--shape-scale))' } },
@@ -43,12 +43,21 @@ const shapes: TShape[] = [
     position: { top: 'calc(12% + 110px * var(--shape-scale))', right: 'calc(10% + 120px * var(--shape-scale))' },
   },
   {
-    kind: 'trace', size: 130, nodes: [[10, 30], [50, 30], [88, 72]],
+    // three rings in a bent line, each sliding on its own
+    kind: 'trace', size: 130,
+    trace: {
+      nodes: [
+        { x: 16, y: 30, sway: 7, period: 5.5 },
+        { x: 50, y: 30, sway: 7, period: 6.8, phase: 1.5 },
+        { x: 84, y: 72, sway: 8, period: 4.9, phase: 3 },
+      ],
+      links: [[0, 1], [1, 2]],
+    },
     position: { top: 'calc(12% + 100px * var(--shape-scale))', right: 'calc(10% + 250px * var(--shape-scale))' },
   },
 ]
 
-// each shape floats and sways (traces slide side to side) on its own clock
+// each shape floats and sways on its own clock (traces move their rings instead of swaying)
 const shapeStyle = (shape: TShape, index: number) => ({
   ...shape.position,
   width: `calc(${shape.size}px * var(--shape-scale))`,
@@ -86,13 +95,32 @@ const onScroll = () => {
   frame = requestAnimationFrame(update)
 }
 
+// every outline shape flashes on its own random timer, so several can be lit at once
+const flashing = shallowRef<number[]>([])
+const flashTimers: number[] = []
+
+const flash = (index: number) => {
+  flashing.value = [...flashing.value, index]
+  // lit for 500ms, then a 1–3s pause before it flashes again
+  flashTimers[index] = window.setTimeout(() => {
+    flashing.value = flashing.value.filter((lit) => lit !== index)
+    flashTimers[index] = window.setTimeout(() => flash(index), 1000 + Math.random() * 2000)
+  }, 500)
+}
+
 onMounted(() => {
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    shapes.forEach((shape, index) => {
+      if (!shape.solid) flashTimers[index] = window.setTimeout(() => flash(index), Math.random() * 2000)
+    })
+  }
   update()
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onScroll)
 })
 
 onBeforeUnmount(() => {
+  flashTimers.forEach((timer) => clearTimeout(timer))
   cancelAnimationFrame(frame)
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('resize', onScroll)
@@ -108,16 +136,16 @@ onBeforeUnmount(() => {
       <div class="mission-section__circle" aria-hidden="true"></div>
       <div class="mission-section__shapes" aria-hidden="true">
         <div v-for="(shape, index) in shapes" :key="index" class="mission-section__shape"
-          :class="{ 'mission-section__shape--solid': shape.solid, 'mission-section__shape--trace': shape.nodes }" :style="shapeStyle(shape, index)">
+          :class="{
+            'mission-section__shape--solid': shape.solid,
+            'mission-section__shape--trace': shape.trace,
+            'mission-section__shape--flash': flashing.includes(index),
+          }" :style="shapeStyle(shape, index)">
           <svg :style="swayStyle(index)" viewBox="0 0 100 100">
             <path v-if="shape.kind === 'hexagon'" d="M45.7 8.5 Q50 6 54.3 8.5 L83.7 25.5 Q88 28 88 33 L88 67 Q88 72 83.7 74.5 L54.3 91.5 Q50 94 45.7 91.5 L16.3 74.5 Q12 72 12 67 L12 33 Q12 28 16.3 25.5 Z" />
             <rect v-else-if="shape.kind === 'square'" x="22" y="22" width="56" height="56" rx="10"
               transform="rotate(45 50 50)" />
-            <!-- nodes joined by a bent circuit line -->
-            <g v-else-if="shape.nodes">
-              <circle v-for="([cx, cy], node) in shape.nodes" :key="node" :cx="cx" :cy="cy" :r="NODE_RADIUS" />
-              <path v-for="(line, segment) in traceLines(shape.nodes)" :key="`line-${segment}`" :d="line" />
-            </g>
+            <mission-trace v-else-if="shape.trace" :nodes="shape.trace.nodes" :links="shape.trace.links" />
             <circle v-else cx="50" cy="50" r="40" />
           </svg>
         </div>
@@ -179,6 +207,7 @@ onBeforeUnmount(() => {
       overflow: visible;
       color: var(--color-white);
       opacity: 0.35;
+      transition: opacity 0.4s ease;
       fill: none;
       stroke: currentColor;
       stroke-width: 7px;
@@ -200,10 +229,14 @@ onBeforeUnmount(() => {
   }
 
   .mission-section__shape--trace > svg {
-    animation-name: drift;
+    animation: none;
   }
 
   // full white, unlike the faint outlines
+  .mission-section__shape--flash > svg {
+    opacity: 0.95;
+  }
+
   .mission-section__shape--solid > svg {
     opacity: 1;
     fill: currentColor;

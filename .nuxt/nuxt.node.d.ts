@@ -1,6 +1,6 @@
 /// <reference types="@pinia/nuxt" />
-/// <reference types="@nuxtjs/i18n" />
 /// <reference types="nuxt-schema-org" />
+/// <reference types="@nuxtjs/i18n" />
 /// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />
 /// <reference types="pinia-plugin-persistedstate" />
