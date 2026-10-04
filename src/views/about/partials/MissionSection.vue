@@ -11,6 +11,8 @@ type TShape = {
   kind: 'hexagon' | 'square' | 'triangle' | 'trace' | 'ring';
   // outline when unset
   fill?: 'solid' | 'stripes';
+  // slides side to side instead of swaying, so it wanders on its own
+  drift?: boolean;
   size: number;
   position: Record<string, string>;
   // trace only: its rings and the lines joining them (see MissionTrace)
@@ -18,10 +20,10 @@ type TShape = {
 }
 
 const shapes: TShape[] = [
-  { kind: 'hexagon', size: 220, position: { bottom: '12%', left: '10%' } },
+  { kind: 'hexagon', size: 260, position: { bottom: '12%', left: '10%' } },
   {
-    kind: 'hexagon', fill: 'stripes', size: 110,
-    position: { bottom: 'calc(12% + 120px * var(--shape-scale))', left: 'calc(10% + 120px * var(--shape-scale))' },
+    kind: 'hexagon', fill: 'stripes', size: 130,
+    position: { bottom: 'calc(12% + 144px * var(--shape-scale))', left: 'calc(10% + 144px * var(--shape-scale))' },
   },
   {
     // a Y: the centre ring stays put, the three ends slide on their own
@@ -35,13 +37,18 @@ const shapes: TShape[] = [
       ],
       links: [[0, 1], [0, 2], [0, 3]],
     },
-    position: { bottom: 'calc(12% + 230px * var(--shape-scale))', left: '10%' },
+    position: { bottom: 'calc(12% + 280px * var(--shape-scale))', left: '10%' },
   },
-  { kind: 'square', fill: 'solid', size: 100, position: { bottom: '6%', left: 'calc(10% + 260px * var(--shape-scale))' } },
-  { kind: 'ring', size: 220, position: { top: '12%', right: '10%' } },
+  { kind: 'square', fill: 'solid', size: 120, position: { bottom: '6%', left: 'calc(10% + 310px * var(--shape-scale))' } },
+  { kind: 'ring', size: 260, position: { top: '12%', right: '10%' } },
+  // a small outline circle peeking out from under the striped one
   {
-    kind: 'ring', fill: 'stripes', size: 110,
-    position: { top: 'calc(12% + 110px * var(--shape-scale))', right: 'calc(10% + 120px * var(--shape-scale))' },
+    kind: 'ring', size: 80, drift: true,
+    position: { top: 'calc(12% + 217px * var(--shape-scale))', right: 'calc(10% + 190px * var(--shape-scale))' },
+  },
+  {
+    kind: 'ring', fill: 'stripes', size: 130,
+    position: { top: 'calc(12% + 132px * var(--shape-scale))', right: 'calc(10% + 144px * var(--shape-scale))' },
   },
   {
     // a K: a stem of three rings with two arms off its middle, every ring sliding on its own
@@ -56,11 +63,11 @@ const shapes: TShape[] = [
       ],
       links: [[0, 1], [1, 2], [1, 3], [1, 4]],
     },
-    position: { top: 'calc(12% + 100px * var(--shape-scale))', right: 'calc(10% + 250px * var(--shape-scale))' },
+    position: { top: 'calc(12% + 280px * var(--shape-scale))', right: '10%' },
   },
   {
-    kind: 'triangle', fill: 'solid', size: 70,
-    position: { top: 'calc(12% - 10px * var(--shape-scale))', right: 'calc(10% + 280px * var(--shape-scale))' },
+    kind: 'triangle', fill: 'solid', size: 84,
+    position: { top: 'calc(12% - 10px * var(--shape-scale))', right: 'calc(10% + 310px * var(--shape-scale))' },
   },
 ]
 
@@ -152,6 +159,7 @@ onBeforeUnmount(() => {
             'mission-section__shape--solid': shape.fill === 'solid',
             'mission-section__shape--stripes': shape.fill === 'stripes',
             'mission-section__shape--trace': shape.trace,
+            'mission-section__shape--drift': shape.drift,
             'mission-section__shape--flash': flashing.includes(index),
           }" :style="shapeStyle(shape, index)">
           <svg :style="[swayStyle(index), shape.fill === 'stripes' && { fill: `url(#${stripesId(index)})` }]"
@@ -258,6 +266,14 @@ onBeforeUnmount(() => {
   // full white, unlike the faint outlines
   .mission-section__shape--flash > svg {
     opacity: 0.95;
+  }
+
+  .mission-section__shape--drift > svg {
+    animation-name: drift;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
 
   // drawn with its own stripe pattern (set inline)

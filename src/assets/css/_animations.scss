@@ -21,3 +21,9 @@
   from { transform: rotate(-10deg); }
   to { transform: rotate(10deg); }
 }
+
+// slow side-to-side slide; on a child of a floating element it wanders in two directions
+@keyframes drift {
+  from { transform: translateX(-18px); }
+  to { transform: translateX(18px); }
+}
