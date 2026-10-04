@@ -10,3 +10,8 @@
 .animate-pulse:focus-visible {
   animation: pulse 1s linear infinite;
 }
+
+// slow up-and-down drift for decorative shapes
+@keyframes float {
+  50% { transform: translateY(var(--float-distance, -16px)); }
+}
