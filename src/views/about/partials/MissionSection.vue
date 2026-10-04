@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, shallowRef, useTemplateRef } from 'vue'
+import { onBeforeUnmount, onMounted, shallowRef, useId, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RSection } from '@/components/elements'
 import MissionTrace, { type TTraceNode } from './MissionTrace.vue'
 
 const { t } = useI18n()
-// outline shapes in the lower-left and upper-right corners, each big one overlapped by a solid
-// one: the card badges' hexagon and square, a ring, and circuit traces like the Raykan logo's R
+// outline shapes in the lower-left and upper-right corners, each big one overlapped by a striped
+// one, plus a few solid ones: the card badges' hexagon and square, a ring, and circuit traces like the Raykan logo's R
 type TShape = {
-  kind: 'hexagon' | 'square' | 'trace' | 'ring';
-  solid?: boolean;
+  kind: 'hexagon' | 'square' | 'triangle' | 'trace' | 'ring';
+  // outline when unset
+  fill?: 'solid' | 'stripes';
   size: number;
   position: Record<string, string>;
   // trace only: its rings and the lines joining them (see MissionTrace)
@@ -19,7 +20,7 @@ type TShape = {
 const shapes: TShape[] = [
   { kind: 'hexagon', size: 220, position: { bottom: '12%', left: '10%' } },
   {
-    kind: 'hexagon', solid: true, size: 110,
+    kind: 'hexagon', fill: 'stripes', size: 110,
     position: { bottom: 'calc(12% + 120px * var(--shape-scale))', left: 'calc(10% + 120px * var(--shape-scale))' },
   },
   {
@@ -36,10 +37,10 @@ const shapes: TShape[] = [
     },
     position: { bottom: 'calc(12% + 230px * var(--shape-scale))', left: '10%' },
   },
-  { kind: 'square', size: 100, position: { bottom: '6%', left: 'calc(10% + 260px * var(--shape-scale))' } },
+  { kind: 'square', fill: 'solid', size: 100, position: { bottom: '6%', left: 'calc(10% + 260px * var(--shape-scale))' } },
   { kind: 'ring', size: 220, position: { top: '12%', right: '10%' } },
   {
-    kind: 'ring', solid: true, size: 110,
+    kind: 'ring', fill: 'stripes', size: 110,
     position: { top: 'calc(12% + 110px * var(--shape-scale))', right: 'calc(10% + 120px * var(--shape-scale))' },
   },
   {
@@ -57,6 +58,10 @@ const shapes: TShape[] = [
     },
     position: { top: 'calc(12% + 100px * var(--shape-scale))', right: 'calc(10% + 250px * var(--shape-scale))' },
   },
+  {
+    kind: 'triangle', fill: 'solid', size: 70,
+    position: { top: 'calc(12% - 10px * var(--shape-scale))', right: 'calc(10% + 280px * var(--shape-scale))' },
+  },
 ]
 
 // each shape floats and sways on its own clock (traces move their rings instead of swaying)
@@ -72,6 +77,10 @@ const swayStyle = (index: number) => ({
   animationDuration: `${9 + (index % 4) * 2}s`,
   animationDelay: `${-index * 2.1}s`,
 })
+
+// ids for each striped shape's pattern
+const id = useId()
+const stripesId = (index: number) => `${id}-stripes-${index}`
 
 const section = useTemplateRef<{ $el: HTMLElement }>('section')
 
@@ -114,7 +123,7 @@ const flash = (index: number) => {
 onMounted(() => {
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     shapes.forEach((shape, index) => {
-      if (!shape.solid && !shape.trace) flashTimers[index] = window.setTimeout(() => flash(index), Math.random() * 2000)
+      if (!shape.fill && !shape.trace) flashTimers[index] = window.setTimeout(() => flash(index), Math.random() * 2000)
     })
   }
   update()
@@ -140,14 +149,23 @@ onBeforeUnmount(() => {
       <div class="mission-section__shapes" aria-hidden="true">
         <div v-for="(shape, index) in shapes" :key="index" class="mission-section__shape"
           :class="{
-            'mission-section__shape--solid': shape.solid,
+            'mission-section__shape--solid': shape.fill === 'solid',
+            'mission-section__shape--stripes': shape.fill === 'stripes',
             'mission-section__shape--trace': shape.trace,
             'mission-section__shape--flash': flashing.includes(index),
           }" :style="shapeStyle(shape, index)">
-          <svg :style="swayStyle(index)" viewBox="0 0 100 100">
+          <svg :style="[swayStyle(index), shape.fill === 'stripes' && { fill: `url(#${stripesId(index)})` }]"
+            viewBox="0 0 100 100">
+            <!-- white diagonal stripes on the circle's blue, so the outline behind doesn't show through -->
+            <pattern v-if="shape.fill === 'stripes'" :id="stripesId(index)" width="10" height="10"
+              patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="10" height="10" class="mission-section__stripes-gap" />
+              <rect width="4.5" height="10" fill="currentColor" />
+            </pattern>
             <path v-if="shape.kind === 'hexagon'" d="M45.7 8.5 Q50 6 54.3 8.5 L83.7 25.5 Q88 28 88 33 L88 67 Q88 72 83.7 74.5 L54.3 91.5 Q50 94 45.7 91.5 L16.3 74.5 Q12 72 12 67 L12 33 Q12 28 16.3 25.5 Z" />
             <rect v-else-if="shape.kind === 'square'" x="22" y="22" width="56" height="56" rx="10"
               transform="rotate(45 50 50)" />
+            <path v-else-if="shape.kind === 'triangle'" d="M47.1 15.3 Q50 10 52.9 15.3 L89.1 80.7 Q92 86 86 86 L14 86 Q8 86 10.9 80.7 Z" />
             <mission-trace v-else-if="shape.trace" :nodes="shape.trace.nodes" :links="shape.trace.links" />
             <circle v-else cx="50" cy="50" r="40" />
           </svg>
@@ -240,6 +258,16 @@ onBeforeUnmount(() => {
   // full white, unlike the faint outlines
   .mission-section__shape--flash > svg {
     opacity: 0.95;
+  }
+
+  // drawn with its own stripe pattern (set inline)
+  .mission-section__shape--stripes > svg {
+    opacity: 1;
+    stroke: none;
+  }
+
+  .mission-section__stripes-gap {
+    fill: var(--color-primary);
   }
 
   .mission-section__shape--solid > svg {
