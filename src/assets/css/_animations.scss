@@ -15,3 +15,9 @@
 @keyframes float {
   50% { transform: translateY(var(--float-distance, -16px)); }
 }
+
+// slow back-and-forth tilt; uses `rotate` so it stacks with float's transform
+@keyframes sway {
+  from { rotate: calc(-1 * var(--sway-angle, 10deg)); }
+  to { rotate: var(--sway-angle, 10deg); }
+}
