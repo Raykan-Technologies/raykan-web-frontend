@@ -239,7 +239,9 @@ onBeforeUnmount(() => {
       transition: opacity 0.4s ease;
       fill: none;
       stroke: currentColor;
+      // thins with the screen: 7px from ~1400px wide down to 3px on phones (plain 7px where clamp() isn't supported)
       stroke-width: 7px;
+      stroke-width: clamp(3px, 0.5vw, 7px);
       stroke-linecap: round;
       stroke-linejoin: round;
       animation: sway 10s ease-in-out infinite alternate;
