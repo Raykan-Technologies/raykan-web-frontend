@@ -75,6 +75,11 @@ const statement = computed(() => (tm('about.hero.statement') as Array<string>).m
     &::after {
       display: none;
     }
+
+    // the next panel is pinned from the start too, so its scroll effect runs while the welcome leaves
+    + .about-hero__stage {
+      margin-top: calc(-1 * var(--app-height, 100svh));
+    }
   }
 
   // the panel pins to the top while the stage's extra space scrolls past
