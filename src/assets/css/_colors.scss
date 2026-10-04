@@ -38,7 +38,8 @@
   --color-overlay-page-hero: linear-gradient(136deg, var(--color-primary) 40%, var(--color-white) 100%);
   // about page hero photo (wp-raykan), drawn at 0.5 opacity
   --color-overlay-about-hero: linear-gradient(180deg, var(--color-primary) 54%, var(--color-accent) 100%);
-  --color-overlay-about: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  // primary (brand-500) at 70%; rgba rather than color-mix() for older browsers
+  --color-overlay-about: rgba(8, 67, 135, 0.7);
   // solution page footer (wp-raykan): white fading into primary
   --color-footer-gradient: linear-gradient(180deg, var(--color-white) 0%, var(--color-primary) 100%);
   --color-footer-gradient-hover: var(--color-grey-300);
@@ -47,6 +48,9 @@
   --color-mobile-menu-backdrop: #F5FDFFCC;
   --color-mobile-menu-submenu: var(--color-grey-600);
   --color-section-muted: var(--color-grey-100);
+  // about mission circuit traces: 35% white over brand-500, solid so overlaps don't show
+  --color-about-mission-trace: #5F85B1;
+
   // about page "Our Raykan Team" (wp-raykan)
   --color-about-team-gradient: linear-gradient(180deg, var(--color-white) 0%, var(--color-primary) 100%);
   --color-card-hover: #E2F3FF70;

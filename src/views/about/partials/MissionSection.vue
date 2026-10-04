@@ -43,15 +43,17 @@ const shapes: TShape[] = [
     position: { top: 'calc(12% + 110px * var(--shape-scale))', right: 'calc(10% + 120px * var(--shape-scale))' },
   },
   {
-    // three rings in a bent line, each sliding on its own
-    kind: 'trace', size: 130,
+    // a K: a stem of three rings with two arms off its middle, every ring sliding on its own
+    kind: 'trace', size: 150,
     trace: {
       nodes: [
-        { x: 16, y: 30, sway: 7, period: 5.5 },
-        { x: 50, y: 30, sway: 7, period: 6.8, phase: 1.5 },
-        { x: 84, y: 72, sway: 8, period: 4.9, phase: 3 },
+        { x: 28, y: 10, sway: 6, period: 5.5 },
+        { x: 28, y: 50, sway: 5, period: 6.8, phase: 1.5 },
+        { x: 28, y: 90, sway: 6, period: 6.1, phase: 2.6 },
+        { x: 78, y: 12, sway: 6, period: 4.9, phase: 3 },
+        { x: 78, y: 88, sway: 6, period: 5.8, phase: 0.7 },
       ],
-      links: [[0, 1], [1, 2]],
+      links: [[0, 1], [1, 2], [1, 3], [1, 4]],
     },
     position: { top: 'calc(12% + 100px * var(--shape-scale))', right: 'calc(10% + 250px * var(--shape-scale))' },
   },
@@ -96,6 +98,7 @@ const onScroll = () => {
 }
 
 // every outline shape flashes on its own random timer, so several can be lit at once
+// (traces run their own signal, see MissionTrace)
 const flashing = shallowRef<number[]>([])
 const flashTimers: number[] = []
 
@@ -111,7 +114,7 @@ const flash = (index: number) => {
 onMounted(() => {
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     shapes.forEach((shape, index) => {
-      if (!shape.solid) flashTimers[index] = window.setTimeout(() => flash(index), Math.random() * 2000)
+      if (!shape.solid && !shape.trace) flashTimers[index] = window.setTimeout(() => flash(index), Math.random() * 2000)
     })
   }
   update()
@@ -228,7 +231,9 @@ onBeforeUnmount(() => {
     }
   }
 
+  // the trace fades its own rings and lines (MissionTrace)
   .mission-section__shape--trace > svg {
+    opacity: 1;
     animation: none;
   }
 
