@@ -3,7 +3,9 @@ import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import AppLogo from '@/assets/AppLogo.vue'
-import { RSection } from '@/components/elements'
+import { RIcon, RSection } from '@/components/elements'
+import type { TIcons } from '@/components/icons'
+import { CONTACT_EMAIL, CONTACT_PHONE } from '@/constants'
 import type { TFooterVariant } from './types'
 import { SOLUTIONS } from '@/router/solutions'
 import AppSocialLinks from './AppSocialLinks.vue'
@@ -52,6 +54,13 @@ const menus = computed(() => [
   // { menu: t('menus.privacy'), route: 'privacy' },
 ])
 
+// phone, email and office address, between the logo row and the menu row
+const contacts = computed<Array<{ key: string; icon: TIcons; text: string; href?: string }>>(() => [
+  { key: 'phone', icon: 'telephone', text: CONTACT_PHONE.display, href: `tel:${CONTACT_PHONE.tel}` },
+  { key: 'email', icon: 'envelope', text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+  { key: 'address', icon: 'location', text: t('common.address') },
+])
+
 // solution pages count towards "Solutions"
 const isActive = (name: string) => route.name === name
   || (name === 'solutions' && SOLUTIONS.some((solution) => solution === route.name))
@@ -67,6 +76,14 @@ const isActive = (name: string) => route.name === name
       </router-link>
       <AppSocialLinks :size="28" effect="highlight" tone="light" class="app-footer__socials" />
     </div>
+
+    <address class="app-footer__contacts" :aria-label="t('common.footerContact')">
+      <component :is="contact.href ? 'a' : 'span'" v-for="contact in contacts" :key="contact.key"
+        :href="contact.href" class="app-footer__contact">
+        <r-icon :name="contact.icon" :size="18" aria-hidden="true" />
+        <span>{{ contact.text }}</span>
+      </component>
+    </address>
 
     <div class="app-footer__row">
       <nav :aria-label="t('common.footerMenu')">
@@ -133,7 +150,9 @@ const isActive = (name: string) => route.name === name
       --social-color-highlight: var(--color-footer-gradient-hover);
     }
 
-    .app-footer__link:hover:not(.app-footer__link--active) {
+    .app-footer__link:hover:not(.app-footer__link--active),
+    a.app-footer__contact:hover,
+    a.app-footer__contact:focus-visible {
       color: var(--color-footer-gradient-hover);
     }
   }
@@ -163,6 +182,44 @@ const isActive = (name: string) => route.name === name
   .app-footer__socials {
     gap: 28px;
 
+  }
+
+  // one line on desktop, stacked and centered on phones
+  .app-footer__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 28px;
+    margin: 0;
+    // room above and below, so it reads as its own row between the logo and the menu
+    padding-block: var(--footer-contacts-padding-y);
+    font-style: normal;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .app-footer__contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-white);
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-xs);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    > .r-icon {
+      flex-shrink: 0;
+    }
+  }
+
+  a.app-footer__contact:hover,
+  a.app-footer__contact:focus-visible {
+    color: var(--color-accent);
   }
 
   .app-footer__menu {

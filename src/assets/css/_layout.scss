@@ -54,6 +54,8 @@ $spacing: (
   --radius-sm: 4px;
   --radius: 5px;
   --radius-md: 8px;
+  // footer contact row (AppFooter): space above and below it
+  --footer-contacts-padding-y: 16px;
   --radius-lg: 12px;
 
   // shadows
@@ -68,6 +70,7 @@ $spacing: (
   @include mobile {
     --container-width: 767px;
     --header-height: 70px;
+    --footer-contacts-padding-y: 20px;
     --section-padding-y: 48px;
     --section-padding-x: 24px;
     --hero-padding-x: 40px;

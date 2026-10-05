@@ -1,6 +1,9 @@
 export default {
   companyName: 'Raykan Technologies',
   copyright: 'Ⓒ {year} Raykan Technologies. All Rights Reserved.',
+  // office address, in the footer and on the contact page
+  address: 'Pardo, Cebu City, Cebu, PH 6000',
+  footerContact: 'Contact details',
   footerMenu: 'Footer',
   // default share image (public/og/default.jpg)
   seo: {

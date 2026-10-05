@@ -12,7 +12,7 @@ export default {
     phone: 'Phone: {number}',
     email: 'Email: {email}',
     visit: 'You can find us at:',
-    address: 'Pardo, Cebu City, Cebu, PH 6000',
+    address: '@:common.address',
     connect: 'You can also connect with us via:',
   },
   form: {

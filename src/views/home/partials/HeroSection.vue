@@ -10,6 +10,7 @@ import eliteAnywhere from '@/assets/images/clients/elite-anywhere.svg'
 import kcFence from '@/assets/images/clients/kc-fence.webp'
 import dmc from '@/assets/images/clients/dmc.webp'
 import bni from '@/assets/images/clients/bni.webp'
+import { CONTACT_EMAIL } from '@/constants'
 
 const { t } = useI18n()
 
@@ -45,7 +46,7 @@ const clients = computed<Array<ICarouselImage>>(() => [
     </i18n-t>
 
     <div class="hero-section__actions">
-      <r-button href="mailto:info@raykan.co" class="hero-section__start">
+      <r-button :href="`mailto:${CONTACT_EMAIL}`" class="hero-section__start">
         {{ t('home.hero.startBuilding') }}
       </r-button>
       <r-button :to="{ name: 'about' }" variant="outline" class="hero-section__team">
