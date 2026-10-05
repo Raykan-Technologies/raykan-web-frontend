@@ -16,6 +16,11 @@
   50% { transform: translateY(-16px); }
 }
 
+// gentler float for small things like the card badges
+@keyframes bob {
+  50% { transform: translateY(-6px); }
+}
+
 // slow back-and-forth tilt; put it on a child of the floating element so the transforms don't clash
 @keyframes sway {
   from { transform: rotate(-10deg); }

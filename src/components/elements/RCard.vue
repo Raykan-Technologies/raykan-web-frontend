@@ -98,14 +98,28 @@ const tag = computed(() => props.to ? RouterLink : 'div')
     }
   }
 
-  // badge shape with the icon centered on it
+  // badge shape with the icon centered on it, bobbing slowly
   .r-card__icon {
     display: grid;
     place-items: center;
+    animation: bob 4s ease-in-out infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     > * {
       grid-area: 1 / 1;
     }
+  }
+
+  // neighbouring cards out of step, so a row doesn't bob in unison
+  &:nth-child(3n + 2) .r-card__icon {
+    animation-delay: -1.3s;
+  }
+
+  &:nth-child(3n) .r-card__icon {
+    animation-delay: -2.6s;
   }
 
   .r-card__icon-badge {
