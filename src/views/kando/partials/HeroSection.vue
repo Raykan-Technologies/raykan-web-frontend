@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { RSection } from '@/components/elements'
+import pattern from '@/assets/images/kando/hero-pattern.png'
 import people from '@/assets/images/kando/hero.webp'
 
 const { t } = useI18n()
@@ -14,9 +15,11 @@ const minHeight = {
 </script>
 <template>
   <!-- wp-raykan kando hero (1f2c830): centred headline, office photo rising from an orange bottom bar -->
-  <r-section id="home" class="kando-hero" hero theme="transparent" align="center" vertical-align="top"
+  <r-section id="home" class="kando-hero" hero theme="light" align="center" vertical-align="top"
     :min-height="minHeight">
     <template #background>
+      <div class="kando-hero__pattern" :style="{ backgroundImage: `url(${pattern})` }"></div>
+      <div class="kando-hero__shade"></div>
       <img class="kando-hero__image" :src="people" alt="" width="736" height="329" />
     </template>
 
@@ -35,32 +38,62 @@ const minHeight = {
 @use '@/assets/css/breakpoints' as *;
 
 .kando-hero {
-  // photo width: 736px (its natural size) or 75% of the screen, nearly full width on phones
+  // photo width: 736px (its natural size) or 75% of the screen, 85% on phones
+  // so the curve doesn't cut into its corners
   --kando-hero-image-width: min(736px, 75%);
+  // U-shaped bottom (wp-raykan's drafted 250px curve), smaller on small screens.
+  // The U is wider than the screen, so its sides and border run off the edges
+  --kando-hero-curve: clamp(60px, 17vw, 250px);
+  --kando-hero-overhang: clamp(16px, 2.2vw, 32px);
+  --kando-hero-border: 15px;
+  --kando-hero-shape: 0 calc(-1 * var(--kando-hero-overhang));
 
   // leaves room under the text for the photo (329 / 736 of its width)
   padding-bottom: calc(var(--kando-hero-image-width) * 329 / 736 + 24px);
-  box-shadow: inset 0 -25px 20px var(--color-kando-hero-shadow);
+  clip-path: inset(var(--kando-hero-shape) round 0 0 var(--kando-hero-curve) var(--kando-hero-curve));
 
-  // beats the section theme's background
-  &.r-section {
-    background-color: var(--color-kando-hero-bg);
+  @include tablet {
+    --kando-hero-border: 12px;
   }
 
   @include mobile {
-    --kando-hero-image-width: min(736px, 100% - 20px);
+    --kando-hero-image-width: min(736px, 85%);
+    --kando-hero-border: 8px;
   }
 
-  // orange bar along the bottom edge, over the photo
+  // gradient border following the U at full thickness, cut off at the screen edges
+  // (drawn over the photo)
   &::after {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: var(--kando-hero-shape);
     z-index: 1;
-    height: 15px;
+    padding: 0 var(--kando-hero-border) var(--kando-hero-border);
+    border-radius: 0 0 var(--kando-hero-curve) var(--kando-hero-curve);
     background: var(--color-kando-gradient);
+    // keeps only the padding ring; -webkit- lines for older Safari
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0);
+    pointer-events: none;
+  }
+
+  // Kando figure pattern over white, at half strength (wp-raykan overlay)
+  .kando-hero__pattern {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  // dark inner shadow along the bottom, over the pattern and under the photo
+  .kando-hero__shade {
+    position: absolute;
+    inset: var(--kando-hero-shape);
+    border-radius: 0 0 var(--kando-hero-curve) var(--kando-hero-curve);
+    box-shadow: inset 0 -25px 20px var(--color-kando-hero-shadow);
     pointer-events: none;
   }
 
