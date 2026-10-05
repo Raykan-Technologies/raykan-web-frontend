@@ -136,10 +136,12 @@ const year = new Date().getFullYear()
     }
   }
 
+  // white and the same size as the contact details
   .kando-footer__copyright {
     margin: 0;
+    color: var(--color-white);
     font-family: var(--font-kando-text);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-light);
   }
 }

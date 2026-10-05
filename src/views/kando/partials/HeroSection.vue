@@ -15,7 +15,7 @@ const minHeight = {
 </script>
 <template>
   <!-- wp-raykan kando hero (1f2c830): centred headline, office photo rising from an orange bottom bar -->
-  <r-section id="home" class="kando-hero" hero theme="light" align="center" vertical-align="top"
+  <r-section id="home" class="kando-hero" hero theme="light" align="center"
     :min-height="minHeight">
     <template #background>
       <div class="kando-hero__pattern" :style="{ backgroundImage: `url(${pattern})` }"></div>
@@ -48,8 +48,9 @@ const minHeight = {
   --kando-hero-border: 15px;
   --kando-hero-shape: 0 calc(-1 * var(--kando-hero-overhang));
 
-  // leaves room under the text for the photo (329 / 736 of its width)
-  padding-bottom: calc(var(--kando-hero-image-width) * 329 / 736 + 24px);
+  // room for the photo (329 / 736 of its width) plus the same spacing as the top,
+  // so the text sits midway between the header and the photo
+  padding-bottom: calc(var(--kando-hero-image-width) * 329 / 736 + var(--section-padding-y));
   clip-path: inset(var(--kando-hero-shape) round 0 0 var(--kando-hero-curve) var(--kando-hero-curve));
 
   @include tablet {

@@ -3,7 +3,6 @@ import { computed, onUnmounted, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { RButton, RIcon } from '@/components/elements'
-import { CONTACT_EMAIL } from '@/constants'
 import logo from '@/assets/images/kando/logo.webp'
 
 const open = defineModel<boolean>('open', { default: false })
@@ -62,7 +61,7 @@ onUnmounted(() => {
                 </router-link>
               </li>
               <li class="kando-menu__item">
-                <r-button :href="`mailto:${CONTACT_EMAIL}`" variant="kando-outline" class="kando-menu__cta">
+                <r-button :to="{ name: 'contact' }" variant="kando-outline" class="kando-menu__cta">
                   {{ t('kando.header.meeting') }}
                 </r-button>
               </li>

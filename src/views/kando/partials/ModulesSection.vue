@@ -142,9 +142,11 @@ const modules = computed(() => (Object.keys(images) as Array<keyof typeof images
     line-height: 1.5;
   }
 
+  // label kept on one line, also on phones
   .kando-modules__brochure {
     align-self: center;
     margin-top: 25px;
+    white-space: nowrap;
   }
 }
 </style>

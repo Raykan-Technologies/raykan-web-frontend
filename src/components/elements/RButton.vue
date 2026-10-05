@@ -168,9 +168,15 @@ const onContextMenu = (e: MouseEvent) => {
     }
   }
 
+  // solid orange, no border (padding grown by 2px so it stays 40px tall)
   &.r-button--kando {
-    border-color: var(--color-kando-500);
+    padding: 12px 24px;
+    border: 0;
     background-color: var(--color-kando-500);
+
+    @include mobile {
+      padding-inline: 16px;
+    }
 
     &,
     &:hover {

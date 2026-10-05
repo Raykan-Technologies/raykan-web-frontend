@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RButton, RIcon } from '@/components/elements'
-import { CONTACT_EMAIL } from '@/constants'
 import MobileMenu from './MobileMenu.vue'
 
 // wp-raykan sticky_effects_offset
@@ -34,7 +33,7 @@ onUnmounted(() => {
         {{ t('kando.header.back') }}
       </r-button>
 
-      <r-button :href="`mailto:${CONTACT_EMAIL}`" variant="kando" class="kando-header__demo">
+      <r-button :to="{ name: 'contact' }" variant="kando" class="kando-header__demo">
         {{ t('kando.header.demo') }}
       </r-button>
 
