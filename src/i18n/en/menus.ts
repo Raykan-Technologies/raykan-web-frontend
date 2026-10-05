@@ -4,7 +4,6 @@ export default {
   allSolutions: 'All',
   about: 'About',
   blog: 'Blog',
-  careers: 'Careers',
   faq: 'FAQ',
   contact: 'Contact',
   kando: 'Kando',

@@ -6,6 +6,7 @@ import AppLogo from '@/assets/AppLogo.vue'
 import { RButton, RIcon } from '@/components/elements'
 import AppSocialLinks from './AppSocialLinks.vue'
 import { useAppMenu } from './menu'
+import { joinTeamUrl } from '@/constants'
 
 const open = defineModel<boolean>('open', { default: false })
 
@@ -87,7 +88,7 @@ onUnmounted(() => {
                 </router-link>
               </li>
               <li class="app-mobile-menu__item">
-                <r-button :to="{ name: 'careers' }" class="app-mobile-menu__cta">
+                <r-button :href="joinTeamUrl(t('common.joinTeamSubject'))" class="app-mobile-menu__cta">
                   {{ t('buttons.joinOurTeam') }}
                 </r-button>
               </li>

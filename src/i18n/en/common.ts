@@ -4,6 +4,8 @@ export default {
   // office address, in the footer and on the contact page
   address: 'Pardo, Cebu City, Cebu, PH 6000',
   footerContact: 'Contact details',
+  // subject of the email the "Join our team" buttons start
+  joinTeamSubject: 'Job Application: Joining the Raykan Technologies Team',
   footerMenu: 'Footer',
   // default share image (public/og/default.jpg)
   seo: {

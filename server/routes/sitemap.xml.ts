@@ -2,7 +2,7 @@ import { SOLUTIONS } from '../../src/constants'
 import { BLOG_POSTS } from '../../src/views/blog/posts'
 
 // indexable pages, by hand: routes come from src/router, which the server can't discover.
-// Left out: privacy (hidden) and careers (a placeholder until it gets content)
+// Left out: privacy (hidden)
 const PATHS = [
   '/',
   '/about',

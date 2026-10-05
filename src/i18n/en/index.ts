@@ -1,7 +1,6 @@
 import about from './about'
 import blog from './blog'
 import buttons from './buttons'
-import careers from './careers'
 import clients from './clients'
 import common from './common'
 import contact from './contact'
@@ -18,7 +17,6 @@ export default {
   about,
   blog,
   buttons,
-  careers,
   clients,
   common,
   contact,

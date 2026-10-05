@@ -9,6 +9,11 @@ export type TSocial = keyof typeof SOCIAL_LINKS
 
 export const CONTACT_EMAIL = 'rbsesican@raykan.co'
 
+// "Join our team" buttons open Gmail's compose window to the contact email, like wp-raykan,
+// with the subject filled in (i18n `common.joinTeamSubject`)
+export const joinTeamUrl = (subject: string) =>
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(subject)}`
+
 // shown as written; `tel` is the dialable form
 export const CONTACT_PHONE = { display: '(+63) 916 702 3816', tel: '+639167023816' } as const
 

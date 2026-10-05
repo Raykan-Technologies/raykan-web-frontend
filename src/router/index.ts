@@ -2,7 +2,6 @@ import type { RouteRecordRaw } from 'vue-router'
 import type { TFooterVariant } from '@/components/types'
 import about from './about'
 import blog from './blog'
-import careers from './careers'
 import contact from './contact'
 import faq from './faq'
 import kando from './kando'
@@ -20,7 +19,6 @@ export default [
   ...blog,
   ...faq,
   ...contact,
-  ...careers,
   ...kando,
   // ...privacy,
   {

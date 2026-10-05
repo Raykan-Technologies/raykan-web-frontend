@@ -6,6 +6,7 @@ import AppLogo from '@/assets/AppLogo.vue'
 import { RButton, RIcon } from '@/components/elements'
 import AppMobileMenu from './AppMobileMenu.vue'
 import { useAppMenu } from './menu'
+import { joinTeamUrl } from '@/constants'
 
 defineProps<{
   /**
@@ -76,7 +77,7 @@ onUnmounted(() => {
       </nav>
 
       <div class="app-header__actions">
-        <r-button :to="{ name: 'careers' }">{{ t('buttons.joinOurTeam') }}</r-button>
+        <r-button :href="joinTeamUrl(t('common.joinTeamSubject'))">{{ t('buttons.joinOurTeam') }}</r-button>
       </div>
 
       <button type="button" class="app-header__toggle" :aria-label="t('buttons.openMenu')"

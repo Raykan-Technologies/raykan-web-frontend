@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { RButton, RSection } from '@/components/elements'
 import team from '@/assets/images/home/team.webp'
-import { CONTACT_EMAIL } from '@/constants'
+import { CONTACT_EMAIL, joinTeamUrl } from '@/constants'
 
 const { t } = useI18n()
 </script>
@@ -19,7 +19,7 @@ const { t } = useI18n()
 
     <div class="footer-section__actions">
       <r-button :href="`mailto:${CONTACT_EMAIL}`">{{ t('home.about.startBuilding') }}</r-button>
-      <r-button :to="{ name: 'careers' }" variant="outline">
+      <r-button :href="joinTeamUrl(t('common.joinTeamSubject'))" variant="outline">
         {{ t('home.about.joinTeam') }}
       </r-button>
     </div>
