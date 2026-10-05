@@ -48,7 +48,8 @@ const menus = computed(() => [
   { menu: t('menus.blog'), route: 'blog' },
   { menu: t('menus.faq'), route: 'faq' },
   { menu: t('menus.contact'), route: 'contact' },
-  { menu: t('menus.privacy'), route: 'privacy' },
+  // privacy policy hidden for now (route off in src/router/index.ts)
+  // { menu: t('menus.privacy'), route: 'privacy' },
 ])
 
 // solution pages count towards "Solutions"

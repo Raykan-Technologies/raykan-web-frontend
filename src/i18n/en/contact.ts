@@ -1,5 +1,6 @@
 export default {
   title: 'Contact Us',
+  photoAlt: 'Colleagues discussing a project around a laptop',
   // search and share copy, title gets the company suffix
   seo: {
     title: 'Contact Us',

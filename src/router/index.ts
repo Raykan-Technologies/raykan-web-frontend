@@ -6,7 +6,8 @@ import careers from './careers'
 import contact from './contact'
 import faq from './faq'
 import kando from './kando'
-import privacy from './privacy'
+// privacy policy hidden for now, uncomment with ...privacy below to bring it back
+// import privacy from './privacy'
 import solutions from './solutions'
 
 /**
@@ -21,7 +22,7 @@ export default [
   ...contact,
   ...careers,
   ...kando,
-  ...privacy,
+  // ...privacy,
   {
     path: '/',
     name: 'home',

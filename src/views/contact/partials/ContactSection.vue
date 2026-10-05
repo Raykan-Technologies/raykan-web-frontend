@@ -6,12 +6,17 @@ import type { TIcons } from '@/components/icons'
 import AppSocialLinks from '@/components/AppSocialLinks.vue'
 import { CONTACT_EMAIL, CONTACT_MESSAGE_MAX, CONTACT_PHONE } from '@/constants'
 import contactGrid from '@/assets/images/contact/contact-grid.svg'
+// Unsplash, Vitaly Gariev (Unsplash License), cropped to the hexagon
+import teamPhoto from '@/assets/images/contact/team-meeting.webp'
 import { useRuntimeConfig, useScriptGoogleRecaptcha } from '#imports'
 
 const { t } = useI18n()
 const id = useId()
 
 const MESSAGE_MAX = CONTACT_MESSAGE_MAX
+
+// form hidden for now, the hexagon photo shows instead; set to true to bring it back (sending and reCAPTCHA stay wired)
+const CONTACT_FORM_ENABLED = false
 
 // wp-raykan FormCraft fields plus a contact number; `half` fields share a row
 const fields = computed<Array<{ key: 'name' | 'company' | 'email' | 'phone'; type: string; icon: TIcons; required: boolean; autocomplete: string; half?: boolean }>>(() => [
@@ -86,7 +91,7 @@ const onSubmit = async () => {
         <app-social-links class="contact-section__socials" :size="25" effect="highlight" />
       </address>
 
-      <form class="contact-section__form" :aria-label="t('contact.form.label')" @submit.prevent="onSubmit"
+      <form v-if="CONTACT_FORM_ENABLED" class="contact-section__form" :aria-label="t('contact.form.label')" @submit.prevent="onSubmit"
         @focusin.once="recaptcha?.load()">
         <div class="contact-section__fields">
           <label v-for="field in fields" :key="field.key" class="contact-section__field"
@@ -123,6 +128,7 @@ const onSubmit = async () => {
           <template v-if="status === 'sent' || status === 'error'">{{ t(`contact.form.${status}`) }}</template>
         </p>
 
+        <!-- links to the privacy route, so turn it back on in src/router/index.ts with the form -->
         <i18n-t keypath="contact.form.consent" scope="global" tag="p" class="contact-section__notice">
           <template #policy>
             <router-link :to="{ name: 'privacy' }">{{ t('contact.form.policy') }}</router-link>
@@ -140,6 +146,17 @@ const onSubmit = async () => {
           </template>
         </i18n-t>
       </form>
+
+      <div v-else class="contact-section__visual">
+        <img class="contact-section__photo" :src="teamPhoto" :alt="t('contact.photoAlt')" width="960"
+          height="1110" loading="lazy">
+        <!-- the About page's rounded triangle in solid blue, floating over the hexagon's lower-left corner -->
+        <div class="contact-section__triangle" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <path d="M47.1 15.3 Q50 10 52.9 15.3 L89.1 80.7 Q92 86 86 86 L14 86 Q8 86 10.9 80.7 Z" />
+          </svg>
+        </div>
+      </div>
     </div>
   </r-section>
 </template>
@@ -246,6 +263,58 @@ const onSubmit = async () => {
 
     @include mobile {
       justify-content: center;
+    }
+  }
+
+  .contact-section__visual {
+    position: relative;
+    justify-self: center;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  // the card badges' hexagon, cut out of the photo
+  .contact-section__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 64 / 74;
+    object-fit: cover;
+    -webkit-mask: url('@/assets/images/contact/hexagon-mask.svg') center / contain no-repeat;
+    mask: url('@/assets/images/contact/hexagon-mask.svg') center / contain no-repeat;
+    // mirrored; `scale` so it doesn't fight the float animation's transform
+    scale: -1 1;
+    // slower than the triangle and out of step with it
+    animation: float 10s ease-in-out -3s infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  // floats (wrapper) and sways (svg) like the About page shapes
+  .contact-section__triangle {
+    position: absolute;
+    bottom: 4%;
+    left: -6%;
+    width: 42%;
+    aspect-ratio: 1;
+    animation: float 6s ease-in-out infinite;
+
+    > svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      fill: var(--color-primary);
+      animation: sway 10s ease-in-out infinite alternate;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      &,
+      > svg {
+        animation: none;
+      }
     }
   }
 
