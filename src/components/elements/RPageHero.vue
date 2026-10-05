@@ -15,16 +15,22 @@ interface IProps {
    */
   image?: string;
   imagePosition?: string;
+  /**
+   * Minimum height: `full` screen (70% on mobile), or `half` the screen (blog, FAQ)
+   */
+  height?: 'full' | 'half';
 }
 
 withDefaults(defineProps<IProps>(), {
   imagePosition: 'center center',
+  height: 'full',
 })
 </script>
 <template>
   <!-- inner-page hero (wp-raykan solution/FAQ pages); the page's route sets meta.headerTransparent -->
-  <r-section class="r-page-hero" hero theme="primary" vertical-align="middle"
-    :min-height="{ desktop: 'var(--app-height, 100svh)', mobile: 'calc(var(--app-height, 100svh) * 0.7)' }"
+  <r-section class="r-page-hero" hero theme="primary" vertical-align="middle" :min-height="height === 'half'
+    ? 'calc(var(--app-height, 100svh) * 0.5)'
+    : { desktop: 'var(--app-height, 100svh)', mobile: 'calc(var(--app-height, 100svh) * 0.7)' }"
     :image="image" :image-position="imagePosition" overlay="var(--color-overlay-page-hero)"
     :overlay-opacity="0.8">
     <template v-if="$slots.background" #background>

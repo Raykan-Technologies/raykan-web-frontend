@@ -12,6 +12,9 @@ export default [
                 path: '',
                 name: 'blog',
                 component: () => import('@/views/blog/BlogView.vue'),
+                meta: {
+                    headerTransparent: true,
+                },
             },
         ],
     },

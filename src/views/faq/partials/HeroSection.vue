@@ -7,8 +7,8 @@ import heroPhoto from '@/assets/images/solutions/it-managed-service.webp'
 const { t } = useI18n()
 </script>
 <template>
-  <!-- wp-raykan FAQ hero: same page hero as the solution pages -->
-  <r-page-hero class="faq-hero" :title="t('faq.hero.title')" :description="t('faq.hero.description')"
+  <!-- wp-raykan FAQ hero: same page hero as the solution pages, at half the screen's height -->
+  <r-page-hero class="faq-hero" height="half" :title="t('faq.hero.title')" :description="t('faq.hero.description')"
     :image="heroPhoto" />
 </template>
 <style lang="scss">

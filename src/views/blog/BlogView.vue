@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { defineBreadcrumb, useSchemaOrg } from '#imports'
 import { usePageSeo } from '@/composables/seo'
+import HeroSection from './partials/HeroSection.vue'
 
 const { t } = useI18n()
 
@@ -21,6 +22,6 @@ useSchemaOrg([
 </script>
 <template>
   <main>
-    <h1>{{ t('blog.title') }}</h1>
+    <HeroSection />
   </main>
 </template>
