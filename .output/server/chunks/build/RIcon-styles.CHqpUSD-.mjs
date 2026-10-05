@@ -1,9 +1,0 @@
-//#region src/components/elements/RIcon.vue?vue&type=style&index=0&inline&used&lang.scss
-var RIcon_vue_vue_type_style_index_0_inline_used_lang_default = ".r-icon{-webkit-user-select:none;user-select:none;justify-content:center;align-items:center;transition:all .2s;display:flex}.r-icon svg{pointer-events:none;transition:all .2s}.r-icon .r-icon__active-path{opacity:0;transition:all .2s}.r-icon .r-icon__active-path[non-fill]{fill-opacity:0;opacity:1!important}.r-icon.r-icon--two-tone{transition:all .2s}.r-icon.r-icon--two-tone .r-icon__two-tone{color:var(--color-cyan-500)}.r-icon.r-icon--two-tone.r-icon--hoverable:hover{color:var(--color-brand-500)!important}.r-icon.r-icon--two-tone.r-icon--hoverable:hover .r-icon__two-tone{transition:all .2s;color:var(--color-brand-500)!important}.r-icon.r-icon--two-tone.r-icon--hoverable:hover .r-icon__active-path{opacity:.2}.r-icon.r-icon--two-tone.r-icon--hoverable:hover .r-icon__active-path[non-fill]{fill-opacity:.2}.r-icon.r-icon--active{color:var(--color-brand-500)!important}.r-icon.r-icon--active .r-icon__active-path{opacity:.2}.r-icon.r-icon--active .r-icon__active-path[non-fill]{opacity:1;fill-opacity:.2}.r-icon.r-icon--success{color:var(--color-green-700)!important}.r-icon.r-icon--success .r-icon__active-path{opacity:.2}.r-icon.r-icon--none{color:var(--color-grey-700)!important}.r-icon.r-icon--none .r-icon__active-path{opacity:.2}.r-icon.r-icon--warning{color:var(--color-yellow-600)!important}.r-icon.r-icon--warning .r-icon__active-path{opacity:.2}.r-icon.r-icon--error{color:var(--color-red-600)}.r-icon.r-icon--error .r-icon__active-path{opacity:.2}.r-icon.r-icon--soft{color:var(--color-grey-500)!important}.r-icon.r-icon--spinning{pointer-events:none;transition:transform .2s}";
-
-const RIconStyles_CHqpUSD_ = [
-  RIcon_vue_vue_type_style_index_0_inline_used_lang_default
-];
-
-export { RIconStyles_CHqpUSD_ as default };
-//# sourceMappingURL=RIcon-styles.CHqpUSD-.mjs.map

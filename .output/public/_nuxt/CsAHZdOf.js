@@ -1,1 +1,0 @@
-import{n as e}from"./oHYTpome.js";import{d as t,jt as n,m as r,pt as i,x as a,z as o}from"./CMzENqJN.js";import{t as s}from"#entry";var c=a({__name:`KandoView`,setup(a){let{t:c}=s();return e({title:()=>c(`kando.title`)}),(e,a)=>(o(),r(`main`,null,[t(`h1`,null,n(i(c)(`kando.title`)),1)]))}});export{c as default};
