@@ -1,13 +1,28 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useHead } from '#imports'
+import { defineBreadcrumb, defineWebPage, useSchemaOrg } from '#imports'
+import { usePageSeo } from '@/composables/seo'
+import OverviewSection from './partials/OverviewSection.vue'
 
 const { t } = useI18n()
 
-useHead({ title: () => t('solutions.title') })
+usePageSeo({
+  title: () => t('solutions.seo.title'),
+  description: () => t('solutions.seo.description'),
+})
+
+useSchemaOrg([
+  defineWebPage({ '@type': 'CollectionPage' }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: () => t('menus.home'), item: '/' },
+      { name: () => t('menus.solutions') },
+    ],
+  }),
+])
 </script>
 <template>
   <main>
-    <h1>{{ t('solutions.title') }}</h1>
+    <OverviewSection />
   </main>
 </template>
