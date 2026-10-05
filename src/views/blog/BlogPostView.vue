@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { defineArticle, defineBreadcrumb, useSchemaOrg, useSeoMeta } from '#imports'
+import { defineArticle, defineBreadcrumb, definePerson, useSchemaOrg, useSeoMeta } from '#imports'
 import { RButton, RPost } from '@/components/elements'
 import { usePageSeo } from '@/composables/seo'
 import HttpError from '@/views/errors/HttpError.vue'
@@ -16,6 +16,11 @@ const { text, seoTitle, blocks } = usePostCopy()
 
 const post = computed(() => findPost(props.slug))
 const body = computed(() => blocks(props.slug))
+
+// a person, or the company itself (then linked to the Organization from app.vue);
+// the page is re-created for each slug, so a plain value is enough
+const authorName = text(props.slug, 'author')
+const author = authorName === t('common.companyName') ? { '@id': '#identity' } : definePerson({ name: authorName })
 
 if (post.value) {
   usePageSeo({
@@ -38,8 +43,7 @@ if (post.value) {
       image: () => postShareImage(props.slug),
       datePublished: () => post.value?.published,
       dateModified: () => post.value?.updated ?? post.value?.published,
-      // posts are credited to the company, the Organization from app.vue
-      author: { '@id': '#identity' },
+      author,
     }),
     defineBreadcrumb({
       itemListElement: [

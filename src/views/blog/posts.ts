@@ -12,6 +12,11 @@ export interface IBlogPost {
 
 export const BLOG_POSTS: ReadonlyArray<IBlogPost> = [
   { slug: 'custom-vs-off-the-shelf-software', published: '2026-10-05' },
+  // migrated from wp-raykan, original publish dates
+  { slug: 'raykan-5th-anniversary', published: '2024-08-14' },
+  { slug: 'implementing-new-technology', published: '2024-07-11' },
+  { slug: 'optimizing-your-erp-system', published: '2024-03-18' },
+  { slug: 'work-chronicles-team-success', published: '2024-02-21' },
 ]
 
 export const findPost = (slug: string) => BLOG_POSTS.find((post) => post.slug === slug)

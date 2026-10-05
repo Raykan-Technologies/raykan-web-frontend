@@ -67,8 +67,18 @@ export interface ICarouselImage {
 }
 
 /**
- * A block of a blog post body (RPost): a heading, paragraph or quote, or a list
+ * A link inside a post block; the block's text marks where it goes with `{0}`, `{1}`, …
+ */
+export interface IPostLink {
+  href: string;
+  text: string;
+}
+
+/**
+ * A block of a blog post body (RPost): a heading, paragraph, quote or closing callout, a list,
+ * or a 16:9 image (`src` under public/, 1600×900)
  */
 export type TPostBlock =
-  | { type: 'h2' | 'h3' | 'p' | 'quote'; text: string }
+  | { type: 'h2' | 'h3' | 'p' | 'quote' | 'callout'; text: string; links?: Array<IPostLink> }
   | { type: 'ul' | 'ol'; items: Array<string> }
+  | { type: 'img'; src: string; alt: string }

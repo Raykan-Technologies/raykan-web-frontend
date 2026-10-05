@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import type { RouteLocationRaw } from 'vue-router'
-import { formatPostDate, readingMinutes } from './post'
+import { formatPostDate, postSegments, readingMinutes } from './post'
 import RIcon from './RIcon.vue'
 import RSection from './RSection.vue'
 import type { TPostBlock } from './types'
@@ -67,10 +67,16 @@ const minutes = computed(() => readingMinutes(props.blocks))
         <ol v-else-if="block.type === 'ol'">
           <li v-for="(item, itemIndex) in block.items" :key="itemIndex">{{ item }}</li>
         </ol>
-        <blockquote v-else-if="block.type === 'quote'">
-          <p>{{ block.text }}</p>
-        </blockquote>
-        <component :is="block.type" v-else-if="'text' in block">{{ block.text }}</component>
+        <img v-else-if="block.type === 'img'" class="r-post__image" :src="block.src" :alt="block.alt"
+          width="1600" height="900" loading="lazy">
+        <component :is="block.type === 'quote' ? 'blockquote' : block.type === 'callout' ? 'p' : block.type"
+          v-else-if="'text' in block" :class="{ 'r-post__callout': block.type === 'callout' }">
+          <!-- links open in a new tab; most point to outside sources -->
+          <template v-for="(part, partIndex) in postSegments(block.text, block.links)" :key="partIndex">
+            <a v-if="typeof part !== 'string'" :href="part.href" target="_blank" rel="noopener">{{ part.text }}</a>
+            <template v-else>{{ part }}</template>
+          </template>
+        </component>
       </template>
       <slot></slot>
     </div>
@@ -160,6 +166,17 @@ const minutes = computed(() => readingMinutes(props.blocks))
     object-fit: cover;
   }
 
+  // same frame as the cover
+  .r-post__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin-block: 8px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
   .r-post__body {
     display: flex;
     flex-direction: column;
@@ -210,6 +227,17 @@ const minutes = computed(() => readingMinutes(props.blocks))
       color: var(--color-accent);
     }
 
+    // a closing line that asks the reader to act
+    .r-post__callout {
+      margin-top: 12px;
+      color: var(--color-primary);
+      font-family: var(--font-primary);
+      font-size: var(--font-size-post-subheading);
+      font-style: italic;
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-post-subheading);
+    }
+
     blockquote {
       padding: 4px 0 4px 24px;
       border-left: 4px solid var(--color-accent);
@@ -221,7 +249,7 @@ const minutes = computed(() => readingMinutes(props.blocks))
     }
 
     // links in the text only, so buttons in the slot keep their own colors
-    :where(p, li, blockquote) a {
+    :where(p, li, blockquote, h2, h3) a {
       color: var(--color-link);
 
       &:hover,
