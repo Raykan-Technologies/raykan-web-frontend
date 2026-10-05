@@ -1,10 +1,23 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useHead } from '#imports'
+import { defineBreadcrumb, useSchemaOrg } from '#imports'
+import { usePageSeo } from '@/composables/seo'
 
 const { t } = useI18n()
 
-useHead({ title: () => t('blog.title') })
+usePageSeo({
+  title: () => t('blog.seo.title'),
+  description: () => t('blog.seo.description'),
+})
+
+useSchemaOrg([
+  defineBreadcrumb({
+    itemListElement: [
+      { name: () => t('menus.home'), item: '/' },
+      { name: () => t('menus.blog') },
+    ],
+  }),
+])
 </script>
 <template>
   <main>

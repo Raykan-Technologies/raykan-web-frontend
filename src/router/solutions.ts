@@ -1,20 +1,9 @@
 import { defineComponent, h } from 'vue';
 import { RouterView, type RouteRecordRaw } from 'vue-router';
+import { SOLUTIONS, type TSolution } from '@/constants'
 
-/**
- * Solution slugs, in wp-raykan menu order. Each one is also its route name and path
- * (kept at the root like the WordPress site, e.g. `/software-development`).
- */
-export const SOLUTIONS = [
-    'software-development',
-    'data-science',
-    'digital-marketing',
-    'blockchain',
-    'enterprise-resource-planning',
-    'it-managed-service',
-] as const
-
-export type TSolution = typeof SOLUTIONS[number]
+// slugs live in constants.ts so server routes (sitemap) can use them without the route tree
+export { SOLUTIONS, type TSolution }
 
 /**
  * Solution pages that open with a hero (views/solutions/partials/HeroSection.vue);

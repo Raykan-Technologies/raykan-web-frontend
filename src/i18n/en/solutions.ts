@@ -1,9 +1,10 @@
 export default {
   title: 'Solutions',
   // search and share copy, title gets the company suffix
+  // (wp-raykan Yoast, shortened)
   seo: {
-    title: 'IT Solutions and Services',
-    description: 'Explore Raykan’s IT solutions: software development, data science, ERP, digital marketing, IT managed service and blockchain, built to help your business grow.',
+    title: 'Custom Solutions for Your Business',
+    description: 'Raykan builds custom solutions that help businesses overcome their challenges: software development, data science, ERP, digital marketing and more.',
   },
   // wp-raykan /solutions: the services heading over the six solution cards
   overview: {

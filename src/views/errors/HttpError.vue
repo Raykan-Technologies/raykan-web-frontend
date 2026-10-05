@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { setResponseStatus, useHead, useRequestEvent } from '#imports'
+import { setResponseStatus, useHead, useRequestEvent, useSeoMeta } from '#imports'
 
 const props = withDefaults(defineProps<{
   code?: string;
@@ -14,6 +14,9 @@ const event = useRequestEvent()
 if (event) setResponseStatus(event, Number(props.code))
 
 useHead({ title: () => t(`errorPages.${props.code}.title`) })
+
+// error pages never belong in search results
+useSeoMeta({ robots: 'noindex, nofollow' })
 </script>
 <template>
   <main>

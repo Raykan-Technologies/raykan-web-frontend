@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { createSitePathResolver, defineOrganization, useHead, useSchemaOrg, useSeoMeta } from '#imports'
+import { createSitePathResolver, defineOrganization, useHead, useSchemaOrg, useSeoMeta, useSiteConfig } from '#imports'
 import { OG_IMAGE_SIZE, useTitleFormatter } from '@/composables/seo'
 import { useViewport } from '@/composables/viewport'
 import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/constants'
@@ -14,8 +14,13 @@ useHead({
   titleTemplate: (title) => formatTitle(title),
 })
 
+// only production is indexed; set NUXT_SITE_INDEXABLE=false on Vercel previews (their NODE_ENV is production too)
+const site = useSiteConfig()
+const indexable = site.indexable ?? site.env === 'production'
+
 // defaults for every page, usePageSeo (src/composables/seo.ts) overrides per page
 useSeoMeta({
+  robots: indexable ? 'index, follow, max-image-preview:large' : 'noindex, nofollow',
   ogSiteName: () => t('common.companyName'),
   ogType: 'website',
   ogLocale: 'en_US',

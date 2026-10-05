@@ -19,3 +19,18 @@ export const KANDO_CONTACT_PHONE = { display: '0916 702 3816', tel: '+6391670238
 
 // contact form message limit, checked by the form and the server
 export const CONTACT_MESSAGE_MAX = 1000
+
+/**
+ * Solution slugs, in wp-raykan menu order. Each one is also its route name and path
+ * (kept at the root like the WordPress site, e.g. `/software-development`).
+ */
+export const SOLUTIONS = [
+  'software-development',
+  'data-science',
+  'digital-marketing',
+  'blockchain',
+  'enterprise-resource-planning',
+  'it-managed-service',
+] as const
+
+export type TSolution = typeof SOLUTIONS[number]
