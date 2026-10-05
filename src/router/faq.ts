@@ -12,6 +12,10 @@ export default [
                 path: '',
                 name: 'faq',
                 component: () => import('@/views/faq/FaqView.vue'),
+                meta: {
+                    headerTransparent: true,
+                    footer: 'gradient',
+                },
             },
         ],
     },

@@ -119,6 +119,12 @@ $fonts: (
   --font-size-about-team-name: var(--font-size-lg);
   --font-size-about-team-role: var(--font-size-sm);
 
+  // FAQ toggle (wp-raykan Inter 20px / 24px question, 16px / 22px answer)
+  --font-size-faq-question: var(--font-size-lg);
+  --line-height-faq-question: 24px;
+  --font-size-faq-answer: var(--font-size-base);
+  --line-height-faq-answer: 22px;
+
   // icon box (RIconBox)
   --font-size-icon-box-title: 28px;
   --font-size-icon-box-text: 18px;
@@ -139,6 +145,8 @@ $fonts: (
 
     // 5.2rem
     --font-size-about-hero: 78px;
+
+    --font-size-faq-question: 18px;
   }
 
   // wp-raykan mobile hero heading: 42px / 50px (1.2), no letter spacing
@@ -178,5 +186,8 @@ $fonts: (
     --font-size-about-mission-description: var(--font-size-base);
     --font-size-about-member-bio: var(--font-size-sm);
     --line-height-about-member-bio: 18px;
+
+    --font-size-faq-question: var(--font-size-base);
+    --font-size-faq-answer: var(--font-size-sm);
   }
 }

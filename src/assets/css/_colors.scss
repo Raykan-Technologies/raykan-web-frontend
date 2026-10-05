@@ -10,10 +10,12 @@
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-grey-100: #F0F3F5;
+  --color-grey-200: #D5D8DC;
   --color-grey-300: #C9CCCE;
   --color-grey-350: #C4C4C4;
   --color-grey-600: #64686A;
   --color-grey-700: #565C67;
+  --color-slate-800: #1E293B;
 
   // aliases used by RIcon
   --color-cyan-500: var(--color-teal-500);
@@ -33,7 +35,7 @@
 
   // overlays / surfaces
   // wp-raykan hero video overlay, drawn at 0.8 opacity
-  --color-overlay-hero: color-mix(in srgb, var(--color-primary) 80%, transparent);
+  --color-overlay-hero: rgba(8, 67, 135, 0.8); // primary at 80%; rgba for older browsers
   // inner-page hero (RPageHero), drawn at 0.8 opacity
   --color-overlay-page-hero: linear-gradient(136deg, var(--color-primary) 40%, var(--color-white) 100%);
   // about page hero photo (wp-raykan), drawn at 0.5 opacity
@@ -53,6 +55,11 @@
 
   // about page "Our Raykan Team" (wp-raykan)
   --color-about-team-gradient: linear-gradient(180deg, var(--color-white) 0%, var(--color-primary) 100%);
+  // FAQ toggle (wp-raykan): grey answer panel, slate text, a divider between questions
+  --color-faq-answer-bg: var(--color-grey-100);
+  --color-faq-answer-text: var(--color-slate-800);
+  --color-faq-answer-border: var(--color-grey-300);
+  --color-faq-divider: var(--color-grey-200);
   --color-card-hover: #E2F3FF70;
   --color-card-icon-bg: var(--color-blue-100);
   --color-testimonial-card: #123A67A1;
