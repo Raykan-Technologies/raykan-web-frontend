@@ -12,6 +12,10 @@ export default [
                 path: '',
                 name: 'kando',
                 component: () => import('@/views/kando/KandoView.vue'),
+                // standalone product page with its own header and footer (wp-raykan)
+                meta: {
+                    layout: 'guest',
+                },
             },
         ],
     },

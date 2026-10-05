@@ -48,9 +48,10 @@ export type TSectionColumns = number | Array<number>
 export type TSectionGap = 'no' | 'narrow' | 'default' | 'extended' | 'wide' | 'wider'
 
 /**
- * Button styles: `solid` (accent background) or `outline` (border in the current text color)
+ * Button styles: `solid` (accent background) or `outline` (border in the current text color).
+ * Kando page only: `kando` (orange), `kando-outline` (white, fills orange on hover), `kando-light` (white, grey border)
  */
-export type TButtonVariant = 'solid' | 'outline'
+export type TButtonVariant = 'solid' | 'outline' | 'kando' | 'kando-outline' | 'kando-light'
 
 /**
  * An image slide for RCarousel

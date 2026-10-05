@@ -47,7 +47,7 @@ const onContextMenu = (e: MouseEvent) => {
 <template>
   <component :is="tag" class="r-button"
     :class="[`r-button--${variant}`, { 'r-button--block': block, 'r-button--pressed': pressed }]"
-    :to="to" :href="href" :target="isExternal ? '_blank' : undefined"
+    v-bind="to ? { to } : { href }" :target="isExternal ? '_blank' : undefined"
     :rel="isExternal ? 'noopener' : undefined" :type="tag === 'button' ? 'button' : undefined"
     @pointerdown="onPointerDown" @pointerup="release" @pointercancel="release"
     @pointerleave="release" @contextmenu="onContextMenu">
@@ -61,6 +61,12 @@ const onContextMenu = (e: MouseEvent) => {
 @mixin highlighted {
   background-color: var(--color-white);
   color: var(--color-accent);
+}
+
+// Kando outline hover: fills orange
+@mixin kando-filled {
+  background-color: var(--color-kando-500);
+  color: var(--color-white);
 }
 
 // Elementor button widget: Inter 16/16, 5px radius, 40px tall
@@ -138,6 +144,70 @@ const onContextMenu = (e: MouseEvent) => {
 
     &.r-button--pressed {
       @include highlighted;
+    }
+  }
+
+  // Kando page (wp-raykan .kando-button): its own orange brand, grows slightly on hover
+  &.r-button--kando,
+  &.r-button--kando-outline,
+  &.r-button--kando-light {
+    transition: transform 0.2s ease, background-color 0.2s, color 0.2s, border-color 0.2s;
+
+    &:focus-visible {
+      outline-color: var(--color-kando-500);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+
+    &.r-button--pressed {
+      transform: scale(1.03);
+    }
+  }
+
+  &.r-button--kando {
+    border-color: var(--color-kando-500);
+    background-color: var(--color-kando-500);
+
+    &,
+    &:hover {
+      color: var(--color-white);
+    }
+  }
+
+  &.r-button--kando-outline {
+    border-color: var(--color-kando-500);
+    background-color: var(--color-white);
+    color: var(--color-kando-500);
+
+    @media (hover: hover) {
+      &:hover {
+        @include kando-filled;
+      }
+    }
+
+    &.r-button--pressed {
+      @include kando-filled;
+    }
+  }
+
+  // 1px border, padding grown by 1px so it stays 40px tall like the others
+  &.r-button--kando-light {
+    padding: 11px 23px;
+    border-width: 1px;
+    border-color: var(--color-kando-border-light);
+    background-color: var(--color-white);
+
+    &,
+    &:hover {
+      color: var(--color-kando-text);
+    }
+
+    @include mobile {
+      padding-inline: 15px;
     }
   }
 

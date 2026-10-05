@@ -72,6 +72,25 @@
   --color-testimonial-card: #123A67A1;
   --color-metrics-bg: var(--color-teal-100);
 
+  // Kando page (wp-raykan /kando): the product's own orange brand
+  --color-kando-500: #DD3E00;
+  --color-kando-400: #E46533;
+  --color-kando-amber: #F5A623;
+  --color-kando-text: #414848;
+  --color-kando-text-soft: rgba(0, 0, 0, 0.5);
+  --color-kando-text-card: #424243;
+  --color-kando-border: #D1D1D1;
+  --color-kando-border-light: #E2E2E2;
+  --color-kando-divider: #E3E3E3;
+  --color-kando-gradient: linear-gradient(to right, var(--color-kando-amber), var(--color-kando-500));
+  // white under wp-raykan's flat #EAEDED pattern at 50%
+  --color-kando-hero-bg: #F5F6F6;
+  --color-kando-hero-shadow: rgba(0, 0, 0, 0.5);
+  --color-kando-header-sticky: rgba(255, 255, 255, 0.9);
+  --color-kando-pricing-bg: linear-gradient(180deg, var(--color-white) 50%, #DD3E009C 100%);
+  --color-kando-footer-bg: linear-gradient(180deg, var(--color-kando-400) 0%, var(--color-kando-500) 100%);
+  --color-kando-shadow-card: rgba(0, 0, 0, 0.05);
+
   // dropdown menu
   --color-dropdown-bg: var(--color-white);
   --color-dropdown-text: var(--color-black);

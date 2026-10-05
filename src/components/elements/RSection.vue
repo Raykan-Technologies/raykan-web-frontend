@@ -152,9 +152,12 @@ const sectionClasses = computed(() => [
     <!-- extra decorative layers (grids, shapes, video) behind the content -->
     <slot name="background"></slot>
     <div class="r-section__container">
-      <div v-if="title || label || description" class="r-section__header">
+      <div v-if="title || $slots.title || label || description" class="r-section__header">
         <span v-if="label" class="r-section__label">{{ label }}</span>
-        <component :is="titleTag" v-if="title" class="r-section__title">{{ title }}</component>
+        <!-- #title slot: same heading, for titles with marked-up words -->
+        <component :is="titleTag" v-if="title || $slots.title" class="r-section__title">
+          <slot name="title">{{ title }}</slot>
+        </component>
         <p v-if="description" class="r-section__description">{{ description }}</p>
       </div>
       <slot></slot>

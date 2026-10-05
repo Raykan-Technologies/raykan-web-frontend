@@ -6,15 +6,23 @@ $latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U
 $latin-ext: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 
 // variable fonts (self-hosted by Elementor on wp-raykan)
+// Quicksand / Archivo: Kando page only, no italics (Quicksand has none)
 $fonts: (
   'Figtree': (dir: 'figtree', weight: 300 900),
   'Inter': (dir: 'inter', weight: 100 900),
+  'Quicksand': (dir: 'quicksand', weight: 300 700, italic: false),
+  'Archivo': (dir: 'archivo', weight: 100 900, italic: false),
 );
 
 @each $family, $font in $fonts {
   $dir: map.get($font, dir);
+  $styles: (normal: '', italic: '-italic');
 
-  @each $style, $suffix in (normal: '', italic: '-italic') {
+  @if map.get($font, italic) == false {
+    $styles: (normal: '');
+  }
+
+  @each $style, $suffix in $styles {
     @each $subset, $range in (latin-ext: $latin-ext, latin: $latin) {
       @font-face {
         font-family: $family;
@@ -138,6 +146,18 @@ $fonts: (
   --font-size-icon-box-text: 18px;
   --line-height-icon-box-text: 26px;
 
+  // Kando page (wp-raykan /kando): its own fonts and sizes
+  --font-kando-heading: 'Quicksand', sans-serif;
+  --font-kando-text: 'Archivo', sans-serif;
+  --font-size-kando-hero: 64px;
+  --font-size-kando-hero-lead: 25px;
+  --font-size-kando-title: 48px;
+  --line-height-kando-title: 1.3;
+  --font-size-kando-description: 25px;
+  --font-size-kando-tag: 18px;
+  --font-size-kando-card-title: 20px;
+  --font-size-kando-feature-title: 22px;
+
   @include tablet {
     --font-size-section-title: 30px;
     --section-title-spacing: 0px;
@@ -158,6 +178,12 @@ $fonts: (
 
     --font-size-contact-title: 45px;
     --line-height-contact-title: 55px;
+
+    --font-size-kando-hero: 38px;
+    --font-size-kando-hero-lead: 22px;
+    --font-size-kando-title: 38px;
+    --line-height-kando-title: 1.15;
+    --font-size-kando-description: 22px;
   }
 
   // wp-raykan mobile hero heading: 42px / 50px (1.2), no letter spacing
@@ -204,5 +230,12 @@ $fonts: (
     // wp-raykan 40px / 40px, loosened so descenders don't touch the next line
     --font-size-contact-title: 40px;
     --line-height-contact-title: 46px;
+
+    // wp-raykan: 38px on large phones, 28px below 551px
+    --font-size-kando-hero: clamp(28px, 6.5vw, 38px);
+    --font-size-kando-hero-lead: 18px;
+    --font-size-kando-title: clamp(28px, 6.5vw, 38px);
+    --font-size-kando-description: 18px;
+    --font-size-kando-tag: clamp(12px, 3vw, 18px);
   }
 }

@@ -1,5 +1,6 @@
 import { kebabize } from "@/utils"
 import type { TKebabKeys } from "../types"
+import AccountSetting from "./AccountSetting.vue"
 import AppNetwork from "./AppNetwork.vue"
 import ArrowRight from "./ArrowRight.vue"
 import ArrowsCycle from "./ArrowsCycle.vue"
@@ -17,11 +18,16 @@ import ChartGrowth from "./ChartGrowth.vue"
 import ChartPie from "./ChartPie.vue"
 import Check from "./Check.vue"
 import ChevronDown from "./ChevronDown.vue"
+import ChevronLeft from "./ChevronLeft.vue"
+import Clipboard from "./Clipboard.vue"
+import Clock from "./Clock.vue"
 import CloudUpload from "./CloudUpload.vue"
 import CodeWindow from "./CodeWindow.vue"
 import Coins from "./Coins.vue"
+import CoinsStack from "./CoinsStack.vue"
 import CreditCard from "./CreditCard.vue"
 import CursorClick from "./CursorClick.vue"
+import CursorEdit from "./CursorEdit.vue"
 import Database from "./Database.vue"
 import DocumentSigned from "./DocumentSigned.vue"
 import Envelope from "./Envelope.vue"
@@ -34,10 +40,13 @@ import HeadThinking from "./HeadThinking.vue"
 import Headset from "./Headset.vue"
 import Hexagon from "./Hexagon.vue"
 import Instagram from "./Instagram.vue"
+import Invoice from "./Invoice.vue"
 import Kanban from "./Kanban.vue"
 import LaptopCode from "./LaptopCode.vue"
 import Link from "./Link.vue"
 import Linkedin from "./Linkedin.vue"
+import Location from "./Location.vue"
+import Mail from "./Mail.vue"
 import Megaphone from "./Megaphone.vue"
 import Menu from "./Menu.vue"
 import Modules from "./Modules.vue"
@@ -53,13 +62,17 @@ import ShoppingCart from "./ShoppingCart.vue"
 import Smartphone from "./Smartphone.vue"
 import Sprout from "./Sprout.vue"
 import Star from "./Star.vue"
+import Telephone from "./Telephone.vue"
+import TimeQuarterPass from "./TimeQuarterPass.vue"
 import Truck from "./Truck.vue"
 import User from "./User.vue"
+import UserMultiple from "./UserMultiple.vue"
 import Users from "./Users.vue"
 import UserShield from "./UserShield.vue"
 import XIcon from "./XIcon.vue"
 
 const iconComponents = {
+  AccountSetting,
   AppNetwork,
   ArrowRight,
   ArrowsCycle,
@@ -77,11 +90,16 @@ const iconComponents = {
   ChartPie,
   Check,
   ChevronDown,
+  ChevronLeft,
+  Clipboard,
+  Clock,
   CloudUpload,
   CodeWindow,
   Coins,
+  CoinsStack,
   CreditCard,
   CursorClick,
+  CursorEdit,
   Database,
   DocumentSigned,
   Envelope,
@@ -94,10 +112,13 @@ const iconComponents = {
   Headset,
   Hexagon,
   Instagram,
+  Invoice,
   Kanban,
   LaptopCode,
   Link,
   Linkedin,
+  Location,
+  Mail,
   Megaphone,
   Menu,
   Modules,
@@ -113,8 +134,11 @@ const iconComponents = {
   Smartphone,
   Sprout,
   Star,
+  Telephone,
+  TimeQuarterPass,
   Truck,
   User,
+  UserMultiple,
   Users,
   UserShield,
   XIcon,
