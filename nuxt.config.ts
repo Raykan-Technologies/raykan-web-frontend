@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     'pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/i18n',
     'nuxt-schema-org',
+    '@nuxt/scripts',
   ],
 
   css: ['@/assets/css/app.scss'],
@@ -48,7 +49,7 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
   },
 
-  // server-only SMTP settings, set at runtime with NUXT_MAIL_* (see .env.example)
+  // server-only SMTP and reCAPTCHA secrets plus the public site key, set at runtime (see .env.example)
   runtimeConfig: {
     mail: {
       host: '',
@@ -57,6 +58,17 @@ export default defineNuxtConfig({
       pass: '',
       from: '',
       to: CONTACT_EMAIL,
+    },
+    // reCAPTCHA v3 secret and lowest accepted score (0 bot – 1 human), NUXT_RECAPTCHA_*
+    recaptcha: {
+      secretKey: '',
+      minScore: 0.5,
+    },
+    public: {
+      // read by Nuxt Scripts' useScriptGoogleRecaptcha, NUXT_PUBLIC_SCRIPTS_GOOGLE_RECAPTCHA_SITE_KEY
+      scripts: {
+        googleRecaptcha: { siteKey: '' },
+      },
     },
   },
 

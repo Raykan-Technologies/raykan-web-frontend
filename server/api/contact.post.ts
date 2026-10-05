@@ -8,6 +8,8 @@ const schema = z.object({
   // optional; digits plus the usual + ( ) - . and spaces
   phone: z.string().trim().max(30).regex(/^[\d\s()+.-]*$/).default(''),
   message: z.string().trim().min(1).max(CONTACT_MESSAGE_MAX),
+  // reCAPTCHA v3 token, empty in local dev without keys
+  token: z.string().max(4000).default(''),
   // honeypot, hidden from people; bots fill it in
   website: z.string().default(''),
 })
@@ -17,6 +19,8 @@ export default defineEventHandler(async (event) => {
 
   // pretend it worked so bots don't retry
   if (body.website) return { ok: true }
+
+  await verifyRecaptcha(event, body.token, 'contact')
 
   const { transporter, from, to } = useMailer()
 

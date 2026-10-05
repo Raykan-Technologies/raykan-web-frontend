@@ -6,6 +6,7 @@ import type { TIcons } from '@/components/icons'
 import AppSocialLinks from '@/components/AppSocialLinks.vue'
 import { CONTACT_EMAIL, CONTACT_MESSAGE_MAX, CONTACT_PHONE } from '@/constants'
 import contactGrid from '@/assets/images/contact/contact-grid.svg'
+import { useRuntimeConfig, useScriptGoogleRecaptcha } from '#imports'
 
 const { t } = useI18n()
 const id = useId()
@@ -24,12 +25,26 @@ const empty = () => ({ name: '', company: '', email: '', phone: '', message: '',
 const values = ref(empty())
 const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
+// reCAPTCHA v3 (Nuxt Scripts), loaded on first focus of the form; no site key in local dev
+const siteKey = useRuntimeConfig().public.scripts?.googleRecaptcha?.siteKey ?? ''
+const recaptcha = siteKey ? useScriptGoogleRecaptcha({ scriptOptions: { trigger: 'manual' } }) : undefined
+
+// tokens expire after two minutes, so get one right before sending
+const getToken = async () => {
+  if (!recaptcha) return ''
+  const { grecaptcha } = await recaptcha.load()
+  return new Promise<string>((resolve, reject) => {
+    grecaptcha.ready(() => grecaptcha.execute(siteKey, { action: 'contact' }).then(resolve, reject))
+  })
+}
+
 // the browser checks the required fields first, the server checks them again
 const onSubmit = async () => {
   if (status.value === 'sending') return
   status.value = 'sending'
   try {
-    await $fetch('/api/contact', { method: 'POST', body: values.value })
+    const token = await getToken()
+    await $fetch('/api/contact', { method: 'POST', body: { ...values.value, token } })
     values.value = empty()
     status.value = 'sent'
   } catch {
@@ -71,7 +86,8 @@ const onSubmit = async () => {
         <app-social-links class="contact-section__socials" :size="25" effect="highlight" />
       </address>
 
-      <form class="contact-section__form" :aria-label="t('contact.form.label')" @submit.prevent="onSubmit">
+      <form class="contact-section__form" :aria-label="t('contact.form.label')" @submit.prevent="onSubmit"
+        @focusin.once="recaptcha?.load()">
         <div class="contact-section__fields">
           <label v-for="field in fields" :key="field.key" class="contact-section__field"
             :class="{ 'contact-section__field--half': field.half }">
@@ -106,6 +122,17 @@ const onSubmit = async () => {
         <p class="contact-section__status" :class="`contact-section__status--${status}`" role="status">
           <template v-if="status === 'sent' || status === 'error'">{{ t(`contact.form.${status}`) }}</template>
         </p>
+
+        <!-- Google's required notice, since the floating badge is hidden -->
+        <i18n-t v-if="siteKey" keypath="contact.form.recaptcha.notice" scope="global" tag="p"
+          class="contact-section__recaptcha">
+          <template #privacy>
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">{{ t('contact.form.recaptcha.privacy') }}</a>
+          </template>
+          <template #terms>
+            <a href="https://policies.google.com/terms" target="_blank" rel="noopener">{{ t('contact.form.recaptcha.terms') }}</a>
+          </template>
+        </i18n-t>
       </form>
     </div>
   </r-section>
@@ -342,6 +369,28 @@ const onSubmit = async () => {
     color: var(--color-contact-error);
   }
 
+  .contact-section__recaptcha {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    text-align: right;
+
+    a {
+      color: var(--color-link);
+
+      &:hover,
+      &:focus-visible {
+        color: var(--color-link-hover);
+      }
+    }
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
   .contact-section__submit {
     align-self: flex-end;
 
@@ -349,5 +398,10 @@ const onSubmit = async () => {
       align-self: stretch;
     }
   }
+}
+
+// the reCAPTCHA notice under the form replaces Google's floating badge
+.grecaptcha-badge {
+  visibility: hidden;
 }
 </style>

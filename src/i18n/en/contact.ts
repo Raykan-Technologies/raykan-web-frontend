@@ -30,6 +30,11 @@ export default {
     submit: 'Send Message',
     sending: 'Sending…',
     sent: 'Thanks! Your message has been sent. We\'ll get back to you soon.',
+    recaptcha: {
+      notice: 'This site is protected by reCAPTCHA and the Google {privacy} and {terms} apply.',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service',
+    },
     error: 'Sorry, your message could not be sent. Please try again or email us directly.',
   },
 }
