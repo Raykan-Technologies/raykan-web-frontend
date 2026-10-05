@@ -133,6 +133,12 @@ $fonts: (
   --font-size-faq-answer: var(--font-size-base);
   --line-height-faq-answer: 22px;
 
+  // privacy policy: section headings and body text
+  --font-size-privacy-heading: var(--font-size-2xl);
+  --line-height-privacy-heading: 32px;
+  --font-size-privacy-body: var(--font-size-base);
+  --line-height-privacy-body: var(--line-height-base);
+
   // contact page (wp-raykan 48px / 58px heading, Inter 16px / 24px labels, 14px / 20px details)
   --font-size-contact-title: 48px;
   --line-height-contact-title: 58px;
@@ -226,6 +232,10 @@ $fonts: (
 
     --font-size-faq-question: var(--font-size-base);
     --font-size-faq-answer: var(--font-size-sm);
+    --font-size-privacy-heading: var(--font-size-lg);
+    --line-height-privacy-heading: 28px;
+    --font-size-privacy-body: var(--font-size-sm);
+    --line-height-privacy-body: var(--line-height-sm);
 
     // wp-raykan 40px / 40px, loosened so descenders don't touch the next line
     --font-size-contact-title: 40px;

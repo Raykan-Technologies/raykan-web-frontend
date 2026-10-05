@@ -7,4 +7,5 @@ export default {
   faq: 'FAQ',
   contact: 'Contact',
   kando: 'Kando',
+  privacy: 'Privacy Policy',
 }

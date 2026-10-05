@@ -123,9 +123,15 @@ const onSubmit = async () => {
           <template v-if="status === 'sent' || status === 'error'">{{ t(`contact.form.${status}`) }}</template>
         </p>
 
+        <i18n-t keypath="contact.form.consent" scope="global" tag="p" class="contact-section__notice">
+          <template #policy>
+            <router-link :to="{ name: 'privacy' }">{{ t('contact.form.policy') }}</router-link>
+          </template>
+        </i18n-t>
+
         <!-- Google's required notice, since the floating badge is hidden -->
         <i18n-t v-if="siteKey" keypath="contact.form.recaptcha.notice" scope="global" tag="p"
-          class="contact-section__recaptcha">
+          class="contact-section__notice">
           <template #privacy>
             <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">{{ t('contact.form.recaptcha.privacy') }}</a>
           </template>
@@ -369,7 +375,8 @@ const onSubmit = async () => {
     color: var(--color-contact-error);
   }
 
-  .contact-section__recaptcha {
+  // consent and reCAPTCHA lines under the button
+  .contact-section__notice {
     margin: 0;
     color: var(--color-text-muted);
     font-family: var(--font-secondary);

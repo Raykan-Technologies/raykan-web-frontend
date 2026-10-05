@@ -6,6 +6,7 @@ import careers from './careers'
 import contact from './contact'
 import faq from './faq'
 import kando from './kando'
+import privacy from './privacy'
 import solutions from './solutions'
 
 /**
@@ -20,6 +21,7 @@ export default [
   ...contact,
   ...careers,
   ...kando,
+  ...privacy,
   {
     path: '/',
     name: 'home',

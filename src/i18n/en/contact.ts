@@ -30,6 +30,8 @@ export default {
     submit: 'Send Message',
     sending: 'Sending…',
     sent: 'Thanks! Your message has been sent. We\'ll get back to you soon.',
+    consent: 'By sending this message, you agree to our {policy}.',
+    policy: 'Privacy Policy',
     recaptcha: {
       notice: 'This site is protected by reCAPTCHA and the Google {privacy} and {terms} apply.',
       privacy: 'Privacy Policy',
