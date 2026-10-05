@@ -5,7 +5,7 @@ import { RButton, RIcon, RSection } from '@/components/elements'
 import type { TIcons } from '@/components/icons'
 import AppSocialLinks from '@/components/AppSocialLinks.vue'
 import { CONTACT_EMAIL, CONTACT_PHONE } from '@/constants'
-import heroGrid from '@/assets/images/home/hero-grid.svg'
+import contactGrid from '@/assets/images/contact/contact-grid.svg'
 
 const { t } = useI18n()
 const id = useId()
@@ -25,12 +25,12 @@ const values = ref({ name: '', company: '', email: '', message: '' })
 const onSubmit = () => {}
 </script>
 <template>
-  <!-- wp-raykan contact page (5c811d2): blue, the grid from the home hero in the corner, the
-    heading over two columns: how to reach us, and the message form -->
-  <r-section class="contact-section" hero theme="primary" width="var(--container-width-contact)"
+  <!-- wp-raykan contact page (5c811d2), colors reversed: white, the home hero grid in blue in the
+    corner, the heading over two columns: how to reach us, and the message form -->
+  <r-section class="contact-section" hero theme="light" width="var(--container-width-contact)"
     min-height="var(--app-height, 100svh)" vertical-align="middle">
     <template #background>
-      <img class="contact-section__grid" :src="heroGrid" alt="" width="1271" height="999">
+      <img class="contact-section__grid" :src="contactGrid" alt="" width="1271" height="999">
     </template>
 
     <h1 class="contact-section__title">{{ t('contact.heading') }}</h1>
@@ -88,11 +88,17 @@ const onSubmit = () => {}
 @use '@/assets/css/breakpoints' as *;
 
 .contact-section {
+  // solid header above it, so no header room on top; still fills the screen under the header
+  &.r-section--hero {
+    min-height: calc(var(--app-height, 100svh) - var(--header-height));
+    padding-top: var(--section-padding-y);
+  }
+
   > .r-section__container {
     gap: 30px;
   }
 
-  // the home hero grid, hanging off the top-left corner like wp-raykan's
+  // the home hero grid in blue, hanging off the top-left corner like wp-raykan's
   .contact-section__grid {
     position: absolute;
     top: -205px;
@@ -103,7 +109,7 @@ const onSubmit = () => {}
 
   .contact-section__title {
     margin: 0;
-    color: var(--color-white);
+    color: var(--color-heading);
     font-family: var(--font-primary);
     font-size: var(--font-size-contact-title);
     font-weight: var(--font-weight-regular);
@@ -134,7 +140,7 @@ const onSubmit = () => {}
 
   .contact-section__label {
     margin: 20px 0 0;
-    color: var(--color-accent);
+    color: var(--color-primary);
     font-family: var(--font-secondary);
     font-size: var(--font-size-contact-label);
     font-weight: var(--font-weight-semibold);
@@ -146,14 +152,14 @@ const onSubmit = () => {}
   }
 
   .contact-section__label--light {
-    color: var(--color-white);
+    color: var(--color-text-muted);
   }
 
   .contact-section__detail {
     display: flex;
     flex-direction: column;
     margin: 0;
-    color: var(--color-white);
+    color: var(--color-text-muted);
     font-family: var(--font-secondary);
     font-size: var(--font-size-contact-detail);
     line-height: var(--line-height-contact-detail);
@@ -173,7 +179,10 @@ const onSubmit = () => {}
     color: var(--color-contact-address);
   }
 
+  // white hover would vanish on the white page
   .contact-section__socials {
+    --social-color-highlight: var(--color-primary);
+
     margin-top: 10px;
 
     @include mobile {
@@ -194,7 +203,7 @@ const onSubmit = () => {}
   }
 
   .contact-section__field-label {
-    color: var(--color-white);
+    color: var(--color-heading);
     font-family: var(--font-secondary);
     font-size: var(--font-size-contact-detail);
     font-weight: var(--font-weight-semibold);
@@ -252,7 +261,7 @@ const onSubmit = () => {}
 
   .contact-section__count {
     align-self: flex-end;
-    color: var(--color-white);
+    color: var(--color-text-muted);
     font-family: var(--font-secondary);
     font-size: var(--font-size-xs);
     line-height: var(--line-height-xs);

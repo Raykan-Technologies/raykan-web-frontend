@@ -44,7 +44,7 @@
   // primary (brand-500) at 70%; rgba rather than color-mix() for older browsers
   --color-overlay-about: rgba(8, 67, 135, 0.7);
   // solution page footer (wp-raykan): white fading into primary
-  // starts transparent: white over white sections, blends into blue ones (contact)
+  // starts transparent: white over the white sections pages end on
   --color-footer-gradient: linear-gradient(180deg, transparent 0%, var(--color-primary) 100%);
   --color-footer-gradient-hover: var(--color-grey-300);
   --color-header-sticky: var(--color-primary);
@@ -66,7 +66,7 @@
   --color-contact-field-bg: var(--color-grey-50);
   --color-contact-field-border: var(--color-grey-300);
   --color-contact-field-text: var(--color-slate-800);
-  --color-contact-address: var(--color-grey-300);
+  --color-contact-address: var(--color-grey-600);
   --color-card-hover: #E2F3FF70;
   --color-card-icon-bg: var(--color-blue-100);
   --color-testimonial-card: #123A67A1;
