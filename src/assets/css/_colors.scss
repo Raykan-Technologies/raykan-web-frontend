@@ -17,6 +17,7 @@
   --color-grey-600: #64686A;
   --color-grey-700: #565C67;
   --color-slate-800: #1E293B;
+  --color-red-600: #C62828;
 
   // aliases used by RIcon
   --color-cyan-500: var(--color-teal-500);
@@ -67,6 +68,7 @@
   --color-contact-field-border: var(--color-grey-300);
   --color-contact-field-text: var(--color-slate-800);
   --color-contact-address: var(--color-grey-600);
+  --color-contact-error: var(--color-red-600);
   --color-card-hover: #E2F3FF70;
   --color-card-icon-bg: var(--color-blue-100);
   --color-testimonial-card: #123A67A1;

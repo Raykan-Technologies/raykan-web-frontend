@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { CONTACT_EMAIL } from './src/constants'
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-30',
 
@@ -44,6 +46,18 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     locales: [{ code: 'en', language: 'en' }],
     detectBrowserLanguage: false,
+  },
+
+  // server-only SMTP settings, set at runtime with NUXT_MAIL_* (see .env.example)
+  runtimeConfig: {
+    mail: {
+      host: '',
+      port: 587,
+      user: '',
+      pass: '',
+      from: '',
+      to: CONTACT_EMAIL,
+    },
   },
 
   piniaPluginPersistedstate: {

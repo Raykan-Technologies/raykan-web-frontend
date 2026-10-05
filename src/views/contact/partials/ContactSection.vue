@@ -4,25 +4,38 @@ import { useI18n } from 'vue-i18n'
 import { RButton, RIcon, RSection } from '@/components/elements'
 import type { TIcons } from '@/components/icons'
 import AppSocialLinks from '@/components/AppSocialLinks.vue'
-import { CONTACT_EMAIL, CONTACT_PHONE } from '@/constants'
+import { CONTACT_EMAIL, CONTACT_MESSAGE_MAX, CONTACT_PHONE } from '@/constants'
 import contactGrid from '@/assets/images/contact/contact-grid.svg'
 
 const { t } = useI18n()
 const id = useId()
 
-const MESSAGE_MAX = 1000
+const MESSAGE_MAX = CONTACT_MESSAGE_MAX
 
-// wp-raykan FormCraft fields, in order
-const fields = computed<Array<{ key: 'name' | 'company' | 'email'; type: string; icon: TIcons; required: boolean; autocomplete: string }>>(() => [
+// wp-raykan FormCraft fields plus a contact number; `half` fields share a row
+const fields = computed<Array<{ key: 'name' | 'company' | 'email' | 'phone'; type: string; icon: TIcons; required: boolean; autocomplete: string; half?: boolean }>>(() => [
   { key: 'name', type: 'text', icon: 'user', required: true, autocomplete: 'name' },
   { key: 'company', type: 'text', icon: 'building', required: false, autocomplete: 'organization' },
-  { key: 'email', type: 'email', icon: 'envelope', required: true, autocomplete: 'email' },
+  { key: 'email', type: 'email', icon: 'envelope', required: true, autocomplete: 'email', half: true },
+  { key: 'phone', type: 'tel', icon: 'telephone', required: false, autocomplete: 'tel', half: true },
 ])
 
-const values = ref({ name: '', company: '', email: '', message: '' })
+const empty = () => ({ name: '', company: '', email: '', phone: '', message: '', website: '' })
+const values = ref(empty())
+const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-// TODO: send the message once the backend is decided; the browser checks the required fields first
-const onSubmit = () => {}
+// the browser checks the required fields first, the server checks them again
+const onSubmit = async () => {
+  if (status.value === 'sending') return
+  status.value = 'sending'
+  try {
+    await $fetch('/api/contact', { method: 'POST', body: values.value })
+    values.value = empty()
+    status.value = 'sent'
+  } catch {
+    status.value = 'error'
+  }
+}
 </script>
 <template>
   <!-- wp-raykan contact page (5c811d2), colors reversed: white, the home hero grid in blue in the
@@ -59,15 +72,18 @@ const onSubmit = () => {}
       </address>
 
       <form class="contact-section__form" :aria-label="t('contact.form.label')" @submit.prevent="onSubmit">
-        <label v-for="field in fields" :key="field.key" class="contact-section__field">
-          <span class="contact-section__field-label">{{ t(`contact.form.${field.key}`) }}</span>
-          <span class="contact-section__control">
-            <input v-model="values[field.key]" class="contact-section__input" :type="field.type"
-              :name="field.key" :placeholder="t(`contact.form.${field.key}Placeholder`)"
-              :required="field.required" :autocomplete="field.autocomplete">
-            <r-icon class="contact-section__field-icon" :name="field.icon" :size="20" aria-hidden="true" />
-          </span>
-        </label>
+        <div class="contact-section__fields">
+          <label v-for="field in fields" :key="field.key" class="contact-section__field"
+            :class="{ 'contact-section__field--half': field.half }">
+            <span class="contact-section__field-label">{{ t(`contact.form.${field.key}`) }}</span>
+            <span class="contact-section__control">
+              <input v-model="values[field.key]" class="contact-section__input" :type="field.type"
+                :name="field.key" :placeholder="t(`contact.form.${field.key}Placeholder`)"
+                :required="field.required" :autocomplete="field.autocomplete">
+              <r-icon class="contact-section__field-icon" :name="field.icon" :size="20" aria-hidden="true" />
+            </span>
+          </label>
+        </div>
 
         <label class="contact-section__field">
           <span class="contact-section__field-label">{{ t('contact.form.message') }}</span>
@@ -79,7 +95,17 @@ const onSubmit = () => {}
           </span>
         </label>
 
-        <r-button class="contact-section__submit" type="submit">{{ t('contact.form.submit') }}</r-button>
+        <!-- honeypot: off screen and skipped by keyboard and screen readers -->
+        <input v-model="values.website" class="contact-section__honeypot" type="text" name="website"
+          tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <r-button class="contact-section__submit" type="submit" :disabled="status === 'sending'">
+          {{ t(status === 'sending' ? 'contact.form.sending' : 'contact.form.submit') }}
+        </r-button>
+
+        <p class="contact-section__status" :class="`contact-section__status--${status}`" role="status">
+          <template v-if="status === 'sent' || status === 'error'">{{ t(`contact.form.${status}`) }}</template>
+        </p>
       </form>
     </div>
   </r-section>
@@ -196,10 +222,31 @@ const onSubmit = () => {}
     gap: 16px;
   }
 
+  // two columns so email and contact number share a row; stacked on mobile
+  .contact-section__fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .contact-section__field {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     gap: 6px;
+  }
+
+  .contact-section__field--half {
+    grid-column: auto;
+    min-width: 0;
+
+    @include mobile {
+      grid-column: 1 / -1;
+    }
   }
 
   .contact-section__field-label {
@@ -265,6 +312,34 @@ const onSubmit = () => {}
     font-family: var(--font-secondary);
     font-size: var(--font-size-xs);
     line-height: var(--line-height-xs);
+  }
+
+  .contact-section__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .contact-section__status {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: var(--font-size-contact-detail);
+    line-height: var(--line-height-contact-detail);
+    text-align: right;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .contact-section__status--sent {
+    color: var(--color-primary);
+  }
+
+  .contact-section__status--error {
+    color: var(--color-contact-error);
   }
 
   .contact-section__submit {

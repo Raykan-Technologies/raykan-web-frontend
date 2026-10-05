@@ -16,3 +16,6 @@ export const CONTACT_PHONE = { display: '(+63) 991 549 2455', tel: '+63991549245
 export const KANDO_SIGN_UP_URL = 'https://app.kando.team/sign-up'
 export const KANDO_CONTACT_EMAIL = 'rbsesican@raykan.co'
 export const KANDO_CONTACT_PHONE = { display: '0916 702 3816', tel: '+639167023816' } as const
+
+// contact form message limit, checked by the form and the server
+export const CONTACT_MESSAGE_MAX = 1000

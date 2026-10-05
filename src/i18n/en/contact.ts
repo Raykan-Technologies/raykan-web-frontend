@@ -14,7 +14,6 @@ export default {
     address: 'Pardo, Cebu City, Cebu, PH 6000',
     connect: 'You can also connect with us via:',
   },
-  // UI only for now; sending is wired up later
   form: {
     label: 'Contact form',
     name: 'Full Name',
@@ -23,9 +22,14 @@ export default {
     companyPlaceholder: 'Company name',
     email: 'Active Email',
     emailPlaceholder: 'you{\'@\'}company.com',
+    phone: 'Contact Number',
+    phonePlaceholder: '+63 912 345 6789',
     message: 'Message',
     messagePlaceholder: 'How can we help?',
     count: '{count} / {max}',
     submit: 'Send Message',
+    sending: 'Sending…',
+    sent: 'Thanks! Your message has been sent. We\'ll get back to you soon.',
+    error: 'Sorry, your message could not be sent. Please try again or email us directly.',
   },
 }

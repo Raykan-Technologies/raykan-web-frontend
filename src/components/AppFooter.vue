@@ -117,7 +117,7 @@ const isActive = (name: string) => route.name === name
       pointer-events: none;
     }
 
-    // everything white; hover and the active link turn grey (wp-raykan footer hover)
+    // everything white; hover turns grey, the active link stays cyan
     .app-footer__logo {
       transition: color 0.3s ease;
 
@@ -131,11 +131,8 @@ const isActive = (name: string) => route.name === name
       --social-color-highlight: var(--color-footer-gradient-hover);
     }
 
-    .app-footer__link {
-      &:hover,
-      &.app-footer__link--active {
-        color: var(--color-footer-gradient-hover);
-      }
+    .app-footer__link:hover:not(.app-footer__link--active) {
+      color: var(--color-footer-gradient-hover);
     }
   }
 
