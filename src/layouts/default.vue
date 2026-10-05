@@ -5,7 +5,7 @@ import { AppFooter, AppHeader } from '@/components'
 
 const route = useRoute()
 const headerTransparent = computed(() => !!route.meta.headerTransparent)
-const footer = computed(() => route.meta.footer ?? 'solid')
+const footer = computed(() => route.meta.footer ?? 'gradient')
 </script>
 <template>
   <div class="default-layout" :class="{ 'default-layout--header-offset': !headerTransparent }">

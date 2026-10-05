@@ -55,7 +55,6 @@ export default [
         props: { solution },
         meta: {
             headerTransparent: hasHero(solution),
-            footer: 'gradient',
         },
     })),
 ] as Array<RouteRecordRaw>

@@ -14,7 +14,6 @@ export default [
                 component: () => import('@/views/faq/FaqView.vue'),
                 meta: {
                     headerTransparent: true,
-                    footer: 'gradient-compact',
                 },
             },
         ],

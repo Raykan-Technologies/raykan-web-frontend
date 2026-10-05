@@ -14,7 +14,7 @@ withDefaults(defineProps<{
    */
   variant?: TFooterVariant;
 }>(), {
-  variant: 'solid',
+  variant: 'gradient',
 })
 
 const { t } = useI18n()
@@ -57,7 +57,7 @@ const isActive = (name: string) => route.name === name
 <template>
   <!-- site-wide footer, rendered once by DefaultLayout under every page -->
   <r-section ref="footer" class="app-footer"
-    :class="[`app-footer--${variant}`, { 'app-footer--gradient': variant === 'gradient-compact' }]" tag="footer"
+    :class="`app-footer--${variant}`" tag="footer"
     :theme="variant === 'solid' ? 'primary' : 'transparent'">
     <div class="app-footer__row">
       <router-link :to="{ name: 'home' }" class="app-footer__logo" :aria-label="t('common.companyName')">
@@ -101,20 +101,20 @@ const isActive = (name: string) => route.name === name
     z-index: 1;
   }
 
-  // wp-raykan solution page footer: white fading into primary blue
+  // inner pages: the solid footer's size, on a gradient fading into primary blue
   &.app-footer--gradient {
-    justify-content: center;
-    min-height: 210px;
-    padding-block: calc(var(--section-padding-y) * 0.6) calc(var(--section-padding-y) * 0.3);
-    background-image: var(--color-footer-gradient);
+    --footer-gradient-extend: 100px;
 
-    @include tablet {
-      min-height: 150px;
-    }
+    z-index: 0;
 
-    // rows stack on phones; extra top space keeps the white links on the darker blue
-    @include mobile {
-      padding-top: calc(var(--section-padding-y) * 1.5);
+    // starts above the footer, fading in over the bottom padding of the page's last section
+    &::before {
+      content: '';
+      position: absolute;
+      inset: calc(-1 * var(--footer-gradient-extend)) 0 0;
+      z-index: -1;
+      background-image: var(--color-footer-gradient);
+      pointer-events: none;
     }
 
     // everything white; hover and the active link turn grey (wp-raykan footer hover)
@@ -136,34 +136,6 @@ const isActive = (name: string) => route.name === name
       &.app-footer__link--active {
         color: var(--color-footer-gradient-hover);
       }
-    }
-  }
-
-  // same size as the solid footer (about), gradient kept
-  &.app-footer--gradient-compact {
-    --footer-gradient-extend: 100px;
-
-    z-index: 0;
-    min-height: 0;
-    padding-block: calc(var(--section-padding-y) * 0.3);
-    background-image: none;
-
-    // gradient starts above the footer, fading in over the page's white bottom padding
-    &::before {
-      content: '';
-      position: absolute;
-      inset: calc(-1 * var(--footer-gradient-extend)) 0 0;
-      z-index: -1;
-      background-image: var(--color-footer-gradient);
-      pointer-events: none;
-    }
-
-    @include tablet {
-      min-height: 0;
-    }
-
-    @include mobile {
-      padding-top: calc(var(--section-padding-y) * 0.3);
     }
   }
 

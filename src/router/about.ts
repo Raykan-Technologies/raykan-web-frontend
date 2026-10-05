@@ -16,6 +16,7 @@ export default [
                 component: () => import('@/views/about/AboutView.vue'),
                 meta: {
                     headerTransparent: true,
+                    footer: 'solid',
                 },
             },
         ],

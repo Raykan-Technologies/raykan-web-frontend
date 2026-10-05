@@ -14,7 +14,6 @@ export default [
                 component: () => import('@/views/contact/ContactView.vue'),
                 meta: {
                     headerTransparent: true,
-                    footer: 'gradient',
                 },
             },
         ],
