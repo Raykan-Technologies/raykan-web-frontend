@@ -1,13 +1,17 @@
 import { z } from 'zod'
 import { CONTACT_MESSAGE_MAX } from '../../src/constants'
 
+// control characters (incl. line breaks) out of one-line fields, so they can't bend the subject line
+const singleLine = (max: number) => z.string().transform((value) => value.replace(/\p{Cc}+/gu, ' ').trim()).pipe(z.string().max(max))
+
 const schema = z.object({
-  name: z.string().trim().min(1).max(120),
-  company: z.string().trim().max(120).default(''),
+  name: singleLine(120).pipe(z.string().min(1)),
+  company: singleLine(120).default(''),
   email: z.email().max(254),
   // optional; digits plus the usual + ( ) - . and spaces
   phone: z.string().trim().max(30).regex(/^[\d\s()+.-]*$/).default(''),
-  message: z.string().trim().min(1).max(CONTACT_MESSAGE_MAX),
+  // keeps line breaks and tabs, drops other control characters
+  message: z.string().transform((value) => value.replace(/[^\P{Cc}\n\t]/gu, '').trim()).pipe(z.string().min(1).max(CONTACT_MESSAGE_MAX)),
   // reCAPTCHA v3 token, empty in local dev without keys
   token: z.string().max(4000).default(''),
   // honeypot, hidden from people; bots fill it in
@@ -15,7 +19,10 @@ const schema = z.object({
 })
 
 export default defineEventHandler(async (event) => {
-  const body = await readValidatedBody(event, schema.parse)
+  // a plain 400, without the schema's rules in the response
+  const parsed = await readValidatedBody(event, (data) => schema.safeParse(data))
+  if (!parsed.success) throw createError({ statusCode: 400, statusMessage: 'Invalid request' })
+  const body = parsed.data
 
   // pretend it worked so bots don't retry
   if (body.website) return { ok: true }

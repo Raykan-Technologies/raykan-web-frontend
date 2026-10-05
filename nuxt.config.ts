@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-schema-org',
     '@nuxt/scripts',
+    'nuxt-security',
   ],
 
   css: ['@/assets/css/app.scss'],
@@ -64,11 +65,61 @@ export default defineNuxtConfig({
       secretKey: '',
       minScore: 0.5,
     },
-    public: {
-      // read by Nuxt Scripts' useScriptGoogleRecaptcha, NUXT_PUBLIC_SCRIPTS_GOOGLE_RECAPTCHA_SITE_KEY
-      scripts: {
-        googleRecaptcha: { siteKey: '' },
+  },
+
+  // registered only, loaded by the contact form; site key from NUXT_PUBLIC_SCRIPTS_GOOGLE_RECAPTCHA_SITE_KEY
+  scripts: {
+    registry: {
+      googleRecaptcha: { siteKey: '' },
+    },
+  },
+
+  // security headers and request checks (nuxt-security), tuned for reCAPTCHA and Vercel
+  security: {
+    headers: {
+      // `credentialless` would block reCAPTCHA's iframe; cross-origin isolation isn't needed
+      crossOriginEmbedderPolicy: 'unsafe-none',
+      contentSecurityPolicy: {
+        'default-src': ["'self'"],
+        'base-uri': ["'none'"],
+        'object-src': ["'none'"],
+        'form-action': ["'self'"],
+        'frame-ancestors': ["'none'"],
+        // nonce + strict-dynamic lets Nuxt's and reCAPTCHA's scripts run; https/unsafe-inline are old-browser fallbacks
+        'script-src': ["'self'", "'nonce-{{nonce}}'", "'strict-dynamic'", 'https:', "'unsafe-inline'"],
+        'script-src-attr': ["'none'"],
+        // Vue :style bindings write inline styles
+        'style-src': ["'self'", "'unsafe-inline'"],
+        'img-src': ["'self'", 'data:'],
+        'font-src': ["'self'", 'data:'],
+        'connect-src': ["'self'", 'https://www.google.com/recaptcha/'],
+        'frame-src': ['https://www.google.com/recaptcha/', 'https://recaptcha.google.com/recaptcha/'],
+        // localhost dev runs on http
+        'upgrade-insecure-requests': process.env.NODE_ENV === 'production',
       },
+      // only raykan.co itself, subdomains may not all be on https yet
+      strictTransportSecurity: { maxAge: 31536000, includeSubdomains: false },
+      xFrameOptions: 'DENY',
+      referrerPolicy: 'strict-origin-when-cross-origin',
+    },
+    // in-memory counters don't work across Vercel functions; use a Vercel Firewall rule instead
+    rateLimiter: false,
+    // its esbuild console drop is ignored by Vite's oxc build (and the app has no console calls)
+    removeLoggers: false,
+  },
+
+  routeRules: {
+    // messages may contain < or > (e.g. "budget < $5k"); the email escapes them instead
+    '/api/contact': {
+      security: {
+        xssValidator: false,
+        requestSizeLimiter: { maxRequestSizeInBytes: 16_000, maxUploadFileRequestInBytes: 16_000 },
+        allowedMethodsRestricter: { methods: ['POST'] },
+      },
+    },
+    // the email logo is loaded by mail clients on other domains
+    '/email/**': {
+      security: { headers: { crossOriginResourcePolicy: 'cross-origin' } },
     },
   },
 

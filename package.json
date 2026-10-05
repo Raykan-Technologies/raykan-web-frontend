@@ -22,6 +22,7 @@
     "nodemailer": "^10.0.14",
     "nuxt": "^4.5.2",
     "nuxt-schema-org": "^6.4.3",
+    "nuxt-security": "^2.6.0",
     "pinia": "^4.0.3",
     "pinia-plugin-persistedstate": "^4.7.1",
     "swiper": "^14.3.0",
