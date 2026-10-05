@@ -1,6 +1,9 @@
 export default {
   title: 'Blog',
   backToBlog: 'All posts',
+  list: {
+    title: 'Latest Posts',
+  },
   hero: {
     title: 'Blog',
     description: 'Insights, news and stories from the Raykan Technologies team.',

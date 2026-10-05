@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import type { RouteLocationRaw } from 'vue-router'
+import { formatPostDate, readingMinutes } from './post'
 import RIcon from './RIcon.vue'
 import RSection from './RSection.vue'
 import type { TPostBlock } from './types'
@@ -36,19 +37,8 @@ interface IProps {
 const props = defineProps<IProps>()
 const { t, locale } = useI18n()
 
-// date-only ISO strings parse as UTC midnight, so format in UTC to keep the same day everywhere
-const date = computed(() => new Intl.DateTimeFormat(locale.value, { dateStyle: 'long', timeZone: 'UTC' })
-  .format(new Date(props.published)))
-
-// about 200 words a minute
-const minutes = computed(() => {
-  const words = props.blocks
-    .flatMap((block) => 'items' in block ? block.items : [block.text])
-    .join(' ')
-    .split(/\s+/)
-    .filter(Boolean).length
-  return Math.max(1, Math.round(words / 200))
-})
+const date = computed(() => formatPostDate(props.published, locale.value))
+const minutes = computed(() => readingMinutes(props.blocks))
 </script>
 <template>
   <!-- a blog post: back link, category, title and meta, the cover, then the body in a readable column -->
@@ -230,7 +220,8 @@ const minutes = computed(() => {
       line-height: var(--line-height-post-quote);
     }
 
-    a {
+    // links in the text only, so buttons in the slot keep their own colors
+    :where(p, li, blockquote) a {
       color: var(--color-link);
 
       &:hover,

@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { defineBreadcrumb, useSchemaOrg } from '#imports'
 import { usePageSeo } from '@/composables/seo'
 import HeroSection from './partials/HeroSection.vue'
+import PostsSection from './partials/PostsSection.vue'
 
 const { t } = useI18n()
 
@@ -23,5 +24,6 @@ useSchemaOrg([
 <template>
   <main>
     <HeroSection />
+    <PostsSection />
   </main>
 </template>
