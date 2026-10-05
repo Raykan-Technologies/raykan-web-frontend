@@ -25,7 +25,8 @@ const images: Record<TSolutionHero, string> = {
 }
 </script>
 <template>
-  <r-page-hero :title="t(`solutions.items.${solution}`)"
+  <!-- half the screen's height, like the blog and FAQ heroes -->
+  <r-page-hero height="half" :title="t(`solutions.items.${solution}`)"
     :description="t(`solutions.pages.${solution}.hero.description`)" :image="images[solution]">
     <template #actions>
       <r-button :to="{ name: 'contact' }">{{ t('buttons.talkWithUs') }}</r-button>
