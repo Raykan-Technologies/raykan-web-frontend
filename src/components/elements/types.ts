@@ -65,3 +65,10 @@ export interface ICarouselImage {
     width?: number;
     height?: number;
 }
+
+/**
+ * A block of a blog post body (RPost): a heading, paragraph or quote, or a list
+ */
+export type TPostBlock =
+  | { type: 'h2' | 'h3' | 'p' | 'quote'; text: string }
+  | { type: 'ul' | 'ol'; items: Array<string> }

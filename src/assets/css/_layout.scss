@@ -32,6 +32,8 @@ $spacing: (
   --container-width-about: 1200px;
   --container-width-faq: 900px;
   --container-width-privacy: 900px;
+  // blog post: a readable column, about 70 characters a line
+  --container-width-post: 760px;
   // wp-raykan contact columns: 70% of a 1440px screen
   --container-width-contact: 1010px;
 

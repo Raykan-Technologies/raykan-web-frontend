@@ -133,6 +133,18 @@ $fonts: (
   --font-size-faq-answer: var(--font-size-base);
   --line-height-faq-answer: 22px;
 
+  // blog post (RPost)
+  --font-size-post-title: var(--font-size-5xl);
+  --line-height-post-title: 1.2;
+  --font-size-post-heading: 28px;
+  --line-height-post-heading: 36px;
+  --font-size-post-subheading: var(--font-size-xl);
+  --line-height-post-subheading: 30px;
+  --font-size-post-body: 18px;
+  --line-height-post-body: 30px;
+  --font-size-post-quote: var(--font-size-2xl);
+  --line-height-post-quote: 34px;
+
   // privacy policy: section headings and body text
   --font-size-privacy-heading: var(--font-size-2xl);
   --line-height-privacy-heading: 32px;
@@ -232,6 +244,15 @@ $fonts: (
 
     --font-size-faq-question: var(--font-size-base);
     --font-size-faq-answer: var(--font-size-sm);
+    --font-size-post-title: 32px;
+    --font-size-post-heading: 22px;
+    --line-height-post-heading: 30px;
+    --font-size-post-subheading: var(--font-size-lg);
+    --line-height-post-subheading: 26px;
+    --font-size-post-body: var(--font-size-base);
+    --line-height-post-body: 27px;
+    --font-size-post-quote: var(--font-size-lg);
+    --line-height-post-quote: 28px;
     --font-size-privacy-heading: var(--font-size-lg);
     --line-height-privacy-heading: 28px;
     --font-size-privacy-body: var(--font-size-sm);

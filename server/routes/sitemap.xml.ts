@@ -1,7 +1,8 @@
 import { SOLUTIONS } from '../../src/constants'
+import { BLOG_POSTS } from '../../src/views/blog/posts'
 
 // indexable pages, by hand: routes come from src/router, which the server can't discover.
-// Left out: privacy (hidden), blog and careers (placeholders until they get content)
+// Left out: privacy (hidden), the blog list and careers (placeholders until they get content)
 const PATHS = [
   '/',
   '/about',
@@ -10,6 +11,7 @@ const PATHS = [
   '/faq',
   '/contact-us',
   '/kando',
+  ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
 ]
 
 export default defineEventHandler((event) => {

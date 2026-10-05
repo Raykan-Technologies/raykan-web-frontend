@@ -6,6 +6,10 @@ export default {
   seo: {
     imageAlt: 'Developer writing code on a laptop at Raykan Technologies',
   },
+  // blog post header (RPost)
+  post: {
+    readingTime: '{minutes} min read',
+  },
   rating: 'Rated {rating} out of 5',
   carousel: {
     goToSlide: 'Go to slide {index}',

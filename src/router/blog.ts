@@ -16,6 +16,13 @@ export default [
                     headerTransparent: true,
                 },
             },
+            {
+                // one post (src/views/blog/posts.ts); unknown slugs show the 404 page
+                path: ':slug',
+                name: 'blog-post',
+                component: () => import('@/views/blog/BlogPostView.vue'),
+                props: true,
+            },
         ],
     },
 ] as Array<RouteRecordRaw>
