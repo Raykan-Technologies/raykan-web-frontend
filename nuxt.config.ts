@@ -109,6 +109,17 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
+    // API answers are per-request (form submits), never stored by browsers or the CDN
+    '/api/**': {
+      headers: { 'cache-control': 'no-store' },
+    },
+    // only change on deploy, which purges the CDN; browsers recheck hourly
+    '/robots.txt': {
+      headers: { 'cache-control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400' },
+    },
+    '/sitemap.xml': {
+      headers: { 'cache-control': 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400' },
+    },
     // messages may contain < or > (e.g. "budget < $5k"); the email escapes them instead
     '/api/contact': {
       security: {
