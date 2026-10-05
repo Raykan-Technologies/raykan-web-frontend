@@ -9,6 +9,7 @@
   --color-teal-100: #C6FBF1;
   --color-white: #FFFFFF;
   --color-black: #000000;
+  --color-grey-50: #FAFAFA;
   --color-grey-100: #F0F3F5;
   --color-grey-200: #D5D8DC;
   --color-grey-300: #C9CCCE;
@@ -60,6 +61,11 @@
   --color-faq-answer-text: var(--color-slate-800);
   --color-faq-answer-border: var(--color-grey-300);
   --color-faq-divider: var(--color-grey-200);
+  // contact form (wp-raykan FormCraft): near-white fields; text darkened from its #B5B5B5 to stay readable
+  --color-contact-field-bg: var(--color-grey-50);
+  --color-contact-field-border: var(--color-grey-300);
+  --color-contact-field-text: var(--color-slate-800);
+  --color-contact-address: var(--color-grey-300);
   --color-card-hover: #E2F3FF70;
   --color-card-icon-bg: var(--color-blue-100);
   --color-testimonial-card: #123A67A1;

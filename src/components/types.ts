@@ -12,8 +12,9 @@ export interface IAppMenu {
  * - solid: primary blue (default)
  * - transparent: no background, laid over the page's last section (home)
  * - gradient: white fading into primary blue (solution pages, like wp-raykan)
+ * - gradient-compact: the gradient at the solid footer's size (faq)
  */
-export type TFooterVariant = 'solid' | 'transparent' | 'gradient'
+export type TFooterVariant = 'solid' | 'transparent' | 'gradient' | 'gradient-compact'
 
 export type TKebab<T extends string, A extends string = ""> =
     T extends `${infer F}${infer R}`

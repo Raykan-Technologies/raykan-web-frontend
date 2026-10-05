@@ -125,6 +125,14 @@ $fonts: (
   --font-size-faq-answer: var(--font-size-base);
   --line-height-faq-answer: 22px;
 
+  // contact page (wp-raykan 48px / 58px heading, Inter 16px / 24px labels, 14px / 20px details)
+  --font-size-contact-title: 48px;
+  --line-height-contact-title: 58px;
+  --font-size-contact-label: var(--font-size-base);
+  --line-height-contact-label: 24px;
+  --font-size-contact-detail: var(--font-size-sm);
+  --line-height-contact-detail: 20px;
+
   // icon box (RIconBox)
   --font-size-icon-box-title: 28px;
   --font-size-icon-box-text: 18px;
@@ -147,6 +155,9 @@ $fonts: (
     --font-size-about-hero: 78px;
 
     --font-size-faq-question: 18px;
+
+    --font-size-contact-title: 45px;
+    --line-height-contact-title: 55px;
   }
 
   // wp-raykan mobile hero heading: 42px / 50px (1.2), no letter spacing
@@ -189,5 +200,9 @@ $fonts: (
 
     --font-size-faq-question: var(--font-size-base);
     --font-size-faq-answer: var(--font-size-sm);
+
+    // wp-raykan 40px / 40px, loosened so descenders don't touch the next line
+    --font-size-contact-title: 40px;
+    --line-height-contact-title: 46px;
   }
 }

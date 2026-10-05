@@ -2530,7 +2530,35 @@ const common = {
 };
 
 const contact = {
-  title: "Contact Us"
+  title: "Contact Us",
+  // search and share copy, title gets the company suffix
+  seo: {
+    title: "Contact Us",
+    description: "Contact Raykan for custom software development, web and mobile apps, software consulting and more. Let us help your business grow today."
+  },
+  heading: "Connect and talk with us!",
+  info: {
+    reach: "You can reach us through:",
+    phone: "Phone: {number}",
+    email: "Email: {email}",
+    visit: "You can find us at:",
+    address: "Pardo, Cebu City, Cebu, PH 6000",
+    connect: "You can also connect with us via:"
+  },
+  // UI only for now; sending is wired up later
+  form: {
+    label: "Contact form",
+    name: "Full Name",
+    namePlaceholder: "Your full name",
+    company: "Company Name",
+    companyPlaceholder: "Company name",
+    email: "Active Email",
+    emailPlaceholder: "you{'@'}company.com",
+    message: "Message",
+    messagePlaceholder: "How can we help?",
+    count: "{count} / {max}",
+    submit: "Send Message"
+  }
 };
 
 const errorPages = {
@@ -3880,16 +3908,16 @@ _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"2c23f-R/Q8fQ13NTwBiS4cjugGYHExRIM\"",
-    "mtime": "2026-10-05T00:10:09.176Z",
-    "size": 180799,
+    "etag": "\"2d3a8-bDPqspDZoSqE1MDZ3j6EKEDnhDY\"",
+    "mtime": "2026-10-05T00:12:33.666Z",
+    "size": 185256,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"b43cb-/eWGdYiSRRL0L4lkpsMZI2Rj4hk\"",
-    "mtime": "2026-10-05T00:10:09.176Z",
-    "size": 738251,
+    "etag": "\"b9644-hfMqHmVkdxdT21qSl1WF4bHeuPY\"",
+    "mtime": "2026-10-05T00:12:33.667Z",
+    "size": 759364,
     "path": "index.mjs.map"
   }
 };

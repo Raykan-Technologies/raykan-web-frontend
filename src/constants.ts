@@ -8,3 +8,6 @@ export const SOCIAL_LINKS = {
 export type TSocial = keyof typeof SOCIAL_LINKS
 
 export const CONTACT_EMAIL = 'info@raykan.co'
+
+// shown as written; `tel` is the dialable form
+export const CONTACT_PHONE = { display: '(+63) 991 549 2455', tel: '+639915492455' } as const

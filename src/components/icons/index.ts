@@ -11,6 +11,7 @@ import BadgePentagon from "./BadgePentagon.vue"
 import BadgeSquircle from "./BadgeSquircle.vue"
 import Banknote from "./Banknote.vue"
 import Blocks from "./Blocks.vue"
+import Building from "./Building.vue"
 import Calculator from "./Calculator.vue"
 import ChartGrowth from "./ChartGrowth.vue"
 import ChartPie from "./ChartPie.vue"
@@ -53,6 +54,7 @@ import Smartphone from "./Smartphone.vue"
 import Sprout from "./Sprout.vue"
 import Star from "./Star.vue"
 import Truck from "./Truck.vue"
+import User from "./User.vue"
 import Users from "./Users.vue"
 import UserShield from "./UserShield.vue"
 import XIcon from "./XIcon.vue"
@@ -69,6 +71,7 @@ const iconComponents = {
   BadgeSquircle,
   Banknote,
   Blocks,
+  Building,
   Calculator,
   ChartGrowth,
   ChartPie,
@@ -111,6 +114,7 @@ const iconComponents = {
   Sprout,
   Star,
   Truck,
+  User,
   Users,
   UserShield,
   XIcon,

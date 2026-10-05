@@ -1,3 +1,31 @@
 export default {
   title: 'Contact Us',
+  // search and share copy, title gets the company suffix
+  seo: {
+    title: 'Contact Us',
+    description: 'Contact Raykan for custom software development, web and mobile apps, software consulting and more. Let us help your business grow today.',
+  },
+  heading: 'Connect and talk with us!',
+  info: {
+    reach: 'You can reach us through:',
+    phone: 'Phone: {number}',
+    email: 'Email: {email}',
+    visit: 'You can find us at:',
+    address: 'Pardo, Cebu City, Cebu, PH 6000',
+    connect: 'You can also connect with us via:',
+  },
+  // UI only for now; sending is wired up later
+  form: {
+    label: 'Contact form',
+    name: 'Full Name',
+    namePlaceholder: 'Your full name',
+    company: 'Company Name',
+    companyPlaceholder: 'Company name',
+    email: 'Active Email',
+    emailPlaceholder: 'you{\'@\'}company.com',
+    message: 'Message',
+    messagePlaceholder: 'How can we help?',
+    count: '{count} / {max}',
+    submit: 'Send Message',
+  },
 }
