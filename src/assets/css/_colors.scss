@@ -47,7 +47,8 @@
   // solution page footer (wp-raykan): white fading into primary
   // starts transparent: white over the white sections pages end on
   --color-footer-gradient: linear-gradient(180deg, transparent 0%, var(--color-primary) 100%);
-  --color-footer-gradient-hover: var(--color-grey-300);
+  // hover on the gradient footer: cyan, like the other footers
+  --color-footer-gradient-hover: var(--color-accent);
   --color-header-sticky: var(--color-primary);
   --color-mobile-menu-bg: var(--color-grey-100);
   --color-mobile-menu-backdrop: #F5FDFFCC;
@@ -71,6 +72,8 @@
   --color-contact-error: var(--color-red-600);
   // blog post body: darker than the muted grey, for long reading
   --color-post-text: var(--color-slate-800);
+  // privacy notice bar at the bottom of the screen
+  --color-privacy-notice-bg: var(--color-primary);
   --color-card-hover: #E2F3FF70;
   --color-card-icon-bg: var(--color-blue-100);
   --color-testimonial-card: #123A67A1;

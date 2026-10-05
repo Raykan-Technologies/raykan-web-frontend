@@ -60,6 +60,8 @@ $spacing: (
 
   // shadows
   --shadow-card: 0 5px 21px -10px rgba(0, 0, 0, 0.5);
+  // privacy notice bar, lifted off the page
+  --shadow-privacy-notice: 0 -4px 16px rgba(0, 0, 0, 0.15);
 
   @include tablet {
     --container-width: 1024px;

@@ -148,6 +148,8 @@ $fonts: (
   // privacy policy: section headings and body text
   --font-size-privacy-heading: var(--font-size-2xl);
   --line-height-privacy-heading: 32px;
+  --font-size-privacy-subheading: var(--font-size-lg);
+  --line-height-privacy-subheading: 28px;
   --font-size-privacy-body: var(--font-size-base);
   --line-height-privacy-body: var(--line-height-base);
 
@@ -255,6 +257,8 @@ $fonts: (
     --line-height-post-quote: 28px;
     --font-size-privacy-heading: var(--font-size-lg);
     --line-height-privacy-heading: 28px;
+    --font-size-privacy-subheading: var(--font-size-base);
+    --line-height-privacy-subheading: 24px;
     --font-size-privacy-body: var(--font-size-sm);
     --line-height-privacy-body: var(--line-height-sm);
 

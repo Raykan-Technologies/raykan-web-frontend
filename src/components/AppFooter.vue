@@ -50,8 +50,7 @@ const menus = computed(() => [
   { menu: t('menus.blog'), route: 'blog' },
   { menu: t('menus.faq'), route: 'faq' },
   { menu: t('menus.contact'), route: 'contact' },
-  // privacy policy hidden for now (route off in src/router/index.ts)
-  // { menu: t('menus.privacy'), route: 'privacy' },
+  { menu: t('menus.privacy'), route: 'privacy' },
 ])
 
 // phone, email and office address, between the logo row and the menu row
@@ -136,7 +135,7 @@ const isActive = (name: string) => route.name === name
       pointer-events: none;
     }
 
-    // everything white; hover turns grey, the active link stays cyan
+    // everything white; hover turns cyan (--color-footer-gradient-hover), the active link stays cyan
     .app-footer__logo {
       transition: color 0.3s ease;
 

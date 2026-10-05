@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { createSitePathResolver, defineOrganization, useHead, useSchemaOrg, useSeoMeta, useSiteConfig } from '#imports'
 import { OG_IMAGE_SIZE, useTitleFormatter } from '@/composables/seo'
 import { useViewport } from '@/composables/viewport'
+import AppPrivacyNotice from '@/components/AppPrivacyNotice.vue'
 import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/constants'
 
 const { t, locale } = useI18n()
@@ -51,4 +52,6 @@ useViewport()
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <!-- every page and layout, Kando included -->
+  <AppPrivacyNotice />
 </template>

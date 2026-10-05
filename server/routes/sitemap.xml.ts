@@ -1,8 +1,7 @@
 import { SOLUTIONS } from '../../src/constants'
 import { BLOG_POSTS } from '../../src/views/blog/posts'
 
-// indexable pages, by hand: routes come from src/router, which the server can't discover.
-// Left out: privacy (hidden)
+// indexable pages, by hand: routes come from src/router, which the server can't discover
 const PATHS = [
   '/',
   '/about',
@@ -12,6 +11,7 @@ const PATHS = [
   '/faq',
   '/contact-us',
   '/kando',
+  '/privacy-policy',
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
 ]
 
