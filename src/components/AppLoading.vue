@@ -21,7 +21,8 @@ useHead({ noscript: [{ innerHTML: '<style>.app-loading { display: none; }</style
 </script>
 <template>
   <!-- full-screen loader on first load and while the next page's code and data load -->
-  <Transition name="fade">
+  <!-- type: follow the fade only, not the 10s fail-safe animation (it would keep the overlay up) -->
+  <Transition name="fade" type="transition">
     <div v-if="visible" class="app-loading" :class="{ 'app-loading--boot': booting }" role="status"
       aria-live="polite">
       <span class="app-loading__spinner" aria-hidden="true"></span>

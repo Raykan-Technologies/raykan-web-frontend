@@ -1,4 +1,10 @@
-import type { RouteRecordRaw } from 'vue-router';
+import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router';
+import { BLOG_PAGE_COUNT } from '@/views/blog/posts';
+
+// list pages share one NuxtPage key, so paging only swaps the posts instead of rebuilding the view;
+// out-of-range pages (404) keep their own
+const listKey = (route: RouteLocationNormalizedLoaded) =>
+    Number(route.params.page ?? 1) <= BLOG_PAGE_COUNT ? 'blog-list' : route.path
 
 export default [
     {
@@ -11,6 +17,7 @@ export default [
                 component: () => import('@/views/blog/BlogView.vue'),
                 meta: {
                     headerTransparent: true,
+                    key: listKey,
                 },
             },
             {
@@ -22,6 +29,7 @@ export default [
                 beforeEnter: (to) => to.params.page === '1' ? { name: 'blog', replace: true } : true,
                 meta: {
                     headerTransparent: true,
+                    key: listKey,
                 },
             },
             {
