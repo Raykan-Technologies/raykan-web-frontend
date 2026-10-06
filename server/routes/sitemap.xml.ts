@@ -1,5 +1,5 @@
 import { SOLUTIONS } from '../../src/constants'
-import { BLOG_POSTS } from '../../src/views/blog/posts'
+import { BLOG_PAGE_COUNT, BLOG_POSTS } from '../../src/views/blog/posts'
 
 // indexable pages, by hand: routes come from src/router, which the server can't discover
 const PATHS = [
@@ -7,6 +7,7 @@ const PATHS = [
   '/about',
   '/solutions',
   '/blog',
+  ...Array.from({ length: BLOG_PAGE_COUNT - 1 }, (_, index) => `/blog/page/${index + 2}`),
   ...SOLUTIONS.map((solution) => `/${solution}`),
   '/faq',
   '/contact-us',

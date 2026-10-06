@@ -23,6 +23,13 @@ export default {
     readingTime: '{minutes} min read',
   },
   rating: 'Rated {rating} out of 5',
+  // page links under a list (RPagination)
+  pagination: {
+    label: 'Pagination',
+    previous: 'Previous page',
+    next: 'Next page',
+    page: 'Page {page}',
+  },
   carousel: {
     goToSlide: 'Go to slide {index}',
     slideLabel: '{index} of {total}',

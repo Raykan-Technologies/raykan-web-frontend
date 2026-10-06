@@ -3,6 +3,7 @@ export default {
   backToBlog: 'All posts',
   list: {
     title: 'Latest Posts',
+    pagination: 'Blog pages',
   },
   hero: {
     title: 'Blog',
@@ -11,6 +12,8 @@ export default {
   // search and share copy, title gets the company suffix (wp-raykan Yoast, shortened)
   seo: {
     title: 'Blog: Software Development Insights',
+    // list pages 2+
+    pageTitle: '{title} (Page {page})',
     description: 'Stay up to date with the latest software development insights, trends and best practices, with expert advice from the Raykan Technologies team.',
   },
   // one entry per post in src/views/blog/posts.ts. `seoTitle` (optional) is a shorter title for search,

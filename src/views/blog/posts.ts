@@ -21,6 +21,11 @@ export const BLOG_POSTS: ReadonlyArray<IBlogPost> = [
 
 export const findPost = (slug: string) => BLOG_POSTS.find((post) => post.slug === slug)
 
+// posts per list page; page 1 is /blog, the rest /blog/page/<n>
+export const BLOG_PAGE_SIZE = 10
+export const BLOG_PAGE_COUNT = Math.max(1, Math.ceil(BLOG_POSTS.length / BLOG_PAGE_SIZE))
+export const postsOnPage = (page: number) => BLOG_POSTS.slice((page - 1) * BLOG_PAGE_SIZE, page * BLOG_PAGE_SIZE)
+
 // not under public/blog: a folder there would make /blog redirect to /blog/
 export const postCover = (slug: string) => `/images/blog/${slug}.webp`
 export const postShareImage = (slug: string) => `/og/blog-${slug}.jpg`
