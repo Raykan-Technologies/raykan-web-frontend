@@ -1,14 +1,11 @@
-import { defineComponent, h } from 'vue';
-import { RouterView, type RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 
 export default [
     {
         path: '/about',
         // wp-raykan's menu links to /about-section
         alias: '/about-section',
-        component: defineComponent({
-            render: () => h(RouterView)
-        }),
+        // no component: groups the child routes, which render straight into NuxtPage
         children: [
             {
                 path: '',

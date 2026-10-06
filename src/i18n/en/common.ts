@@ -14,6 +14,8 @@ export default {
   // subject of the email the "Join our team" buttons start
   joinTeamSubject: 'Job Application: Joining the Raykan Technologies Team',
   footerMenu: 'Footer',
+  // full-screen loader between pages, read by screen readers
+  loading: 'Loading…',
   // default share image (public/og/default.jpg)
   seo: {
     imageAlt: 'Developer writing code on a laptop at Raykan Technologies',

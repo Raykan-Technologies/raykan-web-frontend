@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { createSitePathResolver, defineOrganization, useHead, useSchemaOrg, useSeoMeta, useSiteConfig } from '#imports'
 import { OG_IMAGE_SIZE, useTitleFormatter } from '@/composables/seo'
 import { useViewport } from '@/composables/viewport'
+import AppLoading from '@/components/AppLoading.vue'
 import AppPrivacyNotice from '@/components/AppPrivacyNotice.vue'
 import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/constants'
 
@@ -47,7 +48,8 @@ useViewport()
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="var(--color-accent)" />
+  <!-- replaces the top progress bar during client-side page changes -->
+  <AppLoading />
   <!-- route meta `layout` picks the layout (src/layouts), `default` when unset -->
   <NuxtLayout>
     <NuxtPage />

@@ -1,5 +1,4 @@
-import { defineComponent, h } from 'vue';
-import { RouterView, type RouteRecordRaw } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 import { SOLUTIONS, type TSolution } from '@/constants'
 
 // slugs live in constants.ts so server routes (sitemap) can use them without the route tree
@@ -26,9 +25,7 @@ export const hasHero = (solution: TSolution): solution is TSolutionHero =>
 export default [
     {
         path: '/solutions',
-        component: defineComponent({
-            render: () => h(RouterView)
-        }),
+        // no component: groups the child routes, which render straight into NuxtPage
         children: [
             {
                 path: '',
