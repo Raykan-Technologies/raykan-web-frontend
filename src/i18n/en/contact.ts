@@ -13,7 +13,7 @@ export default {
     email: 'Email: {email}',
     visit: 'You can find us at:',
     address: '@:common.address',
-    connect: 'You can also connect with us via:',
+    connect: 'You can also connect with us via :',
   },
   form: {
     label: 'Contact form',
