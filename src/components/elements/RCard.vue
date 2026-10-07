@@ -103,6 +103,8 @@ const tag = computed(() => props.to ? RouterLink : 'div')
     display: grid;
     place-items: center;
     animation: bob 4s ease-in-out infinite;
+    // own GPU layer, so the slow 6px bob glides instead of stepping pixel by pixel
+    will-change: transform;
 
     @media (prefers-reduced-motion: reduce) {
       animation: none;
