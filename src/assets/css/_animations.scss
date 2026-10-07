@@ -12,16 +12,13 @@
 }
 
 // slow up-and-down drift for decorative shapes
-// the tiny rotate stops Chrome snapping a pure translate to whole pixels (steppy motion)
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0.01deg); }
-  50% { transform: translateY(-16px) rotate(0.01deg); }
+  50% { transform: translateY(-16px); }
 }
 
 // gentler float for small things like the card badges
 @keyframes bob {
-  0%, 100% { transform: translateY(0) rotate(0.01deg); }
-  50% { transform: translateY(-6px) rotate(0.01deg); }
+  50% { transform: translateY(-6px); }
 }
 
 // slow back-and-forth tilt; put it on a child of the floating element so the transforms don't clash
