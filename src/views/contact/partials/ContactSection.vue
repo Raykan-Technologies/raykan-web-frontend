@@ -286,8 +286,6 @@ const onSubmit = async () => {
     scale: -1 1;
     // slower than the triangle and out of step with it
     animation: float 10s ease-in-out -3s infinite;
-    // own GPU layer, so the masked photo isn't repainted every frame
-    will-change: transform;
 
     @media (prefers-reduced-motion: reduce) {
       animation: none;
@@ -302,7 +300,6 @@ const onSubmit = async () => {
     width: 42%;
     aspect-ratio: 1;
     animation: float 6s ease-in-out infinite;
-    will-change: transform;
 
     > svg {
       display: block;
