@@ -8,6 +8,7 @@ import errorPages from './error-pages'
 import faq from './faq'
 import home from './home'
 import kando from './kando'
+import kandoPrivacy from './kando-privacy'
 import menus from './menus'
 import privacy from './privacy'
 import siteConfig from './site-config'
@@ -24,6 +25,7 @@ export default {
   faq,
   home,
   kando,
+  kandoPrivacy,
   menus,
   nuxtSiteConfig: siteConfig,
   privacy,

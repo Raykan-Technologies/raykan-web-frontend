@@ -4,10 +4,12 @@ import { RPageHero } from '@/components/elements'
 // reuses the Data Science photo
 import heroPhoto from '@/assets/images/solutions/data-science.webp'
 
+const props = withDefaults(defineProps<{ source?: string }>(), { source: 'privacy' })
+
 const { t } = useI18n()
 </script>
 <template>
-  <!-- same page hero as FAQ and the solution pages -->
-  <r-page-hero class="privacy-hero" :title="t('privacy.hero.title')" :description="t('privacy.hero.description')"
+  <!-- half the screen's height, like the FAQ and solution heroes -->
+  <r-page-hero class="privacy-hero" height="half" :title="t(`${props.source}.hero.title`)" :description="t(`${props.source}.hero.description`)"
     :image="heroPhoto" />
 </template>

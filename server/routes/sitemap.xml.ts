@@ -13,6 +13,7 @@ const PATHS = [
   '/contact-us',
   '/kando',
   '/privacy-policy',
+  '/kando-privacy-policy',
   ...BLOG_POSTS.map((post) => `/blog/${post.slug}`),
 ]
 

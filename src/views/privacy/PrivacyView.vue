@@ -5,11 +5,13 @@ import { usePageSeo } from '@/composables/seo'
 import HeroSection from './partials/HeroSection.vue'
 import PolicySection from './partials/PolicySection.vue'
 
+const props = withDefaults(defineProps<{ source?: string }>(), { source: 'privacy' })
+
 const { t } = useI18n()
 
 usePageSeo({
-  title: () => t('privacy.seo.title'),
-  description: () => t('privacy.seo.description'),
+  title: () => t(`${props.source}.seo.title`),
+  description: () => t(`${props.source}.seo.description`),
 })
 
 useSchemaOrg([
@@ -17,14 +19,14 @@ useSchemaOrg([
   defineBreadcrumb({
     itemListElement: [
       { name: () => t('menus.home'), item: '/' },
-      { name: () => t('menus.privacy') },
+      { name: () => t(`${props.source}.title`) },
     ],
   }),
 ])
 </script>
 <template>
   <main>
-    <HeroSection />
-    <PolicySection />
+    <HeroSection :source="props.source" />
+    <PolicySection :source="props.source" />
   </main>
 </template>

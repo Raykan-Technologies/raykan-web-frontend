@@ -35,7 +35,10 @@ const year = new Date().getFullYear()
 
     <div class="kando-footer__bottom">
       <img :src="poweredBy" :alt="t('kando.footer.poweredBy')" width="127" height="51" loading="lazy" />
-      <p class="kando-footer__copyright">{{ t('common.copyright', { year }) }}</p>
+      <div class="kando-footer__legal">
+        <router-link :to="{ name: 'kando-privacy' }" class="kando-footer__link">{{ t('menus.privacy') }}</router-link>
+        <p class="kando-footer__copyright">{{ t('common.copyright', { year }) }}</p>
+      </div>
     </div>
   </r-section>
 </template>
@@ -133,6 +136,34 @@ const year = new Date().getFullYear()
     @include mobile {
       flex-direction: column;
       margin-top: 40px;
+    }
+  }
+
+  // privacy link beside the copyright, stacked on phones
+  .kando-footer__legal {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  .kando-footer__link {
+    display: inline-block;
+    color: var(--color-white);
+    font-family: var(--font-kando-text);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      color: var(--color-white);
+      transform: scale(1.03);
     }
   }
 

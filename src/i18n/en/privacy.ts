@@ -18,6 +18,8 @@ export default {
     npc: 'National Privacy Commission',
     googlePrivacy: 'Privacy Policy',
     googleTerms: 'Terms of Service',
+    websitePolicy: 'website privacy policy',
+    kandoPolicy: 'privacy policy',
   },
   // the policy in order: { type: 'h2' | 'h3' | 'p', text } or { type: 'ul', items }.
   // {email}, {npc}, {googlePrivacy} and {googleTerms} become links
@@ -95,7 +97,7 @@ export default {
     { type: 'p', text: 'We do not currently use analytics or tracking tools on this website. If we add any in the future, we will update this policy first.' },
 
     { type: 'h2', text: 'Links to other sites' },
-    { type: 'p', text: 'Our website links to sites we do not operate, such as our social media pages and the Kando app. We have no control over their content or privacy practices, so we encourage you to read the privacy policy of every site you visit.' },
+    { type: 'p', text: 'Our website links to sites we do not operate, such as our social media pages. We have no control over their content or privacy practices, so we encourage you to read the privacy policy of every site you visit. The Kando mobile app has its own {kandoPolicy}.' },
 
     { type: 'h2', text: 'Children’s privacy' },
     { type: 'p', text: 'Our website is not directed to anyone under the age of 18, and we do not knowingly collect personal data from children. If you believe a child has given us personal data, please contact us and we will delete it.' },
