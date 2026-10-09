@@ -15,4 +15,18 @@ export default [
             },
         ],
     },
+    {
+        path: '/kando-privacy-policy',
+        children: [
+            {
+                path: '',
+                name: 'kando-privacy',
+                component: () => import('@/views/privacy/PrivacyView.vue'),
+                props: { source: 'kandoPrivacy' },
+                meta: {
+                    headerTransparent: true,
+                },
+            },
+        ],
+    },
 ] as Array<RouteRecordRaw>

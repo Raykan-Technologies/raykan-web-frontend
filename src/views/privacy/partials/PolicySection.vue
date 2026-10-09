@@ -4,13 +4,15 @@ import { useI18n } from 'vue-i18n'
 import { RSection } from '@/components/elements'
 import { CONTACT_EMAIL } from '@/constants'
 
+const props = withDefaults(defineProps<{ source?: string }>(), { source: 'privacy' })
+
 const { t, tm, rt } = useI18n()
 type TMessage = Parameters<typeof rt>[0]
 
 // i18n paths of each block, so paragraphs and list items can carry links through <i18n-t>
-const blocks = computed(() => ((tm('privacy.body') as Array<Record<string, unknown>> | undefined) ?? [])
+const blocks = computed(() => ((tm(`${props.source}.body`) as Array<Record<string, unknown>> | undefined) ?? [])
   .map((block, index) => {
-    const path = `privacy.body.${index}`
+    const path = `${props.source}.body.${index}`
     const type = rt(block.type as TMessage)
     const items = Array.isArray(block.items) ? block.items.map((_, item) => `${path}.items.${item}`) : []
     return { path, type, items }
@@ -20,7 +22,7 @@ const blocks = computed(() => ((tm('privacy.body') as Array<Record<string, unkno
   <!-- the policy as one list of headings, paragraphs and lists; links to the contact email and the NPC -->
   <r-section class="policy-section" width="var(--container-width-privacy)">
     <p class="policy-section__updated">
-      {{ t('privacy.updated', { date: t('privacy.updatedDate') }) }}
+      {{ t(`${props.source}.updated`, { date: t(`${props.source}.updatedDate`) }) }}
     </p>
 
     <div class="policy-section__body">
@@ -35,13 +37,19 @@ const blocks = computed(() => ((tm('privacy.body') as Array<Record<string, unkno
             <a :href="`mailto:${CONTACT_EMAIL}`">{{ CONTACT_EMAIL }}</a>
           </template>
           <template #npc>
-            <a href="https://privacy.gov.ph" target="_blank" rel="noopener">{{ t('privacy.links.npc') }}</a>
+            <a href="https://privacy.gov.ph" target="_blank" rel="noopener">{{ t(`${props.source}.links.npc`) }}</a>
           </template>
           <template #googlePrivacy>
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">{{ t('privacy.links.googlePrivacy') }}</a>
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">{{ t(`${props.source}.links.googlePrivacy`) }}</a>
           </template>
           <template #googleTerms>
-            <a href="https://policies.google.com/terms" target="_blank" rel="noopener">{{ t('privacy.links.googleTerms') }}</a>
+            <a href="https://policies.google.com/terms" target="_blank" rel="noopener">{{ t(`${props.source}.links.googleTerms`) }}</a>
+          </template>
+          <template #kandoPolicy>
+            <a href="/kando-privacy-policy">{{ t(`${props.source}.links.kandoPolicy`) }}</a>
+          </template>
+          <template #websitePolicy>
+            <a href="/privacy-policy">{{ t(`${props.source}.links.websitePolicy`) }}</a>
           </template>
         </i18n-t>
       </template>
