@@ -56,7 +56,7 @@ export default {
       'your IP address and request times, which our servers record to deliver the service and keep it secure',
       'whether your device is connected to the internet, checked on your device only so the app can tell you when you are offline',
     ] },
-    { type: 'p', text: 'To protect your organization’s data, the app checks whether it is running on a rooted or jailbroken device, has a debugger or hooking tool attached, or has been modified. For these checks the app uses freeRASP by Talsec, which processes technical information such as your device model, operating system version, app identifier and the security issues it detects. If a serious issue is found, the app signs you out.' },
+    { type: 'p', text: 'To protect your organization’s data, the app checks whether it is running on a rooted or jailbroken device, has a debugger or hooking tool attached, or has been modified. For these checks the app uses freeRASP by Talsec. freeRASP sends anonymous security diagnostics off your device: the integrity state of the app and the operating system, the security issues it detects, an anonymous app instance and device identifier, network information, your IP address and network operator, and an approximate location (country, region and city) worked out from your IP address. Security alerts are also emailed to Raykan. If a serious issue is found, the app signs you out.' },
 
     { type: 'h3', text: 'What we do not collect' },
     { type: 'p', text: 'The app does not access your contacts, camera, microphone or photo library (except files you pick to attach), and it does not use an advertising ID. The app has no advertising and no analytics or tracking tools.' },
@@ -81,7 +81,7 @@ export default {
     ] },
 
     { type: 'h2', text: 'Service providers' },
-    { type: 'p', text: 'We work with a small number of service providers that help us run Kando. They can access personal data only to do these tasks for us and must not use it for anything else:' },
+    { type: 'p', text: 'We work with a small number of service providers that help us run Kando. They can access personal data only to do these tasks for us and, except as described below for Talsec, must not use it for anything else:' },
     { type: 'ul', items: [
       'Microsoft Azure, which hosts our servers, databases and file storage',
       'Pusher, which delivers real-time updates to the app',
@@ -89,6 +89,7 @@ export default {
       'Google, which serves the fonts the app downloads and, on Android, provides the geocoding service',
       'Apple, which provides the geocoding service on iOS',
     ] },
+    { type: 'p', text: 'Talsec also uses the anonymous freeRASP diagnostics to improve freeRASP and to prepare mobile security reports and articles. This data does not include your name, email address or work records.' },
     { type: 'p', text: 'Google’s handling of data is described in the {googlePrivacy}.' },
 
     { type: 'h2', text: 'Transfer of data' },
