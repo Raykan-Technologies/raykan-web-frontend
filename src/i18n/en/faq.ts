@@ -14,8 +14,8 @@ export default {
     label: 'Frequently asked questions',
     items: {
       offer: {
-        question: 'What Raykan Technologies can offer?',
-        answer: ['Raykan Technologies’ deep and abiding commitment to creating value for the clients offers a wide variety of IT Solutions such as in Software Development, Data Science, Digital Marketing, Blockchain, Enterprise Resource Planning (ERP) System and IT Managed Service.'],
+        question: 'What can Raykan Technologies offer?',
+        answer: ['Raykan Technologies’ deep and abiding commitment to creating value for the clients offers a wide variety of IT solutions such as Software Development, Data Science, Digital Marketing, Blockchain, Enterprise Resource Planning (ERP) System and IT Managed Service.'],
       },
       softwareDevelopment: {
         question: 'What is software development?',
@@ -36,7 +36,7 @@ export default {
         ],
       },
       erp: {
-        question: 'What is enterprise resource planning systems?',
+        question: 'What is an enterprise resource planning (ERP) system?',
         answer: ['Commonly known as ERP, Enterprise Resource Planning is a software system that maintains the optimal efficiency of a company’s main business processes. ERP links a company’s important data such as policies and standards to one platform.'],
       },
       dataScience: {

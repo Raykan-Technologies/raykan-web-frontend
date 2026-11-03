@@ -68,7 +68,10 @@ export default {
         ] },
         { type: 'h2', text: 'Final thoughts' },
         { type: 'p', text: 'Choosing software is a business decision before it is a technical one. Start with the problem you need to solve, be honest about how unique your process is, and compare the long-term cost of each path.' },
-        { type: 'p', text: 'Not sure which way to go? Our team can review your current tools and processes and recommend the option that fits, whether that is a ready-made product, a custom build or a mix of both.' },
+        { type: 'p', text: 'Not sure which way to go? Our team can review your current tools and processes and recommend the option that fits, whether that is a ready-made product, a {0} or a mix of both. And if the standard job is HR and payroll, {1} is our own ready-made system for Philippine teams.', links: [
+          { href: '/software-development', text: 'custom build' },
+          { href: '/kando', text: 'Kando' },
+        ] },
       ],
     },
 
@@ -83,7 +86,9 @@ export default {
       // wp-raykan featured image and post photo, re-encoded (pixels only) from the original files
       imageAlt: 'White hand-drawn stars on a blue gradient background',
       body: [
-        { type: 'p', text: 'As we raise our glasses to commemorate five years of hard work and innovation, I am filled with immense pride and gratitude. Today, we celebrate the 5th anniversary of Raykan Technologies, a milestone that stands as a testament to the value we bring to our clients and the industry. We do not just provide software applications, websites, and technical solutions — we deliver innovations that drive performance. I extend my heartfelt thanks to our clients for their unwavering trust and support to our young team.' },
+        { type: 'p', text: 'As we raise our glasses to commemorate five years of hard work and innovation, I am filled with immense pride and gratitude. Today, we celebrate the 5th anniversary of Raykan Technologies, a milestone that stands as a testament to the value we bring to our clients and the industry. We do not just provide software applications, websites, and {0} — we deliver innovations that drive performance. I extend my heartfelt thanks to our clients for their unwavering trust and support to our young team.', links: [
+          { href: '/solutions', text: 'technical solutions' },
+        ] },
         { type: 'img', src: '/images/blog/raykan-5th-anniversary-team.webp', alt: 'The Raykan Technologies team in company shirts, posing together' },
         { type: 'h2', text: 'Our Journey: From Humble Beginnings to Year Five' },
         { type: 'p', text: 'From ground zero to five years—this is how our story began. In the early years, we relied primarily on our technical expertise, industry experience, and passion for building impactful and valuable solutions for the community. The journey was tough, and the road was not without humps. However, it was these very challenges that propelled us to major milestones. Today, we are recognized partners of prestigious organizations, have a solid client base, and have robust Research and Development efforts. In hindsight, we are grateful for these challenges that shaped us. Without them, we wouldn’t be standing here so tall.' },
@@ -142,7 +147,9 @@ export default {
         { type: 'p', text: 'In your team’s transition period towards the new technology, be sure to communicate how they are doing. Let them know whether they are navigating the tool correctly or need to recheck how the technology works. Additionally, designate tool champions. They are employees who are knowledgeable about the tool and are assigned to help their peers outside of the training sessions. Giving employees feedback will give them a preview of their progress. And the help of tool champions will make your team’s adjustment faster.' },
         { type: 'h2', text: 'Conclusion' },
         { type: 'p', text: 'When introducing a new technology in your operations, a transition period from the old to the new workflow is expected. For your team to fully understand and efficiently use the tool, they should be given the training and time to learn it. However, you can make the transition smooth and faster. By securing stakeholder buy-in, dedicating a transition period, making training concise, doing phased implementation, and establishing a feedback system, you can set up the technology for your operation in no time.' },
-        { type: 'p', text: 'And if you’re looking for solutions that enable your team to adapt quickly to new technology, Raykan Technologies is here to assist you. We specialize in customizing solutions to meet your unique business needs. By providing you with a tool that fits your workflow, you minimize operation downtime and maximize productivity.' },
+        { type: 'p', text: 'And if you’re looking for solutions that enable your team to adapt quickly to new technology, Raykan Technologies is here to assist you. We specialize in {0} to meet your unique business needs. By providing you with a tool that fits your workflow, you minimize operation downtime and maximize productivity.', links: [
+          { href: '/software-development', text: 'customizing solutions' },
+        ] },
         { type: 'callout', text: 'From websites to apps and systems, Raykan Technologies has you covered. Talk to us today to kickstart your team’s digital transformation.' },
       ],
     },
@@ -171,7 +178,9 @@ export default {
         { type: 'p', text: 'Now that you understand the importance of continually refining your ERP system, it’s essential to highlight another crucial aspect of tech success: scalability. As your operations evolve, so should your technology. Scalability allows your system to adapt to increasing data, user demand, and organizational growth without compromising performance.' },
         { type: 'p', text: 'By gathering feedback, reviewing the current system, customizing it, training employees, and staying updated, you optimize your ERP system. Furthermore, you prepare for your future needs.' },
         { type: 'p', text: 'Remember, ERP systems are there to support your team’s daily workflow. But if left as is for a long time, they can hamper your operations more than streamline them. Your system is a vehicle that needs regular oil changes and tire rotations to run smoothly. Neglecting the maintenance may lead to lessened fuel efficiency and breakdowns. At worst, this results in safety hazards.' },
-        { type: 'callout', text: 'Are you ready to elevate your process and workflow? Contact us today to learn how we can provide a scalable and customized ERP solution tailored to your team’s needs.' },
+        { type: 'callout', text: 'Are you ready to elevate your process and workflow? Contact us today to learn how our {0} can provide a scalable and customized ERP solution tailored to your team’s needs.', links: [
+          { href: '/enterprise-resource-planning', text: 'SAP ERP services' },
+        ] },
       ],
     },
     'work-chronicles-team-success': {
@@ -186,7 +195,9 @@ export default {
         { type: 'p', text: 'In today’s fast-paced business landscape, success does not just hinge on a product or tool; it entails delivering value that resonates with your audience. So, we are diving deep into understanding the unique contexts, challenges, and aspirations of businesses like yours. By diving into your world, we aim to co-create solutions that drive productivity and sustainability for the long haul.' },
         { type: 'h2', text: 'What is this study all about?' },
         { type: 'p', text: 'We title this study Work Chronicles: Mapping the Journey to Team Success. We invite business owners, executives, and professionals in people and culture teams with at least two years of experience to join our ongoing research initiative that embodies this principle.' },
-        { type: 'p', text: 'So, what exactly does this study entail? Well, we have three main objectives in sight. Firstly, we aim to gain a comprehensive understanding of your tech solution needs and challenges. Next, we want to unveil the current work and productivity trends that are shaping today’s landscape. And finally, we are interested in uncovering insights into how businesses operate and how teams collaborate in the future.' },
+        { type: 'p', text: 'So, what exactly does this study entail? Well, we have three main objectives in sight. Firstly, we aim to gain a comprehensive understanding of your {0} needs and challenges. Next, we want to unveil the current work and productivity trends that are shaping today’s landscape. And finally, we are interested in uncovering insights into how businesses operate and how teams collaborate in the future.', links: [
+          { href: '/solutions', text: 'tech solution' },
+        ] },
         { type: 'h2', text: 'What is in it for you?' },
         { type: 'p', text: 'Now, let us talk perks – because who doesn’t appreciate a little something extra? Because your time is valuable, we’re offering a GCash reward as a token of our gratitude for your participation. As a bonus, you will gain access to exclusive insights and findings. Use the results to stay ahead of the curve in today’s competitive environment.' },
         { type: 'p', text: 'For the first 80 respondents, you will receive the study results and Php 100.00 – a treat for a coffee break or after-shift drinks. Even if you are not among the first 80, you will still receive a copy of the study results to keep you informed about trends and prepared for the future ahead.' },

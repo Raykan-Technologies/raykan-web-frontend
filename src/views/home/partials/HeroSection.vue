@@ -35,8 +35,8 @@ const clients = computed<Array<ICarouselImage>>(() => [
     <span class="hero-section__tagline">{{ t('home.hero.tagline') }}</span>
 
     <h1 class="hero-section__title">
-      <span>{{ t('home.hero.titleLine1') }}</span>
-      <span>{{ t('home.hero.titleLine2') }}</span>
+      <!-- the space keeps the lines apart in the text search engines and screen readers get -->
+      <span>{{ t('home.hero.titleLine1') }}</span>{{ ' ' }}<span>{{ t('home.hero.titleLine2') }}</span>
     </h1>
 
     <i18n-t keypath="home.hero.lead" tag="p" class="hero-section__lead" scope="global">

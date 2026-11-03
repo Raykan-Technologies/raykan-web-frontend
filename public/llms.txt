@@ -1,0 +1,43 @@
+# Raykan Technologies
+
+> Raykan Technologies is a software company in Cebu City, Philippines, founded in 2019. It builds custom web, mobile and desktop software and delivers SAP ERP implementation, data science, digital marketing, blockchain and managed IT services. It also makes Kando, a Philippine-built HRMS for timekeeping, payroll and HR records.
+
+- Office: Pardo, Cebu City, Cebu 6000, Philippines
+- Phone: +63 916 702 3816
+- Email: rbsesican@raykan.co
+- Clients include Elite Anywhere, K&C Fence Company, Desert Moving Co. and BNI
+- 100% client retention since 2019; 97% client satisfaction for issue resolution
+
+## Kando HRMS
+
+- [Kando](https://raykan.co/kando): cloud HRMS by Raykan Technologies, on the web, Android and iOS. Modules: doTime (timekeeping: real-time tracking, schedules, leave and holidays, timesheets, kiosks), doPayroll (automated salary calculation, tax and compliance, benefits) and doRecord (HRIS for employee records), sold separately or as a bundle.
+- [Sign up for Kando](https://app.kando.team/sign-up)
+- [Kando app privacy policy](https://raykan.co/kando-privacy-policy)
+
+## Services
+
+- [All solutions](https://raykan.co/solutions)
+- [Software development](https://raykan.co/software-development): custom web, mobile, desktop and game applications
+- [SAP ERP implementation](https://raykan.co/enterprise-resource-planning): SAP modules for finance, accounting, planning, manufacturing, sales and commerce
+- [Data science](https://raykan.co/data-science): data mining, statistical analysis, business intelligence, data engineering and warehousing
+- [Digital marketing](https://raykan.co/digital-marketing): SEO, pay-per-click, social media, content, email and mobile marketing
+- [Blockchain](https://raykan.co/blockchain): cryptocurrency development, DApps, smart contracts, decentralized storage, supply chain tracking
+- [Managed IT services](https://raykan.co/it-managed-service): system administration, networking, security and IT helpdesk
+
+## Company
+
+- [About Raykan Technologies](https://raykan.co/about): mission, guiding principles and team
+- [Frequently asked questions](https://raykan.co/faq)
+- [Contact](https://raykan.co/contact-us)
+
+## Blog
+
+- [Custom vs. off-the-shelf software: how to choose the right fit](https://raykan.co/blog/custom-vs-off-the-shelf-software)
+- [Happy 5th anniversary, Raykan Technologies](https://raykan.co/blog/raykan-5th-anniversary)
+- [Tips for implementing new technology in your team's operations](https://raykan.co/blog/implementing-new-technology)
+- [Beyond implementation: optimizing your ERP system](https://raykan.co/blog/optimizing-your-erp-system)
+- [Work Chronicles: mapping the journey to team success](https://raykan.co/blog/work-chronicles-team-success)
+
+## Optional
+
+- [Privacy policy](https://raykan.co/privacy-policy)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { defineBreadcrumb, useSchemaOrg } from '#imports'
+import { createSitePathResolver, defineBreadcrumb, useSchemaOrg } from '#imports'
 import { usePageSeo } from '@/composables/seo'
 import FeaturesSection from './partials/FeaturesSection.vue'
 import FooterSection from './partials/FooterSection.vue'
@@ -9,14 +9,36 @@ import HeroSection from './partials/HeroSection.vue'
 import ModulesSection from './partials/ModulesSection.vue'
 import PricingSection from './partials/PricingSection.vue'
 
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
+// a plain node gets no url resolving from nuxt-schema-org, so its links are made absolute here
+const resolveUrl = createSitePathResolver({ absolute: true, canonical: true, withBase: true })
+const pageUrl = resolveUrl('/kando')
+const identityUrl = resolveUrl('/')
 
 usePageSeo({
   title: () => t('kando.seo.title'),
   description: () => t('kando.seo.description'),
 })
 
+// the product itself, published by the Organization from app.vue. A plain node rather than defineSoftwareApp,
+// which requires a price and a rating: add `offers` (price, priceCurrency) once pricing is public
 useSchemaOrg([
+  {
+    '@type': 'SoftwareApplication',
+    '@id': () => `${pageUrl.value}#software`,
+    name: () => t('kando.logo'),
+    description: () => t('kando.seo.description'),
+    url: () => pageUrl.value,
+    applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'Human resource management system (HRMS)',
+    operatingSystem: 'Web, Android, iOS',
+    featureList: () => [
+      ...(tm('kando.pricing.plans.doTime.features') as Array<string>),
+      ...(tm('kando.pricing.plans.doPayroll.features') as Array<string>),
+    ].map((feature) => rt(feature)).filter((feature, index, all) => all.indexOf(feature) === index),
+    publisher: { '@id': () => `${identityUrl.value}#identity` },
+    countryOfOrigin: 'PH',
+  },
   defineBreadcrumb({
     itemListElement: [
       { name: () => t('menus.home'), item: '/' },
