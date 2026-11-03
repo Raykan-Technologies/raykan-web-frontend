@@ -19,6 +19,8 @@ export default {
   // default share image (public/og/default.jpg)
   seo: {
     imageAlt: 'Developer writing code on a laptop at Raykan Technologies',
+    // Organization JSON-LD (app.vue)
+    organizationDescription: 'Software company in Cebu City, Philippines, building custom web and mobile software and delivering SAP ERP, data science, digital marketing, blockchain and managed IT services. Maker of the Kando HRMS.',
   },
   // blog post header (RPost)
   post: {

@@ -19,7 +19,8 @@ export default {
   hero: {
     lead: 'Philippine-built HRMS for local and global teams',
     // {break}: new line on every screen, {mobileBreak}: phones only (wp-raykan)
-    title: '{automated}{mobileBreak} {timekeeping},{mobileBreak} {payroll},{break}and {hr}!',
+    // the space after {break} keeps "Payroll, and" apart in the page text; browsers drop it at the line start
+    title: '{automated}{mobileBreak} {timekeeping},{mobileBreak} {payroll},{break} and {hr}!',
     automated: 'Automated',
     timekeeping: 'Timekeeping',
     payroll: 'Payroll',
@@ -97,9 +98,9 @@ export default {
     label: 'Our Core Features',
     title: 'What {highlight} Delivers',
     highlight: 'Kando',
-    description: 'Above efficiency and productivity, Kando\'s promise is a technology that serves as HR\'s strategic partner. Kando is more than just a tool',
+    description: 'Above efficiency and productivity, Kando\'s promise is a technology that serves as HR\'s strategic partner. Kando is more than just a tool.',
     imageAlt: 'Kando running on a laptop and a desktop monitor',
-    // texts as on wp-raykan (cost-effective and customizable share one)
+    // wp-raykan had the payroll accuracy and customizable texts mixed up; accuracy text is new
     items: {
       costEffective: {
         title: 'Cost-effective',
@@ -107,15 +108,15 @@ export default {
       },
       payrollAccuracy: {
         title: '100% payroll accuracy',
-        text: 'Adjust features to fit your business.',
+        text: 'Automated computations get every payslip right, every cutoff.',
       },
       customizable: {
         title: 'Highly customizable',
-        text: 'Cut HR and payroll costs with one smart platform.',
+        text: 'Adjust features to fit your business.',
       },
       timekeeping: {
         title: 'Flexible timekeeping',
-        text: 'Track attendance your way, biometric, or web.',
+        text: 'Track attendance your way: biometric or web.',
       },
       selfService: {
         title: 'Employee self-service',

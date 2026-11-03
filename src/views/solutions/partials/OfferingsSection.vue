@@ -19,6 +19,9 @@ const badges = computed(() => pickCardBadges(props.solution, items.value.length)
 const text = (key: string) => te(`${prefix.value}.items.${key}.text`) ? t(`${prefix.value}.items.${key}.text`) : undefined
 const hasText = computed(() => items.value.some((item) => text(item.key)))
 
+// optional line under the cards pointing to a related page (i18n `offerings.related`: text with {link}, link, route)
+const related = computed(() => te(`${prefix.value}.related.text`) ? `${prefix.value}.related` : undefined)
+
 // 3 cards = one row (stacked on tablet), described cards = 2 across, title-only = 4 across
 // (3 when 4 leaves a short row, like wp-raykan's ERP), 2 on tablet; mobile always stacks
 const columns = computed(() => {
@@ -40,6 +43,11 @@ const columns = computed(() => {
         <p v-if="text(item.key)">{{ text(item.key) }}</p>
       </r-card>
     </r-section>
+    <i18n-t v-if="related" :keypath="`${related}.text`" tag="p" class="offerings-section__related" scope="global">
+      <template #link>
+        <router-link :to="{ name: t(`${related}.route`) }">{{ t(`${related}.link`) }}</router-link>
+      </template>
+    </i18n-t>
   </r-section>
 </template>
 <style lang="scss">
@@ -79,6 +87,21 @@ const columns = computed(() => {
 
       @include mobile {
         --columns: 1;
+      }
+    }
+  }
+
+  .offerings-section__related {
+    max-width: 46em;
+    margin: 0 auto;
+    text-align: center;
+
+    a {
+      color: var(--color-link);
+      font-weight: var(--font-weight-semibold, 600);
+
+      &:hover {
+        color: var(--color-link-hover);
       }
     }
   }

@@ -13,6 +13,17 @@ export const CONTACT_EMAIL = 'rbsesican@raykan.co'
 // `common.joinTeamSubject`). mailto, not a Gmail link, so it opens the visitor's own mail app and account
 export const joinTeamUrl = (subject: string) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`
 
+// office address and founding year for the Organization JSON-LD (app.vue); the address people read is i18n `common.address`
+export const COMPANY_ADDRESS = {
+  streetAddress: 'Pardo',
+  addressLocality: 'Cebu City',
+  addressRegion: 'Cebu',
+  postalCode: '6000',
+  addressCountry: 'PH',
+} as const
+// 5th anniversary in August 2024 (blog), "since 2019" on the home page
+export const FOUNDING_YEAR = '2019'
+
 // shown as written; `tel` is the dialable form
 export const CONTACT_PHONE = { display: '(+63) 916 702 3816', tel: '+639167023816' } as const
 

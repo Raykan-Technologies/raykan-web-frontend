@@ -5,7 +5,7 @@ import { OG_IMAGE_SIZE, useTitleFormatter } from '@/composables/seo'
 import { useViewport } from '@/composables/viewport'
 import AppLoading from '@/components/AppLoading.vue'
 import AppPrivacyNotice from '@/components/AppPrivacyNotice.vue'
-import { CONTACT_EMAIL, SOCIAL_LINKS } from '@/constants'
+import { COMPANY_ADDRESS, CONTACT_EMAIL, CONTACT_PHONE, FOUNDING_YEAR, SOCIAL_LINKS } from '@/constants'
 
 const { t, locale } = useI18n()
 const formatTitle = useTitleFormatter()
@@ -37,8 +37,12 @@ useSeoMeta({
 useSchemaOrg([
   defineOrganization({
     name: () => t('common.companyName'),
+    description: () => t('common.seo.organizationDescription'),
     logo: '/logo.png',
     email: CONTACT_EMAIL,
+    telephone: CONTACT_PHONE.tel,
+    address: { ...COMPANY_ADDRESS },
+    foundingDate: FOUNDING_YEAR,
     sameAs: Object.values(SOCIAL_LINKS),
   }),
 ])

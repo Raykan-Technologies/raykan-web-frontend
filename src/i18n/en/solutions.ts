@@ -164,6 +164,12 @@ export default {
       },
       // wp-raykan offerings are titles only, without text
       offerings: {
+        // under the cards: HR and payroll on the Kando page
+        related: {
+          text: 'Need HR, timekeeping and payroll too? {link}, our Philippine-built HRMS.',
+          link: 'Meet Kando',
+          route: 'kando',
+        },
         title: 'SAP Business Modules',
         description: 'We offer SAP ERP solutions across key business modules, including finance, supply chain, human resources, and analytics. Our expertise ensures seamless integration and automation, driving efficiency and strategic growth for your organization.',
         items: {

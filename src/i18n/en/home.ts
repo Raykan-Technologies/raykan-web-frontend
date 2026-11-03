@@ -2,13 +2,13 @@ export default {
   // search and share copy, title is used as is (no company suffix)
   // {'|'} escapes vue-i18n's plural separator
   seo: {
-    title: "Raykan Technologies {'|'} Custom Software & IT Solutions",
-    description: 'Raykan Technologies delivers tailored IT solutions with expertise and innovation, ensuring technology meets your business needs.',
+    title: "Raykan Technologies {'|'} Custom Software & IT Solutions, Cebu",
+    description: 'Raykan Technologies is a software company in Cebu, Philippines. We build custom web and mobile apps and deliver SAP ERP, data and managed IT services.',
   },
   hero: {
     tagline: 'Driving Innovation, Empowering People',
     titleLine1: 'Creating technologies',
-    titleLine2: 'that drives success',
+    titleLine2: 'that drive success',
     lead: 'Build your dream custom software that {highlight} your business growth with Raykan Technologies.',
     leadHighlight: 'empowers',
     startBuilding: 'Start Building your Dreams!',
@@ -25,17 +25,17 @@ export default {
     label: 'Testimonial',
     title: 'Success Story with Raykan',
     text: 'Through our tailored solutions and dedicated support, we’ve empowered businesses to build stronger teams and efficient operations.',
-    // client quotes, verbatim from wp-raykan
+    // client quotes from wp-raykan, spelling typos fixed
     items: {
       edenPilarye: {
         name: 'Eden Pilarye',
         role: 'Branch Manager at Elite Anywhere',
-        quote: '"Raykan Techonologies has been an exceptional partner in transforming our business operations. Their innovative solutions and expert team have significantly improved our efficiency and productivity. The level of professionalism and dedication they bring to every project is truly recommendable. We couldn\'t be happier with the results and highly recommend Raykan Technologies to any business looking to leverage top-notch technological services"',
+        quote: '"Raykan Technologies has been an exceptional partner in transforming our business operations. Their innovative solutions and expert team have significantly improved our efficiency and productivity. The level of professionalism and dedication they bring to every project is truly recommendable. We couldn\'t be happier with the results and highly recommend Raykan Technologies to any business looking to leverage top-notch technological services"',
       },
       jayVieSobiono: {
         name: 'Jay Vie Sobiono',
         role: 'Accounting Manager',
-        quote: '"With the help of BOND, our processes we\'re streamlined, allowing us to accomplish task more quickly and effectively. It has facilitated collaboration among team members, enhancing teamwork and productivity. With enhanced collaboration and efficiency, we have been able to reduce errors and ensure the accuracy of our data and operations"',
+        quote: '"With the help of BOND, our processes were streamlined, allowing us to accomplish tasks more quickly and effectively. It has facilitated collaboration among team members, enhancing teamwork and productivity. With enhanced collaboration and efficiency, we have been able to reduce errors and ensure the accuracy of our data and operations"',
       },
     },
   },

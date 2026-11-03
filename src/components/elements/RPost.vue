@@ -71,9 +71,10 @@ const minutes = computed(() => readingMinutes(props.blocks))
           width="1600" height="900" loading="lazy">
         <component :is="block.type === 'quote' ? 'blockquote' : block.type === 'callout' ? 'p' : block.type"
           v-else-if="'text' in block" :class="{ 'r-post__callout': block.type === 'callout' }">
-          <!-- links open in a new tab; most point to outside sources -->
+          <!-- site paths (/…) are router links; outside sources open in a new tab -->
           <template v-for="(part, partIndex) in postSegments(block.text, block.links)" :key="partIndex">
-            <a v-if="typeof part !== 'string'" :href="part.href" target="_blank" rel="noopener">{{ part.text }}</a>
+            <router-link v-if="typeof part !== 'string' && part.href.startsWith('/')" :to="part.href">{{ part.text }}</router-link>
+            <a v-else-if="typeof part !== 'string'" :href="part.href" target="_blank" rel="noopener">{{ part.text }}</a>
             <template v-else>{{ part }}</template>
           </template>
         </component>
